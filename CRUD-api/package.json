@@ -1,0 +1,28 @@
+{
+  "name": "CRUD-api",
+  "version": "1.0.0",
+  "description": "Practicing crud",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "proxy": "http://localhost:4000",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "helmet": "^3.18.0",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.17.6",
+    "morgan": "^1.9.1",
+    "pg": "^7.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
