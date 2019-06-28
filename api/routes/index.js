@@ -71,15 +71,15 @@ router.post('/login',(req,res) =>{
     .then( result => {
         bcrypt.compare(pw,result[0].password,(err,hash)=>{
           if(hash===true){
-            return res.end(JSON.stringify(result))  
+            return res.send(JSON.stringify(result))  
           }
         })
       }
     )
-  //   .catch(err => {
-  //     console.log(err)
-  // })
-} 
+    .catch(err => {
+      console.log(err)
+    })
+  } 
 })
  //end login======== 
 

@@ -44,10 +44,11 @@ class Manager_Store extends Component {
                                 color="primary"
                                 style={{ float: "left", marginRight: "10px" }}
                                 className="btn btn-primary"
-                                data={this.state.items}>
-                                Download CSV
+                                data={this.state.items}
+                            >
+                                <i className="fas fa-file-csv"> Download CSV</i>
                             </CSVLink>
-                            <ModalForm buttonLabel="Add Item" addItemToState={this.addItemToState} />
+                            <ModalForm buttonLabel="Thêm cửa hàng" addItemToState={this.addItemToState} />
                         </Col>
                     </Row>
                 </Container>

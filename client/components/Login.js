@@ -11,6 +11,7 @@ class Login extends Component {
           validate: {
             emailState: '',
           },
+          isLogin:''
         }
         this.handleChange = this.handleChange.bind(this);
     }
@@ -49,19 +50,16 @@ class Login extends Component {
           })
         })
         .then(response => {
-          // sessionStorage.setItem('name',result[0].username)
-          // console.log(sessionStorage.getItem('name'));
           alert('Đăng nhập thành công');
-          Router.push('/admin')
+          console.log(JSON.stringify(response))
+         
+          // Router.push('/admin')
         })
         .catch(alert('Đăng nhập thất bại'))
         }
-      
-        
-      save(){
-        //NOTE:code save thông tin vào session để hiện email,pw cho lần sau đăng nhập
-        
-      }
+        save(){
+
+        }
     
       render() {
         const { email, password } = this.state;
@@ -117,7 +115,7 @@ class Login extends Component {
               </Col>
               <FormGroup  className="mb-3" check>
                 <Label check>
-                <Input type="checkbox" name="save" onClick={this.save.bind(this)} defaultChecked/>Lưu lại
+                <Input type="checkbox" name="save" onClick={this.save()} defaultChecked/>Lưu lại
                 </Label>
               </FormGroup>
               <FormGroup>
@@ -125,6 +123,9 @@ class Login extends Component {
                   Đăng nhập
                 </Button>
               </FormGroup>
+              <span style={{color:'red'}}>
+                {(this.state.isLogin===false)?'Vui lòng kiểm tra lại thông tin email, password':''}
+              </span>
           </Form>
           </Container>
         );
