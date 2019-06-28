@@ -7,8 +7,8 @@ const cors = require ('cors');
 const morgan = require('morgan');
 //connect
 // const knex = require("knex");
-const indexRouter = require('./routes/index')
-
+const indexRouter = require('./routes/index');
+const userRouter = require('./routes/users')
 //app
 const app = express();
 const whitelist = ['http://localhost:3001']
@@ -26,6 +26,8 @@ app.use(cors(corsOptions))
 app.use(bodyParser.json())
 app.use(morgan('combined'))
 app.use('/',indexRouter) 
+app.use('/users',userRouter) 
+
 
 // App Server Connection
 app.listen(process.env.PORT || 3000, () => {
