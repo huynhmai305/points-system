@@ -16,6 +16,7 @@ class Home extends Component{
     .catch(err => console.log(err))
   }
   addItemToState = (item) => {
+    fetch('http://localhost:3000/admin/user')
     this.setState(prevState => ({
       items: [...prevState.items,item]
     }))
@@ -59,7 +60,7 @@ class Home extends Component{
               data={this.state.items}>
               Download CSV
             </CSVLink>
-            <ModalForm buttonLabel="Add Item" addItemToState={this.addItemToState}/>
+            
           </Col>
         </Row>
       </Container>

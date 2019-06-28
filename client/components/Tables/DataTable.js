@@ -6,7 +6,7 @@ var dateFormat = require('dateformat');
 class DataTable extends Component {
 
   deleteItem = id => {
-    let confirmDelete = window.confirm('Delete item forever?')
+    let confirmDelete = window.confirm('Bạn có chắc muốn xóa không?')
     if(confirmDelete){
       // console.log(id)
       fetch('http://localhost:3000/admin/user', {
@@ -21,7 +21,7 @@ class DataTable extends Component {
       .then(response => response.json())
       .then(item => {
         alert(`Xóa thành công id: ${id}`);
-        
+        location.reload();
       })
       .catch(err => console.log(err))
     }

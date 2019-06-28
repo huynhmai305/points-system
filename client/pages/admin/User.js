@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Home from '../../components/Home/Home.js';
-import Admin from '../../components/admin/Admin.js';
+import Home from '../../components/Home/Manager_User';
+import Admin from '../../components/admin/Admin';
 
 class User extends Component {
     render() {

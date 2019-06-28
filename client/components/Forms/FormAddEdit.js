@@ -10,7 +10,7 @@ class AddEditForm extends React.Component {
     phone: '',
     email: '',
     password: '',
-    role: ''
+    role: 1
   }
 
   onChange = e => {
@@ -36,7 +36,10 @@ class AddEditForm extends React.Component {
       })
     })
     .then(response => response.json())
-    .then(item => console.log(`edit completed id: ${this.state.id}`))
+    .then(item => {
+      alert(`Thêm thành công`);
+      location.reload()
+    })
    
   }
 
@@ -59,7 +62,10 @@ class AddEditForm extends React.Component {
       })
     })
       .then(response => response.json())
-      .then(item => console.log(`edit completed id: ${this.state.id}`))
+      .then(item => {
+        alert(`Chỉnh sửa thành công id: ${this.state.id}`);
+        location.reload()
+      })
   }
 
   componentDidMount(){
@@ -68,9 +74,6 @@ class AddEditForm extends React.Component {
       const { id, username, birthday, address, phone, email, password, role} = this.props.item
       this.setState({ id, username, birthday, address, phone, email, password, role})
     }
-  }
-  check(role){
-    (role===0) ? true : false
   }
 
   render() {
@@ -90,24 +93,24 @@ class AddEditForm extends React.Component {
         </FormGroup>
         <FormGroup>
           <Label for="phone">Số điện thoại</Label>
-          <Input type="text" name="phone" id="phone" onChange={this.onChange} value={this.state.phone === null ? '' : this.state.phone}  placeholder="ex.0123456789" />
+          <Input type="tel" name="phone" id="phone" onChange={this.onChange} value={this.state.phone === null ? '' : this.state.phone}  placeholder="ex.0123456789" />
         </FormGroup>
         <FormGroup>
           <Label for="email">Email</Label>
-          <Input type="email" name="email" id="email" onChange={this.onChange} value={this.state.email === null ? '' : this.state.email}  placeholder="ex.mail@gmail.com" />
+          <Input type="email" name="email" id="email" onChange={this.onChange} value={this.state.email === null ? '' : this.state.email}  placeholder="ex.mail@gmail.com" required/>
         </FormGroup>
         <FormGroup>
           <Label for="password">Password</Label>
-          <Input type="text" name="password" id="password" onChange={this.onChange} value={this.state.password}  />
+          <Input type="text" name="password" id="password" onChange={this.onChange} value={this.state.password === null ? '' : this.state.password}  />
         </FormGroup>
         <FormGroup check inline>
           <Label check>
-            <Input type="radio" name="role" onChange={this.onChange} value={1} onClick={this.check.bind(this, this.state.role)} checked={(this.state.role===1) ? true : false } />Cửa hàng
+            <Input type="radio" name="role" onChange={this.onChange} value={1} checked={(this.state.role===1) ? true : false } />Cửa hàng
           </Label>
         </FormGroup>
         <FormGroup check inline>
           <Label check>
-          <Input type="radio" name="role" id="role2" onChange={this.onChange} onClick={this.check.bind(this, this.state.role)} value={2} checked={(this.state.role===2) ? true : false } />Khách hàng
+          <Input type="radio" name="role" id="role2" onChange={this.onChange} value={2} checked={(this.state.role===2) ? true : false } />Khách hàng
           </Label>
         </FormGroup>
         <FormGroup>

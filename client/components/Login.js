@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {Container, Col, Form, FormGroup, Label, Input, Button, FormText, FormFeedback} from 'reactstrap';
+import {Container, Col, Form, FormGroup, Label, Input, Button, FormFeedback} from 'reactstrap';
+import Router from 'next/router'
 
 class Login extends Component {
     constructor(props) {
@@ -12,7 +13,7 @@ class Login extends Component {
           },
         }
         this.handleChange = this.handleChange.bind(this);
-      }
+    }
     
       validateEmail(e) {
         const emailRex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -23,7 +24,7 @@ class Login extends Component {
             validate.emailState = 'has-danger'
           }
           this.setState({ validate })
-        }
+      }
     
       handleChange = async (event) => {
         const { target } = event;
@@ -48,24 +49,29 @@ class Login extends Component {
           })
         })
         .then(response => {
-          alert('Đăng nhập thành công')
-          // window.replace('admin')
+          // sessionStorage.setItem('name',result[0].username)
+          // console.log(sessionStorage.getItem('name'));
+          alert('Đăng nhập thành công');
+          Router.push('/admin')
         })
-          
-      }
+        .catch(alert('Đăng nhập thất bại'))
+        }
+      
+        
       save(){
         //NOTE:code save thông tin vào session để hiện email,pw cho lần sau đăng nhập
+        
       }
     
       render() {
         const { email, password } = this.state;
         return (
           <Container className="App">
-            <h2>Sign In</h2>
+            <h2>Form đăng nhập</h2>
             <Form className="form" onSubmit={ (e) => this.submitForm(e) } method="POST">
               <Col>
                 <FormGroup>
-                  <Label>Username</Label>
+                  <Label>Email</Label>
                   <Input
                     type="email"
                     name="email"
@@ -78,6 +84,7 @@ class Login extends Component {
                                 this.validateEmail(e)
                                 this.handleChange(e)
                               } }
+                    // required
                   />
                   <FormFeedback valid>
                     Nhập email thành công
@@ -110,7 +117,7 @@ class Login extends Component {
               </Col>
               <FormGroup  className="mb-3" check>
                 <Label check>
-                <Input type="checkbox" name="save" onClick={this.save.bind(this)} checked/>Lưu lại
+                <Input type="checkbox" name="save" onClick={this.save.bind(this)} defaultChecked/>Lưu lại
                 </Label>
               </FormGroup>
               <FormGroup>

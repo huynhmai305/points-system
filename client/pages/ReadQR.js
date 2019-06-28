@@ -1,33 +1,28 @@
-import React, { Component } from 'react'
-import QrReader from 'react-qr-reader'
- 
-class Test extends Component {
-  state = {
-    result: 'No result'
+import React, {Component } from 'react';
+import "../static/javascripts/instascan.min.js"
+
+export default class ReadQR extends Component{
+  scan = () => {
+    var qr = new Instascan.Scanner({
+      video: document.getElementById("qrcam")
+    });
+    qr.addListener('scan', data =>{
+      document.getElementById('mahoadon').value=data;
+    });
+    Instascan.Camera.getCameras()
+    .then((cams)=>{
+      qr.start(cams[0]);
+    })
+    .catch(err => console.log(err))
   }
- 
-  handleScan = data => {
-    if (data) {
-      this.setState({
-        result: data
-      })
-    }
-  }
-  handleError = err => {
-    console.error(err)
-  }
-  render() {
-    return (
+  render(){
+    return(
       <div>
-        <QrReader
-          delay={300}
-          onError={this.handleError}
-          onScan={this.handleScan}
-          style={{ width: '100%' }}
-        />
-        <p>{this.state.result}</p>
+        <video id="qrcam"></video>
+        <br/>
+        <input type="text" id="mahoadon"/>
+        {this.scan}
       </div>
     )
   }
-}
-export default Test
+} 
