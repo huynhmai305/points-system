@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-const User = require('../models/user')
+const User = require('../models/user');
+const Bill = require('../models/bill')
 
 /* GET users listing. */
 router.get('/', (req, res, next) => {
@@ -20,5 +21,19 @@ router.get('/profile', (req, res, next) => {
   })
   .catch( err => console.log(err))
 });
+
+router.post('/tichdiem',(req,res) => {
+  Bill.findAll({
+    where: {
+      mahoadon: {
+        [Op.like]: `'%$'${req.body.mahoadon}'%'`
+      }
+    }
+  })
+  .then(result => res.send(result))
+})
+router.get('/tichdiem',(req,res)=>{
+ Bill.findAll().then(result => res.send(result))
+})
 
 module.exports = router;

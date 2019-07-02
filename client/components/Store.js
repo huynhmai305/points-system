@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
-var DefaultLayout = require('./layouts/layout_in_out.jsx')
+import DefaultLayout from './layouts/Layout';
+import Link from 'next/link';
+
 class Store extends Component {
+    logout = () => {
+        localStorage.removeItem('name');
+    }
     render() {
         return (
            <DefaultLayout title="Store">
@@ -15,19 +20,19 @@ class Store extends Component {
                         <p className="text-center" style={{color:'white'}}>{this.props.username}</p>
                         <ul className="list-unstyled">
                             <li>
-                                <a href="/store"><i className="fas fa-home fa-2x"></i></a>
+                                <Link href="/store"><a><i className="fas fa-home fa-2x"></i></a></Link>
                             </li>
                             <li className="active">
-                                <a href="#"><i className="fas fa-edit"></i> Bài viết</a>
+                                <Link href="#"><a><i className="fas fa-edit"></i> Bài viết</a></Link>
                             </li>
                             <li>
-                                <a href="#"><i className="fas fa-thumbs-up"></i> Bài review</a>
+                                <Link href="#"><a><i className="fas fa-thumbs-up"></i> Bài review</a></Link>
                             </li>
                             <li>
-                                <a href="#"><i className="fas fa-store"></i> Thông tin cửa hàng</a>
+                                <Link href="#"><a><i className="fas fa-store"></i> Thông tin cửa hàng</a></Link>
                             </li>
                             <li>
-                                <a href="/logout"><i className="fas fa-sign-out-alt"></i> Đăng xuất</a>
+                                <Link href="/"><a onClick={this.logout}><i className="fas fa-sign-out-alt"></i> Đăng xuất</a></Link>
                             </li>
                         </ul>
                     </nav>

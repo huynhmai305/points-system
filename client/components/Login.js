@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Container, Col, Form, FormGroup, Label, Input, Button, FormFeedback} from 'reactstrap';
-import Router from 'next/router'
+import Router from 'next/router';
 
 class Login extends Component {
     constructor(props) {
@@ -11,7 +11,8 @@ class Login extends Component {
           validate: {
             emailState: '',
           },
-          isLogin:''
+          isLogin:true,
+          item:[]
         }
         this.handleChange = this.handleChange.bind(this);
     }
@@ -51,21 +52,33 @@ class Login extends Component {
         })
         .then(response => {
           alert('Đăng nhập thành công');
-          console.log(JSON.stringify(response))
-         
-          // Router.push('/admin')
+          return response.json();
         })
-        .catch(alert('Đăng nhập thất bại'))
+        .then(item => {
+          console.log(item[0].role);
+          localStorage.setItem('name',item[0].username)
+          let role = item[0].role;
+          if(role===0){
+            Router.push('/admin')
+          } else if (role===1){
+            Router.push('/store')
+          } else{
+            Router.push('/user')
+          }
+        })
+        .catch(this.setState({isLogin:false}))
         }
         save(){
 
+        }
+        redirect(){
+          this.state.item.map()
         }
     
       render() {
         const { email, password } = this.state;
         return (
           <Container className="App">
-            <h2>Form đăng nhập</h2>
             <Form className="form" onSubmit={ (e) => this.submitForm(e) } method="POST">
               <Col>
                 <FormGroup>

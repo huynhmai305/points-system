@@ -42,13 +42,13 @@ class ModalLogin extends Component {
             <div>
                 <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel} <i className="fas fa-sign-in-alt"></i></Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                    <ModalHeader toggle={this.toggle}>Form đăng nhập</ModalHeader>
+                    <ModalHeader toggle={this.toggle}>Đăng nhập</ModalHeader>
                     <ModalBody>
                         <Login/>
                         <br />
                         <Button color="info" className="float-right" onClick={this.toggleNested}>Đăng ký</Button>
                         <Modal isOpen={this.state.nestedModal} toggle={this.toggleNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
-                            <ModalHeader>Form đăng ký</ModalHeader>
+                            <ModalHeader toggle={this.toggle}>Đăng ký</ModalHeader>
                             <ModalBody>
                                 <Register/>
                             </ModalBody>

@@ -1,27 +1,39 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Input } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import ModalForm from '../Modals/Modal';
 import DataTable from '../Tables/DataTable';
 import { CSVLink } from 'react-csv';
+import Search from '../Search';
 
 class Manager_Store extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            items: [],
-            filterStr: ''
+            items: []
         }
     }
-    getItems() {
-        fetch('http://localhost:3000/admin/store')
+    getItems(keyword) {
+        let url = 'http://localhost:3000/admin/store';
+        if (keyword.length > 0) {
+            url = `${url}?keyword=${keyword}`
+        }
+        fetch(url)
             .then(response => response.json())
             .then(items => this.setState({ items }))
             .catch(err => console.log(err))
     }
+    onSearch = (keyword) => {
+        console.log(keyword);
+        this.getItems(keyword)
+      }
     componentDidMount() {
-        this.getItems()
+        this.getItems('')
     }
-
+    add() {
+        return (
+            <i className="fas fa-user-plus"></i>
+        )
+    }
 
     render() {
         return (
@@ -29,7 +41,7 @@ class Manager_Store extends Component {
                 <Container className="App">
                     <Row>
                         <Col>
-                            <h1 style={{ margin: "20px 0" }}>CRUD Database</h1>
+                            <Search handlekeyword={this.onSearch}/>
                         </Col>
                     </Row>
                     <Row>
@@ -48,7 +60,7 @@ class Manager_Store extends Component {
                             >
                                 <i className="fas fa-file-csv"> Download CSV</i>
                             </CSVLink>
-                            <ModalForm buttonLabel="Thêm cửa hàng" addItemToState={this.addItemToState} />
+                            <ModalForm buttonLabel={this.add()} addItemToState={this.addItemToState} />
                         </Col>
                     </Row>
                 </Container>

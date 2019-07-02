@@ -88,160 +88,284 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./components/admin/Admin.js":
-/*!***********************************!*\
-  !*** ./components/admin/Admin.js ***!
-  \***********************************/
+/***/ "./components/Customer.js":
+/*!********************************!*\
+  !*** ./components/Customer.js ***!
+  \********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Admin; });
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _layouts_Layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../layouts/Layout */ "./components/layouts/Layout.js");
+/* harmony import */ var _layouts_Layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./layouts/Layout */ "./components/layouts/Layout.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_3__);
 
-var _jsxFileName = "D:\\TichDiem\\client\\components\\admin\\Admin.js";
+var _jsxFileName = "D:\\TichDiem\\client\\components\\Customer.js";
 
 
 
-class Admin extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
+
+class Customer extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
   constructor(...args) {
     super(...args);
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "toggle", () => {
-      $(document).ready(function () {
-        $("#sidebar").mCustomScrollbar({
-          theme: "minimal"
-        });
-        $('#sidebarCollapse').on('click', function () {
-          // open or close navbar
-          $('#sidebar').toggleClass('active'); // close dropdowns
-
-          $('.collapse.in').toggleClass('in'); // and also adjust aria-expanded attributes we use for the open/closed arrows
-          // in our CSS
-
-          $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-        });
-      });
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "logout", () => {
+      localStorage.removeItem('name');
     });
   }
 
   render() {
     return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_layouts_Layout__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      title: "Admin",
+      title: "Customer",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 27
+        lineNumber: 11
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-      className: "wrapper",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 12
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("nav", {
+      className: "main-nav",
+      id: "main-nav",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 13
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      className: "sidebar-header ",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 14
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      className: "image_outer_container",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 15
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      className: "green_icon",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 16
+      },
+      __self: this
+    }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+      src: "http://ssl.gstatic.com/accounts/ui/avatar_2x.png",
+      className: "rounded-circle img-thumbnail .d-block .mx-auto image_inner_container",
+      alt: "avatar",
+      style: {
+        width: 100,
+        height: 100
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 17
+      },
+      __self: this
+    }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
+      className: "text-center",
+      style: {
+        color: 'white'
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 20
+      },
+      __self: this
+    }, this.props.username), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
+      className: "list-unstyled",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 21
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 22
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
+      href: "/user",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 23
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 23
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
+      className: "fas fa-home fa-2x",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 23
+      },
+      __self: this
+    })))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+      className: "active",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 25
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
+      href: "#",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 26
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 26
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
+      className: "fas fa-thumbs-up",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 26
+      },
+      __self: this
+    }), " Kh\xE1m ph\xE1"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
       __source: {
         fileName: _jsxFileName,
         lineNumber: 28
       },
       __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("nav", {
-      id: "sidebar",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 30
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 31
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-      className: "sidebar-header",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 32
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h3", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 33
-      },
-      __self: this
-    }, this.props.title)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
-      className: "list-unstyled components",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 35
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 36
-      },
-      __self: this
-    }, "Admin"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
-      className: "active",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 37
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
-      href: "/admin",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 38
-      },
-      __self: this
     }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 38
-      },
-      __self: this
-    }, "Trang ch\u1EE7"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 40
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
-      href: "#homeSubmenu",
+      href: "#storeSubmenu",
       "data-toggle": "collapse",
       "aria-expanded": "false",
       className: "dropdown-toggle",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 41
+        lineNumber: 29
       },
       __self: this
-    }, "C\u1EEDa h\xE0ng"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
-      className: "collapse list-unstyled",
-      id: "homeSubmenu",
+    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
+      className: "fas fa-qrcode ",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 42
+        lineNumber: 29
+      },
+      __self: this
+    }), " T\xEDch \u0111i\u1EC3m"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
+      className: "collapse list-unstyled",
+      id: "storeSubmenu",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 30
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 31
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
+      href: "#",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 32
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 32
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
+      className: "fas fa-qrcode ",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 32
+      },
+      __self: this
+    }), " QR code"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 34
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
+      href: "#",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 35
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 35
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
+      className: "fas fa-money-bill-alt",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 35
+      },
+      __self: this
+    }), " H\xF3a \u0111\u01A1n"))))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 40
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
+      href: "#",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 41
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 41
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
+      className: "fas fa-gifts",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 41
+      },
+      __self: this
+    }), " \u0110\u1ED5i qu\xE0"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
       __source: {
         fileName: _jsxFileName,
         lineNumber: 43
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
-      href: "/admin/store",
+      href: "/user/profile",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 44
@@ -253,218 +377,112 @@ class Admin extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
         lineNumber: 44
       },
       __self: this
-    }, "Danh s\xE1ch"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
+      className: "fas fa-user",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 44
+      },
+      __self: this
+    }), " C\xE1 nh\xE2n"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
       __source: {
         fileName: _jsxFileName,
         lineNumber: 46
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
-      href: "#",
+      href: "/",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 47
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+      onClick: this.logout,
       __source: {
         fileName: _jsxFileName,
         lineNumber: 47
       },
       __self: this
-    }, "B\xE0i vi\u1EBFt"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
+      className: "fas fa-sign-out-alt",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 49
+        lineNumber: 47
       },
       __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
-      href: "#",
+    }), " \u0110\u0103ng xu\u1EA5t"))))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      className: "page-wrap",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 50
+        lineNumber: 51
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("header", {
+      className: "main-header fixed-top",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 52
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+      href: "#main-nav",
+      className: "open-menu",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 50
+        lineNumber: 53
       },
       __self: this
-    }, "H\xF3a \u0111\u01A1n"))))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
+      className: "fa fa-align-justify",
+      "aria-hidden": "true",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 54
       },
       __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
-      href: "#pageSubmenu",
-      "data-toggle": "collapse",
-      "aria-expanded": "false",
-      className: "dropdown-toggle",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 55
-      },
-      __self: this
-    }, "Kh\xE1ch h\xE0ng"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
-      className: "collapse list-unstyled",
-      id: "pageSubmenu",
+    })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+      href: "#",
+      className: "close-menu",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 56
       },
       __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
+      className: "fa fa-align-left",
+      "aria-hidden": "true",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 57
       },
       __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
-      href: "/admin/user",
+    })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h2", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 58
+        lineNumber: 59
       },
       __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 58
-      },
-      __self: this
-    }, "Danh s\xE1ch"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 60
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
-      href: "#",
+    }, "H\u1EC7 th\u1ED1ng t\xEDch \u0111i\u1EC3m H&M")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      className: "main-content",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 61
       },
       __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 61
-      },
-      __self: this
-    }, "B\xE0i vi\u1EBFt"))))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 65
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
-      href: "#",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 66
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 66
-      },
-      __self: this
-    }, "T\xEDch \u0111i\u1EC3m"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 68
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
-      href: "#",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 69
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 69
-      },
-      __self: this
-    }, "Qu\xE0 \u0111\u1ED5i th\u01B0\u1EDFng"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 71
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
-      href: "#",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 72
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 72
-      },
-      __self: this
-    }, "\u0110\u0103ng xu\u1EA5t")))))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-      id: "content",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 79
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("nav", {
-      className: "navbar navbar-expand-lg navbar-light bg-light",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 80
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-      className: "container-fluid",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 81
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-      type: "button",
-      id: "sidebarCollapse",
-      className: "btn btn-info",
-      onClick: this.toggle,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 82
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
-      className: "fas fa-align-left",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 83
-      },
-      __self: this
-    }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 84
-      },
-      __self: this
-    }, "Toggle Sidebar")))), this.props.children)));
+    }, this.props.children))));
   }
 
 }
 
+/* harmony default export */ __webpack_exports__["default"] = (Customer);
+
 /***/ }),
 
-/***/ "./components/admin/Card.js":
-/*!**********************************!*\
-  !*** ./components/admin/Card.js ***!
-  \**********************************/
+/***/ "./components/customer/Card.js":
+/*!*************************************!*\
+  !*** ./components/customer/Card.js ***!
+  \*************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -472,229 +490,668 @@ class Admin extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "D:\\TichDiem\\client\\components\\admin\\Card.js";
+var _jsxFileName = "D:\\TichDiem\\client\\components\\customer\\Card.js";
 
 
 class Card extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
   render() {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "row background",
+      className: "row ",
+      id: "post-store",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 6
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "col-xl-4 col-lg-4 col-md-4 col-sm-6 mb-4",
+      className: "col-4",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 7
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "card border-success",
+      className: "card",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 8
       },
       __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "clearfix",
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      className: "card-img-top",
+      src: "/images/logo_MinHouse.png",
+      alt: "logo_MinHouse",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 9
       },
       __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-      className: "fa fa-users float-right text-success",
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "card-body",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 10
       },
       __self: this
-    })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "card-body",
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+      className: "card-title",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 11
+      },
+      __self: this
+    }, "Min House"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      className: "card-text",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 12
       },
       __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
-      className: "card-title text-success",
+    }, "Th\u1EDDi trang 2HAND"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       __source: {
         fileName: _jsxFileName,
         lineNumber: 13
       },
       __self: this
-    }, "311"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-      className: "card-text",
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "fas fa-star checked",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 14
       },
       __self: this
-    }, "Ng\u01B0\u1EDDi tham gia"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "progress",
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "fas fa-star checked",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 15
       },
       __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "progress-bar progress-bar-striped progress-bar-animated bg-success",
-      role: "progressbar",
-      style: {
-        width: '75%'
-      },
-      "aria-valuenow": 75,
-      "aria-valuemin": 0,
-      "aria-valuemax": 100,
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "fas fa-star checked",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 16
       },
       __self: this
-    }, "75%"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "col-xl-4 col-lg-4 col-md-4 col-sm-6 mb-4",
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "fas fa-star checked",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 17
+      },
+      __self: this
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "far fa-star checked",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 18
+      },
+      __self: this
+    }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "card-body",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 21
       },
       __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "card border-info",
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: "https://minhouse.com.vn/",
+      className: "card-link btn btn-info",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 22
       },
       __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "clearfix",
+    }, "Trang ch\xEDnh"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: "#",
+      className: "card-link btn btn-success",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 23
       },
       __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-      className: "fa fa-edit float-right text-info",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 24
-      },
-      __self: this
-    })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "card-body",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 26
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
-      className: "card-title text-info",
+    }, "Xem th\xEAm")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "col-4",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 27
       },
       __self: this
-    }, "5632"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-      className: "card-text",
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "card",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 28
       },
       __self: this
-    }, "B\xE0i vi\u1EBFt"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "progress",
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      className: "card-img-top",
+      src: "/images/logo_AZtea.png",
+      alt: "logo_AZtea",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 29
       },
       __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "progress-bar progress-bar-striped progress-bar-animated bg-info",
-      role: "progressbar",
-      style: {
-        width: '40%'
-      },
-      "aria-valuenow": 40,
-      "aria-valuemin": 0,
-      "aria-valuemax": 100,
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "card-body",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 30
       },
       __self: this
-    }, "40%"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "col-xl-4 col-lg-4 col-md-4 col-sm-6 mb-4",
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+      className: "card-title",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 31
+      },
+      __self: this
+    }, "AZTea"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      className: "card-text",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 32
+      },
+      __self: this
+    }, "Tr\xE0 s\u1EEFa"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 33
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "fas fa-star checked",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 34
+      },
+      __self: this
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "fas fa-star checked",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 35
       },
       __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "card border-danger",
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "fas fa-star checked",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 36
       },
       __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "clearfix",
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "fas fa-star checked",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 37
       },
       __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-      className: "fa fa-bar-chart float-right text-danger",
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "far fa-star checked",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 38
       },
       __self: this
-    })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "card-body",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 40
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
-      className: "card-title text-danger",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 41
       },
       __self: this
-    }, "$ 89623"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-      className: "card-text",
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: "http://aztea.vn/",
+      className: "card-link btn btn-info",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 42
       },
       __self: this
-    }, "Doanh thu"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "progress",
+    }, "Trang ch\xEDnh"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: "#",
+      className: "card-link btn btn-success",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 43
       },
       __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "progress-bar progress-bar-striped progress-bar-animated bg-danger",
-      role: "progressbar",
-      style: {
-        width: '65%'
-      },
-      "aria-valuenow": 65,
-      "aria-valuemin": 0,
-      "aria-valuemax": 100,
+    }, "Xem th\xEAm")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "col-4",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 44
+        lineNumber: 47
       },
       __self: this
-    }, "65%"))))));
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "card",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 48
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      className: "card-img-top",
+      src: "/images/logo_FeelingTea.png",
+      alt: "logo_AZtea",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 49
+      },
+      __self: this
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "card-body",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 50
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+      className: "card-title",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 51
+      },
+      __self: this
+    }, "Feeling Tea"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      className: "card-text",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 52
+      },
+      __self: this
+    }, "Tr\xE0 s\u1EEFa"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 53
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "fas fa-star checked",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 54
+      },
+      __self: this
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "fas fa-star checked",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 55
+      },
+      __self: this
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "fas fa-star checked",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 56
+      },
+      __self: this
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "far fa-star checked ",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 57
+      },
+      __self: this
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "far fa-star checked",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 58
+      },
+      __self: this
+    }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "card-body",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 61
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: "http://feelingteaonline.com/",
+      className: "card-link btn btn-info",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 62
+      },
+      __self: this
+    }, "Trang ch\xEDnh"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: "#",
+      className: "card-link btn btn-success",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 63
+      },
+      __self: this
+    }, "Xem th\xEAm")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "col-4",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 67
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "card",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 68
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      className: "card-img-top",
+      src: "/images/logo_KenzoShop.png",
+      alt: "logo_KenzoShop",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 69
+      },
+      __self: this
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "card-body",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 70
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+      className: "card-title",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 71
+      },
+      __self: this
+    }, "Kenzo Shop"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      className: "card-text",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 72
+      },
+      __self: this
+    }, "Th\u1EDDi trang nam, n\u1EEF, tr\u1EBB em"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 73
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "fas fa-star checked",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 74
+      },
+      __self: this
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "fas fa-star checked",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 75
+      },
+      __self: this
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "fas fa-star checked",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 76
+      },
+      __self: this
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "fas fa-star checked",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 77
+      },
+      __self: this
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "far fa-star checked",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 78
+      },
+      __self: this
+    }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "card-body",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 81
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: "https://www.kenzo.com/eu/en/home",
+      className: "card-link btn btn-info",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 82
+      },
+      __self: this
+    }, "Trang ch\xEDnh"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: "#",
+      className: "card-link btn btn-success",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 83
+      },
+      __self: this
+    }, "Xem th\xEAm")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "col-4",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 87
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "card",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 88
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      className: "card-img-top",
+      src: "/images/logo_Tocotoco.png",
+      alt: "logo_Tocotoco",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 89
+      },
+      __self: this
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "card-body",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 90
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+      className: "card-title",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 91
+      },
+      __self: this
+    }, "Tocotoco"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      className: "card-text",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 92
+      },
+      __self: this
+    }, "Tr\xE0 s\u1EEFa"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 93
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "fas fa-star checked",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 94
+      },
+      __self: this
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "fas fa-star checked",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 95
+      },
+      __self: this
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "fas fa-star checked",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 96
+      },
+      __self: this
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "fas fa-star checked",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 97
+      },
+      __self: this
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "far fa-star checked",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 98
+      },
+      __self: this
+    }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "card-body",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 101
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: "http://tocotocotea.com/",
+      className: "card-link btn btn-info",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 102
+      },
+      __self: this
+    }, "Trang ch\xEDnh"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: "#",
+      className: "card-link btn btn-success",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 103
+      },
+      __self: this
+    }, "Xem th\xEAm")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "col-4",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 107
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "card",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 108
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      className: "card-img-top",
+      src: "/images/logo_GDACollection.png",
+      alt: "logo_MinHouse",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 109
+      },
+      __self: this
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "card-body",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 110
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+      className: "card-title",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 111
+      },
+      __self: this
+    }, "GDACollection"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      className: "card-text",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 112
+      },
+      __self: this
+    }, "Th\u1EDDi trang c\xF4ng s\u1EDF n\u1EEF"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 113
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "fas fa-star checked",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 114
+      },
+      __self: this
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "fas fa-star checked",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 115
+      },
+      __self: this
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "fas fa-star checked",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 116
+      },
+      __self: this
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "fas fa-star checked",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 117
+      },
+      __self: this
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "far fa-star checked",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 118
+      },
+      __self: this
+    }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "card-body",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 121
+      },
+      __self: this
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: "http://gda.vn/",
+      className: "card-link btn btn-info",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 122
+      },
+      __self: this
+    }, "Trang ch\xEDnh"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: "#",
+      className: "card-link btn btn-success",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 123
+      },
+      __self: this
+    }, "Xem th\xEAm")))));
   }
 
 }
@@ -703,10 +1160,10 @@ class Card extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 
 /***/ }),
 
-/***/ "./components/admin/Index.js":
-/*!***********************************!*\
-  !*** ./components/admin/Index.js ***!
-  \***********************************/
+/***/ "./components/customer/Home.js":
+/*!*************************************!*\
+  !*** ./components/customer/Home.js ***!
+  \*************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -714,252 +1171,42 @@ class Card extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Card_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Card.js */ "./components/admin/Card.js");
-/* harmony import */ var _Admin_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Admin.js */ "./components/admin/Admin.js");
-/* harmony import */ var _layouts_Footer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../layouts/Footer.js */ "./components/layouts/Footer.js");
-var _jsxFileName = "D:\\TichDiem\\client\\components\\admin\\Index.js";
-
-
- // import Chart from './Chart.js';
+/* harmony import */ var _Customer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Customer */ "./components/Customer.js");
+/* harmony import */ var _Card__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Card */ "./components/customer/Card.js");
+var _jsxFileName = "D:\\TichDiem\\client\\components\\customer\\Home.js";
 
 
 
-class Index extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+var user = localStorage.getItem('name');
+
+class Home extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: user
+    };
+  }
+
   render() {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Admin_js__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      title: "H\u1EC7 th\u1ED1ng t\xEDch \u0111i\u1EC3m H&M",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 11
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Card_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 12
-      },
-      __self: this
-    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "row",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 13
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "offset-2 col-8 offset-2",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 14
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-      className: "example",
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Customer__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      username: this.state.name,
       __source: {
         fileName: _jsxFileName,
         lineNumber: 15
       },
       __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "input-group mb-3",
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Card__WEBPACK_IMPORTED_MODULE_2__["default"], {
       __source: {
         fileName: _jsxFileName,
         lineNumber: 16
       },
       __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "input-group-prepend",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 17
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-      className: "input-group-text",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 18
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-      className: "fas fa-search",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 18
-      },
-      __self: this
-    }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-      type: "text",
-      className: "form-control is-valid",
-      placeholder: "Search...",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 20
-      },
-      __self: this
-    })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "offset-4 col-4 offset-4",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 24
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-      src: "/static/images/tichdiem.jpg",
-      alt: "tichdiem",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 25
-      },
-      __self: this
-    }))));
+    }));
   }
 
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (Index);
-
-/***/ }),
-
-/***/ "./components/layouts/Footer.js":
-/*!**************************************!*\
-  !*** ./components/layouts/Footer.js ***!
-  \**************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "D:\\TichDiem\\client\\components\\layouts\\Footer.js";
-
-
-class Footer extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
-  render() {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 6
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 7
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "container",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 8
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "row",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 9
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "col-md-4",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 10
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-      className: "copyright",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 11
-      },
-      __self: this
-    }, "Copyright \xA9 Your Website 2019")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "col-md-4",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 13
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-      className: "list-inline social-buttons",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 14
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-      className: "list-inline-item",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 15
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-      href: "#",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 16
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-      className: "fab fa-twitter",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 17
-      },
-      __self: this
-    }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-      className: "list-inline-item",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 20
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-      href: "#",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 21
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-      className: "fab fa-facebook-f",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 22
-      },
-      __self: this
-    }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-      className: "list-inline-item",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 25
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-      href: "#",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 26
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-      className: "fab fa-linkedin-in",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 27
-      },
-      __self: this
-    })))))))));
-  }
-
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (Footer);
+/* harmony default export */ __webpack_exports__["default"] = (Home);
 
 /***/ }),
 
@@ -982,7 +1229,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var bootstrap_dist_css_bootstrap_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(bootstrap_dist_css_bootstrap_css__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! reactstrap */ "reactstrap");
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! js-cookie */ "js-cookie");
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(js_cookie__WEBPACK_IMPORTED_MODULE_5__);
 var _jsxFileName = "D:\\TichDiem\\client\\components\\layouts\\Layout.js";
+
 
 
 
@@ -994,20 +1244,20 @@ class Layout extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 10
+        lineNumber: 11
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_head__WEBPACK_IMPORTED_MODULE_1___default.a, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 11
+        lineNumber: 12
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("meta", {
       charset: "utf-8",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 12
+        lineNumber: 13
       },
       __self: this
     }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("meta", {
@@ -1015,7 +1265,7 @@ class Layout extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       content: "width=device-width, initial-scale=1.0",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 13
+        lineNumber: 14
       },
       __self: this
     }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("meta", {
@@ -1023,51 +1273,21 @@ class Layout extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       content: "IE=edge",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 14
+        lineNumber: 15
       },
       __self: this
     }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("title", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 15
+        lineNumber: 16
       },
       __self: this
     }, this.props.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("link", {
       rel: "stylesheet",
-      href: "https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css",
-      integrity: "sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4",
-      crossorigin: "anonymous",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 16
-      },
-      __self: this
-    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("link", {
-      rel: "stylesheet",
-      href: "admin.css",
+      href: "/static/stylesheets/admin.css",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 17
-      },
-      __self: this
-    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
-      defer: true,
-      src: "https://use.fontawesome.com/releases/v5.0.13/js/solid.js",
-      integrity: "sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ",
-      crossorigin: "anonymous",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 18
-      },
-      __self: this
-    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
-      defer: true,
-      src: "https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js",
-      integrity: "sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY",
-      crossorigin: "anonymous",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 19
       },
       __self: this
     }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("link", {
@@ -1075,7 +1295,7 @@ class Layout extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       href: "https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 20
+        lineNumber: 18
       },
       __self: this
     }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
@@ -1084,16 +1304,7 @@ class Layout extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       crossorigin: "anonymous",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 21
-      },
-      __self: this
-    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
-      src: "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js",
-      integrity: "sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ",
-      crossorigin: "anonymous",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 22
+        lineNumber: 19
       },
       __self: this
     }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
@@ -1102,14 +1313,25 @@ class Layout extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       crossorigin: "anonymous",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 23
+        lineNumber: 20
       },
       __self: this
-    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("script", {
-      src: "https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js",
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("link", {
+      rel: "stylesheet",
+      href: "/static/stylesheets/font-awesome.min.css",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 24
+        lineNumber: 21
+      },
+      __self: this
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("link", {
+      rel: "stylesheet",
+      href: "https://use.fontawesome.com/releases/v5.7.0/css/all.css",
+      integrity: "sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ",
+      crossOrigin: "anonymous",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 22
       },
       __self: this
     })), this.props.children);
@@ -1726,10 +1948,10 @@ module.exports = __webpack_require__(/*! ./dist/client/link */ "./node_modules/n
 
 /***/ }),
 
-/***/ "./pages/admin.js":
-/*!************************!*\
-  !*** ./pages/admin.js ***!
-  \************************/
+/***/ "./pages/user.js":
+/*!***********************!*\
+  !*** ./pages/user.js ***!
+  \***********************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1737,12 +1959,12 @@ module.exports = __webpack_require__(/*! ./dist/client/link */ "./node_modules/n
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_admin_Index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/admin/Index */ "./components/admin/Index.js");
-var _jsxFileName = "D:\\TichDiem\\client\\pages\\admin.js";
+/* harmony import */ var _components_customer_Home__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/customer/Home */ "./components/customer/Home.js");
+var _jsxFileName = "D:\\TichDiem\\client\\pages\\user.js";
 
 
 
-class admin extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+class User extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
   render() {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       __source: {
@@ -1750,7 +1972,7 @@ class admin extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         lineNumber: 7
       },
       __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_admin_Index__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_customer_Home__WEBPACK_IMPORTED_MODULE_1__["default"], {
       __source: {
         fileName: _jsxFileName,
         lineNumber: 8
@@ -1761,18 +1983,18 @@ class admin extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (admin);
+/* harmony default export */ __webpack_exports__["default"] = (User);
 
 /***/ }),
 
-/***/ 4:
-/*!******************************!*\
-  !*** multi ./pages/admin.js ***!
-  \******************************/
+/***/ 6:
+/*!*****************************!*\
+  !*** multi ./pages/user.js ***!
+  \*****************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\TichDiem\client\pages\admin.js */"./pages/admin.js");
+module.exports = __webpack_require__(/*! D:\TichDiem\client\pages\user.js */"./pages/user.js");
 
 
 /***/ }),
@@ -1851,6 +2073,17 @@ module.exports = require("core-js/library/fn/symbol");
 /***/ (function(module, exports) {
 
 module.exports = require("core-js/library/fn/symbol/iterator");
+
+/***/ }),
+
+/***/ "js-cookie":
+/*!****************************!*\
+  !*** external "js-cookie" ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("js-cookie");
 
 /***/ }),
 
@@ -1943,4 +2176,4 @@ module.exports = require("url");
 /***/ })
 
 /******/ });
-//# sourceMappingURL=admin.js.map
+//# sourceMappingURL=user.js.map

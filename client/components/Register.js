@@ -57,15 +57,8 @@ class Register extends Component {
                         placeholder="Nhập tên"
                         onChange={this.onChange}
                         value={this.state.username}
-                        valid={this.state.username !== ''}
-                        invalid={this.state.username === ''}
+                        required
                     />
-                    <FormFeedback valid>
-                        Nhập họ tên thành công
-                    </FormFeedback>
-                    <FormFeedback>
-                        Họ tên trống
-                        </FormFeedback>
                 </FormGroup>
                 <Row form>
                     <Col md={6}>
@@ -77,15 +70,11 @@ class Register extends Component {
                                 placeholder="Nhập ngày sinh"
                                 onChange={this.onChange}
                                 value={this.state.birthday}
-                                valid={this.state.birthday !== ''}
-                                invalid={this.state.birthday === ''}
+                                min="1960-01-01" 
+                                max="2004-12-31"
+                                required
                             />
-                            <FormFeedback valid>
-                                Nhập ngày sinh thành công
-                            </FormFeedback>
-                            <FormFeedback>
-                                Ngày sinh trống
-                            </FormFeedback>
+                            <FormText>Năm sinh 1960 - 2004</FormText>
                         </FormGroup>
                     </Col>
                     <Col md={6}>
@@ -98,22 +87,16 @@ class Register extends Component {
                                 placeholder="Nhập số điện thoại"
                                 onChange={this.onChange}
                                 value={this.state.phone}
-                                length={10}
-                                valid={this.state.phone !== '' && this.state.phone.length === 10}
-                                invalid={this.state.phone === '' || this.state.phone.length !== 10}
+                                pattern="[0]{1}[0-9]{9}"
+                                required
                             />
-                            <FormFeedback valid>
-                                Nhập số điện thoại thành công
-                                </FormFeedback>
-                            <FormFeedback>
-                                Số điện thoại trống hoặc sai định dạng
-                                </FormFeedback>
+                            <FormText>ex: 0123456789</FormText>
                         </FormGroup>
                     </Col>
                 </Row>
                 <FormGroup>
                     <Label for="address">Địa chỉ</Label>
-                    <Input type="text" name="address" id="address" placeholder="Nhập địa chỉ" onChange={this.onChange} value={this.state.address} />
+                    <Input type="text" name="address" id="address" placeholder="Nhập địa chỉ" onChange={this.onChange} value={this.state.address}  required/>
                 </FormGroup>
                 <FormGroup>
                     <Label for="email">Email</Label>
@@ -121,16 +104,12 @@ class Register extends Component {
                         name="email"
                         id="email"
                         placeholder="Nhập email"
+                        pattern=".+@gmail.com"
                         onChange={this.onChange}
                         value={this.state.email}
                         required
                     />
-                    <FormFeedback valid>
-                        Nhập email thành công
-                    </FormFeedback>
-                    <FormFeedback>
-                        Vui lòng nhập một email chính xác
-                    </FormFeedback>
+                    <FormText>ex: myemail@gmail.com</FormText>
                 </FormGroup>
                 <Row form>
                     <Col md={6}>
@@ -142,15 +121,8 @@ class Register extends Component {
                                 placeholder="Nhập password"
                                 onChange={this.onChange}
                                 value={this.state.password}
-                                valid={this.state.password !== ''}
-                                invalid={this.state.password === ''}
+                                required
                             />
-                            <FormFeedback valid>
-                                Nhập password thành công
-                            </FormFeedback>
-                            <FormFeedback>
-                                Password trống
-                            </FormFeedback>
                         </FormGroup>
                     </Col>
                     <Col md={6}>
@@ -163,20 +135,21 @@ class Register extends Component {
                                 placeholder="Nhập lại password"
                                 onChange={this.onChange}
                                 value={this.state.password2}
-                                valid={this.state.password === this.state.password2}
-                                invalid={this.state.password !== this.state.password2 || this.state.password2 === ''}
+                                valid={this.state.password === this.state.password2 && this.state.password2 !== ''}
+                                invalid={this.state.password !== this.state.password2 }
+                                required
                             />
                             <FormFeedback valid>
                                 Nhập password trùng khớp
                             </FormFeedback>
                             <FormFeedback>
-                                Password trống hoặc không trùng khớp
+                                Password không trùng khớp
                             </FormFeedback>
                         </FormGroup>
                     </Col>
                 </Row>
                 <FormGroup>
-                    <Button color="success">Submit</Button>
+                    <Button color="success">Đăng ký</Button>
                 </FormGroup>
             </Form>
         );

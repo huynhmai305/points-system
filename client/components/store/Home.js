@@ -1,11 +1,19 @@
-import React, { Component } from './node_modules/react';
-import Store from '../store.jsx';
-import Card from './card.js';
+import React, { Component } from 'react';
+import Store from '../Store';
+import Card from './Card';
+var store = localStorage.getItem('name');
 
 class Home extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            name : store
+        }      
+    }
+    
     render() {
         return (
-            <Store username={this.props.name}>
+            <Store username={this.state.name}>
                 <Card />
                 <div className="row">
                     <img src="/images/logo_AZtea.png" className="rounded-circle offset-md-4 col-4" />

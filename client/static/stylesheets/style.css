@@ -264,5 +264,13 @@ input::-webkit-input-placeholder {
 .modal-backdrop{
   position: relative;
 }
+/* .nav-item a:hover {
+  border-bottom: 3px solid white;
+  margin-bottom: 20px;
+}
+
+.nav-item a.active {
+  border-bottom: 3px solid white;
+} */
 
 /*===end*/

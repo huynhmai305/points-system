@@ -37,7 +37,7 @@ class ModalForm extends Component {
                   onClick={this.toggle}
                   style={{float: "left", marginRight:"10px"}}>{label}
                 </Button>
-        title = 'Add New Item'
+        title = 'Form'
       }
 
       return (

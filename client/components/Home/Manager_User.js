@@ -3,14 +3,19 @@ import { Container, Row, Col } from 'reactstrap';
 import ModalForm from '../Modals/Modal';
 import DataTable from '../Tables/DataTable';
 import { CSVLink } from 'react-csv';
+import Search from '../Search';
 
 
 class Home extends Component{
   state = {
-    items: []
+    items: [],
   }
-  getItems(){
-    fetch('http://localhost:3000/admin/user')
+  getItems(keyword){
+    let url = 'http://localhost:3000/admin/user';
+    if(keyword.length>0){
+      url = `${url}?keyword=${keyword}`
+    }
+    fetch(url)
     .then(response => response.json())
     .then(items => this.setState({items}))
     .catch(err => console.log(err))
@@ -34,15 +39,20 @@ class Home extends Component{
     const updatedItems = this.state.items.filter(item => item.id !== id)
     this.setState.items({items: updatedItems})
   }
+  onSearch = (keyword) => {
+    console.log(keyword);
+     keyword.toLowerCase();
+    this.getItems(keyword)
+  }
   componentDidMount() {
-    this.getItems()
+    this.getItems('')
   }
   render(){
     return (
       <Container className="App">
         <Row>
           <Col>
-            <h1 style={{margin: "20px 0"}}>CRUD Database</h1>
+            <Search handlekeyword={this.onSearch}/>
           </Col>
         </Row>
         <Row>
@@ -57,8 +67,9 @@ class Home extends Component{
               color="primary"
               style={{float: "left", marginRight: "10px"}}
               className="btn btn-primary"
-              data={this.state.items}>
-              Download CSV
+              data={this.state.items}
+            >
+              <i className="fas fa-file-csv"> Download CSV</i>
             </CSVLink>
             
           </Col>

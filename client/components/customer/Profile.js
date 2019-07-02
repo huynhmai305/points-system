@@ -1,7 +1,27 @@
 import React, { Component } from 'react';
-import Layout from '../customer.jsx';
+import Layout from '../Customer';
 
 class Profile extends Component {
+    state = {
+        item:[]
+    }
+
+    getItem(name) {
+        fetch('http://localhost:3000/admin/user',{
+            method: 'get',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name
+            })
+        })
+        .then(response => this.setState({item: response}))
+    }
+
+    componentDidMount() {
+        this.getItem();
+    }
     render() {
         return (
             <Layout title='Hệ thống tích điểm H&M'>
@@ -21,7 +41,7 @@ class Profile extends Component {
                             <input type="file" className="form-control-file " />
                         </div>
                     </div>
-                    {this.props.result.map((item, key) =>
+                    {this.state.item.map((item, key) =>
                         <div key={key} className="col-md-7">
                             <form method="POST" action={"/users/profile/edit/"+ item.id}>
                                 <div className="form-inline">

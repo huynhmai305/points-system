@@ -1,11 +1,18 @@
-import React, { Component } from './node_modules/react';
-import Layout from '../customer'
-import Card from './card';
+import React, { Component } from 'react';
+import Layout from '../Customer'
+import Card from './Card';
+var user = localStorage.getItem('name');
 
 class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: user
+    }
+  } 
   render() {
     return (
-      <Layout username={this.props.name}>
+      <Layout username={this.state.name}>
         <Card/>
       </Layout>
     );
