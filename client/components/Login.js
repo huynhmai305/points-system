@@ -68,12 +68,6 @@ class Login extends Component {
         })
         .catch(this.setState({isLogin:false}))
         }
-        save(){
-
-        }
-        redirect(){
-          this.state.item.map()
-        }
     
       render() {
         const { email, password } = this.state;
