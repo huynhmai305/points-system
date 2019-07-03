@@ -4,29 +4,25 @@ const User = require('../models/user');
 const Bill = require('../models/bill')
 
 /* GET users listing. */
-router.get('/', (req, res, next) => {
-  sess = sessionStorage.getItem('name');
-  sess ? res.render('customer/home',{name:sess}): res.send('fail')
-});
 router.get('/profile', (req, res, next) => {
-  sess = sessionStorage.getItem('name');
-  User.findAll({
-    attributes: ['id','username','address','phone','email','password','picture'],
+  User.findOne({
     where: {
-      username: sess
+      username: req.query.name
     }
   })
   .then(result => {
-    res.sendStatus(200).render('customer/profile',{result})
+    res.sendStatus(200).send(result)
   })
-  .catch( err => console.log(err))
+  .catch( err => res.json({
+    msg: 'Không tìm thấy người dùng'
+  }))
 });
 
 router.post('/tichdiem',(req,res) => {
   Bill.findAll({
     where: {
       mahoadon: {
-        [Op.like]: `'%$'${req.body.mahoadon}'%'`
+        [Op.like]: `%${req.body.mahoadon}%`
       }
     }
   })
