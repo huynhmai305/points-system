@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import Store from '../Store';
 import Card from './Card';
-var store = localStorage.getItem('name');
 
 class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name : store
+            name : ''
         }      
     }
+    componentDidMount() {
+        var store = localStorage.getItem('name');
+        this.setState({name:store})
+      }
     
     render() {
         return (

@@ -28,16 +28,18 @@ class ModalForm extends Component {
         button = <Button
                   color="warning"
                   onClick={this.toggle}
-                  style={{float: "left", marginRight:"10px"}}>{label}
+                  style={{float: "left", marginRight:"10px",color:'white'}}>
+                  <i className="fas fa-edit"></i>
                 </Button>
-        title = 'Edit Item'
+        title = 'Chỉnh sửa'
       } else {
         button = <Button
                   color="success"
                   onClick={this.toggle}
-                  style={{float: "left", marginRight:"10px"}}>{label}
+                  style={{float: "left", marginRight:"10px"}}>
+                  <i className="fas fa-user-plus"></i>
                 </Button>
-        title = 'Form'
+        title = 'Thêm mới'
       }
 
       return (

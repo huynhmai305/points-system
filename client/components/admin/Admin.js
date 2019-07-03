@@ -3,12 +3,15 @@ import Layout from '../layouts/Layout';
 import Link from 'next/link';
 
 export default class Admin extends Component {
+  logout = () => {
+    localStorage.removeItem('name');
+  }
   render() {
     return (
       <Layout title="Admin">
         <nav className="main-nav" id="main-nav">
           <div className="sidebar-header">
-            <h3>Danh mục</h3>
+            <h3>Admin</h3>
           </div>
           <ul className="list-unstyled">
             <li className="active">
@@ -43,7 +46,7 @@ export default class Admin extends Component {
               <Link href="#"><a ><i className="fas fa-gifts"></i> Quản lý quà đổi thưởng</a></Link>
             </li>
             <li>
-              <Link href="/logout"><a><i className="fas fa-sign-out-alt"></i> Đăng xuất</a></Link>
+              <Link href="/"><a onClick={this.logout}><i className="fas fa-sign-out-alt"></i> Đăng xuất</a></Link>
             </li>
           </ul>
         </nav>

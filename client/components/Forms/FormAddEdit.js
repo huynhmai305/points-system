@@ -114,7 +114,7 @@ class AddEditForm extends React.Component {
           </Label>
         </FormGroup>
         <FormGroup>
-          <Button>Submit</Button>
+          <Button color="success">Submit</Button>
         </FormGroup>
         
       </Form>
