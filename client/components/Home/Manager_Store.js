@@ -29,11 +29,6 @@ class Manager_Store extends Component {
     componentDidMount() {
         this.getItems('')
     }
-    add() {
-        return (
-            <i className="fas fa-user-plus"></i>
-        )
-    }
 
     render() {
         return (
@@ -44,12 +39,7 @@ class Manager_Store extends Component {
                             <Search handlekeyword={this.onSearch}/>
                         </Col>
                     </Row>
-                    <Row>
-                        <Col>
-                            <DataTable items={this.state.items} updateState={this.updateState} deleteItemFromState={this.deleteItemFromState} />
-                        </Col>
-                    </Row>
-                    <Row>
+                    <Row style={{marginBottom: '5%',marginTop: '5%'}}>
                         <Col>
                             <CSVLink
                                 filename={"db.csv"}
@@ -60,7 +50,12 @@ class Manager_Store extends Component {
                             >
                                 <i className="fas fa-file-csv"> Download CSV</i>
                             </CSVLink>
-                            <ModalForm buttonLabel={this.add()} addItemToState={this.addItemToState} />
+                            <ModalForm buttonLabel='Add' addItemToState={this.addItemToState} />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <DataTable items={this.state.items} updateState={this.updateState} deleteItemFromState={this.deleteItemFromState} />
                         </Col>
                     </Row>
                 </Container>

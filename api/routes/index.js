@@ -70,10 +70,12 @@ router.post('/login', (req, res) => {
           res.send(JSON.stringify(result));
         }
       })
-    }
-    )
+    })
     .catch(err => {
       console.log(err)
+      res.send({
+        msg:'Tài khoản không tồn tại'
+      })
     })
 })
 //end login======== 

@@ -27,11 +27,6 @@ class DataTable extends Component {
     }
 
   }
-  labelEdit(){
-    return (
-      <i className="fas fa-edit"></i>
-    )
-  }
 
   render() {
 
@@ -47,7 +42,7 @@ class DataTable extends Component {
           <td>{dateFormat(item.createdAt, "dddd, mmmm dS, yyyy, h:MM:ss TT")}</td>
           <td>
             <div style={{width:"100px"}}>
-              <ModalForm buttonLabel={this.labelEdit()} item={item} updateState={this.props.updateState}/>
+              <ModalForm buttonLabel='Edit' item={item} updateState={this.props.updateState}/>
               {' '}
               <Button color="danger" onClick={() => this.deleteItem(item.id)}><i className="fas fa-trash-alt"></i></Button>
             </div>

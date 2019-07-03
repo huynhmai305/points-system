@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1177,14 +1177,20 @@ var _jsxFileName = "D:\\TichDiem\\client\\components\\customer\\Home.js";
 
 
 
-var user = localStorage.getItem('name');
 
 class Home extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
   constructor(props) {
     super(props);
     this.state = {
-      name: user
+      name: ''
     };
+  }
+
+  componentDidMount() {
+    var user = localStorage.getItem('name');
+    this.setState({
+      name: user
+    });
   }
 
   render() {
@@ -1192,13 +1198,13 @@ class Home extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       username: this.state.name,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 15
+        lineNumber: 18
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Card__WEBPACK_IMPORTED_MODULE_2__["default"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 16
+        lineNumber: 19
       },
       __self: this
     }));
@@ -1987,7 +1993,7 @@ class User extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 
 /***/ }),
 
-/***/ 6:
+/***/ 4:
 /*!*****************************!*\
   !*** multi ./pages/user.js ***!
   \*****************************/

@@ -50,11 +50,11 @@ class Login extends Component {
             password: this.state.password
           })
         })
-        .then(response => {
-          alert('Đăng nhập thành công');
-          return response.json();
-        })
+        .then(response =>
+          response.json()
+        )
         .then(item => {
+          alert('Đăng nhập thành công');
           console.log(item[0].role);
           localStorage.setItem('name',item[0].username)
           let role = item[0].role;
@@ -62,19 +62,15 @@ class Login extends Component {
             Router.push('/admin')
           } else if (role===1){
             Router.push('/store')
-          } else{
+          } else {
             Router.push('/user')
           }
         })
-        .catch(this.setState({isLogin:false}))
-        }
-        save(){
+        .catch(
+          this.setState({isLogin:false})          
+        ) 
+      }
 
-        }
-        redirect(){
-          this.state.item.map()
-        }
-    
       render() {
         const { email, password } = this.state;
         return (
@@ -128,7 +124,7 @@ class Login extends Component {
               </Col>
               <FormGroup  className="mb-3" check>
                 <Label check>
-                <Input type="checkbox" name="save" onClick={this.save()} defaultChecked/>Lưu lại
+                <Input type="checkbox" name="save"  defaultChecked/>Lưu lại
                 </Label>
               </FormGroup>
               <FormGroup>
