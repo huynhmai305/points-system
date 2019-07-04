@@ -66,17 +66,9 @@ class Login extends Component {
             Router.push('/user')
           }
         })
-<<<<<<< HEAD
         .catch(this.setState({isLogin:false}))
         }
     
-=======
-        .catch(
-          this.setState({isLogin:false})          
-        ) 
-      }
-
->>>>>>> 833b73e39b4f5a866803c4521ed2be17003c1e9a
       render() {
         const { email, password } = this.state;
         return (

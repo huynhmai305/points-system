@@ -3,10 +3,6 @@ var router = express.Router();
 const User = require('../models/user');
 const Bill = require('../models/bill')
 
-/* GET users listing. */
-router.get('/profile', (req, res, next) => {
-  User.findOne({
-    where: {
       username: req.query.name
     }
   })
