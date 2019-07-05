@@ -67,7 +67,11 @@ router.post('/login', (req, res) => {
     .then(result => {
       bcrypt.compare(pw, result[0].password, (err, hash) => {
         if (hash === true) {
-          res.send(JSON.stringify(result));
+          res.send(JSON.stringify(result));      
+          sess = req.session;
+          sess.name = result[0].username;
+          req.session.save();
+          console.log(sess.name);
         }
       })
     })
