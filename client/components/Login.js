@@ -56,7 +56,7 @@ class Login extends Component {
         })
         .then(item => {
           console.log(item[0].role);
-          localStorage.setItem('name',item[0].username)
+          localStorage.setItem('user',JSON.stringify(item))
           let role = item[0].role;
           if(role===0){
             Router.push('/admin')

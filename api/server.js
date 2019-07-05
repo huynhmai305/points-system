@@ -1,4 +1,8 @@
+const http = require('http');
+const path = require('path')
 const express = require ('express');
+
+// const http = require('http').Server(app)
 //sd process.env 
 require ('dotenv').config;
 const helmet = require ('helmet');
@@ -8,6 +12,8 @@ const morgan = require('morgan');
 const passport = require('passport');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+
+
 // const storage = require('node-persist');
 // storage.initSync({
 //     dir : "User",
@@ -25,7 +31,8 @@ app.use(cookieParser('mypassword'));
 app.use(session({
     secret : "mypassword",
     saveUninitialized: true,
-    resave: true
+    resave: false,
+    cookie: { maxAge: 60000 }
   }));
 
 // app.use(passport.initialize());

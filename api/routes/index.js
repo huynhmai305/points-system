@@ -4,13 +4,39 @@ const User = require('../models/user');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const fs = require('fs-extra');
+const multer = require('multer');
 const sequelize = require('sequelize');
 const Op = sequelize.Op;
 router.use(cors())
-process.env.SECRET_KEY = 'secret'
+process.env.SECRET_KEY = 'secret';
+
+var storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads')
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.fieldname + '-' + Date.now())
+  }
+})
+var upload = multer({ storage: storage })
 
 //======register ======
-router.post('/admin/user', (req, res) => {
+router.post('/admin/user',upload.single('picture'),(req, res) => {
+  //load image
+  var img = fs.readFileSync(req.file.path);
+  var encode_image = img.toString('base64');
+// SET STORAGE
+  var finalImg = {
+    contentType: req.file.mimetype,
+    image: new Buffer(encode_image,'base64')
+  };
+  // if (!file) {
+  //   const error = new Error('Please upload a file')
+  //   error.httpStatusCode = 400
+  //   return next(error)
+  // }
+  //res.send(file)
   const data = {
     username: req.body.username,
     birthday: req.body.birthday,
@@ -18,7 +44,8 @@ router.post('/admin/user', (req, res) => {
     phone: req.body.phone,
     email: req.body.email,
     password: req.body.password,
-    role: req.body.role
+    role: req.body.role,
+    // picture: finalImg
   };
   User.findOne({
     where: {
@@ -56,22 +83,23 @@ router.post('/admin/user', (req, res) => {
 //===== login page
 
 router.post('/login', (req, res) => {
+  var sess = req.session;
   var email = req.body.email;
   var pw = req.body.password;
   User.findAll({
     where: {
       email: email
     },
-    attributes: ['role', 'username', 'password']
+    // attributes: ['id','role', 'username', 'password']
   })
     .then(result => {
       bcrypt.compare(pw, result[0].password, (err, hash) => {
         if (hash === true) {
-          res.send(JSON.stringify(result));      
-          sess = req.session;
-          sess.name = result[0].username;
-          req.session.save();
-          console.log(sess.name);
+          res.send(JSON.stringify(result));
+          
+          req.session.name = result[0].username;
+          // sess.save();
+          console.log(req.session.name);
         }
       })
     })
@@ -185,6 +213,8 @@ router.put('/admin/user', (req, res) => {
 })
 
 //===end edit user
+
+
 
 
 module.exports = router;

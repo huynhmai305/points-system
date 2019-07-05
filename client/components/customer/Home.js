@@ -6,16 +6,16 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: ''
+      username:''
     }
   } 
   componentDidMount() {
-    var user = localStorage.getItem('name');
-    this.setState({name:user})
+    var info = JSON.parse(localStorage.getItem('user'));
+    this.setState({username:info[0].username})
   }
   render() {
     return (
-      <Layout username={this.state.name}>
+      <Layout username={this.state.username}>
         <Card/>
       </Layout>
     );

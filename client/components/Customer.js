@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 class Customer extends Component {
     logout = () => {
-        localStorage.removeItem('name');
+        localStorage.removeItem('user');
     }
     render() {
         return (
