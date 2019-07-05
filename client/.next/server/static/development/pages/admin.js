@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -110,7 +110,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_3__);
 
-var _jsxFileName = "D:\\TichDiem\\client\\components\\admin\\Admin.js";
+var _jsxFileName = "d:\\TichDiem\\client\\components\\admin\\Admin.js";
 
 
 
@@ -508,7 +508,7 @@ class Admin extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "D:\\TichDiem\\client\\components\\admin\\Card.js";
+var _jsxFileName = "d:\\TichDiem\\client\\components\\admin\\Card.js";
 
 
 class Card extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
@@ -753,7 +753,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Card_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Card.js */ "./components/admin/Card.js");
 /* harmony import */ var _Admin_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Admin.js */ "./components/admin/Admin.js");
 /* harmony import */ var _layouts_Footer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../layouts/Footer.js */ "./components/layouts/Footer.js");
-var _jsxFileName = "D:\\TichDiem\\client\\components\\admin\\Index.js";
+var _jsxFileName = "d:\\TichDiem\\client\\components\\admin\\Index.js";
 
 
  // import Chart from './Chart.js';
@@ -868,7 +868,7 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "D:\\TichDiem\\client\\components\\layouts\\Footer.js";
+var _jsxFileName = "d:\\TichDiem\\client\\components\\layouts\\Footer.js";
 
 
 class Footer extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
@@ -1020,7 +1020,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! js-cookie */ "js-cookie");
 /* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(js_cookie__WEBPACK_IMPORTED_MODULE_5__);
-var _jsxFileName = "D:\\TichDiem\\client\\components\\layouts\\Layout.js";
+var _jsxFileName = "d:\\TichDiem\\client\\components\\layouts\\Layout.js";
 
 
 
@@ -1749,7 +1749,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_admin_Index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/admin/Index */ "./components/admin/Index.js");
-var _jsxFileName = "D:\\TichDiem\\client\\pages\\admin.js";
+var _jsxFileName = "d:\\TichDiem\\client\\pages\\admin.js";
 
 
 
@@ -1776,14 +1776,14 @@ class admin extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 
 /***/ }),
 
-/***/ 6:
+/***/ 4:
 /*!******************************!*\
   !*** multi ./pages/admin.js ***!
   \******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\TichDiem\client\pages\admin.js */"./pages/admin.js");
+module.exports = __webpack_require__(/*! d:\TichDiem\client\pages\admin.js */"./pages/admin.js");
 
 
 /***/ }),

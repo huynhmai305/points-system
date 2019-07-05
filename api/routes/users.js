@@ -1,22 +1,25 @@
 var express = require('express');
 var router = express.Router();
+const jwt = require('jsonwebtoken');
 const User = require('../models/user');
-const Bill = require('../models/bill')
+const Bill = require('../models/bill');
 
 /* GET users listing. */
 router.get('/profile', (req, res, next) => {
-  User.findOne({
-    where: {
-      username: req.query.name
-    }
-  })
-  .then(result => {
-    res.sendStatus(200).send(result)
-    console.log(result)
-  })
-  .catch( err => res.json({
-    msg: 'Không tìm thấy người dùng'
-  }))
+  
+  console.log(req.session)
+  // User.findOne({
+  //   where: {
+  //     username: req.session.name
+  //   }
+  // })
+  // .then(result => {
+  //   res.sendStatus(200).send(result)
+  //   console.log(result)
+  // })
+  // .catch( err => res.json({
+  //   msg: 'Không tìm thấy người dùng'
+  // }))
 });
 
 router.post('/tichdiem',(req,res) => {

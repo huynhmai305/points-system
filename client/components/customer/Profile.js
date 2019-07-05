@@ -13,16 +13,13 @@ class Profile extends Component {
             phone: '',
             email: '',
             password: '',
-            role: 1
+            role: 2
 
         }
     }
 
-    getItem(name) {
+    getItem() {
         var url = 'http://localhost:3000/users/profile';
-        if(name !== null){
-            url = url +'?name='+name;
-        }
         fetch(url)
             .then(response => response.json())
             .then(item => this.setState({ item }))
@@ -42,7 +39,7 @@ class Profile extends Component {
             phone: this.state.phone,
             email: this.state.email,
             password: this.state.password,
-            role: this.state.role
+            role: this.state.role,
           })
         })
           .then(response => response.json())
@@ -53,8 +50,8 @@ class Profile extends Component {
       }
 
     componentDidMount() {
-        var username = localStorage.getItem('name');
-        this.getItem(username);
+        // var username = localStorage.getItem('name');
+        this.getItem();
     }
     render() {
         return (
@@ -80,27 +77,27 @@ class Profile extends Component {
                         <div className="col-md-7">
                             <form method="POST" onSubmit={this.submitFormEdit}>
                                 <div className="form-inline">
-                                    <label htmlFor="ten" className="col-md-5">Họ tên:</label>
-                                    <input type="text" className="form-control col-md-6 " id="ten" name="ten" defaultValue={item.username} />
+                                    <label htmlFor="username" className="col-md-5">Họ tên:</label>
+                                    <input type="text" className="form-control col-md-6 " id="username" name="username" defaultValue={item.username} />
                                 </div>
                                 <div className="form-inline">
-                                    <label htmlFor="ngsinh" className="col-md-5">Ngày sinh:</label>
-                                    <input type="text" className="form-control col-md-6 " id="ngsinh" name="ngsinh" defaultValue={item.ngsinh} />
+                                    <label htmlFor="birthday" className="col-md-5">Ngày sinh:</label>
+                                    <input type="text" className="form-control col-md-6 " id="birthday" name="birthday" defaultValue={item.birthday} />
                                 </div>
                                 <div className="form-inline">
-                                    <label htmlFor="diachi" className="col-md-5">Địa chỉ:</label>
-                                    <input type="text" className="form-control col-md-6" id="diachi" name="diachi" defaultValue={item.address} />
+                                    <label htmlFor="address" className="col-md-5">Địa chỉ:</label>
+                                    <input type="text" className="form-control col-md-6" id="address" name="address" defaultValue={item.address} />
                                 </div>
                                 <div className="form-inline">
-                                    <label htmlFor="ten" className="col-md-5">Số điện thoại:</label>
-                                    <input type="text" className="form-control col-md-6" id="sdt" name="sdt" aria-describedby="emailHelp" defaultValue={item.phone} />
+                                    <label htmlFor="phone" className="col-md-5">Số điện thoại:</label>
+                                    <input type="text" className="form-control col-md-6" id="phone" name="phone" aria-describedby="emailHelp" defaultValue={item.phone} />
                                 </div>
                                 <div className="form-inline">
-                                    <label htmlFor="ten" className="col-md-5">Email:</label>
+                                    <label htmlFor="email" className="col-md-5">Email:</label>
                                     <input type="text" className="form-control col-md-6" id="email" name="email" defaultValue={item.email} />
                                 </div>
                                 <div className="form-inline">
-                                    <label htmlFor="ten" className="col-md-5">Password:</label>
+                                    <label htmlFor="password" className="col-md-5">Password:</label>
                                     <input type="text" className="form-control col-md-6" id="password" name="password" defaultValue={item.password} />
                                 </div>
                                 <div className="offset-md-4 col-md-4 mt-5">
