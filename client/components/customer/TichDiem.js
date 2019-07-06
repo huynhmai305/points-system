@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import React, {Component} from 'react';
 import { Container, Row, Col, Label, FormData,FormGroup, Form, Button, Alert, FormText} from 'reactstrap';
 import Search from '../Search';
@@ -85,18 +85,3 @@ export default class TichDiem extends Component {
         )
     }
 }
-=======
-import React, { Component } from 'react';
-
-class TichDiem extends Component {
-    render() {
-        return (
-            <div>
-                //search ma hoa don tich diem
-            </div>
-        );
-    }
-}
-
-export default TichDiem;
->>>>>>> aecd1c2d41d6ecb31dadae6a64eeb5913d18697e

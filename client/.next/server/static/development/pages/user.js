@@ -1232,7 +1232,7 @@ function (_Component) {
 
     _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(Home).call(this, props));
     _this.state = {
-      name: ''
+      username: ''
     };
     return _this;
   }
@@ -1240,16 +1240,16 @@ function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(Home, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var user = JSON.parse(localStorage.getItem('user'));
+      var info = JSON.parse(localStorage.getItem('user'));
       this.setState({
-        name: user[0].username
+        username: info[0].username
       });
     }
   }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_Customer__WEBPACK_IMPORTED_MODULE_6__["default"], {
-        username: this.state.name,
+        username: this.state.username,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 18
