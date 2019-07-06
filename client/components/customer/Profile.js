@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import Layout from '../Customer';
+import FormEditProfile from '../Forms/FormEditProfile';
 
 class Profile extends Component {
     constructor(props) {
         super(props);
         this.state = {
+<<<<<<< HEAD
             item: [],
             id:0,
             username: '',
@@ -63,10 +65,25 @@ class Profile extends Component {
             id:info[0].id,
             username:info[0].username
         });
+=======
+            item:[],
+            username:''
+        }
+    }
+    componentDidMount() {
+        let info = JSON.parse(localStorage.getItem('user'));
+        console.log(info)
+        this.setState({
+            item:info,
+            username:info[0].username
+        })
+        
+>>>>>>> aecd1c2d41d6ecb31dadae6a64eeb5913d18697e
     }
     render() {
         return (
             <Layout username={this.state.username}>
+<<<<<<< HEAD
                 <ol className="breadcrumb">
                     <li className="breadcrumb-item">
                         <a href="/users">Trang chủ</a>
@@ -123,6 +140,9 @@ class Profile extends Component {
                         </div>
                     </div>
                 ))}
+=======
+                <FormEditProfile item={this.state.item}/>
+>>>>>>> aecd1c2d41d6ecb31dadae6a64eeb5913d18697e
             </Layout>
         );
     }

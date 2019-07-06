@@ -50,11 +50,21 @@ class Login extends Component {
             password: this.state.password
           })
         })
+<<<<<<< HEAD
         .then(response =>response.json())
         .then(item => {
+=======
+        .then(response =>{
+>>>>>>> aecd1c2d41d6ecb31dadae6a64eeb5913d18697e
           alert('Đăng nhập thành công');
+          return response.json();
+        })
+        .then(item => {
           console.log(item[0].role);
+<<<<<<< HEAD
           // this.setState({msg:'Đăng nhập thành công'});
+=======
+>>>>>>> aecd1c2d41d6ecb31dadae6a64eeb5913d18697e
           localStorage.setItem('user',JSON.stringify(item))
           let role = item[0].role;
           if(role===0){

@@ -12,7 +12,7 @@ class Register extends Component {
         password: '',
         password2: '',
         role: 2,
-
+        picture:''
     }
 
     onChange = e => {
@@ -148,6 +148,20 @@ class Register extends Component {
                         </FormGroup>
                     </Col>
                 </Row>
+                <FormGroup>
+                    <Input type="file"
+                        name="picture"
+                        id="picture"
+                        className="form-control-file"
+                        placeholder="Nhập email"
+                        encType="multipart/form-data"
+                        accept="image/*" 
+                        onChange={this.onChange}
+                        value={this.state.picture}
+                        required
+                    />
+                    <FormText>Chọn ảnh đại diện</FormText>
+                </FormGroup>
                 <FormGroup>
                     <Button color="success">Đăng ký</Button>
                 </FormGroup>

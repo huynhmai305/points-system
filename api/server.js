@@ -1,16 +1,43 @@
+const http = require('http');
+const path = require('path')
 const express = require ('express');
+
+// const http = require('http').Server(app)
 //sd process.env 
 require ('dotenv').config;
 const helmet = require ('helmet');
 const bodyParser = require('body-parser');
 const cors = require ('cors');
 const morgan = require('morgan');
+const passport = require('passport');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
+
+
+// const storage = require('node-persist');
+// storage.initSync({
+//     dir : "User",
+//     ttl : false
+// });
 //connect
 // const knex = require("knex");
 const indexRouter = require('./routes/index');
-const userRouter = require('./routes/users')
+const userRouter = require('./routes/users');
 //app
+
 const app = express();
+//session
+app.use(cookieParser('mypassword'));
+app.use(session({
+    secret : "mypassword",
+    saveUninitialized: true,
+    resave: false,
+    cookie: { maxAge: 60000 }
+  }));
+
+// app.use(passport.initialize());
+// app.use(passport.session());
+
 const whitelist = ['http://localhost:3001']
 const corsOptions = {
     origin: (origin, callback) => {
@@ -24,9 +51,10 @@ const corsOptions = {
 app.use(helmet())
 app.use(cors(corsOptions))
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }));//support endcode body 
 app.use(morgan('combined'))
 app.use('/',indexRouter) 
-app.use('/users',userRouter) 
+app.use('/users',userRouter)  
 
 
 // App Server Connection

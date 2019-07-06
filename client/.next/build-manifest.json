@@ -17,13 +17,21 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
+<<<<<<< HEAD
     "/index": [
+=======
+    "/user": [
+>>>>>>> aecd1c2d41d6ecb31dadae6a64eeb5913d18697e
       "static/runtime/webpack.js",
       "static/css/styles.chunk.css",
       "static/chunks/styles.js",
       "static/runtime/main.js"
     ],
+<<<<<<< HEAD
     "/user": [
+=======
+    "/user/profile": [
+>>>>>>> aecd1c2d41d6ecb31dadae6a64eeb5913d18697e
       "static/runtime/webpack.js",
       "static/css/styles.chunk.css",
       "static/chunks/styles.js",

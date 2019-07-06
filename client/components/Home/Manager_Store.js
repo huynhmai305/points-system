@@ -42,7 +42,7 @@ class Manager_Store extends Component {
                     <Row style={{marginBottom: '5%',marginTop: '5%'}}>
                         <Col>
                             <CSVLink
-                                filename={"db.csv"}
+                                filename={"dbStore.csv"}
                                 color="primary"
                                 style={{ float: "left", marginRight: "10px" }}
                                 className="btn btn-primary"
