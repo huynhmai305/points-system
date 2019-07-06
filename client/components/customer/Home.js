@@ -10,8 +10,8 @@ class Home extends Component {
     }
   } 
   componentDidMount() {
-    var user = localStorage.getItem('name');
-    this.setState({name:user})
+    var user = JSON.parse(localStorage.getItem('user'));
+    this.setState({name:user[0].username})
   }
   render() {
     return (

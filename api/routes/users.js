@@ -19,18 +19,18 @@ router.get('/profile', (req, res, next) => {
   }))
 });
 
-router.post('/tichdiem',(req,res) => {
-  Bill.findAll({
-    where: {
-      mahoadon: {
-        [Op.like]: `%${req.body.mahoadon}%`
-      }
-    }
+router.get('/tichdiem',(req,res) => {
+  Bill.findOne({
+    where:{
+      id: req.query.keyword
+    },
+    // attributes: ['total']
+  }
+   )
+  .then(result => {
+    res.send(result);
+    console.log(result)
   })
-  .then(result => res.send(result))
-})
-router.get('/tichdiem',(req,res)=>{
- Bill.findAll().then(result => res.send(result))
 })
 
 module.exports = router;

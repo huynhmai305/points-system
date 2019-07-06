@@ -12,21 +12,11 @@ class Profile extends Component {
             address: '',
             phone: '',
             email: '',
-            password: '',
-            role: 1
+            password: ''
 
         }
     }
 
-    getItem(name) {
-        var url = 'http://localhost:3000/users/profile';
-        if(name !== null){
-            url = url +'?name='+name;
-        }
-        fetch(url)
-            .then(response => response.json())
-            .then(item => this.setState({ item }))
-    }
     submitFormEdit = e => {
         e.preventDefault()
         fetch('http://localhost:3000/admin/user', {
@@ -42,23 +32,41 @@ class Profile extends Component {
             phone: this.state.phone,
             email: this.state.email,
             password: this.state.password,
-            role: this.state.role
           })
         })
           .then(response => response.json())
           .then(item => {
-            alert(`Chỉnh sửa thành công id: ${this.state.id}`);
+            alert(`Chỉnh sửa thành công `);
             location.reload()
           })
+        // alert(this.state.phone)
       }
-
+    handleChange = e => {
+        var name = e.target.name;
+        var value = e.target.value;
+        this.setState({[name]:value})
+        console.log(name+value)
+    }
+    // updateState = (item) => {
+    //     const itemIndex = this.state.items.findIndex(data => data.id ===item.id)
+    //     const newArray = [
+    //       ...this.state.items.slice(0, itemIndex),
+    //       item,
+    //       ...this.state.items.slice(itemIndex + 1)
+    //     ]
+    //     this.setState({items: newArray})
+    //   }
     componentDidMount() {
-        var username = localStorage.getItem('name');
-        this.getItem(username);
+        var info = JSON.parse(localStorage.getItem('user'));
+        this.setState({
+            item:info,
+            id:info[0].id,
+            username:info[0].username
+        });
     }
     render() {
         return (
-            <Layout title='Hệ thống tích điểm H&M'>
+            <Layout username={this.state.username}>
                 <ol className="breadcrumb">
                     <li className="breadcrumb-item">
                         <a href="/users">Trang chủ</a>
@@ -78,30 +86,35 @@ class Profile extends Component {
                         </div>
 
                         <div className="col-md-7">
-                            <form method="POST" onSubmit={this.submitFormEdit}>
+                            <form onSubmit={this.submitFormEdit}>
                                 <div className="form-inline">
-                                    <label htmlFor="ten" className="col-md-5">Họ tên:</label>
-                                    <input type="text" className="form-control col-md-6 " id="ten" name="ten" defaultValue={item.username} />
+                                    <label htmlFor="username" className="col-md-5">Họ tên:</label>
+                                    <input type="text" className="form-control col-md-6 " id="username" name="username" value={item.username} onChange={this.handleChange} required/>
                                 </div>
                                 <div className="form-inline">
-                                    <label htmlFor="ngsinh" className="col-md-5">Ngày sinh:</label>
-                                    <input type="text" className="form-control col-md-6 " id="ngsinh" name="ngsinh" defaultValue={item.ngsinh} />
+                                    <label htmlFor="birthday" className="col-md-5">Ngày sinh:</label>
+                                    <input type="date" className="form-control col-md-6 " id="birthday" name="birthday" value={item.birthday} onChange={this.handleChange}  min="1960-01-01" 
+                                    max="2004-12-31" required/>
                                 </div>
                                 <div className="form-inline">
-                                    <label htmlFor="diachi" className="col-md-5">Địa chỉ:</label>
-                                    <input type="text" className="form-control col-md-6" id="diachi" name="diachi" defaultValue={item.address} />
+                                    <label htmlFor="address" className="col-md-5">Địa chỉ:</label>
+                                    <input type="text" className="form-control col-md-6" id="address" name="address" value={item.address} onChange={this.handleChange} required/>
                                 </div>
                                 <div className="form-inline">
-                                    <label htmlFor="ten" className="col-md-5">Số điện thoại:</label>
-                                    <input type="text" className="form-control col-md-6" id="sdt" name="sdt" aria-describedby="emailHelp" defaultValue={item.phone} />
+                                    <label htmlFor="phone" className="col-md-5">Số điện thoại:</label>
+                                    <input type="tel" className="form-control col-md-6" id="phone" name="phone" aria-describedby="emailHelp" value={item.phone} onChange={this.handleChange}  pattern="[0]{1}[0-9]{9}" required/>
                                 </div>
                                 <div className="form-inline">
-                                    <label htmlFor="ten" className="col-md-5">Email:</label>
-                                    <input type="text" className="form-control col-md-6" id="email" name="email" defaultValue={item.email} />
+                                    <label htmlFor="email" className="col-md-5">Email:</label>
+                                    <input type="email" className="form-control col-md-6" id="email" name="email" value={item.email} onChange={this.handleChange} required/>
                                 </div>
                                 <div className="form-inline">
-                                    <label htmlFor="ten" className="col-md-5">Password:</label>
-                                    <input type="text" className="form-control col-md-6" id="password" name="password" defaultValue={item.password} />
+                                    <label htmlFor="password" className="col-md-5">Password:</label>
+                                    <input type="text" className="form-control col-md-6" id="password" name="password" value={item.password} onChange={this.handleChange} required/>
+                                </div>
+                                <div className="form-inline">
+                                    <label htmlFor="point" className="col-md-5">Điểm tích lũy:</label>
+                                    <label htmlFor="point" className="col-md-6">{item.point}</label>
                                 </div>
                                 <div className="offset-md-4 col-md-4 mt-5">
                                     <input type="submit" className="btn btn-outline-success" value="Chỉnh sửa profile" />

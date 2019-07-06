@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Container, Col, Form, FormGroup, Label, Input, Button, FormFeedback} from 'reactstrap';
+import {Container, Col, Form, FormGroup, Label, Input, Button, FormFeedback, Alert} from 'reactstrap';
 import Router from 'next/router';
 
 class Login extends Component {
@@ -11,12 +11,12 @@ class Login extends Component {
           validate: {
             emailState: '',
           },
-          isLogin:true,
-          item:[]
+          msg:'',
+          item:[],
         }
         this.handleChange = this.handleChange.bind(this);
     }
-    
+ 
       validateEmail(e) {
         const emailRex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         const { validate } = this.state
@@ -50,13 +50,12 @@ class Login extends Component {
             password: this.state.password
           })
         })
-        .then(response =>
-          response.json()
-        )
+        .then(response =>response.json())
         .then(item => {
           alert('Đăng nhập thành công');
           console.log(item[0].role);
-          localStorage.setItem('name',item[0].username)
+          // this.setState({msg:'Đăng nhập thành công'});
+          localStorage.setItem('user',JSON.stringify(item))
           let role = item[0].role;
           if(role===0){
             Router.push('/admin')
@@ -66,8 +65,8 @@ class Login extends Component {
             Router.push('/user')
           }
         })
-        .catch(this.setState({isLogin:false}))
-        }
+        .catch(err => this.setState({msg:'Vui lòng kiểm tra lại thông tin email, password'}))
+      }
     
       render() {
         const { email, password } = this.state;
@@ -86,10 +85,10 @@ class Login extends Component {
                     valid={ this.state.validate.emailState === 'has-success'}
                     invalid={ this.state.validate.emailState === 'has-danger'||email===''}
                     onChange={ (e) => {
-                                this.validateEmail(e)
-                                this.handleChange(e)
-                              } }
-                    // required
+                      this.validateEmail(e)
+                      this.handleChange(e)
+                    }}
+                    required
                   />
                   <FormFeedback valid>
                     Nhập email thành công
@@ -131,7 +130,7 @@ class Login extends Component {
                 </Button>
               </FormGroup>
               <span style={{color:'red'}}>
-                {(this.state.isLogin===false)?'Vui lòng kiểm tra lại thông tin email, password':''}
+                {this.state.msg}
               </span>
           </Form>
           </Container>
