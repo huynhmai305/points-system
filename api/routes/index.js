@@ -90,6 +90,15 @@ router.post('/login', (req, res) => {
     where: {
       email: email
     },
+<<<<<<< HEAD
+    // attributes: ['role', 'username', 'password']
+  })
+  .then(result => {
+    bcrypt.compare(pw, result[0].password, (err, hash) => {
+      if (hash === true) {
+        res.send(JSON.stringify(result));
+      }
+=======
     // attributes: ['id','role', 'username', 'password']
   })
     .then(result => {
@@ -108,7 +117,11 @@ router.post('/login', (req, res) => {
       res.send({
         msg:'Tài khoản không tồn tại'
       })
+>>>>>>> aecd1c2d41d6ecb31dadae6a64eeb5913d18697e
     })
+  })
+  .catch(err => console.log(err))
+    
 })
 //end login======== 
 

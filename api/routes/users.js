@@ -9,6 +9,19 @@ const Op = sequelize.Op;
 /* GET users listing. */
 
 router.get('/tichdiem',(req,res) => {
+<<<<<<< HEAD
+  Bill.findOne({
+    where:{
+      id: req.query.keyword
+    },
+    // attributes: ['total']
+  }
+   )
+  .then(result => {
+    res.send(result);
+    console.log(result)
+  })
+=======
   Bill.findAll({
     where: {
       mahoadon: req.query.keyword
@@ -23,6 +36,7 @@ router.post('/store/bill',(req,res)=>{
   }
  })
  .then(result => res.send(result))
+>>>>>>> aecd1c2d41d6ecb31dadae6a64eeb5913d18697e
 })
 
 module.exports = router;

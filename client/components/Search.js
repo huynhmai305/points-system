@@ -26,7 +26,7 @@ class Search extends Component {
                         <Label for="keyword" />
                         <Input type="text" id="keyword" name="keyword" placeholder="Nhập thông tin tìm kiếm..." onChange={this.onChange} />
                     </FormGroup>
-                    <Button onClick={this.search} color="info">Tìm kiếm</Button>
+                    <Button onClick={this.search} color="primary">Tìm kiếm</Button>
                 </Form>
             </Container>
         );

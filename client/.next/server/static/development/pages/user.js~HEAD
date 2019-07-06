@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -343,7 +343,11 @@ function (_Component) {
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_9___default.a, {
+<<<<<<< HEAD:client/.next/server/static/development/pages/user.js
         href: "/user/tichdiem",
+=======
+        href: "#",
+>>>>>>> aecd1c2d41d6ecb31dadae6a64eeb5913d18697e:client/.next/server/static/development/pages/user.js
         __source: {
           fileName: _jsxFileName,
           lineNumber: 35
@@ -1232,7 +1236,11 @@ function (_Component) {
 
     _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(Home).call(this, props));
     _this.state = {
+<<<<<<< HEAD:client/.next/server/static/development/pages/user.js
+      name: ''
+=======
       username: ''
+>>>>>>> aecd1c2d41d6ecb31dadae6a64eeb5913d18697e:client/.next/server/static/development/pages/user.js
     };
     return _this;
   }
@@ -1240,16 +1248,26 @@ function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(Home, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+<<<<<<< HEAD:client/.next/server/static/development/pages/user.js
+      var user = JSON.parse(localStorage.getItem('user'));
+      this.setState({
+        name: user[0].username
+=======
       var info = JSON.parse(localStorage.getItem('user'));
       this.setState({
         username: info[0].username
+>>>>>>> aecd1c2d41d6ecb31dadae6a64eeb5913d18697e:client/.next/server/static/development/pages/user.js
       });
     }
   }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_Customer__WEBPACK_IMPORTED_MODULE_6__["default"], {
+<<<<<<< HEAD:client/.next/server/static/development/pages/user.js
+        username: this.state.name,
+=======
         username: this.state.username,
+>>>>>>> aecd1c2d41d6ecb31dadae6a64eeb5913d18697e:client/.next/server/static/development/pages/user.js
         __source: {
           fileName: _jsxFileName,
           lineNumber: 18
@@ -2260,7 +2278,11 @@ class User extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 
 /***/ }),
 
+<<<<<<< HEAD:client/.next/server/static/development/pages/user.js
 /***/ 6:
+=======
+/***/ 5:
+>>>>>>> aecd1c2d41d6ecb31dadae6a64eeb5913d18697e:client/.next/server/static/development/pages/user.js
 /*!*****************************!*\
   !*** multi ./pages/user.js ***!
   \*****************************/

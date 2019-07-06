@@ -32,7 +32,7 @@ class Customer extends Component {
                                         <Link href="#"><a><i className="fas fa-qrcode "></i> QR code</a></Link>
                                     </li>
                                     <li>
-                                        <Link href="#"><a><i className="fas fa-money-bill-alt"></i> Hóa đơn</a></Link>
+                                        <Link href="/user/tichdiem"><a><i className="fas fa-money-bill-alt"></i> Hóa đơn</a></Link>
                                     </li>
 
                                 </ul>

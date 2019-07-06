@@ -44,6 +44,11 @@ const User = db.define('User',{
       picture: {
         type:Sequelize.STRING.BINARY,
         allowNull: true
+      },
+      point: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+        defaulValue:0
       }
      
  });
