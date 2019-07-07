@@ -167,7 +167,7 @@ router.put('/admin/user', (req, res) => {
     password: req.body.password,
     updatedAt: update
 
-  };
+  }
   bcrypt.hash(dt.password, 10, (err, hash) => {
     dt.password = hash;
     User.update(dt, { where: { id: req.body.id } })
@@ -181,8 +181,5 @@ router.put('/admin/user', (req, res) => {
 })
 
 //===end edit user
-
-
-
 
 module.exports = router;
