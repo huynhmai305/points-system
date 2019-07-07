@@ -2,41 +2,17 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
 const cors = require('cors');
-const jwt = require('jsonwebtoken');
+// const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const fs = require('fs-extra');
-const multer = require('multer');
+// const fs = require('fs-extra');
+// const multer = require('multer');
 const sequelize = require('sequelize');
 const Op = sequelize.Op;
 router.use(cors())
 process.env.SECRET_KEY = 'secret';
 
-var storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'uploads')
-  },
-  filename: (req, file, cb) => {
-    cb(null, file.fieldname + '-' + Date.now())
-  }
-})
-var upload = multer({ storage: storage })
-
 //======register ======
-router.post('/admin/user',upload.single('picture'),(req, res) => {
-  //load image
-  var img = fs.readFileSync(req.file.path);
-  var encode_image = img.toString('base64');
-// SET STORAGE
-  var finalImg = {
-    contentType: req.file.mimetype,
-    image: new Buffer(encode_image,'base64')
-  };
-  // if (!file) {
-  //   const error = new Error('Please upload a file')
-  //   error.httpStatusCode = 400
-  //   return next(error)
-  // }
-  //res.send(file)
+router.post('/admin/user',(req, res) => {
   const data = {
     username: req.body.username,
     birthday: req.body.birthday,
@@ -83,14 +59,13 @@ router.post('/admin/user',upload.single('picture'),(req, res) => {
 //===== login page
 
 router.post('/login', (req, res) => {
-  var sess = req.session;
+  // var sess = req.session;
   var email = req.body.email;
   var pw = req.body.password;
   User.findAll({
     where: {
       email: email
     },
-<<<<<<< HEAD
     // attributes: ['role', 'username', 'password']
   })
   .then(result => {
@@ -98,27 +73,7 @@ router.post('/login', (req, res) => {
       if (hash === true) {
         res.send(JSON.stringify(result));
       }
-=======
     // attributes: ['id','role', 'username', 'password']
-  })
-    .then(result => {
-      bcrypt.compare(pw, result[0].password, (err, hash) => {
-        if (hash === true) {
-          res.send(JSON.stringify(result));
-          
-          req.session.name = result[0].username;
-          // sess.save();
-          console.log(req.session.name);
-        }
-      })
-    })
-    .catch(err => {
-      console.log(err)
-      res.send({
-        msg:'Tài khoản không tồn tại'
-      })
->>>>>>> aecd1c2d41d6ecb31dadae6a64eeb5913d18697e
-    })
   })
   .catch(err => console.log(err))
     
