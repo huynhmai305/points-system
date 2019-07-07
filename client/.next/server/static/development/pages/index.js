@@ -225,9 +225,6 @@ function (_Component) {
       }).then(function (response) {
         return response.json();
       }).then(function (item) {
-        alert('Đăng nhập thành công');
-        return response.json();
-      }).then(function (item) {
         console.log(item[0].role); // this.setState({msg:'Đăng nhập thành công'});
 
         localStorage.setItem('user', _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default()(item));
@@ -258,7 +255,7 @@ function (_Component) {
         className: "App",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 77
+          lineNumber: 73
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Form"], {
@@ -269,25 +266,25 @@ function (_Component) {
         method: "POST",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 78
+          lineNumber: 74
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Col"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 79
+          lineNumber: 75
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["FormGroup"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 80
+          lineNumber: 76
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Label"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 81
+          lineNumber: 77
         },
         __self: this
       }, "Email"), react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Input"], {
@@ -306,39 +303,39 @@ function (_Component) {
         required: true,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 82
+          lineNumber: 78
         },
         __self: this
       }), react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["FormFeedback"], {
         valid: true,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 96
+          lineNumber: 92
         },
         __self: this
       }, "Nh\u1EADp email th\xE0nh c\xF4ng"), react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["FormFeedback"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 99
+          lineNumber: 95
         },
         __self: this
       }, "Vui l\xF2ng nh\u1EADp m\u1ED9t email ch\xEDnh x\xE1c"))), react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Col"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 104
+          lineNumber: 100
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["FormGroup"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 105
+          lineNumber: 101
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Label"], {
         for: "examplePassword",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 106
+          lineNumber: 102
         },
         __self: this
       }, "Password"), react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Input"], {
@@ -354,20 +351,20 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 107
+          lineNumber: 103
         },
         __self: this
       }), react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["FormFeedback"], {
         valid: true,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 117
+          lineNumber: 113
         },
         __self: this
       }, "Nh\u1EADp password th\xE0nh c\xF4ng"), react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["FormFeedback"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 120
+          lineNumber: 116
         },
         __self: this
       }, "Password kh\xF4ng \u0111\u01B0\u1EE3c tr\u1ED1ng"))), react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["FormGroup"], {
@@ -375,14 +372,14 @@ function (_Component) {
         check: true,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 125
+          lineNumber: 121
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Label"], {
         check: true,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 126
+          lineNumber: 122
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Input"], {
@@ -391,13 +388,13 @@ function (_Component) {
         defaultChecked: true,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 127
+          lineNumber: 123
         },
         __self: this
       }), "L\u01B0u l\u1EA1i")), react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["FormGroup"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 130
+          lineNumber: 126
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Button"], {
@@ -405,7 +402,7 @@ function (_Component) {
         type: "submit",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 131
+          lineNumber: 127
         },
         __self: this
       }, "\u0110\u0103ng nh\u1EADp")), react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement("span", {
@@ -414,7 +411,7 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 135
+          lineNumber: 131
         },
         __self: this
       }, this.state.msg)));
