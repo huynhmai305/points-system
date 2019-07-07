@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Layout from '../Customer';
+import Layout from '../Store';
 
 class Profile extends Component {
     constructor(props) {
@@ -45,7 +45,7 @@ class Profile extends Component {
         var name = e.target.name;
         var value = e.target.value;
         this.setState({[name]:value})
-        console.log(name+value)
+        console.log(name+' => '+value)
     }
     // updateState = (item) => {
     //     const itemIndex = this.state.items.findIndex(data => data.id ===item.id)
@@ -78,9 +78,9 @@ class Profile extends Component {
             <Layout username={this.state.username}>
                 <ol className="breadcrumb">
                     <li className="breadcrumb-item">
-                        <a href="/user">Trang chủ</a>
+                        <a href="/store">Trang chủ</a>
                     </li>
-                    <li className="breadcrumb-item active">
+                    <li className="breadcrumb-item disable">
                         <a href="#">Chỉnh sửa profile</a>
                     </li>
                 </ol>
@@ -97,13 +97,8 @@ class Profile extends Component {
                         <div className="col-md-7">
                             <form onSubmit={this.submitFormEdit}>
                                 <div className="form-inline">
-                                    <label htmlFor="username" className="col-md-5">Họ tên:</label>
+                                    <label htmlFor="username" className="col-md-5">Tên cửa hàng:</label>
                                     <input type="text" className="form-control col-md-6 " id="username" name="username" value={item.username} onChange={this.handleChange} required/>
-                                </div>
-                                <div className="form-inline">
-                                    <label htmlFor="birthday" className="col-md-5">Ngày sinh:</label>
-                                    <input type="date" className="form-control col-md-6 " id="birthday" name="birthday" value={item.birthday} onChange={this.handleChange}  min="1960-01-01" 
-                                    max="2004-12-31" required/>
                                 </div>
                                 <div className="form-inline">
                                     <label htmlFor="address" className="col-md-5">Địa chỉ:</label>
@@ -120,10 +115,6 @@ class Profile extends Component {
                                 <div className="form-inline">
                                     <label htmlFor="password" className="col-md-5">Password:</label>
                                     <input type="text" className="form-control col-md-6" id="password" name="password" value={item.password} onChange={this.handleChange} required/>
-                                </div>
-                                <div className="form-inline">
-                                    <label htmlFor="point" className="col-md-5">Điểm tích lũy:</label>
-                                    <label htmlFor="point" className="col-md-6">{item.point}</label>
                                 </div>
                                 <div className="offset-md-4 col-md-4 mt-5">
                                     <input type="submit" className="btn btn-outline-success" value="Chỉnh sửa profile" />

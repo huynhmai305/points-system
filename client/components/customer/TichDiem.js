@@ -44,6 +44,17 @@ export default class TichDiem extends Component {
     render(){
         return(
             <Layout username={this.state.username}>
+                <ol className="breadcrumb">
+                    <li className="breadcrumb-item">
+                        <a href="/store">Trang chủ</a>
+                    </li>
+                    <li className="breadcrumb-item">
+                        <a href="/store">Tích điểm</a>
+                    </li>
+                    <li className="breadcrumb-item disable">
+                        <a href="#">Hóa đơn</a>
+                    </li>
+                </ol>
                 <Container >
                     <Row className="mt-5">
                         <Col>

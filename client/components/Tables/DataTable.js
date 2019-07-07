@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Table, Button } from 'reactstrap';
 import ModalForm from '../Modals/Modal';
-var dateFormat = require('dateformat');
+import dateFormat from 'dateformat';
 
 class DataTable extends Component {
 
@@ -61,7 +61,7 @@ class DataTable extends Component {
             <th width={'25%'}>Địa chỉ</th>
             <th width={'15%'}>Điện thoại</th>
             <th width={'10%'}>Email</th>
-            <th width={'30%'}>Ngày tạo</th>
+            <th width={'30%'}>Ngày đăng ký</th>
             <th></th>
           </tr>
         </thead>

@@ -73,10 +73,9 @@ router.post('/login', (req, res) => {
       if (hash === true) {
         res.send(JSON.stringify(result));
       }
-    // attributes: ['id','role', 'username', 'password']
-  })
-  .catch(err => console.log(err))
-    
+    })
+  }) 
+  .catch(err => console.log(err)) 
 })
 //end login======== 
 
@@ -176,7 +175,6 @@ router.put('/admin/user', (req, res) => {
         res.sendStatus(200);
       })
       .catch(err => console.log(err))
-    console.log(dt)
   })
 })
 

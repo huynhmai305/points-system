@@ -6,7 +6,7 @@ class Store extends Component {
     render() {
         return (
             <div>
-                <Admin title="Quản lý khách hàng">
+                <Admin title="Quản lý cửa hàng">
                     <Home />
                 </Admin>
             </div>

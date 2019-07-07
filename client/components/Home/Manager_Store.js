@@ -34,18 +34,25 @@ class Manager_Store extends Component {
         return (
             <div>
                 <Container className="App">
-                    <Row>
-                        <Col>
+                    <ol className="breadcrumb">
+                        <li className="breadcrumb-item">
+                            <a href="/admin">Trang chủ</a>
+                        </li>
+                        <li className="breadcrumb-item">
+                            <a href="#">Quản lý người dùng</a>
+                        </li>
+                        <li className="breadcrumb-item active">Quản lý cửa hàng</li>
+                    </ol>
+                    <Row className="mb-5">
+                        <Col md={6}>
                             <Search handlekeyword={this.onSearch}/>
                         </Col>
-                    </Row>
-                    <Row style={{marginBottom: '5%',marginTop: '5%'}}>
-                        <Col>
+                        <Col md={{offset:3,size:3}}>
                             <CSVLink
                                 filename={"dbStore.csv"}
                                 color="primary"
                                 style={{ float: "left", marginRight: "10px" }}
-                                className="btn btn-primary"
+                                className="btn btn-info"
                                 data={this.state.items}
                             >
                                 <i className="fas fa-file-csv"> Download CSV</i>
