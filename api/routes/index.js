@@ -69,9 +69,14 @@ router.post('/login', (req, res) => {
     // attributes: ['role', 'username', 'password']
   })
   .then(result => {
+    // console.log(result[0].password)
     bcrypt.compare(pw, result[0].password, (err, hash) => {
+      // console.log(hash)
       if (hash === true) {
         res.send(JSON.stringify(result));
+      }
+      else {
+        res.json({msg: "Khong tim thay tai khoan"})
       }
     })
   }) 
@@ -164,6 +169,7 @@ router.put('/admin/user', (req, res) => {
     phone: req.body.phone,
     email: req.body.email,
     password: req.body.password,
+    point: req.body.point,
     updatedAt: update
 
   }

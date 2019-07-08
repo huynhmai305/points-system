@@ -52,6 +52,7 @@ class Login extends Component {
     })
       .then(response => response.json())
       .then(item => {
+        console.log(item)
         console.log(item[0].role);
         alert('Đăng nhập thành công')
         // this.setState({msg:'Đăng nhập thành công'});
@@ -65,7 +66,7 @@ class Login extends Component {
           Router.push('/user')
         }
       })
-      .catch(err => this.setState({ msg: 'Vui lòng kiểm tra lại thông tin email, password' }))
+      .catch(err => console.log(err))
   }
 
   render() {

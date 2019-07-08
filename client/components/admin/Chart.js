@@ -55,7 +55,7 @@ class Chart extends Component {
     render() {
         return (
             <div>
-                <article className="canvas-container">
+                <article className="container canvas-container">
                     <Line data={this.getChartData} option={{responsive: true}}/>
                 </article>
             </div>

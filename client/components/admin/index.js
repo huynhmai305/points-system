@@ -8,7 +8,7 @@ class Index extends Component {
         return (
             <Admin title="Hệ thống tích điểm H&M">
                 <Card />
-                <div className="justify-content-md-center">
+                <div style={{margin:"15px"}}>
                     <Chart/>
                 </div>                
             </Admin>

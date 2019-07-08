@@ -158,7 +158,7 @@ class Register extends Component {
                         accept="image/*" 
                         onChange={this.onChange}
                         value={this.state.picture}
-                        required
+
                     />
                     <FormText>Chọn ảnh đại diện</FormText>
                 </FormGroup>

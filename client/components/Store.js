@@ -42,7 +42,7 @@ class Store extends Component {
                     <div className="page-wrap">
                         <header className="main-header fixed-top">
                             <a href="#main-nav" className="open-menu">
-                                <i class="fa fa-align-justify" aria-hidden="true"></i>
+                                <i className="fa fa-align-justify" aria-hidden="true"></i>
                             </a>
                             <a href="#" className="close-menu">
                                 <i class="fa fa-align-left" aria-hidden="true"></i>

@@ -13,9 +13,17 @@ export default class TichDiem extends Component {
             visible: false,
             info: false,
             username:'',
-            msg:''
+            msg:'',
+            id:0
         }
     }   
+    updateStorage = () => {
+        var info = JSON.parse(localStorage.getItem('user'));
+        if(this.state.id===info[0].id){
+            info[0].point=this.state.point;
+            localStorage.setItem("user", JSON.stringify(info[0].point));
+        }
+    }
     
     getItems(keyword) {
         fetch('http://localhost:3000/users/tichdiem?keyword='+keyword)
@@ -33,11 +41,30 @@ export default class TichDiem extends Component {
             point,
             visible:true
         });
+        console.log(this.state.point);
+        e.preventDefault()
+        fetch('http://localhost:3000/admin/user', {
+          method: 'PUT',
+        //   headers: {
+        //     'Content-Type': 'application/json'
+        //   },
+          body: JSON.stringify({
+            id: this.state.id,
+            point: this.state.point
+          })
+        })
+          .then(response => response.json())
+          .then(item => {
+            alert(`Chỉnh sửa thành công `);
+            this.updateStorage;
+            // location.reload()
+          })
     }
     componentDidMount() {
         var info = JSON.parse(localStorage.getItem('user'));
         this.setState({
-            username:info[0].username
+            username:info[0].username,
+            id:info[0].id
         });
     }
     
