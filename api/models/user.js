@@ -1,12 +1,12 @@
 const Sequelize = require('sequelize');
 const db = require('../config/database');
 const User = db.define('User',{
-    // id: {
-    //     type: Sequelize.INTEGER,
-    //     allowNull: false,
-    //     primaryKey: true,
-    //     autoIncrement: true
-    // },
+    id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true
+    },
     username: {
         type: Sequelize.STRING(256),
         allowNull: false,
@@ -52,22 +52,5 @@ const User = db.define('User',{
       }
      
  });
- User.associate = models => {
-  // User.hasMany(models.Post, {
-  //   foreignKey: 'userId',
-  //   as: 'posts',
-  //   onDelete: 'CASCADE',
-  // });
-
-  // User.hasMany(models.Comment, {
-  //   foreignKey: 'userId',
-  //   as: 'comments',
-  //   onDelete: 'CASCADE',
-  // });
-  User.hasMany(models.Bill, {
-    foreignKey: 'userId',
-    as: 'bills',
-    onDelete: 'CASCADE',
-  });
-};
+ 
  module.exports = User;

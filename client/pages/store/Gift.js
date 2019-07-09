@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import BillStore from '../../components/store/Bill'
+import Gift from '../../components/Home/Manager_Gift'
 
-class Bill extends Component {
+class Gift extends Component {
     render() {
         return (
             <div>
-                <BillStore/>
+                <Gift/>
             </div>
         );
     }
 }
 
-export default Bill;
+export default Gift;

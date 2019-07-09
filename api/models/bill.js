@@ -15,12 +15,5 @@ const Bill = db.define('Bill',{
     }
     
  });
-//  Bill.associate = models => {
-//     Bill.belongsTo(models.User, {
-//         foreignKey: 'userId',
-//         as: 'id_store',
-//         onDelete: 'CASCADE',
-//       });
-//   };
  
  module.exports = Bill;

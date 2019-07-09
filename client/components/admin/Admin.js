@@ -23,12 +23,12 @@ export default class Admin extends Component {
                 <li>
                   <Link href="/admin/user"><a><i className="fas fa-list-ul "></i> Danh sách khách hàng</a></Link>
                 </li>
-                <li>
+                {/*<li>
                   <Link href="/admin/post"><a><i className="fas fa-pen-alt"></i> Bài review</a></Link>
                 </li>
                 <li>
                   <Link href="#"><a><i className="far fa-comment-alt "></i> Tích điểm</a></Link>
-                </li>
+                </li>*/}
               </ul>
             </li>
             <li>
@@ -37,13 +37,13 @@ export default class Admin extends Component {
                 <li>
                   <Link href="/admin/store"><a><i className="fas fa-list-ul "></i> Danh sách cửa hàng</a></Link>
                 </li>
-                <li>
-                  <Link href="/admin/post"><a><i className="fas fa-pen-alt "></i> Bài viết</a></Link>
-                </li>
               </ul>
             </li>
             <li>
-              <Link href="#"><a ><i className="fas fa-gifts"></i> Quản lý quà đổi thưởng</a></Link>
+              <Link href="/admin/bill"><a><i className="fas fa-gifts"></i> Quản lý hóa đơn</a></Link>
+            </li>
+            <li>
+              <Link href="/admin/gift"><a><i className="fas fa-gifts"></i> Quản lý quà đổi thưởng</a></Link>
             </li>
             <li>
               <Link href="/"><a onClick={this.logout}><i className="fas fa-sign-out-alt"></i> Đăng xuất</a></Link>

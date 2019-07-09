@@ -169,8 +169,8 @@ router.put('/admin/user', (req, res) => {
     phone: req.body.phone,
     email: req.body.email,
     password: req.body.password,
-    point: req.body.point,
-    updatedAt: update
+    updatedAt: update,
+    point: req.body.point
 
   }
   bcrypt.hash(dt.password, 10, (err, hash) => {

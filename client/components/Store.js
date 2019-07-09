@@ -23,6 +23,9 @@ class Store extends Component {
                                 <Link href="/store"><a><i className="fas fa-home fa-2x"></i></a></Link>
                             </li>
                             <li className="active">
+                                <Link href="/store/customer"><a><i className="fas fa-edit"></i> Khách hàng</a></Link>
+                            </li>
+                            {/*<li className="active">
                                 <Link href="#"><a><i className="fas fa-edit"></i> Bài viết</a></Link>
                             </li>
                             <li>
@@ -30,7 +33,7 @@ class Store extends Component {
                             </li>
                             <li className="active">
                                 <Link href="/store/bill"><a><i className="fas fa-edit"></i> Hóa đơn</a></Link>
-                            </li>
+                            </li>*/}
                             <li>
                                 <Link href="/store/profile"><a><i className="fas fa-store"></i> Thông tin cửa hàng</a></Link>
                             </li>
@@ -45,7 +48,7 @@ class Store extends Component {
                                 <i className="fa fa-align-justify" aria-hidden="true"></i>
                             </a>
                             <a href="#" className="close-menu">
-                                <i class="fa fa-align-left" aria-hidden="true"></i>
+                                <i className="fa fa-align-left" aria-hidden="true"></i>
                             </a>
                             <h2>Hệ thống tích điểm H&M</h2>
                         </header>

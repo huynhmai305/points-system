@@ -43,7 +43,7 @@ export default class TichDiem extends Component {
         });
         console.log(this.state.point);
         e.preventDefault()
-        fetch('http://localhost:3000/admin/user', {
+        fetch('http://localhost:3000/admin/user',{
           method: 'PUT',
         //   headers: {
         //     'Content-Type': 'application/json'
@@ -57,8 +57,9 @@ export default class TichDiem extends Component {
           .then(item => {
             alert(`Chỉnh sửa thành công `);
             this.updateStorage;
-            // location.reload()
+            //location.reload()
           })
+        //   .catch(err => console.log(err))
     }
     componentDidMount() {
         var info = JSON.parse(localStorage.getItem('user'));
@@ -78,7 +79,7 @@ export default class TichDiem extends Component {
                     <li className="breadcrumb-item">
                         <a href="/store">Tích điểm</a>
                     </li>
-                    <li className="breadcrumb-item disable">
+                    <li className="breadcrumb-item active">
                         <a href="#">Hóa đơn</a>
                     </li>
                 </ol>

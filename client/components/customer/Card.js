@@ -6,7 +6,7 @@ class Card extends Component {
             <div className="row " id="post-store">
                 <div className="col-4">
                     <div className="card">
-                        <img className="card-img-top" src="/images/logo_MinHouse.png" alt="logo_MinHouse" />
+                        <img className="card-img-top" src="/static/images/logo_MinHouse.png" alt="logo_MinHouse" />
                         <div className="card-body">
                             <h4 className="card-title">Min House</h4>
                             <p className="card-text">Thời trang 2HAND</p>
@@ -26,7 +26,7 @@ class Card extends Component {
                 </div>
                 <div className="col-4">
                     <div className="card">
-                        <img className="card-img-top" src="/images/logo_AZtea.png" alt="logo_AZtea" />
+                        <img className="card-img-top" src="/static/images/logo_AZtea.png" alt="logo_AZtea" />
                         <div className="card-body">
                             <h4 className="card-title">AZTea</h4>
                             <p className="card-text">Trà sữa</p>
@@ -46,7 +46,7 @@ class Card extends Component {
                 </div>
                 <div className="col-4">
                     <div className="card">
-                        <img className="card-img-top" src="/images/logo_FeelingTea.png" alt="logo_AZtea" />
+                        <img className="card-img-top" src="/static/images/logo_FeelingTea.png" alt="logo_AZtea" />
                         <div className="card-body">
                             <h4 className="card-title">Feeling Tea</h4>
                             <p className="card-text">Trà sữa</p>
@@ -66,7 +66,7 @@ class Card extends Component {
                 </div>
                 <div className="col-4">
                     <div className="card">
-                        <img className="card-img-top" src="/images/logo_KenzoShop.png" alt="logo_KenzoShop" />
+                        <img className="card-img-top" src="/static/images/logo_KenzoShop.png" alt="logo_KenzoShop" />
                         <div className="card-body">
                             <h4 className="card-title">Kenzo Shop</h4>
                             <p className="card-text">Thời trang nam, nữ, trẻ em</p>
@@ -86,7 +86,7 @@ class Card extends Component {
                 </div>
                 <div className="col-4">
                     <div className="card">
-                        <img className="card-img-top" src="/images/logo_Tocotoco.png" alt="logo_Tocotoco" />
+                        <img className="card-img-top" src="/static/images/logo_Tocotoco.png" alt="logo_Tocotoco" />
                         <div className="card-body">
                             <h4 className="card-title">Tocotoco</h4>
                             <p className="card-text">Trà sữa</p>
@@ -106,7 +106,7 @@ class Card extends Component {
                 </div>
                 <div className="col-4">
                     <div className="card">
-                        <img className="card-img-top" src="/images/logo_GDACollection.png" alt="logo_MinHouse" />
+                        <img className="card-img-top" src="/static/images/logo_GDACollection.png" alt="logo_MinHouse" />
                         <div className="card-body">
                             <h4 className="card-title">GDACollection</h4>
                             <p className="card-text">Thời trang công sở nữ</p>

@@ -22,7 +22,7 @@ class Customer extends Component {
                             <li>
                                 <Link href="/user"><a><i className="fas fa-home fa-2x"></i></a></Link>
                             </li>
-                            <li className="active">
+                            {/*<li className="active">
                                 <Link href="#"><a><i className="fas fa-thumbs-up"></i> Khám phá</a></Link>
                             </li>
                             <li>
@@ -36,7 +36,7 @@ class Customer extends Component {
                                     </li>
 
                                 </ul>
-                            </li>
+                            </li>*/}
                             <li>
                                 <Link href="#"><a><i className="fas fa-gifts"></i> Đổi quà</a></Link>
                             </li>
