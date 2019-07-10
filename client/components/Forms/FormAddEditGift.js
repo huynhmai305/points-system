@@ -4,6 +4,7 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 class FormAddEditGift extends Component {
     state = {
         id:0,
+        id_gift:0,
         title: '',
         content: '',
         point: '',
@@ -23,6 +24,7 @@ class FormAddEditGift extends Component {
             
           },
           body: JSON.stringify({
+            id_gift:0,
             title: this.state.title,
             content: this.state.content,
             point: this.state.point,

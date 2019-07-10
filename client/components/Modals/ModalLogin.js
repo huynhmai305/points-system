@@ -47,7 +47,7 @@ class ModalLogin extends Component {
                         <Login/>
                         <br />
                         <Button color="info" className="float-right" onClick={this.toggleNested}>Đăng ký</Button>
-                        <Modal isOpen={this.state.nestedModal} toggle={this.toggleNested} onClosed={this.state.closeAll ? this.toggle : undefined}>
+                        <Modal isOpen={this.state.nestedModal} toggle={this.toggleNested} onClosed={this.state.closeAll ? this.toggle : undefined} >
                             <ModalHeader toggle={this.toggle}>Đăng ký</ModalHeader>
                             <ModalBody>
                                 <Register/>

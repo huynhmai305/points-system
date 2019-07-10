@@ -149,20 +149,6 @@ class Register extends Component {
                     </Col>
                 </Row>
                 <FormGroup>
-                    <Input type="file"
-                        name="picture"
-                        id="picture"
-                        className="form-control-file"
-                        placeholder="Nhập email"
-                        encType="multipart/form-data"
-                        accept="image/*" 
-                        onChange={this.onChange}
-                        value={this.state.picture}
-
-                    />
-                    <FormText>Chọn ảnh đại diện</FormText>
-                </FormGroup>
-                <FormGroup>
                     <Button color="success">Đăng ký</Button>
                 </FormGroup>
             </Form>

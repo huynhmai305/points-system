@@ -9,6 +9,8 @@ class DataTable extends Component {
         <tr key={item.id}>
           <td scope="row">{item.id}</td>
           <td>{item.total}</td>
+          <td>{item.id_user}</td>
+          <td>{item.User.username}</td>
           <td>{dateFormat(item.createdAt, "dddd, mmmm dS, yyyy, h:MM:ss TT")}</td>
         </tr>
         )
@@ -20,6 +22,8 @@ class DataTable extends Component {
           <tr>
             <th>#</th>
             <th>Tổng tiền</th>
+            <th>Mã khách hàng</th>
+            <th>Tên khách hàng</th>
             <th>Ngày tạo</th>
           </tr>
         </thead>

@@ -15,7 +15,7 @@ class Manager_Gift extends Component {
         }
     }
     getItems(keyword) {
-        let url = 'http://localhost:3000/users/gift/';
+        let url = 'http://localhost:3000/users/gift/'+this.state.id_getData;
         if (keyword.length > 0) {
             url = `${url}?keyword=${keyword}`
         }

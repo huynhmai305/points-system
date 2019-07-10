@@ -4,17 +4,19 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 class AddEditForm extends React.Component {
   state = {
     id:'',
-    total: 0,
-    id_store: 0,
-    point: 0
+    total: 0
   }
 
   onChange = e => {
     this.setState({[e.target.name]: e.target.value})
   }
+  TichDiem = (e) => {
+      var point=this.state.total/1000;
+      console.log(point)
+  }
 
   submitFormAdd = e => {
-    var point
+    console.log(this.props.id_user)
     e.preventDefault()
     fetch('http://localhost:3000/users/bill', {
       method: 'POST',
@@ -24,20 +26,14 @@ class AddEditForm extends React.Component {
       body: JSON.stringify({
         id: this.state.id,
         total: this.state.total,
-        id_store: this.state.id_store,
+        id_user: this.props.id_user
       })
     })
     .then(response => response.json())
     .then(item => {
       alert(`Thêm thành công`);
       location.reload()
-    })
-   
-  }
-  componentDidMount() {
-    var info = JSON.parse(localStorage.getItem('user'))
-    var id_store = info[0].id
-    this.setState({id_store})
+    })   
   }
 
   render() {
@@ -52,13 +48,8 @@ class AddEditForm extends React.Component {
           <Input type="number" name="total" id="total" onChange={this.onChange} value={this.state.total}  required/>
         </FormGroup>
         <FormGroup>
-          <Label for="phone">Số điện thoại khách hàng (nếu có):</Label>
-          <Input type="tel" name="phone" id="phone" onChange={this.onChange} value={this.state.phone}  placeholder="ex.0123456789" />
-        </FormGroup>
-        <FormGroup>
-          <Button color="success">Submit</Button>
-        </FormGroup>
-        
+          <Button color="success">Tích điểm</Button>
+        </FormGroup>       
       </Form>
     );
   }

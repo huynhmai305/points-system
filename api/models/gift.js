@@ -18,11 +18,15 @@ const Gift = db.define('Gift',{
        },
       content: {
         type: Sequelize.STRING(256),
-        allowNull: true,
+        allowNull: false,
       },
       id_store: {
         type: Sequelize.INTEGER,
         allowNull: false,       
+      },
+      id_user:{
+        type: Sequelize.INTEGER,
+        allowNull: true
       }
  });
  

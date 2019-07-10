@@ -44,7 +44,7 @@ class Customer extends Component {
                                 <Link href="/user/profile"><a><i className="fas fa-user"></i> Cá nhân</a></Link>
                             </li>
                             <li>
-                                <Link href="/"><a onClick={this.logout}><i className="fas fa-sign-out-alt"></i> Đăng xuất</a></Link>
+                                <Link href="/"><a onClick={this.logout}><i className="fas fa-power-off"></i> Đăng xuất</a></Link>
                             </li>
                         </ul>
                     </nav>

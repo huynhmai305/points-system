@@ -35,7 +35,7 @@ class DataTable extends Component {
         <tr key={item.id}>
           <th scope="row">{item.id}</th>
           <td>{item.username}</td>
-          <td>{dateFormat(item.birthday, " mmmm dS, yyyy")}</td>
+          <td>{dateFormat(item.birthday, "isoDate")}</td>
           <td>{item.address}</td>
           <td>{item.phone}</td>
           <td>{item.email}</td>

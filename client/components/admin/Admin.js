@@ -40,13 +40,13 @@ export default class Admin extends Component {
               </ul>
             </li>
             <li>
-              <Link href="/admin/bill"><a><i className="fas fa-gifts"></i> Quản lý hóa đơn</a></Link>
+              <Link href="/admin/bill"><a><i className="fas fa-money-bill-alt"></i> Quản lý hóa đơn</a></Link>
             </li>
             <li>
               <Link href="/admin/gift"><a><i className="fas fa-gifts"></i> Quản lý quà đổi thưởng</a></Link>
             </li>
             <li>
-              <Link href="/"><a onClick={this.logout}><i className="fas fa-sign-out-alt"></i> Đăng xuất</a></Link>
+              <Link href="/"><a onClick={this.logout}><i className="fas fa-power-off"></i> Đăng xuất</a></Link>
             </li>
           </ul>
         </nav>

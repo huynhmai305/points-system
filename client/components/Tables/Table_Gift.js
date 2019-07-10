@@ -33,7 +33,7 @@ class DataTable extends Component {
     const items = this.props.items.map(item => {
       return (
         <tr key={item.id}>
-          <th scope="row">{item.id}</th>
+          <th scope="row">{item.id_gift}</th>
           <td>{item.title}</td>
           <td>{item.content}</td>
           <td>{item.point}</td>

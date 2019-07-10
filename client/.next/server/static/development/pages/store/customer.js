@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -104,22 +104,48 @@ module.exports =
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/json/stringify */ "./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js");
 /* harmony import */ var _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! reactstrap */ "reactstrap");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime-corejs2/helpers/esm/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! reactstrap */ "reactstrap");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_9__);
+
+
+
+
+
+
 
 
 var _jsxFileName = "D:\\TichDiem\\client\\components\\Forms\\FormAddEdit.js";
 
 
 
-class AddEditForm extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
-  constructor(...args) {
-    super(...args);
+var AddEditForm =
+/*#__PURE__*/
+function (_React$Component) {
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__["default"])(AddEditForm, _React$Component);
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(this, "state", {
+  function AddEditForm() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, AddEditForm);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__["default"])(this, (_getPrototypeOf2 = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__["default"])(AddEditForm)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "state", {
       id: 0,
       username: '',
       birthday: '',
@@ -130,35 +156,36 @@ class AddEditForm extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
       role: 1
     });
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(this, "onChange", e => {
-      this.setState({
-        [e.target.name]: e.target.value
-      });
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "onChange", function (e) {
+      _this.setState(Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])({}, e.target.name, e.target.value));
     });
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(this, "submitFormAdd", e => {
-      e.preventDefault();
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "submitFormAdd", function (e) {
+      e.preventDefault(); // console.log(this.state.role)
+
       fetch('http://localhost:3000/admin/user', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default()({
-          username: this.state.username,
-          birthday: this.state.birthday,
-          address: this.state.address,
-          phone: this.state.phone,
-          email: this.state.email,
-          password: this.state.password,
-          role: this.state.role
+          username: _this.state.username,
+          birthday: _this.state.birthday,
+          address: _this.state.address,
+          phone: _this.state.phone,
+          email: _this.state.email,
+          password: _this.state.password,
+          role: _this.state.role
         })
-      }).then(response => response.json()).then(item => {
-        alert(`Thêm thành công`);
+      }).then(function (response) {
+        return response.json();
+      }).then(function (item) {
+        alert("Th\xEAm th\xE0nh c\xF4ng");
         location.reload();
       });
     });
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(this, "submitFormEdit", e => {
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "submitFormEdit", function (e) {
       e.preventDefault();
       fetch('http://localhost:3000/admin/user', {
         method: 'PUT',
@@ -166,273 +193,281 @@ class AddEditForm extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component
           'Content-Type': 'application/json'
         },
         body: _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default()({
-          id: this.state.id,
-          username: this.state.username,
-          birthday: this.state.birthday,
-          address: this.state.address,
-          phone: this.state.phone,
-          email: this.state.email,
-          password: this.state.password,
-          role: this.state.role
+          id: _this.state.id,
+          username: _this.state.username,
+          birthday: _this.state.birthday,
+          address: _this.state.address,
+          phone: _this.state.phone,
+          email: _this.state.email,
+          password: _this.state.password,
+          role: _this.state.role
         })
-      }).then(response => response.json()).then(item => {
-        alert(`Chỉnh sửa thành công id: ${this.state.id}`);
+      }).then(function (response) {
+        return response.json();
+      }).then(function (item) {
+        alert("Ch\u1EC9nh s\u1EEDa th\xE0nh c\xF4ng id: ".concat(_this.state.id));
         location.reload();
       });
     });
+
+    return _this;
   }
 
-  componentDidMount() {
-    // if item exists, populate the state with proper data
-    if (this.props.item) {
-      const {
-        id,
-        username,
-        birthday,
-        address,
-        phone,
-        email,
-        password,
-        role
-      } = this.props.item;
-      this.setState({
-        id,
-        username,
-        birthday,
-        address,
-        phone,
-        email,
-        password,
-        role
-      });
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(AddEditForm, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      // if item exists, populate the state with proper data
+      if (this.props.item) {
+        var _this$props$item = this.props.item,
+            id = _this$props$item.id,
+            username = _this$props$item.username,
+            birthday = _this$props$item.birthday,
+            address = _this$props$item.address,
+            phone = _this$props$item.phone,
+            email = _this$props$item.email,
+            password = _this$props$item.password,
+            role = _this$props$item.role;
+        this.setState({
+          id: id,
+          username: username,
+          birthday: birthday,
+          address: address,
+          phone: phone,
+          email: email,
+          password: password,
+          role: role
+        });
+      }
     }
-  }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Form"], {
+        onSubmit: this.props.item ? this.submitFormEdit : this.submitFormAdd,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 82
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["FormGroup"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 83
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Label"], {
+        for: "username",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 84
+        },
+        __self: this
+      }, "H\u1ECD t\xEAn"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Input"], {
+        type: "text",
+        name: "username",
+        id: "username",
+        onChange: this.onChange,
+        value: this.state.username === null ? '' : this.state.username,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 85
+        },
+        __self: this
+      })), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["FormGroup"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 87
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Label"], {
+        for: "birthday",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 88
+        },
+        __self: this
+      }, "Ng\xE0y sinh"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Input"], {
+        type: "date",
+        name: "birthday",
+        id: "birthday",
+        onChange: this.onChange,
+        value: this.state.birthday === null ? '' : this.state.birthday,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 89
+        },
+        __self: this
+      })), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["FormGroup"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 91
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Label"], {
+        for: "address",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 92
+        },
+        __self: this
+      }, "\u0110\u1ECBa ch\u1EC9"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Input"], {
+        type: "text",
+        name: "address",
+        id: "address",
+        onChange: this.onChange,
+        value: this.state.address === null ? '' : this.state.address,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 93
+        },
+        __self: this
+      })), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["FormGroup"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 95
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Label"], {
+        for: "phone",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 96
+        },
+        __self: this
+      }, "S\u1ED1 \u0111i\u1EC7n tho\u1EA1i"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Input"], {
+        type: "tel",
+        name: "phone",
+        id: "phone",
+        onChange: this.onChange,
+        value: this.state.phone === null ? '' : this.state.phone,
+        placeholder: "ex.0123456789",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 97
+        },
+        __self: this
+      })), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["FormGroup"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 99
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Label"], {
+        for: "email",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 100
+        },
+        __self: this
+      }, "Email"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Input"], {
+        type: "email",
+        name: "email",
+        id: "email",
+        onChange: this.onChange,
+        value: this.state.email === null ? '' : this.state.email,
+        placeholder: "ex.mail@gmail.com",
+        required: true,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 101
+        },
+        __self: this
+      })), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["FormGroup"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 103
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Label"], {
+        for: "password",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 104
+        },
+        __self: this
+      }, "Password"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Input"], {
+        type: "text",
+        name: "password",
+        id: "password",
+        onChange: this.onChange,
+        value: this.state.password === null ? '' : this.state.password,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 105
+        },
+        __self: this
+      })), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["FormGroup"], {
+        check: true,
+        inline: true,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 107
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Label"], {
+        check: true,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 108
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Input"], {
+        type: "radio",
+        name: "role",
+        onChange: this.onChange,
+        value: 1,
+        checked: this.state.role === 1 ? true : false,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 109
+        },
+        __self: this
+      }), "C\u1EEDa h\xE0ng")), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["FormGroup"], {
+        check: true,
+        inline: true,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 112
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Label"], {
+        check: true,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 113
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Input"], {
+        type: "radio",
+        name: "role",
+        id: "role2",
+        onChange: this.onChange,
+        value: 2,
+        checked: this.state.role === 2 ? true : false,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 114
+        },
+        __self: this
+      }), "Kh\xE1ch h\xE0ng")), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["FormGroup"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 117
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Button"], {
+        color: "success",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 118
+        },
+        __self: this
+      }, "Submit")));
+    }
+  }]);
 
-  render() {
-    return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Form"], {
-      onSubmit: this.props.item ? this.submitFormEdit : this.submitFormAdd,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 81
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["FormGroup"], {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 82
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Label"], {
-      for: "username",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 83
-      },
-      __self: this
-    }, "H\u1ECD t\xEAn"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Input"], {
-      type: "text",
-      name: "username",
-      id: "username",
-      onChange: this.onChange,
-      value: this.state.username === null ? '' : this.state.username,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 84
-      },
-      __self: this
-    })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["FormGroup"], {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 86
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Label"], {
-      for: "birthday",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 87
-      },
-      __self: this
-    }, "Ng\xE0y sinh"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Input"], {
-      type: "date",
-      name: "birthday",
-      id: "birthday",
-      onChange: this.onChange,
-      value: this.state.birthday === null ? '' : this.state.birthday,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 88
-      },
-      __self: this
-    })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["FormGroup"], {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 90
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Label"], {
-      for: "address",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 91
-      },
-      __self: this
-    }, "\u0110\u1ECBa ch\u1EC9"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Input"], {
-      type: "text",
-      name: "address",
-      id: "address",
-      onChange: this.onChange,
-      value: this.state.address === null ? '' : this.state.address,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 92
-      },
-      __self: this
-    })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["FormGroup"], {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 94
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Label"], {
-      for: "phone",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 95
-      },
-      __self: this
-    }, "S\u1ED1 \u0111i\u1EC7n tho\u1EA1i"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Input"], {
-      type: "tel",
-      name: "phone",
-      id: "phone",
-      onChange: this.onChange,
-      value: this.state.phone === null ? '' : this.state.phone,
-      placeholder: "ex.0123456789",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 96
-      },
-      __self: this
-    })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["FormGroup"], {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 98
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Label"], {
-      for: "email",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 99
-      },
-      __self: this
-    }, "Email"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Input"], {
-      type: "email",
-      name: "email",
-      id: "email",
-      onChange: this.onChange,
-      value: this.state.email === null ? '' : this.state.email,
-      placeholder: "ex.mail@gmail.com",
-      required: true,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 100
-      },
-      __self: this
-    })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["FormGroup"], {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 102
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Label"], {
-      for: "password",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 103
-      },
-      __self: this
-    }, "Password"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Input"], {
-      type: "text",
-      name: "password",
-      id: "password",
-      onChange: this.onChange,
-      value: this.state.password === null ? '' : this.state.password,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 104
-      },
-      __self: this
-    })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["FormGroup"], {
-      check: true,
-      inline: true,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 106
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Label"], {
-      check: true,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 107
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Input"], {
-      type: "radio",
-      name: "role",
-      onChange: this.onChange,
-      value: 1,
-      checked: this.state.role === 1 ? true : false,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 108
-      },
-      __self: this
-    }), "C\u1EEDa h\xE0ng")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["FormGroup"], {
-      check: true,
-      inline: true,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 111
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Label"], {
-      check: true,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 112
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Input"], {
-      type: "radio",
-      name: "role",
-      id: "role2",
-      onChange: this.onChange,
-      value: 2,
-      checked: this.state.role === 2 ? true : false,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 113
-      },
-      __self: this
-    }), "Kh\xE1ch h\xE0ng")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["FormGroup"], {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 116
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
-      color: "success",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 117
-      },
-      __self: this
-    }, "Submit")));
-  }
-
-}
+  return AddEditForm;
+}(react__WEBPACK_IMPORTED_MODULE_8___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (AddEditForm);
 
@@ -892,6 +927,33 @@ function (_Component) {
         },
         __self: this
       }), " Kh\xE1ch h\xE0ng"))), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("li", {
+        className: "active",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 34
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_9___default.a, {
+        href: "/store/gift",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 35
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("a", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 35
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("i", {
+        className: "fas fa-gifts",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 35
+        },
+        __self: this
+      }), " Qu\xE0 \u0111\u1ED5i th\u01B0\u1EDFng"))), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("li", {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 37
@@ -938,7 +1000,7 @@ function (_Component) {
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("i", {
-        className: "fas fa-sign-out-alt",
+        className: "fas fa-power-off",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 41
@@ -1014,10 +1076,10 @@ function (_Component) {
 
 /***/ }),
 
-/***/ "./components/Tables/DataTable.js":
-/*!****************************************!*\
-  !*** ./components/Tables/DataTable.js ***!
-  \****************************************/
+/***/ "./components/Tables/DataCustomer.js":
+/*!*******************************************!*\
+  !*** ./components/Tables/DataCustomer.js ***!
+  \*******************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1039,6 +1101,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Modals_Modal__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../Modals/Modal */ "./components/Modals/Modal.js");
 /* harmony import */ var dateformat__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! dateformat */ "dateformat");
 /* harmony import */ var dateformat__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(dateformat__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_12__);
 
 
 
@@ -1047,7 +1111,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "D:\\TichDiem\\client\\components\\Tables\\DataTable.js";
+var _jsxFileName = "D:\\TichDiem\\client\\components\\Tables\\DataCustomer.js";
+
 
 
 
@@ -1058,18 +1123,12 @@ var DataTable =
 function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__["default"])(DataTable, _Component);
 
-  function DataTable() {
-    var _getPrototypeOf2;
-
+  function DataTable(props) {
     var _this;
 
     Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, DataTable);
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__["default"])(this, (_getPrototypeOf2 = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__["default"])(DataTable)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__["default"])(DataTable).call(this, props));
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "deleteItem", function (id) {
       var confirmDelete = window.confirm('Bạn có chắc muốn xóa không?');
@@ -1095,10 +1154,21 @@ function (_Component) {
       }
     });
 
+    _this.state = {
+      tooltipOpen: false
+    };
+    _this.toggle = _this.toggle.bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this));
     return _this;
   }
 
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(DataTable, [{
+    key: "toggle",
+    value: function toggle() {
+      this.setState({
+        tooltipOpen: !this.state.tooltipOpen
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -1108,65 +1178,71 @@ function (_Component) {
           key: item.id,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 35
+            lineNumber: 48
           },
           __self: this
         }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("th", {
           scope: "row",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 36
+            lineNumber: 49
           },
           __self: this
         }, item.id), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("td", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 37
+            lineNumber: 50
           },
           __self: this
         }, item.username), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("td", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 38
+            lineNumber: 51
           },
           __self: this
-        }, dateformat__WEBPACK_IMPORTED_MODULE_11___default()(item.birthday, " mmmm dS, yyyy")), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("td", {
+        }, dateformat__WEBPACK_IMPORTED_MODULE_11___default()(item.birthday, "isoDate")), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("td", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 39
+            lineNumber: 52
           },
           __self: this
         }, item.address), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("td", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 40
+            lineNumber: 53
           },
           __self: this
         }, item.phone), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("td", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 41
+            lineNumber: 54
           },
           __self: this
         }, item.email), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("td", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 42
+            lineNumber: 55
+          },
+          __self: this
+        }, item.point), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("td", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 56
           },
           __self: this
         }, dateformat__WEBPACK_IMPORTED_MODULE_11___default()(item.createdAt, "dddd, mmmm dS, yyyy, h:MM:ss TT")), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("td", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 43
+            lineNumber: 57
           },
           __self: this
         }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
           style: {
-            width: "100px"
+            width: "150px"
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 44
+            lineNumber: 58
           },
           __self: this
         }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_Modals_Modal__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -1175,7 +1251,7 @@ function (_Component) {
           updateState: _this2.props.updateState,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 45
+            lineNumber: 59
           },
           __self: this
         }), ' ', react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Button"], {
@@ -1185,97 +1261,137 @@ function (_Component) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 47
+            lineNumber: 61
           },
           __self: this
         }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("i", {
           className: "fas fa-trash-alt",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 47
+            lineNumber: 61
           },
           __self: this
-        })))));
+        })), " ", ' ', react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_12___default.a, {
+          href: "/store/billofcustomer?id_user=" + item.id,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 62
+          },
+          __self: this
+        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Button"], {
+          color: "success",
+          id: "bill",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 62
+          },
+          __self: this
+        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("i", {
+          className: "fas fa-money-bill-alt",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 62
+          },
+          __self: this
+        }))), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Tooltip"], {
+          placement: "top",
+          isOpen: _this2.state.tooltipOpen,
+          autohide: false,
+          target: "bill",
+          toggle: _this2.toggle,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 63
+          },
+          __self: this
+        }, "Th\xEAm h\xF3a \u0111\u01A1n t\xEDch \u0111i\u1EC3m"))));
       });
       return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Table"], {
         responsive: true,
         hover: true,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 55
+          lineNumber: 73
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("thead", {
         color: "primary",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 56
+          lineNumber: 74
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("tr", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 57
+          lineNumber: 75
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("th", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 58
+          lineNumber: 76
         },
         __self: this
       }, "#"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("th", {
-        width: '15%',
+        width: '20%',
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 59
+          lineNumber: 77
         },
         __self: this
       }, "H\u1ECD t\xEAn"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("th", {
         width: '15%',
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 60
+          lineNumber: 78
         },
         __self: this
       }, "Ng\xE0y sinh"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("th", {
-        width: '25%',
+        width: '15%',
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 61
+          lineNumber: 79
         },
         __self: this
       }, "\u0110\u1ECBa ch\u1EC9"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("th", {
         width: '15%',
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 62
+          lineNumber: 80
         },
         __self: this
       }, "\u0110i\u1EC7n tho\u1EA1i"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("th", {
         width: '10%',
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 63
+          lineNumber: 81
         },
         __self: this
       }, "Email"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("th", {
+        width: '5%',
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 82
+        },
+        __self: this
+      }, "\u0110i\u1EC3m"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("th", {
         width: '30%',
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 64
+          lineNumber: 83
         },
         __self: this
       }, "Ng\xE0y \u0111\u0103ng k\xFD"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("th", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 65
+          lineNumber: 84
         },
         __self: this
       }))), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("tbody", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 68
+          lineNumber: 87
         },
         __self: this
       }, items));
@@ -1443,7 +1559,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! reactstrap */ "reactstrap");
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _Modals_Modal__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../Modals/Modal */ "./components/Modals/Modal.js");
-/* harmony import */ var _Tables_DataTable__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../Tables/DataTable */ "./components/Tables/DataTable.js");
+/* harmony import */ var _Tables_DataCustomer__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../Tables/DataCustomer */ "./components/Tables/DataCustomer.js");
 /* harmony import */ var react_csv__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-csv */ "react-csv");
 /* harmony import */ var react_csv__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(react_csv__WEBPACK_IMPORTED_MODULE_11__);
 /* harmony import */ var _Search__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../Search */ "./components/Search.js");
@@ -1638,7 +1754,7 @@ function (_Component) {
           lineNumber: 66
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_Tables_DataTable__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_Tables_DataCustomer__WEBPACK_IMPORTED_MODULE_10__["default"], {
         items: this.state.items,
         updateState: this.updateState,
         deleteItemFromState: this.deleteItemFromState,
@@ -2537,7 +2653,7 @@ function (_Component) {
 
 /***/ }),
 
-/***/ 5:
+/***/ 4:
 /*!***************************************!*\
   !*** multi ./pages/store/customer.js ***!
   \***************************************/

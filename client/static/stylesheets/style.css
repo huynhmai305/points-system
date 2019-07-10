@@ -5,272 +5,273 @@
  */
  
  
-  .carousel-item {
-    height: 93vh;
-    min-height: 350px;
-    background: no-repeat center center scroll;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-  }
-  
-  .portfolio-item {
-    margin-bottom: 30px;
-  }
-  .content{
-    margin-top: 10px;
-  }
- 
+ .carousel-item {
+  height: 93vh;
+  min-height: 350px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.portfolio-item {
+  margin-bottom: 30px;
+}
+.content{
+  margin-top: 10px;
+}
 
 
-  .dropdown-item{
-    color: black;
-    background-color: rgb(177, 226, 235);
-  }
-  .sanpham{
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    grid-gap: 1em;
-  }
-  .card-header{
-    background-color:#28a745;
-  }
-  .carousel-caption{
-    color: yellow;
-    text-shadow: 0 0 0.5em black;
-  }
-  .santander-personnalite-gold{
-    background: yellow;
-  }
-  
-  .login{
-    display: flex;
-    justify-content: center;
-    background: url('/static/images/nen1.jpg') no-repeat; width: 100%; height: 100vh;
-  }
-  .login input{
-    border-radius: 25px;
-  }
-  .form-container{
-    border:0px solid #fff; padding: 50px 60px; margin-top: 20vh;
-    -webkit-box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
-    -moz-box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
-    box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
-    color: #fff;
-  }
-  .form-register{
-    border:0px solid #fff; padding: 30px 40px; margin-top: 10vh;
-    -webkit-box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
-    -moz-box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
-    box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
-    color: #fff;
-  }
-  .form-name{
-    color:#fff;
-  }
-  body {
-    /* background: url(/images/nen1.jpg) no-repeat center center fixed; */
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-  }
-  
-  .content {
-    text-align: center;
-    color: #fff;
-    margin: 70px auto;
-  
-    width: 100%;
-    max-width: 960px;
-    border-radius: 5px;
-    padding-bottom: 32px;
-  }
-  .foot{
-    margin: 0;
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-  }
-  .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    padding-top: 60px;
+
+.dropdown-item{
+  color: black;
+  background-color: rgb(177, 226, 235);
+}
+.sanpham{
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-gap: 1em;
+}
+.card-header{
+  background-color:#28a745;
+}
+.carousel-caption{
+  color: yellow;
+  text-shadow: 0 0 0.5em black;
+}
+.santander-personnalite-gold{
+  background: yellow;
+}
+
+.login{
+  display: flex;
+  justify-content: center;
+  background: url('/static/images/nen1.jpg') no-repeat; width: 100%; height: 100vh;
+}
+.login input{
+  border-radius: 25px;
+}
+.form-container{
+  border:0px solid #fff; padding: 50px 60px; margin-top: 20vh;
+  -webkit-box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
+  -moz-box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
+  box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
+  color: #fff;
+}
+.form-register{
+  border:0px solid #fff; padding: 30px 40px; margin-top: 10vh;
+  -webkit-box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
+  -moz-box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
+  box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
+  color: #fff;
+}
+.form-name{
+  color:#fff;
+}
+body {
+  /* background: url(/images/nen1.jpg) no-repeat center center fixed; */
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.content {
+  text-align: center;
+  color: #fff;
+  margin: 70px auto;
+
+  width: 100%;
+  max-width: 960px;
+  border-radius: 5px;
+  padding-bottom: 32px;
+}
+.foot{
+  margin: 0;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
 }
 
 /* Modal Content/Box */
 .modal-content {
-    background-color: #fefefe;
-    margin: 5px auto; /* 15% from the top and centered */
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+  background-color: #fefefe;
+  margin: 5px auto; /* 15% from the top and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
 .close {
-    /* Position it in the top right corner outside of the modal */
-    position: absolute;
-    right: 25px;
-    top: 0; 
-    color: #000;
-    font-size: 35px;
-    font-weight: bold;
+  /* Position it in the top right corner outside of the modal */
+  position: absolute;
+  right: 25px;
+  top: 0; 
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
 }
 
 /* Close button on hover */
 .close:hover,
 .close:focus {
-    color: red;
-    cursor: pointer;
+  color: red;
+  cursor: pointer;
 }
 
 /* Add Zoom Animation */
 .animate {
-    -webkit-animation: animatezoom 0.6s;
-    animation: animatezoom 0.6s
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
 }
 
 @-webkit-keyframes animatezoom {
-    from {-webkit-transform: scale(0)} 
-    to {-webkit-transform: scale(1)}
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
 }
 
 @keyframes animatezoom {
-    from {transform: scale(0)} 
-    to {transform: scale(1)}
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
 }
 .icon-bar {
-  width: 90px; /* Set a specific width */
-  background-color: #555; /* Dark-grey background */
+width: 90px; /* Set a specific width */
+background-color: #555; /* Dark-grey background */
 }
 
 .icon-bar a {
-  display: block; /* Make the links appear below each other instead of side-by-side */
-  text-align: center; /* Center-align text */
-  padding: 16px; /* Add some padding */
-  transition: all 0.3s ease; /* Add transition for hover effects */
-  color: white; /* White text color */
-  font-size: 36px; /* Increased font-size */
+display: block; /* Make the links appear below each other instead of side-by-side */
+text-align: center; /* Center-align text */
+padding: 16px; /* Add some padding */
+transition: all 0.3s ease; /* Add transition for hover effects */
+color: white; /* White text color */
+font-size: 36px; /* Increased font-size */
 }
 
 .icon-bar a:hover {
-  background-color: #000; /* Add a hover color */
+background-color: #000; /* Add a hover color */
 }
 
 /* .active {
-  background-color: #4CAF50; 
+background-color: #4CAF50; 
 } */
 .nav{
-  transform: translateX(200px)
+transform: translateX(200px)
 }
 
 /* .head{
-  background-image: -webkit-linear-gradient(45deg, #FF5A00 0%, #FFAE00 100%);
-    background-image: -moz-linear-gradient(45deg, #FF5A00 0%, #FFAE00 100%);
-    background-image: -ms-linear-gradient(45deg, #FF5A00 0%, #FFAE00 100%);
-    background-image: -o-linear-gradient(45deg, #FF5A00 0%, #FFAE00 100%);
-    background-image: linear-gradient(45deg, #FF5A00 0%, #FFAE00 100%);
+background-image: -webkit-linear-gradient(45deg, #FF5A00 0%, #FFAE00 100%);
+  background-image: -moz-linear-gradient(45deg, #FF5A00 0%, #FFAE00 100%);
+  background-image: -ms-linear-gradient(45deg, #FF5A00 0%, #FFAE00 100%);
+  background-image: -o-linear-gradient(45deg, #FF5A00 0%, #FFAE00 100%);
+  background-image: linear-gradient(45deg, #FF5A00 0%, #FFAE00 100%);
 } */
 div.transbox{
-  text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
 }
 .circle{
-  border-radius: 25px;
-  
+border-radius: 25px;
+
 }
 .logo-client{
-  width: 200px;
-  height: 200px;
+width: 200px;
+height: 200px;
 }
 /*===== button search*/
 
 input[type=search] {
-  -webkit-appearance: textfield;
-  -webkit-box-sizing: content-box;
-  font-family: inherit;
-  font-size: 100%;
+-webkit-appearance: textfield;
+-webkit-box-sizing: content-box;
+font-family: inherit;
+font-size: 100%;
 }
 input::-webkit-search-decoration,
 input::-webkit-search-cancel-button {
-  display: none; /* remove the search and cancel icon */
+display: none; /* remove the search and cancel icon */
 }
 input[type=search] {
-  background: #ededed url(/static/images/search-icon.png) no-repeat 9px center;
-  border: solid 1px #ccc;
-  padding: 9px 10px 9px 32px;
-  width: 55px;
-   
-  -webkit-border-radius: 10em;
-  -moz-border-radius: 10em;
-  border-radius: 10em;
-   
-  -webkit-transition: all .5s;
-  -moz-transition: all .5s;
-  transition: all .5s;
+background: #ededed url(/static/images/search-icon.png) no-repeat 9px center;
+border: solid 1px #ccc;
+padding: 9px 10px 9px 32px;
+width: 55px;
+ 
+-webkit-border-radius: 10em;
+-moz-border-radius: 10em;
+border-radius: 10em;
+ 
+-webkit-transition: all .5s;
+-moz-transition: all .5s;
+transition: all .5s;
 }
 input[type=search]:focus {
-  width: 130px;
-  background-color: #fff;
-  border-color: #6dcff6;
-   
-  -webkit-box-shadow: 0 0 5px rgba(109,207,246,.5);
-  -moz-box-shadow: 0 0 5px rgba(109,207,246,.5);
-  box-shadow: 0 0 5px rgba(109,207,246,.5);
+width: 130px;
+background-color: #fff;
+border-color: #6dcff6;
+ 
+-webkit-box-shadow: 0 0 5px rgba(109,207,246,.5);
+-moz-box-shadow: 0 0 5px rgba(109,207,246,.5);
+box-shadow: 0 0 5px rgba(109,207,246,.5);
 }
 input:-moz-placeholder {
-  color: #999;
+color: #999;
 }
 input::-webkit-input-placeholder {
-  color: #999;
+color: #999;
 }
 #demo-b input[type=search] {
-  width: 15px;
-  padding-left: 10px;
-  color: transparent;
-  cursor: pointer;
+width: 15px;
+padding-left: 10px;
+color: transparent;
+cursor: pointer;
 }
 #demo-b input[type=search]:hover {
-  background-color: #fff;
+background-color: #fff;
 }
 #demo-b input[type=search]:focus {
-  width: 130px;
-  padding-left: 32px;
-  color: #000;
-  background-color: #fff;
-  cursor: auto;
+width: 130px;
+padding-left: 32px;
+color: #000;
+background-color: #fff;
+cursor: auto;
 }
+.modal-dialog {max-width: 700px !important;margin-top: -56px !important;}
 #demo-b input:-moz-placeholder {
-  color: transparent;
+color: transparent;
 }
 #demo-b input::-webkit-input-placeholder {
-  color: transparent;
+color: transparent;
 }
 /*====end search*/
 /* sửa madal nằm dưới body*/
 .modal{
-  background-color: rgba(0, 0, 0, 0.3);
+background-color: rgba(0, 0, 0, 0.3);
 }
 .modal-backdrop{
-  position: relative;
+position: relative;
 }
 /* .nav-item a:hover {
-  border-bottom: 3px solid white;
-  margin-bottom: 20px;
+border-bottom: 3px solid white;
+margin-bottom: 20px;
 }
 
 .nav-item a.active {
-  border-bottom: 3px solid white;
+border-bottom: 3px solid white;
 } */
 
 /*===end*/

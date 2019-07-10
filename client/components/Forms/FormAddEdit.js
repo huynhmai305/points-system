@@ -19,6 +19,7 @@ class AddEditForm extends React.Component {
 
   submitFormAdd = e => {
     e.preventDefault()
+    // console.log(this.state.role)
     fetch('http://localhost:3000/admin/user', {
       method: 'POST',
       headers: {

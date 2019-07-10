@@ -13,7 +13,9 @@ class Manager_Bill extends Component {
         }
     }
     getItems(keyword) {
-        let url = 'http://localhost:3000/users/bill/';
+        console.log(this.props.id_user)
+        // console.log(this.props.id_user)
+        let url = 'http://localhost:3000/users/bill/'+this.props.id_user;
         if (keyword.length > 0) {
             url = `${url}?keyword=${keyword}`
         }
@@ -40,10 +42,19 @@ class Manager_Bill extends Component {
                         </li>
                         <li className="breadcrumb-item active">Quản lý hóa đơn</li>
                     </ol>
+                    <Row>
+                    <label >Tên khách hàng:</label>
+                    <label></label> <br/>
+                    <label >Địa chỉ:</label>
+                    <label></label> <br/>
+                    <label >Số điện thoại:</label>
+                    <label></label> <br/>
+                    <label >Số điểm tính lũy:</label>
+                    <label></label> <br/>
+                    </Row>
                     <Row className="mb-5">
                         <Col md={6}>
                             <Search handlekeyword={this.onSearch}/>
-                           
                             <FormText>Nhập mã hóa đơn tìm kiếm</FormText>
                         </Col>
                         <Col md={{offset:2,size:4}}>

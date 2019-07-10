@@ -30,15 +30,15 @@ class Store extends Component {
                             </li>
                             <li>
                                 <Link href="#"><a><i className="fas fa-thumbs-up"></i> Bài review</a></Link>
-                            </li>
-                            <li className="active">
-                                <Link href="/store/bill"><a><i className="fas fa-edit"></i> Hóa đơn</a></Link>
                             </li>*/}
+                            <li className="active">
+                                <Link href="/store/gift"><a><i className="fas fa-gifts"></i> Quà đổi thưởng</a></Link>
+                            </li>
                             <li>
                                 <Link href="/store/profile"><a><i className="fas fa-store"></i> Thông tin cửa hàng</a></Link>
                             </li>
                             <li>
-                                <Link href="/"><a onClick={this.logout}><i className="fas fa-sign-out-alt"></i> Đăng xuất</a></Link>
+                                <Link href="/"><a onClick={this.logout}><i className="fas fa-power-off"></i> Đăng xuất</a></Link>
                             </li>
                         </ul>
                     </nav>

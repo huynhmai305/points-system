@@ -10,7 +10,7 @@ const Bill = db.define('Bill',{
         type: Sequelize.INTEGER,
         allowNull: false
       },
-    id_store: {
+    id_user: {
         type: Sequelize.INTEGER
     }
     
