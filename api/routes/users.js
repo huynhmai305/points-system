@@ -148,16 +148,6 @@ router.get('/gift', (req, res) => {
   }
 })
 
-
-
-
-
-
-
-
-
-
-
 //get gift with id_store
 router.get('/gift/:id', (req, res) => {
   if (req.query.keyword && req.query.keyword.length > 0) {
@@ -186,6 +176,32 @@ router.get('/gift/:id', (req, res) => {
   }
 })
 
+//get gift with id_user
+router.get('/gift/:id', (req, res) => {
+  Gift.findAll({
+    where: {
+      id_user:req.params.id
+    }
+  })
+  .then(result => {
+    res.send(result);
+  })
+  .catch(err => console.log(err))
+})
+
+//get gift with point condition for exchange point
+router.get('/gift/:point', (req,res) => {
+  Gift.findAll({
+    where:{
+      point: {
+        [Op.lte]:req.params.point 
+      }
+    }
+  })
+  .then(result => res.send(JSON.stringify(result)))
+  .catch(err => console.log(err))
+})
+
 //add gift
 router.post('/gift',(req, res) => {
   const data = {
@@ -193,11 +209,12 @@ router.post('/gift',(req, res) => {
     title: req.body.title,
     content: req.body.content,
     point: req.body.point,
-    id_store: req.body.id_store
+    id_store: req.body.id_store,
+    quantity: req.body.quantity
   };
-  let { id_gift,title, content, point, id_store } = data;
+  let { id_gift,title, content, point, id_store, quantity } = data;
   
-  Gift.create({id_gift, title, content, point, id_store })
+  Gift.create({id_gift, title, content, point, id_store, quantity })
   .then(result => {
     console.log(result)
     res.json(result);
@@ -222,6 +239,7 @@ router.delete('/gift', (req, res) => {
     })
     .catch(err => console.log(err))
 })
+
 //====update gift
 router.put('/gift', (req, res) => {
   const update = new Date();
@@ -230,6 +248,23 @@ router.put('/gift', (req, res) => {
     content: req.body.content,
     point: req.body.point,
     id_store: req.body.id_store,
+    quantity: req.body.quantity,
+    updatedAt: update
+  }
+    Gift.update(dt, { where: { id: req.body.id } })
+      .then(result => {
+        res.json(result);
+        res.sendStatus(200);
+      })
+      .catch(err => console.log(err))
+})
+
+//update gift after exchange gift
+router.put('/gift/exchangegift',(req,res) => {
+  const update = new Date();
+  var dt = {
+    id_user: req.body.id_user,
+    quantity: req.body.quantity_after,
     updatedAt: update
   }
     Gift.update(dt, { where: { id: req.body.id } })

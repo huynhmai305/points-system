@@ -48,7 +48,7 @@ class Manager_Gift extends Component {
                         <Col md={6}>
                             <Search handlekeyword={this.onSearch}/>
                         </Col>
-                        <Col md={{offset:3,size:3}}>
+                        <Col md={{offset:2,size:4}}>
                             <CSVLink
                                 filename={"dbGift.csv"}
                                 color="primary"

@@ -563,8 +563,8 @@ function (_Component) {
         __self: this
       })), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
         md: {
-          offset: 3,
-          size: 3
+          offset: 2,
+          size: 4
         },
         __source: {
           fileName: _jsxFileName,
@@ -744,13 +744,14 @@ function (_Component) {
           },
           __self: this
         }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("i", {
-          className: "fas fa-user-plus",
+          className: "fa fa-gift",
+          "aria-hidden": "true",
           __source: {
             fileName: _jsxFileName,
             lineNumber: 40
           },
           __self: this
-        }));
+        }, " Th\xEAm qu\xE0"));
         title = 'Thêm mới';
       }
 

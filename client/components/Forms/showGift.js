@@ -4,13 +4,15 @@ class showGift extends Component {
     render() {
         return (
             <div>
-               <div class="card text-white bg-primary">
-                 <img class="card-img-top" src="holder.js/100px180/" alt="">
-                 <div class="card-body">
-                   <h4 class="card-title">Title</h4>
-                   <p class="card-text">Text</p>
-                 </div>
-               </div> 
+                <Card>
+                    <CardHeader>{this.props.id_gift}</CardHeader>
+                    <CardBody>
+                        <CardTitle>{this.props.title}</CardTitle>
+                        <CardText>{this.props.content}</CardText>
+                        <Button>Lấy mã</Button>
+                    </CardBody>
+                    <CardFooter>{this.props.point}</CardFooter>
+                </Card>
             </div>
         );
     }

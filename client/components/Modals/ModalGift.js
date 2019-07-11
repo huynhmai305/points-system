@@ -37,7 +37,7 @@ class ModalForm extends Component {
                   color="success"
                   onClick={this.toggle}
                   style={{float: "left", marginRight:"10px"}}>
-                  <i className="fas fa-user-plus"></i>
+                  <i className="fa fa-gift" aria-hidden="true"> Thêm quà</i>
                 </Button>
         title = 'Thêm mới'
       }
