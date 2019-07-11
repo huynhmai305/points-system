@@ -153,7 +153,8 @@ function (_Component) {
       title: '',
       content: '',
       point: '',
-      id_store: ''
+      id_store: '',
+      quantity: 0
     });
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "onChange", function (e) {
@@ -174,7 +175,8 @@ function (_Component) {
           title: _this.state.title,
           content: _this.state.content,
           point: _this.state.point,
-          id_store: _this.state.id_store
+          id_store: _this.state.id_store,
+          quantity: _this.state.quantity
         })
       }).then(function (response) {
         return response.json();
@@ -197,7 +199,8 @@ function (_Component) {
           title: _this.state.title,
           content: _this.state.content,
           point: _this.state.point,
-          id_store: _this.state.id_store
+          id_store: _this.state.id_store,
+          quantity: _this.state.quantity
         })
       }).then(function (response) {
         return response.json();
@@ -220,13 +223,15 @@ function (_Component) {
             title = _this$props$item.title,
             content = _this$props$item.content,
             point = _this$props$item.point,
-            _id_store = _this$props$item.id_store;
+            _id_store = _this$props$item.id_store,
+            quantity = _this$props$item.quantity;
         this.setState({
           id: id,
           title: title,
           content: content,
           point: point,
-          id_store: _id_store
+          id_store: _id_store,
+          quantity: quantity
         });
       }
 
@@ -243,20 +248,20 @@ function (_Component) {
         onSubmit: this.props.item ? this.submitFormEdit : this.submitFormAdd,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 80
+          lineNumber: 83
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["FormGroup"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 81
+          lineNumber: 84
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Label"], {
         for: "title",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 82
+          lineNumber: 85
         },
         __self: this
       }, "Ti\xEAu \u0111\u1EC1"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Input"], {
@@ -267,20 +272,20 @@ function (_Component) {
         value: this.state.title === null ? '' : this.state.title,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 83
+          lineNumber: 86
         },
         __self: this
       })), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["FormGroup"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 85
+          lineNumber: 88
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Label"], {
         for: "content",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 86
+          lineNumber: 89
         },
         __self: this
       }, "N\u1ED9i dung"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Input"], {
@@ -291,20 +296,20 @@ function (_Component) {
         value: this.state.content === null ? '' : this.state.content,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 87
+          lineNumber: 90
         },
         __self: this
       })), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["FormGroup"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 89
+          lineNumber: 92
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Label"], {
         for: "point",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 90
+          lineNumber: 93
         },
         __self: this
       }, "\u0110i\u1EC3m"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Input"], {
@@ -315,20 +320,44 @@ function (_Component) {
         value: this.state.point === null ? '' : this.state.point,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 91
+          lineNumber: 94
         },
         __self: this
       })), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["FormGroup"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 93
+          lineNumber: 96
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Label"], {
+        for: "quantity",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 97
+        },
+        __self: this
+      }, "S\u1ED1 l\u01B0\u1EE3ng"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Input"], {
+        type: "number",
+        name: "quantity",
+        id: "quantity",
+        onChange: this.onChange,
+        value: this.state.quantity === null ? '' : this.state.quantity,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 98
+        },
+        __self: this
+      })), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["FormGroup"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 100
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Label"], {
         for: "id_store",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 94
+          lineNumber: 101
         },
         __self: this
       }, "M\xE3 c\u1EEDa h\xE0ng"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Input"], {
@@ -339,20 +368,20 @@ function (_Component) {
         value: this.state.id_store === null ? '' : this.state.id_store,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 95
+          lineNumber: 102
         },
         __self: this
       })), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["FormGroup"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 97
+          lineNumber: 104
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Button"], {
         color: "success",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 98
+          lineNumber: 105
         },
         __self: this
       }, "Submit")));
@@ -1019,22 +1048,28 @@ function (_Component) {
             lineNumber: 39
           },
           __self: this
-        }, item.point), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("td", {
+        }, item.quantity), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("td", {
           __source: {
             fileName: _jsxFileName,
             lineNumber: 40
           },
           __self: this
-        }, item.id_store), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("td", {
+        }, item.point), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("td", {
           __source: {
             fileName: _jsxFileName,
             lineNumber: 41
           },
           __self: this
-        }, dateformat__WEBPACK_IMPORTED_MODULE_11___default()(item.createdAt, "dddd, mmmm dS, yyyy, h:MM:ss TT")), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("td", {
+        }, item.id_store), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("td", {
           __source: {
             fileName: _jsxFileName,
             lineNumber: 42
+          },
+          __self: this
+        }, dateformat__WEBPACK_IMPORTED_MODULE_11___default()(item.createdAt, "dddd, mmmm dS, yyyy, h:MM:ss TT")), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("td", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 43
           },
           __self: this
         }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
@@ -1043,7 +1078,7 @@ function (_Component) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 43
+            lineNumber: 44
           },
           __self: this
         }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_Modals_ModalGift_js__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -1052,7 +1087,7 @@ function (_Component) {
           updateState: _this2.props.updateState,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 44
+            lineNumber: 45
           },
           __self: this
         }), ' ', react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Button"], {
@@ -1062,14 +1097,14 @@ function (_Component) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 46
+            lineNumber: 47
           },
           __self: this
         }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("i", {
           className: "fas fa-trash-alt",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 46
+            lineNumber: 47
           },
           __self: this
         })))));
@@ -1079,73 +1114,80 @@ function (_Component) {
         hover: true,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 54
+          lineNumber: 55
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("thead", {
         color: "primary",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 55
+          lineNumber: 56
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("tr", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 56
+          lineNumber: 57
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("th", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 57
+          lineNumber: 58
         },
         __self: this
       }, "#"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("th", {
         width: '15%',
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 58
+          lineNumber: 59
         },
         __self: this
       }, "Ti\xEAu \u0111\u1EC1"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("th", {
         width: '15%',
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 59
-        },
-        __self: this
-      }, "N\u1ED9i dung"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("th", {
-        width: '25%',
-        __source: {
-          fileName: _jsxFileName,
           lineNumber: 60
         },
         __self: this
-      }, "\u0110i\u1EC3m \u0111\u1ED5i"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("th", {
+      }, "N\u1ED9i dung"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("th", {
         width: '15%',
         __source: {
           fileName: _jsxFileName,
           lineNumber: 61
         },
         __self: this
-      }, "M\xE3 c\u1EEDa h\xE0ng"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("th", {
-        width: '30%',
+      }, "S\u1ED1 l\u01B0\u1EE3ng"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("th", {
+        width: '25%',
         __source: {
           fileName: _jsxFileName,
           lineNumber: 62
         },
         __self: this
-      }, "Ng\xE0y \u0111\u0103ng k\xFD"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("th", {
+      }, "\u0110i\u1EC3m \u0111\u1ED5i"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("th", {
+        width: '15%',
         __source: {
           fileName: _jsxFileName,
           lineNumber: 63
         },
         __self: this
+      }, "M\xE3 c\u1EEDa h\xE0ng"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("th", {
+        width: '30%',
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 64
+        },
+        __self: this
+      }, "Ng\xE0y \u0111\u0103ng k\xFD"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("th", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 65
+        },
+        __self: this
       }))), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("tbody", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 66
+          lineNumber: 68
         },
         __self: this
       }, items));

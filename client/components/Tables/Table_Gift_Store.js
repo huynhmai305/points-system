@@ -36,6 +36,7 @@ class DataTable extends Component {
           <th scope="row">{item.id_gift}</th>
           <td>{item.title}</td>
           <td>{item.content}</td>
+          <td>{item.quantity}</td>
           <td>{item.point}</td>
           <td>{dateFormat(item.createdAt, "dddd, mmmm dS, yyyy, h:MM:ss TT")}</td>
           <td>
@@ -56,6 +57,7 @@ class DataTable extends Component {
             <th>#</th>
             <th width={'15%'}>Tiêu đề</th>
             <th width={'15%'}>Nội dung</th>
+            <th width={'15%'}>Số lượng</th>
             <th width={'25%'}>Điểm đổi</th>
             <th width={'30%'}>Ngày đăng ký</th>
             <th></th>

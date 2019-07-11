@@ -9,7 +9,8 @@ class FormAddEditGift extends Component {
         title: '',
         content: '',
         point: '',
-        id_store: ''
+        id_store: '',
+        quantity:0
       }
     
       onChange = e => {
@@ -31,7 +32,8 @@ class FormAddEditGift extends Component {
             title: this.state.title,
             content: this.state.content,
             point: this.state.point,
-            id_store: this.state.id_store
+            id_store: this.state.id_store,
+            quantity: this.state.quantity
           })
         })
         .then(response => response.json())
@@ -55,7 +57,8 @@ class FormAddEditGift extends Component {
             title: this.state.title,
             content: this.state.content,
             point: this.state.point,
-            id_store: this.state.id_store
+            id_store: this.state.id_store,
+            quantity: this.state.quantity
           })
         })
           .then(response => response.json())
@@ -68,8 +71,8 @@ class FormAddEditGift extends Component {
       componentDidMount(){
         // if item exists, populate the state with proper data
         if(this.props.item){
-          const { id, title, content, point, id_store} = this.props.item
-          this.setState({id, title, content, point, id_store})
+          const { id, title, content, point, id_store, quantity} = this.props.item
+          this.setState({id, title, content, point, id_store, quantity})
         }
         var info = JSON.parse(localStorage.getItem('user'));
         var id_store = info[0].id;
@@ -89,6 +92,10 @@ class FormAddEditGift extends Component {
             <FormGroup>
               <Label for="point">Điểm</Label>
               <Input type="number" name="point" id="point" onChange={this.onChange} value={this.state.point === null ? '' : this.state.point}  />
+            </FormGroup>
+            <FormGroup>
+              <Label for="quantity">Số lượng</Label>
+              <Input type="number" name="quantity" id="quantity" onChange={this.onChange} value={this.state.quantity === null ? '' : this.state.quantity}  />
             </FormGroup>
             <FormGroup>
               <Label for="id_store">Mã cửa hàng</Label>
