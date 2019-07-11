@@ -30,8 +30,8 @@ class Manager_Gift extends Component {
       }
     componentDidMount() {
         var info = JSON.parse(localStorage.getItem('user'))
-        this.setState({id_getData:info[0].id})
-        this.getItems('')
+        this.setState({id_getData:info[0].id},() => this.getItems('') )
+        
     }
 
     render() {

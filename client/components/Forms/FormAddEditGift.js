@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+var randomString = require('random-string');
 
 class FormAddEditGift extends Component {
     state = {
         id:0,
-        id_gift:0,
+        id_gift:randomString(7),
         title: '',
         content: '',
         point: '',
@@ -16,6 +17,8 @@ class FormAddEditGift extends Component {
       }
     
       submitFormAdd = e => {
+        console.log(this.state.id_gift)
+        // console.log(this.state.title+''+this.state.content+""+this.state.point)
         e.preventDefault()
         fetch('http://localhost:3000/users/gift', {
           method: 'POST',
@@ -24,7 +27,7 @@ class FormAddEditGift extends Component {
             
           },
           body: JSON.stringify({
-            id_gift:0,
+            id_gift:this.state.id_gift,
             title: this.state.title,
             content: this.state.content,
             point: this.state.point,
@@ -33,6 +36,7 @@ class FormAddEditGift extends Component {
         })
         .then(response => response.json())
         .then(item => {
+          console.log(item)
           alert(`Thêm thành công`);
           location.reload()
         })
@@ -67,6 +71,9 @@ class FormAddEditGift extends Component {
           const { id, title, content, point, id_store} = this.props.item
           this.setState({id, title, content, point, id_store})
         }
+        var info = JSON.parse(localStorage.getItem('user'));
+        var id_store = info[0].id;
+        this.setState({id_store})
       }
       render() {
         return (

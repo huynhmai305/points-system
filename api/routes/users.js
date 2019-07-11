@@ -12,12 +12,6 @@ Bill.belongsTo(User,{foreignKey:'id_user'});
 User.hasMany(Gift,{foreignKey:'id_store',sourceKey:'id'});
 Gift.belongsTo(User,{foreignKey:'id_store'});
 
-router.get('/test',(req,res)=>{
-  User.findAll({
-    include:[Bill]
-  })
-  .then(rs => res.send(rs))
-})
 //tim kiem ma hoa don
 router.get('/tichdiem',(req,res) => {
   Bill.findOne({
@@ -60,7 +54,7 @@ router.get('/bill', (req, res) => {
           [Op.like]: `%${req.query.keyword}%`
         }
       },
-      order: ['id'],
+      order: ["id"],
       include: [{
         model: User,
         attributes: ['username']
@@ -86,23 +80,6 @@ router.get('/bill', (req, res) => {
 
 // get all (info, bill) with id customer
 router.get('/bill/:id_user', (req, res) => {
-  if (req.query.keyword && req.query.keyword.length > 0) {
-    Bill.findAll({
-      where: {   
-        id: {
-          [Op.like]: `%${req.query.keyword}%`,
-          // [Op.and]:{id:req.params.id_user}
-        },
-        id_user: req.params.id_user
-      },
-      order: ['id'],
-      include: [User]
-    })
-      .then(result => {
-        res.send(result);
-      })
-      .catch(err => console.log(err))
-  } else {
     Bill.findAll({
       where:{
         id_user: req.params.id_user
@@ -110,12 +87,25 @@ router.get('/bill/:id_user', (req, res) => {
       include: [User]
     })
       .then(result => {
-        res.send(result);
+        res.json(result);
       })
       .catch(err => console.log(err))
-  }
-})//end--get bill with id customer
+})//end--get all bill with id customer
 
+//total point
+router.get('/totalpoint/:id_user', (req, res) => {
+  Bill.findAll({
+    where:{
+      id_user: req.params.id_user
+    },
+    attributes:['id_user',[sequelize.fn('SUM',sequelize.col('total')),'total_point']],
+    group: ['Bill.id_user']
+  })
+    .then(result => {
+      res.send(result);
+    })
+    .catch(err => console.log(err))
+})//end get total point
 //add bill
 router.post('/bill',(req, res) => {
   const data = {
@@ -140,7 +130,7 @@ router.get('/gift', (req, res) => {
   if (req.query.keyword && req.query.keyword.length > 0) {
     Gift.findAll({
       where: {
-        username: {
+        id_store: {
           [Op.like]: `%${req.query.keyword}%`
         }
       }
@@ -150,13 +140,24 @@ router.get('/gift', (req, res) => {
       })
       .catch(err => console.log(err))
   } else {
-    User.findAll()
+    Gift.findAll()
       .then(result => {
         res.send(result);
       })
       .catch(err => console.log(err))
   }
 })
+
+
+
+
+
+
+
+
+
+
+
 //get gift with id_store
 router.get('/gift/:id', (req, res) => {
   if (req.query.keyword && req.query.keyword.length > 0) {
@@ -173,7 +174,11 @@ router.get('/gift/:id', (req, res) => {
       })
       .catch(err => console.log(err))
   } else {
-    User.findAll()
+    Gift.findAll({
+      where: {
+        id_store:req.params.id
+      }
+    })
       .then(result => {
         res.send(result);
       })
@@ -184,15 +189,17 @@ router.get('/gift/:id', (req, res) => {
 //add gift
 router.post('/gift',(req, res) => {
   const data = {
-    id_gift: '',
-    title: req.body.id,
-    content: req.body.total,
+    id_gift:req.body.id_gift,
+    title: req.body.title,
+    content: req.body.content,
     point: req.body.point,
     id_store: req.body.id_store
   };
   let { id_gift,title, content, point, id_store } = data;
+  
   Gift.create({id_gift, title, content, point, id_store })
   .then(result => {
+    console.log(result)
     res.json(result);
     res.sendStatus(200);
   })
@@ -215,7 +222,7 @@ router.delete('/gift', (req, res) => {
     })
     .catch(err => console.log(err))
 })
-//====edit gift
+//====update gift
 router.put('/gift', (req, res) => {
   const update = new Date();
   var dt = {

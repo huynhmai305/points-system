@@ -10,11 +10,7 @@ class AddEditForm extends React.Component {
   onChange = e => {
     this.setState({[e.target.name]: e.target.value})
   }
-  TichDiem = (e) => {
-      var point=this.state.total/1000;
-      console.log(point)
-  }
-
+  
   submitFormAdd = e => {
     console.log(this.props.id_user)
     e.preventDefault()
@@ -48,7 +44,7 @@ class AddEditForm extends React.Component {
           <Input type="number" name="total" id="total" onChange={this.onChange} value={this.state.total}  required/>
         </FormGroup>
         <FormGroup>
-          <Button color="success">Tích điểm</Button>
+          <Button color="success">Thêm hóa đơn</Button>
         </FormGroup>       
       </Form>
     );

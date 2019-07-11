@@ -24,6 +24,10 @@ const Gift = db.define('Gift',{
         type: Sequelize.INTEGER,
         allowNull: false,       
       },
+      point: {
+        type: Sequelize.INTEGER,
+        allowNull: false,       
+      },
       id_user:{
         type: Sequelize.INTEGER,
         allowNull: true

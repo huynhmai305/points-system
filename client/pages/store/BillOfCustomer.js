@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { Container, Row, Col,Form, FormGroup,Label, FormText} from 'reactstrap';
+import { Container, Row, Col,Form, FormGroup,Label, Button} from 'reactstrap';
 import ModalForm from '../../components/Modals/ModalAddBill';
 import DataTable from '../../components/Tables/Table_Bill_Of_Customer';
 import { CSVLink } from 'react-csv';
-import Search from '../../components/Search';
 import Store from '../../components/Store';
 
 class BillOfCustomer extends Component {
@@ -12,11 +11,17 @@ class BillOfCustomer extends Component {
         this.state = {
             items:[],
             name:'',
-            id_user:''
+            id_user:'',
+            username:'',
+            birthday:'',
+            address:'',
+            phone:'',
+            email:'',
+            point:0
         }
     }
   
-    getItems(keyword) {
+    getItems() {
         var query = location.search;
         var id_user = query.substring(9,11)
         this.setState({id_user})
@@ -24,22 +29,52 @@ class BillOfCustomer extends Component {
         // console.log(this.props.id_user)
         // e.preventDefault();
         let url = 'http://localhost:3000/users/bill/'+id_user;
-        if (keyword.length > 0) {
-            url = `${url}?keyword=${keyword}`
-        }
         fetch(url)
             .then(response => response.json())
-            .then(items => this.setState({items}))
+            .then(items => {
+                this.setState({
+                    items,
+                    username:items[0].User.username,
+                    birthday:items[0].User.birthday,
+                    address:items[0].User.address,
+                    phone:items[0].User.phone,
+                    email:items[0].User.email,
+                    point:items[0].User.point
+                }); 
+                console.log(this.state.username);
+            })
             .catch(err => console.log(err))
     }
-    onSearch = (keyword) => {
-        console.log(keyword);
-        this.getItems(keyword)
-    }
+    TichDiem = e => {
+        e.preventDefault()
+        fetch('http://localhost:3000/users/totalpoint/'+this.state.id_user)
+        .then(response => response.json())
+        .then(item => {
+          var point = item[0].total_point/1000;
+          this.setState({point});
+          console.log(this.state.point);
+          fetch('http://localhost:3000/users/point', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: this.state.id_user,
+                point: this.state.point
+            })
+            })
+            .then(response => response.json())
+            .then(item => {
+                alert(`Tích điểm thành công cho khách hàng ${this.state.username}`);
+                location.reload()
+            })            
+        })   
+      }
+    
     componentDidMount() {
         var info = JSON.parse(localStorage.getItem('user'));
         this.setState({name:info[0].username})
-        this.getItems('')        
+        this.getItems()        
     }
     
     render() {
@@ -52,37 +87,8 @@ class BillOfCustomer extends Component {
                         </li>
                         <li className="breadcrumb-item active">Quản lý hóa đơn</li>
                     </ol>
-                    {this.state.items.map( (val,key) => {         
-                    <Form key={key}>
-                        <h4>Thông tin tích điểm của khách hàng</h4>
-                        <FormGroup row>
-                            <Label for="exampleEmail" sm={2}>Họ tên:</Label>
-                            <Label sm={10}>{val.User.username}</Label>
-                        </FormGroup>
-                        <FormGroup row> 
-                            <Label for="exampleEmail" sm={2}>Ngày sinh:</Label>
-                            <Label sm={10}>{val.User.birthday}</Label>
-                        </FormGroup>
-                        <FormGroup row>
-                            <Label for="exampleEmail" sm={2}>Địa chỉ:</Label>
-                            <Label sm={10}>{val.User.address}</Label>
-                        </FormGroup>
-                        <FormGroup row>
-                            <Label for="exampleEmail" sm={2}>Số điện thoại:</Label>
-                            <Label sm={10}>{val.User.phone}</Label>
-                        </FormGroup>                           
-                        <FormGroup row>
-                            <Label for="exampleEmail" sm={2}>Email</Label>
-                            <Label sm={10}>{val.User.email}</Label>
-                        </FormGroup>                       
-                    </Form>
-                    })} 
                     <Row className="mb-5">
-                        <Col md={6}>
-                            <Search handlekeyword={this.onSearch}/>
-                            <FormText>Nhập mã hóa đơn tìm kiếm</FormText>
-                        </Col>
-                        <Col md={{offset:2,size:4}}>
+                        <Col md={{offset:8,size:4}}>
                             <CSVLink
                                 filename={"Bill.csv"}
                                 color="primary"
@@ -94,12 +100,42 @@ class BillOfCustomer extends Component {
                             </CSVLink>
                             <ModalForm buttonLabel='Add' addItemToState={this.addItemToState} id_user={this.state.id_user} />
                         </Col>
-                    </Row>                    
+                    </Row>           
+                    <Form className="align-content-center">
+                        <h4>Thông tin tích điểm của khách hàng</h4>
+                        <FormGroup row>
+                            <Label for="exampleEmail" sm={2}>Họ tên:</Label>
+                            <Label sm={10}>{this.state.username}</Label>
+                        </FormGroup>
+                        <FormGroup row> 
+                            <Label for="exampleEmail" sm={2}>Ngày sinh:</Label>
+                            <Label sm={10}>{this.state.birthday}</Label>
+                        </FormGroup>
+                        <FormGroup row>
+                            <Label for="exampleEmail" sm={2}>Địa chỉ:</Label>
+                            <Label sm={10}>{this.state.address}</Label>
+                        </FormGroup>
+                        <FormGroup row>
+                            <Label for="exampleEmail" sm={2}>Số điện thoại:</Label>
+                            <Label sm={10}>{this.state.phone}</Label>
+                        </FormGroup>                           
+                        <FormGroup row>
+                            <Label for="exampleEmail" sm={2}>Email</Label>
+                            <Label sm={10}>{this.state.email}</Label>
+                        </FormGroup> 
+                        <FormGroup row>
+                            <Label for="exampleEmail" sm={2}>Điểm tích lũy:</Label>
+                            <Label sm={10}>{this.state.point}</Label>
+                        </FormGroup>                      
+                    </Form>                 
                     <Row>
                         <Col>
                             <DataTable items={this.state.items}  />
                         </Col>
                     </Row>
+                    <FormGroup row>
+                        <Button color="primary" onClick={this.TichDiem}>Tích điểm</Button>
+                    </FormGroup>  
                 </Container>
             </Store>
         );

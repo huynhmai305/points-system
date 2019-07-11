@@ -9,17 +9,19 @@ class Table_Bill_Of_Customer extends Component {
               <tr key={item.id}>
                 <td scope="row">{item.id}</td>
                 <td>{item.total}</td>
+                <td>{item.total/1000}</td>
                 <td>{dateFormat(item.createdAt, "dddd, mmmm dS, yyyy, h:MM:ss TT")}</td>
               </tr>
               )
             })
       
           return (
-            <Table responsive hover>
+            <Table responsive hover bordered>
               <thead color="primary">
                 <tr>
-                  <th>#</th>
+                  <th>Mã hóa đơn</th>
                   <th>Tổng hóa đơn</th>
+                  <th>Điểm được tích lũy</th>
                   <th>Ngày tạo</th>
                 </tr>
               </thead>
