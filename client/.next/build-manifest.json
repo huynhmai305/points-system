@@ -11,13 +11,13 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/store": [
+    "/user": [
       "static/runtime/webpack.js",
       "static/css/styles.chunk.css",
       "static/chunks/styles.js",
       "static/runtime/main.js"
     ],
-    "/store/gift": [
+    "/user/exchange_gift": [
       "static/runtime/webpack.js",
       "static/css/styles.chunk.css",
       "static/chunks/styles.js",

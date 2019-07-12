@@ -52,8 +52,6 @@ class Login extends Component {
     })
       .then(response => response.json())
       .then(item => {
-        // console.log(item)
-        // console.log(item[0].role);
         alert('Đăng nhập thành công')
         // this.setState({msg:'Đăng nhập thành công'});
         localStorage.setItem('user', JSON.stringify(item))

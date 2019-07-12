@@ -177,7 +177,7 @@ router.get('/gift/:id', (req, res) => {
 })
 
 //get gift with id_user
-router.get('/gift/:id', (req, res) => {
+router.get('/giftuser/:id', (req, res) => {
   Gift.findAll({
     where: {
       id_user:req.params.id
@@ -190,7 +190,7 @@ router.get('/gift/:id', (req, res) => {
 })
 
 //get gift with point condition for exchange point
-router.get('/gift/:point', (req,res) => {
+router.get('/giftpoint/:point', (req,res) => {
   Gift.findAll({
     where:{
       point: {
@@ -264,7 +264,7 @@ router.put('/gift/exchangegift',(req,res) => {
   const update = new Date();
   var dt = {
     id_user: req.body.id_user,
-    quantity: req.body.quantity_after,
+    quantity: req.body.quantity,
     updatedAt: update
   }
     Gift.update(dt, { where: { id: req.body.id } })

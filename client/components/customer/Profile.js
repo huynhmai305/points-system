@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import Layout from '../Customer';
+import ShowGift from './Show_Gift';
 
 class Profile extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            items:[],
             id:0,
             username: '',
             birthday: '',
@@ -48,6 +50,11 @@ class Profile extends Component {
           })
         // alert(this.state.phone)
       }
+      show_gift () {
+          fetch('http://localhost:3000/users/giftuser/'+ this.state.id)
+          .then(response => response.json())
+          .then(items => this.setState({items}))
+      }
     handleChange = e => {
         var name = e.target.name;
         var value = e.target.value;
@@ -65,8 +72,10 @@ class Profile extends Component {
             phone: info[0].phone,
             email: info[0].email,
             password: info[0].password,
-            point: info[0].point
-        });
+            point: info[0].point,
+        },
+        () => this.show_gift()
+        );
     }
     render() {
         return (
@@ -124,6 +133,10 @@ class Profile extends Component {
                             </form>
                         </div>
                     </div>
+                    {this.state.items.map((item, key) => (
+                        <ShowGift key={key} id_gift={item.id_gift} title={item.title} content={item.content} point_gift={item.point}/>
+                    ))}
+                    
             </Layout>
         );
     }
