@@ -38,7 +38,6 @@ class DataTable extends Component {
           <td>{item.content}</td>
           <td>{item.quantity}</td>
           <td>{item.point}</td>
-          <td>{item.id_store}</td>
           <td>{dateFormat(item.createdAt, "dddd, mmmm dS, yyyy, h:MM:ss TT")}</td>
           <td>
             <div style={{width:"100px"}}>
@@ -60,7 +59,6 @@ class DataTable extends Component {
             <th width={'15%'}>Nội dung</th>
             <th width={'15%'}>Số lượng</th>
             <th width={'25%'}>Điểm đổi</th>
-            <th width={'15%'}>Mã cửa hàng</th>
             <th width={'30%'}>Ngày đăng ký</th>
             <th></th>
           </tr>

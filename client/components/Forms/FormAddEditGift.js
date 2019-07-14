@@ -9,7 +9,6 @@ class FormAddEditGift extends Component {
         title: '',
         content: '',
         point: '',
-        id_store: '',
         quantity:0
       }
     
@@ -32,7 +31,6 @@ class FormAddEditGift extends Component {
             title: this.state.title,
             content: this.state.content,
             point: this.state.point,
-            id_store: this.state.id_store,
             quantity: this.state.quantity
           })
         })
@@ -57,7 +55,6 @@ class FormAddEditGift extends Component {
             title: this.state.title,
             content: this.state.content,
             point: this.state.point,
-            id_store: this.state.id_store,
             quantity: this.state.quantity
           })
         })
@@ -71,12 +68,9 @@ class FormAddEditGift extends Component {
       componentDidMount(){
         // if item exists, populate the state with proper data
         if(this.props.item){
-          const { id, title, content, point, id_store, quantity} = this.props.item
-          this.setState({id, title, content, point, id_store, quantity})
+          const { id, title, content, point, quantity} = this.props.item
+          this.setState({id, title, content, point, quantity})
         }
-        var info = JSON.parse(localStorage.getItem('user'));
-        var id_store = info[0].id;
-        this.setState({id_store})
       }
       render() {
         return (
@@ -96,10 +90,6 @@ class FormAddEditGift extends Component {
             <FormGroup>
               <Label for="quantity">Số lượng</Label>
               <Input type="number" name="quantity" id="quantity" onChange={this.onChange} value={this.state.quantity === null ? '' : this.state.quantity}  />
-            </FormGroup>
-            <FormGroup>
-              <Label for="id_store">Mã cửa hàng</Label>
-              <Input type="tel" name="id_store" id="id_store" onChange={this.onChange} value={this.state.id_store === null ? '' : this.state.id_store} />
             </FormGroup>
             <FormGroup>
               <Button color="success">Submit</Button>

@@ -9,8 +9,8 @@ const Op = sequelize.Op;
 User.hasMany(Bill,{foreignKey:'id_user',sourceKey:'id'});
 Bill.belongsTo(User,{foreignKey:'id_user'});
 
-User.hasMany(Gift,{foreignKey:'id_store',sourceKey:'id'});
-Gift.belongsTo(User,{foreignKey:'id_store'});
+// User.hasMany(Gift,{foreignKey:'id_store',sourceKey:'id'});
+// Gift.belongsTo(User,{foreignKey:'id_store'});
 
 //tim kiem ma hoa don
 router.get('/tichdiem',(req,res) => {
@@ -130,7 +130,7 @@ router.get('/gift', (req, res) => {
   if (req.query.keyword && req.query.keyword.length > 0) {
     Gift.findAll({
       where: {
-        id_store: {
+        id_user: {
           [Op.like]: `%${req.query.keyword}%`
         }
       }
@@ -141,34 +141,6 @@ router.get('/gift', (req, res) => {
       .catch(err => console.log(err))
   } else {
     Gift.findAll()
-      .then(result => {
-        res.send(result);
-      })
-      .catch(err => console.log(err))
-  }
-})
-
-//get gift with id_store
-router.get('/gift/:id', (req, res) => {
-  if (req.query.keyword && req.query.keyword.length > 0) {
-    Gift.findAll({
-      where: {
-        id_store: req.params.id,
-        username: {
-          [Op.like]: `%${req.query.keyword}%`
-        }
-      }
-    })
-      .then(result => {
-        res.send(result);
-      })
-      .catch(err => console.log(err))
-  } else {
-    Gift.findAll({
-      where: {
-        id_store:req.params.id
-      }
-    })
       .then(result => {
         res.send(result);
       })

@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -522,7 +522,7 @@ function (_Component) {
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Card"], {
-        className: "h-100",
+        className: "h-100 thumbnail",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 67
@@ -534,64 +534,78 @@ function (_Component) {
           lineNumber: 68
         },
         __self: this
-      }, this.props.id_gift), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["CardBody"], {
-        className: "bg-success text-light",
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        className: "btn-coupon",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 69
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["CardTitle"], {
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        className: "coupon-code float-right",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 70
         },
         __self: this
-      }, this.props.title), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["CardText"], {
+      }, this.props.id_gift), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        className: "coupon-text bg-primary",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 71
         },
         __self: this
-      }, this.props.content), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["CardText"], {
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("a", {
+        onClick: this.TichDiem,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 72
         },
         __self: this
-      }, "\u0110i\u1EC3m \u0111\u1ED5i: ", this.state.point_gift), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["CardText"], {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 73
-        },
-        __self: this
-      }, "S\u1ED1 l\u01B0\u1EE3ng: ", this.state.quantity)), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["CardFooter"], {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 75
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Button"], {
-        color: "success",
-        onClick: this.TichDiem,
+      }, "L\u1EA5y m\xE3")))), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["CardBody"], {
+        className: "bg-info text-light",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 76
         },
         __self: this
-      }, "L\u1EA5y m\xE3 th\u01B0\u1EDFng"))), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Alert"], {
-        color: "success",
-        isOpen: this.state.visible,
-        className: "mt-5",
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["CardTitle"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 77
+        },
+        __self: this
+      }, this.props.title), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["CardText"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 78
+        },
+        __self: this
+      }, this.props.content), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["CardText"], {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 79
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Label"], {
+      }, "\u0110i\u1EC3m \u0111\u1ED5i: ", this.state.point_gift), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["CardText"], {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 80
+        },
+        __self: this
+      }, "S\u1ED1 l\u01B0\u1EE3ng: ", this.state.quantity))), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Alert"], {
+        color: "success",
+        isOpen: this.state.visible,
+        className: "mt-5",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 83
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Label"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 84
         },
         __self: this
       }, "\u0110\u1ED5i qu\xE0 th\xE0nh c\xF4ng, m\xE3 th\u01B0\u1EDFng c\u1EE7a \"", this.props.title, "\" l\xE0 ", this.props.id_gift)));
@@ -1685,7 +1699,7 @@ function (_Component) {
 
 /***/ }),
 
-/***/ 7:
+/***/ 3:
 /*!*******************************************!*\
   !*** multi ./pages/user/exchange_gift.js ***!
   \*******************************************/

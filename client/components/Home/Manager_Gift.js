@@ -10,12 +10,11 @@ class Manager_Gift extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            items: [],
-            id_getData:0
+            items: []
         }
     }
     getItems(keyword) {
-        let url = 'http://localhost:3000/users/gift/'+this.state.id_getData;
+        let url = 'http://localhost:3000/users/gift'
         if (keyword.length > 0) {
             url = `${url}?keyword=${keyword}`
         }
@@ -30,8 +29,7 @@ class Manager_Gift extends Component {
       }
     componentDidMount() {
         var info = JSON.parse(localStorage.getItem('user'))
-        this.setState({id_getData:info[0].id},() => this.getItems('') )
-        
+        this.getItems('')
     }
 
     render() {

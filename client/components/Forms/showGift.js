@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Card, CardHeader,CardBody, CardFooter ,CardText, CardTitle, Button, Alert, Label} from 'reactstrap'
+import {Card, CardHeader,CardBody,CardText, CardTitle, Alert, Label} from 'reactstrap'
 
 class showGift extends Component {
     constructor(props) {
@@ -64,17 +64,21 @@ class showGift extends Component {
     render() {
         return (
             <div className="p-3">
-                <Card className="h-100">
-                    <CardHeader>{this.props.id_gift}</CardHeader>
-                    <CardBody className="bg-success text-light">
+                <Card className="h-100 thumbnail">
+                    <CardHeader>
+                        <div className="btn-coupon">
+                            <div className="coupon-code float-right">{this.props.id_gift}</div>
+                            <div className="coupon-text bg-primary">
+                                <a onClick={this.TichDiem}>Lấy mã</a>
+                            </div>
+                        </div>
+                    </CardHeader>
+                    <CardBody className="bg-info text-light">
                         <CardTitle>{this.props.title}</CardTitle>
                         <CardText>{this.props.content}</CardText>
                         <CardText>Điểm đổi: {this.state.point_gift}</CardText>
                         <CardText>Số lượng: {this.state.quantity}</CardText>
                     </CardBody>
-                    <CardFooter>
-                        <Button color="success" onClick={this.TichDiem}>Lấy mã thưởng</Button>
-                    </CardFooter>
                 </Card>
                 <Alert color="success" isOpen={this.state.visible} className="mt-5">
                     <Label>Đổi quà thành công, mã thưởng của "{this.props.title}" là {this.props.id_gift}</Label>

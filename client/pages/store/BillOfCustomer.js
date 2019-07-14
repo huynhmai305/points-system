@@ -102,31 +102,37 @@ class BillOfCustomer extends Component {
                         </Col>
                     </Row>           
                     <Form className="align-content-center">
-                        <h4>Thông tin tích điểm của khách hàng</h4>
+                        <h4 className="text-center">Thông tin tích điểm của khách hàng</h4>
                         <FormGroup row>
-                            <Label for="exampleEmail" sm={2}>Họ tên:</Label>
-                            <Label sm={10}>{this.state.username}</Label>
+                            <Col sm={{offset:2,size:4}}>
+                                <Label for="exampleEmail" sm={3}>Họ tên:</Label>
+                                <Label sm={9}>{this.state.username}</Label>
+                            </Col>
+                            <Col sm={6}>
+                                <Label for="exampleEmail" sm={3}>Ngày sinh:</Label>
+                                <Label sm={9}>{this.state.birthday}</Label>
+                            </Col>
                         </FormGroup>
                         <FormGroup row> 
-                            <Label for="exampleEmail" sm={2}>Ngày sinh:</Label>
-                            <Label sm={10}>{this.state.birthday}</Label>
-                        </FormGroup>
-                        <FormGroup row>
-                            <Label for="exampleEmail" sm={2}>Địa chỉ:</Label>
-                            <Label sm={10}>{this.state.address}</Label>
-                        </FormGroup>
-                        <FormGroup row>
-                            <Label for="exampleEmail" sm={2}>Số điện thoại:</Label>
-                            <Label sm={10}>{this.state.phone}</Label>
-                        </FormGroup>                           
-                        <FormGroup row>
-                            <Label for="exampleEmail" sm={2}>Email</Label>
-                            <Label sm={10}>{this.state.email}</Label>
-                        </FormGroup> 
-                        <FormGroup row>
-                            <Label for="exampleEmail" sm={2}>Điểm tích lũy:</Label>
-                            <Label sm={10}>{this.state.point}</Label>
-                        </FormGroup>                      
+                            <Col sm={{offset:2,size:4}}>
+                                <Label for="exampleEmail" sm={3}>Địa chỉ:</Label>
+                                <Label sm={9}>{this.state.address}</Label>
+                            </Col>
+                            <Col sm={6}>
+                                <Label for="exampleEmail" sm={3}>Số điện thoại:</Label>
+                                <Label sm={9}>{this.state.phone}</Label>
+                            </Col>
+                        </FormGroup>   
+                        <FormGroup row> 
+                            <Col sm={{offset:2,size:4}}>
+                                <Label for="exampleEmail" sm={3}>Email</Label>
+                                <Label sm={9}>{this.state.email}</Label>
+                            </Col>
+                            <Col sm={6}>
+                                <Label for="exampleEmail" sm={3}>Điểm tích lũy:</Label>
+                                <Label sm={9}>{this.state.point}</Label>
+                            </Col>
+                        </FormGroup>                                             
                     </Form>                 
                     <Row>
                         <Col>

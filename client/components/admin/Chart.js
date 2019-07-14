@@ -34,7 +34,7 @@ class Chart extends Component {
     }
     setGradientColor = (canvas, color) => {
         const ctx = canvas.getContext('2d');
-        const gradient = ctx.createLinearGradient(0,0,500,1000);
+        const gradient = ctx.createLinearGradient(0,0,700,1000);
         gradient.addColorStop(0, color);
         gradient.addColorStop(0.95, "rgba(133, 122, 144, 0.5"); 
         return gradient;                          
@@ -55,8 +55,8 @@ class Chart extends Component {
     render() {
         return (
             <div>
-                <article className="container canvas-container">
-                    <Line data={this.getChartData} option={{responsive: true}}/>
+                <article className="container canvas-container" style={{height:'40vh'}}>
+                    <Line data={this.getChartData} />
                 </article>
             </div>
         );

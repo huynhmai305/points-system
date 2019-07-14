@@ -27,7 +27,7 @@ class Chart extends Component {
     render() {
         return (
             <div>
-                <article className="container canvas-container">
+                <article className="container canvas-container" style={{height:'40vh'}}>
                     <Bar data={this.state.data} option={{responsive: true}}/>
                 </article>
             </div>

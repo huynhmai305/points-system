@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Col, Form, FormGroup, Label, Input, Button, FormFeedback, Alert } from 'reactstrap';
+import { Container, Col, Form, FormGroup, Label, Input, Button, FormFeedback, Toast,ToastHeader,ToastBody } from 'reactstrap';
 import Router from 'next/router';
 
 class Login extends Component {
@@ -13,6 +13,8 @@ class Login extends Component {
       },
       msg: '',
       item: [],
+      show:false,
+      colortoast:''
     }
     this.handleChange = this.handleChange.bind(this);
   }
@@ -36,7 +38,9 @@ class Login extends Component {
       [name]: value,
     });
   }
-
+  toggle(){
+    this.setState({show: !this.state.show})
+  }
   submitForm(e) {
     e.preventDefault();
     console.log(`Email: ${this.state.email} va password: ${this.state.password}`)
@@ -52,7 +56,11 @@ class Login extends Component {
     })
       .then(response => response.json())
       .then(item => {
-        alert('Đăng nhập thành công')
+        this.setState({
+          msg:'Đăng nhập thành công',
+          colortoast:'success'
+        })
+        // alert('Đăng nhập thành công')
         // this.setState({msg:'Đăng nhập thành công'});
         localStorage.setItem('user', JSON.stringify(item))
         let role = item[0].role;
@@ -64,13 +72,26 @@ class Login extends Component {
           Router.push('/user')
         }
       })
-      .catch(err => console.log(err))
+      .catch(err => {this.setState({
+        msg:'Đăng nhập thất bại',
+        colortoast:'danger'
+      });
+      alert('Đăng nhập thất bại')
+    })
   }
 
   render() {
     const { email, password } = this.state;
     return (
       <Container className="App">
+        <Toast isOpen={this.state.show}>
+          <ToastHeader icon={this.state.colortoast} toggle={this.toggle}>
+            Thông báo
+          </ToastHeader>
+          <ToastBody>
+          {this.state.msg}
+          </ToastBody>
+        </Toast>
         <Form className="form" onSubmit={(e) => this.submitForm(e)} method="POST">
           <Col>
             <FormGroup>
@@ -128,9 +149,6 @@ class Login extends Component {
               Đăng nhập
             </Button>
           </FormGroup>
-          <span style={{ color: 'red' }}>
-            {this.state.msg}
-          </span>
         </Form>
       </Container>
     )
