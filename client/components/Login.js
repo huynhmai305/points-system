@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Col, Form, FormGroup, Label, Input, Button, FormFeedback, Toast,ToastHeader,ToastBody } from 'reactstrap';
+import { Container, Col, Form, FormGroup, Label, Input, Button, FormFeedback, Toast,ToastHeader,ToastBody, Spinner} from 'reactstrap';
 import Router from 'next/router';
 
 class Login extends Component {
@@ -76,7 +76,7 @@ class Login extends Component {
         msg:'Đăng nhập thất bại',
         colortoast:'danger'
       });
-      alert('Đăng nhập thất bại')
+      // alert('Đăng nhập thất bại')
     })
   }
 
@@ -148,7 +148,11 @@ class Login extends Component {
             <Button color="success" type="submit">
               Đăng nhập
             </Button>
+            <div className="text-danger mt-3">{this.state.msg}</div>
           </FormGroup>
+          <div style={{display:'none'}}>
+            <Spinner color="success" />
+          </div>  
         </Form>
       </Container>
     )

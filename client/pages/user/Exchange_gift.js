@@ -10,8 +10,7 @@ class Exchange_gift extends Component {
             items:[],
             point:'',
             name:'',
-            id:''
-           
+            id:''          
         }
     }
     

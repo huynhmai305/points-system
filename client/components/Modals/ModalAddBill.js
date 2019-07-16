@@ -38,7 +38,9 @@ class ModalForm extends Component {
               addItemToState={this.props.addItemToState}
               toggle={this.toggle}
               item={this.props.item} 
-              id_user={this.props.id_user}/>
+              id_user={this.props.id_user}
+              point={this.props.point}
+              username={this.props.username}/>
           </ModalBody>
         </Modal>
       </div>

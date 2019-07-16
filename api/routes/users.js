@@ -1,16 +1,22 @@
 var express = require('express');
 var router = express.Router();
-const jwt = require('jsonwebtoken');
-const User = require('../models/user');
-const Bill = require('../models/bill');
-const Gift = require('../models/gift');
+// import jwt from 'jsonwebtoken';
+const User = require ('../models/user');
+const Bill =require ('../models/bill');
+const Gift = require ('../models/gift') ;
+const Exchange_Gift = require ('../models/exchange_gift');
 const sequelize = require('sequelize');
 const Op = sequelize.Op;
 User.hasMany(Bill,{foreignKey:'id_user',sourceKey:'id'});
 Bill.belongsTo(User,{foreignKey:'id_user'});
 
-// User.hasMany(Gift,{foreignKey:'id_store',sourceKey:'id'});
-// Gift.belongsTo(User,{foreignKey:'id_store'});
+User.hasMany(Gift,{foreignKey:'id_store',sourceKey:'id'});
+Gift.belongsTo(User,{foreignKey:'id_store'});
+
+User.hasMany(Exchange_Gift,{foreignKey:'id_user',sourceKey:'id'});
+Exchange_Gift.belongsTo(User,{foreignKey:'id_user'});
+Gift.hasMany(Exchange_Gift,{foreignKey:'id_gift',sourceKey:'id_gift'});
+Exchange_Gift.belongsTo(Gift,{foreignKey:'id_gift'});
 
 //tim kiem ma hoa don
 router.get('/tichdiem',(req,res) => {
@@ -54,7 +60,7 @@ router.get('/bill', (req, res) => {
           [Op.like]: `%${req.query.keyword}%`
         }
       },
-      order: ["id"],
+      order: [['id','ASC']],
       include: [{
         model: User,
         attributes: ['username']
@@ -69,7 +75,8 @@ router.get('/bill', (req, res) => {
       include: [{
         model: User,
         attributes: ['username']
-      }]
+      }],
+      order: [['id','ASC']]
     })
       .then(result => {
         res.send(result);
@@ -84,7 +91,8 @@ router.get('/bill/:id_user', (req, res) => {
       where:{
         id_user: req.params.id_user
       },
-      include: [User]
+      include: [User],
+      order:[['createdAt','DESC']]
     })
       .then(result => {
         res.json(result);
@@ -92,7 +100,7 @@ router.get('/bill/:id_user', (req, res) => {
       .catch(err => console.log(err))
 })//end--get all bill with id customer
 
-//total point
+//total point//fail
 router.get('/totalpoint/:id_user', (req, res) => {
   Bill.findAll({
     where:{
@@ -106,6 +114,7 @@ router.get('/totalpoint/:id_user', (req, res) => {
     })
     .catch(err => console.log(err))
 })//end get total point
+
 //add bill
 router.post('/bill',(req, res) => {
   const data = {
@@ -133,14 +142,17 @@ router.get('/gift', (req, res) => {
         id_user: {
           [Op.like]: `%${req.query.keyword}%`
         }
-      }
+      },
+      order:[['id_gift','ASC']]
     })
       .then(result => {
         res.send(result);
       })
       .catch(err => console.log(err))
   } else {
-    Gift.findAll()
+    Gift.findAll({
+      order:[['id_gift','ASC']]
+    })
       .then(result => {
         res.send(result);
       })
@@ -150,10 +162,12 @@ router.get('/gift', (req, res) => {
 
 //get gift with id_user
 router.get('/giftuser/:id', (req, res) => {
-  Gift.findAll({
+  Exchange_Gift.findAll({
     where: {
       id_user:req.params.id
-    }
+    },
+    include:[Gift],
+    order:[['createdAt','DESC']]
   })
   .then(result => {
     res.send(result);
@@ -231,21 +245,31 @@ router.put('/gift', (req, res) => {
       .catch(err => console.log(err))
 })
 
-//update gift after exchange gift
-router.put('/gift/exchangegift',(req,res) => {
-  const update = new Date();
-  var dt = {
+//create exchange_gift history after exchange gift
+router.post('/exchange_gift',(req,res) => {
+  var data = {
     id_user: req.body.id_user,
-    quantity: req.body.quantity,
-    updatedAt: update
+    id_gift: req.body.id_gift
   }
-    Gift.update(dt, { where: { id: req.body.id } })
-      .then(result => {
-        res.json(result);
-        res.sendStatus(200);
-      })
-      .catch(err => console.log(err))
+  let { id_gift, id_user } = data;
+  
+  Exchange_Gift.create({id_gift, id_user })
+  .then(result => {
+    console.log(result)
+    res.json(result);
+    res.sendStatus(200);
+  })
+  .catch(err => {
+    res.send('error:' + err)
+  })
 })
 
+//get history exchange gift
+router.get('/exchange_gift/',(req,res) => {
+  Exchange_Gift.findAll({
+    include: [Gift]
+  }).findAll
+  .then(result => res.send(result))
+})
 
 module.exports = router;

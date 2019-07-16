@@ -209,6 +209,7 @@ ul ul a {
   padding-right: 5px;
 }
 .coupon-text{
+  height:40px;
   position: absolute;
   left: -1px;
   top: -1px;
@@ -261,4 +262,18 @@ ul ul a {
   -webkit-transform-origin: top right;
   transition: 0.2s ease-out;
   -webkit-transition: 0.2s ease-out;
+}
+.pagination-status{
+  display: flex;
+  list-style: none;
+}
+.pagination-status .pagination-status__btn {
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  margin-left: -1px;
+  color: #337ab7;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #ddd;
 }

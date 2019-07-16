@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {Card, CardHeader,CardBody,CardText, CardTitle, Alert, Label} from 'reactstrap'
+import {Card, CardHeader,CardBody,CardText, CardTitle, Label,Modal, ModalHeader, ModalBody, ModalFooter,Button} from 'reactstrap'
+import QRCode from './QRcode1';
 
 class showGift extends Component {
     constructor(props) {
@@ -12,6 +13,7 @@ class showGift extends Component {
             point_gift: this.props.point,
             point_user: this.props.point_user
         }
+        this.toggle = this.toggle.bind(this);
     }
     
     TichDiem = e => {
@@ -19,16 +21,14 @@ class showGift extends Component {
         this.setState({quantity}, () => {
             e.preventDefault();
             console.log()
-            fetch('http://localhost:3000/users/gift/exchangegift', {
+            fetch('http://localhost:3000/users/gift', {
                 method: 'PUT',
                 // headers: {
                 //     'Content-Type': 'application/json'
                 // },
                 body: JSON.stringify({
                     id: this.state.id,
-                    id_user: this.state.id_user,
-                    quantity: this.state.quantity
-    
+                    quantity: this.state.quantity    
                 })
             })
             .then(response => response.json())
@@ -51,16 +51,29 @@ class showGift extends Component {
                     })
                     .then(response => response.json())
                     .then(item => {
-                        this.setState({
-                            visible: true,
-                        });
-                        console.log(item)   
+                        console.log(this.state.id_user+this.props.id_gift)
+                        // fetch('http://localhost:3000/users/exchange_gift',{
+                        //     method:'POST',
+                        //     body: JSON.stringify({
+                        //         id_user: this.state.id_user,
+                        //         id_gift: this.props.id_gift  
+                        //     })
+                        // })
+                        // this.setState({
+                        //     visible: true,
+                        // });
+                        console.log(item);
                     })  
                 // location.reload()
                 })   
             })
         });      
-    }
+    }  
+    toggle() {
+        this.setState(prevState => ({
+          visible: !prevState.visible
+        }));
+      }
     render() {
         return (
             <div className="p-3">
@@ -68,7 +81,7 @@ class showGift extends Component {
                     <CardHeader>
                         <div className="btn-coupon">
                             <div className="coupon-code float-right">{this.props.id_gift}</div>
-                            <div className="coupon-text bg-primary">
+                            <div className="coupon-text">
                                 <a onClick={this.TichDiem}>Lấy mã</a>
                             </div>
                         </div>
@@ -80,9 +93,18 @@ class showGift extends Component {
                         <CardText>Số lượng: {this.state.quantity}</CardText>
                     </CardBody>
                 </Card>
-                <Alert color="success" isOpen={this.state.visible} className="mt-5">
-                    <Label>Đổi quà thành công, mã thưởng của "{this.props.title}" là {this.props.id_gift}</Label>
-                </Alert>
+                <Modal isOpen={this.state.visible} fade={false} toggle={this.toggle} className="">
+                    <ModalHeader toggle={this.toggle}>Nhận mã code</ModalHeader>
+                    <ModalBody>
+                        <Label>Đổi quà thành công, đây là mã thưởng của "{this.props.title}", download để sử dụng</Label>
+                        <div>
+                            <QRCode data={this.props.id_gift}/>
+                        </div>
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button color="primary" onClick={this.toggle}>Close</Button>
+                    </ModalFooter>
+                </Modal>
             </div>
         );
     }

@@ -109,7 +109,7 @@ class Profile extends Component {
                                     <input type="text" className="form-control col-md-6" id="password" name="password" value={this.state.password} onChange={this.handleChange} required/>
                                 </div>
                                 <div className="offset-md-4 col-md-4 mt-5">
-                                    <input type="submit" className="btn btn-outline-success" value="Chỉnh sửa profile" />
+                                    <input type="submit" className="btn btn-outline-success" value="Submit" />
                                 </div>
                             </form>
                         </div>

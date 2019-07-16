@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Card, CardHeader,CardBody, CardFooter ,CardText, CardTitle} from 'reactstrap'
+import {Card, CardHeader,CardBody ,CardText, CardTitle} from 'reactstrap'
 
 class Show_Gift extends Component {
     render() {

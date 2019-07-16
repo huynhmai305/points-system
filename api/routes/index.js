@@ -113,6 +113,14 @@ router.get('/admin/user', (req, res) => {
       .catch(err => console.log(err))
   }
 })
+router.get('/getinfo/:id',(req,res) => {
+  User.findAll({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(result => res.send(result))
+})
 
 //get store
 router.get('/admin/store', (req, res) => {

@@ -401,6 +401,93 @@ function (_Component) {
 
 /***/ }),
 
+/***/ "./components/Forms/QRcode1.js":
+/*!*************************************!*\
+  !*** ./components/Forms/QRcode1.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var qrcode_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! qrcode.react */ "qrcode.react");
+/* harmony import */ var qrcode_react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(qrcode_react__WEBPACK_IMPORTED_MODULE_6__);
+
+
+
+
+
+var _jsxFileName = "D:\\TichDiem\\client\\components\\Forms\\QRcode1.js";
+
+
+
+var QRcode1 =
+/*#__PURE__*/
+function (_Component) {
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(QRcode1, _Component);
+
+  function QRcode1() {
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, QRcode1);
+
+    return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(QRcode1).apply(this, arguments));
+  }
+
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(QRcode1, [{
+    key: "render",
+    value: function render() {
+      var downloadQR = function downloadQR() {
+        var canvas = document.getElementById("123456");
+        var pngUrl = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+        var downloadLink = document.createElement("a");
+        downloadLink.href = pngUrl;
+        downloadLink.download = "123456.png";
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+      };
+
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 20
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(qrcode_react__WEBPACK_IMPORTED_MODULE_6___default.a, {
+        id: "123456",
+        value: this.props.data,
+        size: 290,
+        level: "H",
+        includeMargin: true,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 21
+        },
+        __self: this
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("a", {
+        onClick: downloadQR,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 28
+        },
+        __self: this
+      }, " Download QR "));
+    }
+  }]);
+
+  return QRcode1;
+}(react__WEBPACK_IMPORTED_MODULE_5__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (QRcode1);
+
+/***/ }),
+
 /***/ "./components/Forms/showGift.js":
 /*!**************************************!*\
   !*** ./components/Forms/showGift.js ***!
@@ -423,6 +510,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! reactstrap */ "reactstrap");
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _QRcode1__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./QRcode1 */ "./components/Forms/QRcode1.js");
 
 
 
@@ -432,6 +520,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _jsxFileName = "D:\\TichDiem\\client\\components\\Forms\\showGift.js";
+
 
 
 
@@ -455,14 +544,13 @@ function (_Component) {
       }, function () {
         e.preventDefault();
         console.log();
-        fetch('http://localhost:3000/users/gift/exchangegift', {
+        fetch('http://localhost:3000/users/gift', {
           method: 'PUT',
           // headers: {
           //     'Content-Type': 'application/json'
           // },
           body: _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default()({
             id: _this.state.id,
-            id_user: _this.state.id_user,
             quantity: _this.state.quantity
           })
         }).then(function (response) {
@@ -489,9 +577,16 @@ function (_Component) {
             }).then(function (response) {
               return response.json();
             }).then(function (item) {
-              _this.setState({
-                visible: true
-              });
+              console.log(_this.state.id_user + _this.props.id_gift); // fetch('http://localhost:3000/users/exchange_gift',{
+              //     method:'POST',
+              //     body: JSON.stringify({
+              //         id_user: this.state.id_user,
+              //         id_gift: this.props.id_gift  
+              //     })
+              // })
+              // this.setState({
+              //     visible: true,
+              // });
 
               console.log(item);
             }); // location.reload()
@@ -508,107 +603,158 @@ function (_Component) {
       point_gift: _this.props.point,
       point_user: _this.props.point_user
     };
+    _this.toggle = _this.toggle.bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this));
     return _this;
   }
 
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(showGift, [{
+    key: "toggle",
+    value: function toggle() {
+      this.setState(function (prevState) {
+        return {
+          visible: !prevState.visible
+        };
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
         className: "p-3",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 66
+          lineNumber: 79
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Card"], {
         className: "h-100 thumbnail",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 67
+          lineNumber: 80
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["CardHeader"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 68
+          lineNumber: 81
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
         className: "btn-coupon",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 69
+          lineNumber: 82
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
         className: "coupon-code float-right",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 70
+          lineNumber: 83
         },
         __self: this
       }, this.props.id_gift), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
-        className: "coupon-text bg-primary",
+        className: "coupon-text",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 71
+          lineNumber: 84
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("a", {
         onClick: this.TichDiem,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 72
+          lineNumber: 85
         },
         __self: this
       }, "L\u1EA5y m\xE3")))), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["CardBody"], {
         className: "bg-info text-light",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 76
+          lineNumber: 89
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["CardTitle"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 77
+          lineNumber: 90
         },
         __self: this
       }, this.props.title), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["CardText"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 78
+          lineNumber: 91
         },
         __self: this
       }, this.props.content), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["CardText"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 79
+          lineNumber: 92
         },
         __self: this
       }, "\u0110i\u1EC3m \u0111\u1ED5i: ", this.state.point_gift), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["CardText"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 80
+          lineNumber: 93
         },
         __self: this
-      }, "S\u1ED1 l\u01B0\u1EE3ng: ", this.state.quantity))), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Alert"], {
-        color: "success",
+      }, "S\u1ED1 l\u01B0\u1EE3ng: ", this.state.quantity))), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Modal"], {
         isOpen: this.state.visible,
-        className: "mt-5",
+        fade: false,
+        toggle: this.toggle,
+        className: "",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 83
+          lineNumber: 96
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["ModalHeader"], {
+        toggle: this.toggle,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 97
+        },
+        __self: this
+      }, "Nh\u1EADn m\xE3 code"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["ModalBody"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 98
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Label"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 84
+          lineNumber: 99
         },
         __self: this
-      }, "\u0110\u1ED5i qu\xE0 th\xE0nh c\xF4ng, m\xE3 th\u01B0\u1EDFng c\u1EE7a \"", this.props.title, "\" l\xE0 ", this.props.id_gift)));
+      }, "\u0110\u1ED5i qu\xE0 th\xE0nh c\xF4ng, \u0111\xE2y l\xE0 m\xE3 th\u01B0\u1EDFng c\u1EE7a \"", this.props.title, "\", download \u0111\u1EC3 s\u1EED d\u1EE5ng"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 100
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_QRcode1__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        data: this.props.id_gift,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 101
+        },
+        __self: this
+      }))), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["ModalFooter"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 104
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_9__["Button"], {
+        color: "primary",
+        onClick: this.toggle,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 105
+        },
+        __self: this
+      }, "Close"))));
     }
   }]);
 
@@ -1661,14 +1807,14 @@ function (_Component) {
         username: this.state.name,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 35
+          lineNumber: 34
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Container"], {
         className: "showgift",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 36
+          lineNumber: 35
         },
         __self: this
       }, this.state.items.map(function (val, key) {
@@ -1684,7 +1830,7 @@ function (_Component) {
           quantity: val.quantity,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 38
+            lineNumber: 37
           },
           __self: this
         });
@@ -1851,6 +1997,17 @@ module.exports = require("prop-types");
 /***/ (function(module, exports) {
 
 module.exports = require("prop-types-exact");
+
+/***/ }),
+
+/***/ "qrcode.react":
+/*!*******************************!*\
+  !*** external "qrcode.react" ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("qrcode.react");
 
 /***/ }),
 

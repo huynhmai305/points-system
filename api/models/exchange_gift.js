@@ -1,19 +1,18 @@
 const Sequelize = require('sequelize');
 const db = require('../config/database');
-const Bill = db.define('Bill',{
+const Gift = db.define('Exchange_Gift',{
     id: {
-        type: Sequelize.STRING(256),
+        type: Sequelize.INTEGER,
         allowNull: false,
         primaryKey: true,
+        autoIncrement: true
     },
-    total: {
-        type: Sequelize.INTEGER,
-        allowNull: false
+    id_gift: {
+        type: Sequelize.STRING(256)
       },
-    id_user: {
+    id_user:{
         type: Sequelize.INTEGER
     }
-
  });
  
- module.exports = Bill;
+ module.exports = Gift;

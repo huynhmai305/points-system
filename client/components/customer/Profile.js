@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Layout from '../Customer';
 import ShowGift from './Show_Gift';
+import ModalChangePass from '../Modals/ModalChangePass'
 
 class Profile extends Component {
     constructor(props) {
@@ -13,8 +14,8 @@ class Profile extends Component {
             address: '',
             phone: '',
             email: '',
-            password: '',
-            point:0
+            point:0,
+            changepass:false
         }
     }
     updateStorage = () => {
@@ -39,7 +40,6 @@ class Profile extends Component {
             address: this.state.address,
             phone: this.state.phone,
             email: this.state.email,
-            password: this.state.password,
           })
         })
           .then(response => response.json())
@@ -91,9 +91,12 @@ class Profile extends Component {
                     <div className="row">
                         <div className="offset-md-1 col-md-4">
                             <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" className="rounded-circle img-thumbnail .d-block .mx-auto image_inner_container" alt="avatar" style={{ width: 100, height: 100 }} />
-                            <div className="mt-5">
+                            {/*<div className="mt-5">
                                 <p>Thay đổi ảnh đại diện</p>
                                 <input type="file" className="form-control-file " />
+                            </div>*/}
+                            <div className="mt-4">
+                                <ModalChangePass/>
                             </div>
                         </div>
                         <div className="col-md-7">
@@ -120,15 +123,12 @@ class Profile extends Component {
                                     <input type="email" className="form-control col-md-6" id="email" name="email" value={this.state.email} onChange={this.handleChange} required/>
                                 </div>
                                 <div className="form-inline">
-                                    <label htmlFor="password" className="col-md-5">Password:</label>
-                                    <input type="text" className="form-control col-md-6" id="password" name="password" value={this.state.password} onChange={this.handleChange} required/>
-                                </div>
-                                <div className="form-inline">
                                     <label htmlFor="point" className="col-md-5">Điểm tích lũy:</label>
                                     <label htmlFor="point" className="col-md-6">{this.state.point}</label>
                                 </div>
-                                <div className="offset-md-4 col-md-4 mt-5">
-                                    <input type="submit" className="btn btn-outline-success" value="Chỉnh sửa profile" />
+                                <div className="form-inline mt-4">
+                                    <label className="col-md-5"></label>
+                                    <input type="submit" className="col-md-2 btn btn-success" value="Submit" />
                                 </div>
                             </form>
                         </div>

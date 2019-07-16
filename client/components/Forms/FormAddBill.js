@@ -28,7 +28,22 @@ class AddEditForm extends React.Component {
     .then(response => response.json())
     .then(item => {
       alert(`Thêm thành công`);
-      location.reload()
+      var point = this.state.total + this.props.point
+      fetch('http://localhost:3000/users/point', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          id: this.props.id_user,
+          point: point
+        })
+      })
+      .then(response => response.json())
+      .then(item => {
+        alert(`Tích điểm thành công cho khách hàng ${this.props.username}`);
+        location.reload()
+      })      
     })   
   }
 
@@ -44,7 +59,7 @@ class AddEditForm extends React.Component {
           <Input type="number" name="total" id="total" onChange={this.onChange} value={this.state.total}  required/>
         </FormGroup>
         <FormGroup>
-          <Button color="success">Thêm hóa đơn</Button>
+          <Button color="success">Tích điểm</Button>
         </FormGroup>       
       </Form>
     );

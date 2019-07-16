@@ -3,6 +3,7 @@ import { Table, Button, Tooltip } from 'reactstrap';
 import ModalForm from '../Modals/Modal';
 import dateFormat from 'dateformat';
 import Link from 'next/link';
+import {TablePagination} from 'react-pagination-table'
 
 class DataTable extends Component {
     constructor(props) {
@@ -38,56 +39,39 @@ class DataTable extends Component {
         })
         .catch(err => console.log(err))
         }
-
+    }
+    actions = (item)=>{
+      return (
+        <div>
+          <Link href={"/store/billofcustomer?id_user="+item.id}><Button color="success" id="bill"><i className="fas fa-money-bill-alt"></i></Button></Link>
+          <Tooltip placement="top" isOpen={this.state.tooltipOpen} autohide={false} target="bill" toggle={this.toggle}>
+            Thêm hóa đơn tích điểm
+          </Tooltip>
+        </div>
+      )
     }
 
   render() {
-
-    const items = this.props.items.map(item => {
-      return (
-        <tr key={item.id}>
-          <th scope="row">{item.id}</th>
-          <td>{item.username}</td>
-          <td>{dateFormat(item.birthday, "isoDate")}</td>
-          <td>{item.address}</td>
-          <td>{item.phone}</td>
-          <td>{item.email}</td>
-          <td>{item.point}</td>
-          <td>{dateFormat(item.createdAt, "dddd, mmmm dS, yyyy, h:MM:ss TT")}</td>
-          <td>
-            <div style={{width:"150px"}}>
-              <ModalForm buttonLabel='Edit' item={item} updateState={this.props.updateState}/>
-              {' '}
-              <Button color="danger" onClick={() => this.deleteItem(item.id)}><i className="fas fa-trash-alt"></i></Button> {' '}
-              <Link href={"/store/billofcustomer?id_user="+item.id}><Button color="success" id="bill"><i className="fas fa-money-bill-alt"></i></Button></Link>
-              <Tooltip placement="top" isOpen={this.state.tooltipOpen} autohide={false} target="bill" toggle={this.toggle}>
-                    Thêm hóa đơn tích điểm
-              </Tooltip>
-            </div>
-          </td>
-        </tr>
-        )
-      })
+    const Header = ["#","Họ tên", "Ngày sinh", "Địa chỉ", "Điện thoại", "Email","Điểm", "Ngày đăng ký" ," "];
+    let {items} = this.props;
+    let totalCount = items.length;
+    items = items.map(item=>{
+      return {
+        ...item,
+        createdAt: dateFormat(item.createdAt, "dddd, mmmm dS, yyyy, h:MM:ss TT"),
+        actions : this.actions(item)
+      }
+    })
 
     return (
-      <Table responsive hover>
-        <thead color="primary">
-          <tr>
-            <th>#</th>
-            <th width={'20%'}>Họ tên</th>
-            <th width={'15%'}>Ngày sinh</th>
-            <th width={'15%'}>Địa chỉ</th>
-            <th width={'15%'}>Điện thoại</th>
-            <th width={'10%'}>Email</th>
-            <th width={'5%'}>Điểm</th>
-            <th width={'30%'}>Ngày đăng ký</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {items}
-        </tbody>
-      </Table>
+      <TablePagination
+        className="table-responsive table-hover thead-light"
+        headers={ Header }
+        data={ items }
+        columns="id.username.birthday.address.phone.email.point.createdAt.actions"
+        perPageItemCount={5}
+        totalCount={50}
+      />
     )
   }
 }

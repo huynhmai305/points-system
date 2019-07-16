@@ -1,11 +1,15 @@
 import React, {Component} from 'react';
-var QRCode = require('qrcode');
+import QRCode from 'qrcode';
 
 class QR extends Component{
+    constructor(props) {
+        super(props);
+    }
+    
     show(){
-        if (typeof window !== 'undefined'){
+        if (typeof window !== 'undefined'){           
             var canvas = document.getElementById('canvas')
-            QRCode.toCanvas(canvas, 'hello world', function (error) {
+            QRCode.toCanvas(canvas, 'admin123', function (error) {
             if (error) console.error(error)
             console.log('success!');
             })
@@ -14,8 +18,8 @@ class QR extends Component{
     render(){
         return(
             <div>
-            <canvas id="canvas"></canvas>
-            {this.show()}
+                <canvas id="canvas"></canvas>
+                {this.show()}
             </div>
         )
     }

@@ -45,31 +45,31 @@ class BillOfCustomer extends Component {
             })
             .catch(err => console.log(err))
     }
-    TichDiem = e => {
-        e.preventDefault()
-        fetch('http://localhost:3000/users/totalpoint/'+this.state.id_user)
-        .then(response => response.json())
-        .then(item => {
-          var point = item[0].total_point/1000;
-          this.setState({point});
-          console.log(this.state.point);
-          fetch('http://localhost:3000/users/point', {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                id: this.state.id_user,
-                point: this.state.point
-            })
-            })
-            .then(response => response.json())
-            .then(item => {
-                alert(`Tích điểm thành công cho khách hàng ${this.state.username}`);
-                location.reload()
-            })            
-        })   
-      }
+    // TichDiem = e => {
+    //     e.preventDefault()
+    //     fetch('http://localhost:3000/users/totalpoint/'+this.state.id_user)
+    //     .then(response => response.json())
+    //     .then(item => {
+    //       var point = item[0].total_point/1000;
+    //       this.setState({point});
+    //       console.log(this.state.point);
+    //       fetch('http://localhost:3000/users/point', {
+    //         method: 'PUT',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify({
+    //             id: this.state.id_user,
+    //             point: this.state.point
+    //         })
+    //         })
+    //         .then(response => response.json())
+    //         .then(item => {
+    //             alert(`Tích điểm thành công cho khách hàng ${this.state.username}`);
+    //             location.reload()
+    //         })            
+    //     })   
+    //   }
     
     componentDidMount() {
         var info = JSON.parse(localStorage.getItem('user'));
@@ -98,7 +98,7 @@ class BillOfCustomer extends Component {
                             >
                                 <i className="fas fa-file-csv"> Download CSV</i>
                             </CSVLink>
-                            <ModalForm buttonLabel='Add' addItemToState={this.addItemToState} id_user={this.state.id_user} />
+                            <ModalForm buttonLabel='Add' addItemToState={this.addItemToState} id_user={this.state.id_user} point={this.state.point} username={this.state.username}/>
                         </Col>
                     </Row>           
                     <Form className="align-content-center">
