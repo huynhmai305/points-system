@@ -11,7 +11,7 @@ class Card extends Component {
                         </div>
                         <div className="card-body">
                             <h4 className="card-title text-success">132</h4>
-                            <p className="card-text">Bài review</p>
+                            <p className="card-text">Giao dịch</p>
                             <div className="progress">
                                 <div className="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style={{ width: '40%' }} aria-valuenow={40} aria-valuemin={0} aria-valuemax={100}>40%</div>
                             </div>

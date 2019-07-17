@@ -17,13 +17,13 @@ class Chart extends Component {
                 ],
                 datasets: [
                   {
-                    label: 'Nguồn thu',
+                    label: 'Doanh số',
                     backgroundColor: "rgba(255, 0, 255, 0.75)",
                     data: [4, 5, 1, 10, 32, 2, 12, 23, 15, 31, 10, 32, 7, 30, 46, 30, 50],
                   
                   },
                   {
-                    label: 'Nguồn chi',
+                    label: 'Quà đổi thưởng',
                     backgroundColor: "rgba(0, 255, 0, 0.75)",
                     data: [14, 15, 21, 0, 12, 17, 2, 10, 40, 23, 1, 12, 5, 40, 25],
                   

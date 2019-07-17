@@ -85,11 +85,11 @@ class Profile extends Component {
                         <a href="/user">Trang chủ</a>
                     </li>
                     <li className="breadcrumb-item active">
-                        <a href="#">Chỉnh sửa profile</a>
+                        Chỉnh sửa thông tin
                     </li>
                 </ol>
                     <div className="row">
-                        <div className="offset-md-1 col-md-4">
+                        <div className="offset-md-1 col-md-3">
                             <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" className="rounded-circle img-thumbnail .d-block .mx-auto image_inner_container" alt="avatar" style={{ width: 100, height: 100 }} />
                             {/*<div className="mt-5">
                                 <p>Thay đổi ảnh đại diện</p>
@@ -99,7 +99,7 @@ class Profile extends Component {
                                 <ModalChangePass/>
                             </div>
                         </div>
-                        <div className="col-md-7">
+                        <div className="col-md-8">
                             <form onSubmit={this.submitFormEdit}>
                                 <div className="form-inline">
                                     <label htmlFor="username" className="col-md-5">Họ tên:</label>

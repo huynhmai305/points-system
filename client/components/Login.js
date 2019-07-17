@@ -17,6 +17,7 @@ class Login extends Component {
       colortoast:''
     }
     this.handleChange = this.handleChange.bind(this);
+    this.toggle = this.toggle.bind(this)
   }
 
   validateEmail(e) {
@@ -39,7 +40,7 @@ class Login extends Component {
     });
   }
   toggle(){
-    this.setState({show: !this.state.show})
+    this.setState({show: false})
   }
   submitForm(e) {
     e.preventDefault();
@@ -58,10 +59,9 @@ class Login extends Component {
       .then(item => {
         this.setState({
           msg:'Đăng nhập thành công',
-          colortoast:'success'
+          colortoast:'success',
+          show:true
         })
-        // alert('Đăng nhập thành công')
-        // this.setState({msg:'Đăng nhập thành công'});
         localStorage.setItem('user', JSON.stringify(item))
         let role = item[0].role;
         if (role === 0) {
@@ -74,9 +74,9 @@ class Login extends Component {
       })
       .catch(err => {this.setState({
         msg:'Đăng nhập thất bại',
-        colortoast:'danger'
+        colortoast:'danger',
+        show:false
       });
-      // alert('Đăng nhập thất bại')
     })
   }
 
@@ -148,7 +148,7 @@ class Login extends Component {
             <Button color="success" type="submit">
               Đăng nhập
             </Button>
-            <div className="text-danger mt-3">{this.state.msg}</div>
+           <div className="text-danger mt-3">{this.state.msg}</div>
           </FormGroup>
           <div style={{display:'none'}}>
             <Spinner color="success" />

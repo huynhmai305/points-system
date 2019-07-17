@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Table, Button } from 'reactstrap';
+import { Button } from 'reactstrap';
 import ModalForm from '../Modals/ModalGift.js';
 import dateFormat from 'dateformat';
+import { TablePagination } from 'react-pagination-table'
 
 class DataTable extends Component {
 
@@ -27,46 +28,34 @@ class DataTable extends Component {
     }
 
   }
-
-  render() {
-
-    const items = this.props.items.map(item => {
-      return (
-        <tr key={item.id}>
-          <th scope="row">{item.id_gift}</th>
-          <td>{item.title}</td>
-          <td>{item.content}</td>
-          <td>{item.quantity}</td>
-          <td>{item.point}</td>
-          <td>{dateFormat(item.createdAt, "dddd, mmmm dS, yyyy, h:MM:ss TT")}</td>
-          <td>
-            <div style={{width:"100px"}}>
-              <ModalForm buttonLabel='Edit' item={item} updateState={this.props.updateState}/>
-              {' '}
-              <Button color="danger" onClick={() => this.deleteItem(item.id)}><i className="fas fa-trash-alt"></i></Button>
-            </div>
-          </td>
-        </tr>
-        )
-      })
-
+  actions = (item)=>{
     return (
-      <Table responsive hover>
-        <thead color="primary">
-          <tr>
-            <th>#</th>
-            <th width={'15%'}>Tiêu đề</th>
-            <th width={'15%'}>Nội dung</th>
-            <th width={'15%'}>Số lượng</th>
-            <th width={'25%'}>Điểm đổi</th>
-            <th width={'30%'}>Ngày đăng ký</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {items}
-        </tbody>
-      </Table>
+      <div style={{ width: "100px" }}>
+        <ModalForm buttonLabel='Edit' item={item} updateState={this.props.updateState} />
+        {' '}
+         <Button color="danger" onClick={() => this.deleteItem(item.id)}><i className="fas fa-trash-alt"></i></Button>
+      </div>
+    )
+  }
+  render() {
+    const Header = ["#","Tiêu đề", "Nội dung", "Số lượng", "Điểm đổi","Mã cửa hàng" ,"Ngày đăng ký" ," "];
+    let {items} = this.props;
+    items = items.map(item=>{
+      return {
+        ...item,
+        createdAt: dateFormat(item.createdAt, "dddd, mmmm dS, yyyy, h:MM:ss TT"),
+        actions : this.actions(item)
+      }
+    })
+    return (
+      <TablePagination
+        className="table-responsive table-hover thead-light"
+        headers={ Header }
+        data={ items }
+        columns="id_gift.title.content.quantity.point.id_store.createdAt.actions"
+        perPageItemCount={4}
+        totalCount={50}
+      />
     )
   }
 }

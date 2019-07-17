@@ -24,7 +24,7 @@ class Quytrinhtichdiem extends Component {
                                             <h4 className="subheading">Chọn cửa hàng</h4>
                                         </div>
                                         <div className="timeline-body">
-                                            <p className="text-muted">Chọn bất kỳ cửa hàng ưa thích nào của bạn có tích Mcoin dựa trên hóa đơn thuộc hệ thống</p>
+                                            <p className="text-muted">Chọn bất kỳ cửa hàng ưa thích nào của bạn có tích điểm dựa trên hóa đơn thuộc hệ thống</p>
                                         </div>
                                     </div>
                                 </li>
@@ -35,10 +35,10 @@ class Quytrinhtichdiem extends Component {
                                     <div className="timeline-panel">
                                         <div className="timeline-heading">
                                             <h4>Bước 2</h4>
-                                            <h4 className="subheading">Quét mã</h4>
+                                            <h4 className="subheading">Để lại thông tin</h4>
                                         </div>
                                         <div className="timeline-body">
-                                            <p className="text-muted">Quét mã QR để tích điểm Mcoin</p>
+                                            <p className="text-muted">Sau khi thanh toán, để lại thông tin cho thu ngân</p>
                                         </div>
                                     </div>
                                 </li>
@@ -52,7 +52,7 @@ class Quytrinhtichdiem extends Component {
                                             <h4 className="subheading">Nhận điểm</h4>
                                         </div>
                                         <div className="timeline-body">
-                                            <p className="text-muted">Nhận Mcoin tích lũy</p>
+                                            <p className="text-muted">Nhận điểm tích lũy </p>
                                         </div>
                                     </div>
                                 </li>

@@ -1,36 +1,30 @@
 import React, { Component } from 'react'
 import { Table} from 'reactstrap';
 import dateFormat from 'dateformat';
+import NumberFormat from 'react-number-format';
+import { TablePagination } from 'react-pagination-table'
 
 class DataTable extends Component {
   render() {
-    const items = this.props.items.map(item => {
-      return (
-        <tr key={item.id}>
-          <td scope="row">{item.id}</td>
-          <td>{item.total}</td>
-          <td>{item.id_user}</td>
-          <td>{item.User.username}</td>
-          <td>{dateFormat(item.createdAt, "dddd, mmmm dS, yyyy, h:MM:ss TT")}</td>
-        </tr>
-        )
-      })
-
+    const Header = ["#", "Tổng tiền", "Mã khách hàng","Tên khách hàng", "Ngày tạo"];
+    let { items } = this.props;
+    items = items.map(item => {
+      return {
+        ...item,
+        createdAt: dateFormat(item.createdAt, "dddd, mmmm dS, yyyy, h:MM:ss TT"),
+        total: <NumberFormat value={item.total} displayType={'text'} thousandSeparator={true} suffix={'đ'} />,
+        name_user: item.User.username
+      }
+    })
     return (
-      <Table responsive hover>
-        <thead color="primary">
-          <tr>
-            <th>#</th>
-            <th>Tổng tiền</th>
-            <th>Mã khách hàng</th>
-            <th>Tên khách hàng</th>
-            <th>Ngày tạo</th>
-          </tr>
-        </thead>
-        <tbody>
-          {items}
-        </tbody>
-      </Table>
+      <TablePagination
+        className="table-responsive table-hover thead-light"
+        headers={Header}
+        data={items}
+        columns="id.total.id_user.name_user.createdAt"
+        perPageItemCount={5}
+        totalCount={50}
+      />
     )
   }
 }

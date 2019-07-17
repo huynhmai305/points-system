@@ -5,6 +5,7 @@ const User = require ('../models/user');
 const Bill =require ('../models/bill');
 const Gift = require ('../models/gift') ;
 const Exchange_Gift = require ('../models/exchange_gift');
+const Point = require ('../models/point');
 const sequelize = require('sequelize');
 const Op = sequelize.Op;
 User.hasMany(Bill,{foreignKey:'id_user',sourceKey:'id'});
@@ -100,7 +101,7 @@ router.get('/bill/:id_user', (req, res) => {
       .catch(err => console.log(err))
 })//end--get all bill with id customer
 
-//total point//fail
+//total point//fail logic
 router.get('/totalpoint/:id_user', (req, res) => {
   Bill.findAll({
     where:{
@@ -173,6 +174,16 @@ router.get('/giftuser/:id', (req, res) => {
     res.send(result);
   })
   .catch(err => console.log(err))
+})
+
+//get gift with id_store
+router.get('/giftstore/:id_store',(req,res)=>{
+  Gift.findAll({
+    where:{
+      id_store: req.params.id_store
+    }
+  })
+  .then(result => res.send(result))
 })
 
 //get gift with point condition for exchange point
@@ -270,6 +281,30 @@ router.get('/exchange_gift/',(req,res) => {
     include: [Gift]
   }).findAll
   .then(result => res.send(result))
+})
+
+//get point_change
+router.get('/point_change',(req,res) => {
+  Point.findOne({
+    attributes: ['point_change']
+  })
+  .then(result => res.send(result))
+})
+
+//update point_change
+router.put('/point_change',(req,res) => {
+  const update = new Date();
+  let dt = {
+    point_change: req.body.point_change,
+    updatedAt: update
+  }
+  Point.update(dt,{
+    where: {
+      id: 1
+    }
+  })
+  .then(result => res.sendStatus(200).send(result))
+  .catch(err => res.send('error'))
 })
 
 module.exports = router;

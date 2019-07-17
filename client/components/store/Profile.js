@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Layout from '../Store';
+import ModalChangePass from '../Modals/ModalChangePass'
 
 class Profile extends Component {
     constructor(props) {
@@ -36,8 +37,7 @@ class Profile extends Component {
             birthday: this.state.birthday,
             address: this.state.address,
             phone: this.state.phone,
-            email: this.state.email,
-            password: this.state.password,
+            email: this.state.email
           })
         })
           .then(response => response.json())
@@ -73,20 +73,22 @@ class Profile extends Component {
                     <li className="breadcrumb-item">
                         <a href="/store">Trang chủ</a>
                     </li>
-                    <li className="breadcrumb-item disable">
-                        <a href="#">Chỉnh sửa profile</a>
+                    <li className="breadcrumb-item active">
+                       Chỉnh sửa thông tin
                     </li>
                 </ol>
                     <div className="row">
-                        <div className="offset-md-1 col-md-4">
+                        <div className="offset-md-1 col-md-3">
                             <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" className="rounded-circle img-thumbnail .d-block .mx-auto image_inner_container" alt="avatar" style={{ width: 100, height: 100 }} />
-                            <div className="mt-5">
+                            {/*<div className="mt-5">
                                 <p>Thay đổi ảnh đại diện</p>
                                 <input type="file" className="form-control-file " />
+                            </div>*/}
+                            <div className="mt-4">
+                                <ModalChangePass/>
                             </div>
                         </div>
-
-                        <div className="col-md-7">
+                        <div className="col-md-8">
                             <form onSubmit={this.submitFormEdit}>
                                 <div className="form-inline">
                                     <label htmlFor="username" className="col-md-5">Tên cửa hàng:</label>
@@ -94,7 +96,7 @@ class Profile extends Component {
                                 </div>
                                 <div className="form-inline">
                                     <label htmlFor="address" className="col-md-5">Địa chỉ:</label>
-                                    <input type="text" className="form-control col-md-6" id="address" name="address" value={this.state.address} onChange={this.handleChange} required/>
+                                    <textarea className="form-control col-md-6" id="address" name="address" value={this.state.address} onChange={this.handleChange} required/>
                                 </div>
                                 <div className="form-inline">
                                     <label htmlFor="phone" className="col-md-5">Số điện thoại:</label>
@@ -104,12 +106,9 @@ class Profile extends Component {
                                     <label htmlFor="email" className="col-md-5">Email:</label>
                                     <input type="email" className="form-control col-md-6" id="email" name="email" value={this.state.email} onChange={this.handleChange} required/>
                                 </div>
-                                <div className="form-inline">
-                                    <label htmlFor="password" className="col-md-5">Password:</label>
-                                    <input type="text" className="form-control col-md-6" id="password" name="password" value={this.state.password} onChange={this.handleChange} required/>
-                                </div>
-                                <div className="offset-md-4 col-md-4 mt-5">
-                                    <input type="submit" className="btn btn-outline-success" value="Submit" />
+                                <div className="form-inline mt-4">
+                                    <label className="col-md-5"></label>
+                                    <input type="submit" className="col-md-2 btn btn-success" value="Submit" />
                                 </div>
                             </form>
                         </div>

@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const db = require('../config/database');
-const Gift = db.define('Exchange_Gift',{
+const Exchange_Gift = db.define('Exchange_Gift',{
     id: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -15,4 +15,4 @@ const Gift = db.define('Exchange_Gift',{
     }
  });
  
- module.exports = Gift;
+ module.exports = Exchange_Gift;

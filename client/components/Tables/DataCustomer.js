@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { Table, Button, Tooltip } from 'reactstrap';
-import ModalForm from '../Modals/Modal';
+import { Button, Tooltip } from 'reactstrap';
 import dateFormat from 'dateformat';
 import Link from 'next/link';
 import {TablePagination} from 'react-pagination-table'
@@ -24,13 +23,13 @@ class DataTable extends Component {
         if(confirmDelete){
         // console.log(id)
         fetch('http://localhost:3000/admin/user', {
-        method: 'delete',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            id
-        })
+          method: 'delete',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+              id
+          })
         })
         .then(response => response.json())
         .then(item => {
@@ -69,7 +68,7 @@ class DataTable extends Component {
         headers={ Header }
         data={ items }
         columns="id.username.birthday.address.phone.email.point.createdAt.actions"
-        perPageItemCount={5}
+        perPageItemCount={4}
         totalCount={50}
       />
     )

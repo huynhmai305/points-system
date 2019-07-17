@@ -10,12 +10,12 @@ class Chart extends Component {
                 labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
                 datasets: [
                   {
-                    label: 'Nguồn thu',
+                    label: 'Doanh số',
                     backgroundColor: "rgba(153,255,51)",
                     data: [42, 49, 33, 47, 36, 33, 37]                  
                   },
                   {
-                    label: 'Nguồn chi',
+                    label: 'Quà đổi thưởng',
                     backgroundColor: "rgba(255,153,0)",
                     data: [32, 59, 35, 35, 32, 33, 40]
                   }
