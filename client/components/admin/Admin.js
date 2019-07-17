@@ -25,9 +25,6 @@ export default class Admin extends Component {
                 </li>
                 {/*<li>
                   <Link href="/admin/post"><a><i className="fas fa-pen-alt"></i> Bài review</a></Link>
-                </li>
-                <li>
-                  <Link href="#"><a><i className="far fa-comment-alt "></i> Tích điểm</a></Link>
                 </li>*/}
               </ul>
             </li>
@@ -46,7 +43,7 @@ export default class Admin extends Component {
               <Link href="/admin/gift"><a><i className="fas fa-gifts"></i> Quản lý quà đổi thưởng</a></Link>
             </li>
             <li>
-              <Link href="/admin/change_point"><a><i className="fas fa-gifts"></i> Giá trị quy đổi điểm</a></Link>
+              <Link href="/admin/change_point"><a><i className="fas fa-exchange-alt"></i> Giá trị quy đổi điểm</a></Link>
             </li>
             <li>
               <Link href="/"><a onClick={this.logout}><i className="fas fa-power-off"></i> Đăng xuất</a></Link>

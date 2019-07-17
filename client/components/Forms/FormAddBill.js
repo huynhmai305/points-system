@@ -6,7 +6,8 @@ class AddEditForm extends React.Component {
   state = {
     id:'',
     total: 0,
-    point_change:0  //giá trị quy đổi điểm hiện tại
+    point_change:0 ,//giá trị quy đổi điểm hiện tại
+    id_store:''
   }
 
   onChange = e => {
@@ -32,7 +33,8 @@ class AddEditForm extends React.Component {
       body: JSON.stringify({
         id: this.state.id,
         total: this.state.total,
-        id_user: this.props.id_user
+        id_user: this.props.id_user,
+        id_store: this.state.id_store
       })
     })
     .then(response => response.json())
@@ -58,6 +60,8 @@ class AddEditForm extends React.Component {
      })   
     }
     componentDidMount() {
+      let info = JSON.parse(localStorage.getItem('user'))
+      this.setState({id_store: info[0].id})
       this.getItems()
     }
   render() {
@@ -71,6 +75,10 @@ class AddEditForm extends React.Component {
           <Label for="total">Tổng tiền thanh toán</Label>
           {/*<NumberFormat thousandSeparator={true} suffix={'đ'} name="total" id="total" onChange={this.onChange} value={this.state.total}  required/>*/}
           <Input type="number" name="total" id="total" onChange={this.onChange} value={this.state.total} required/>
+        </FormGroup>
+        <FormGroup>
+          <Label for="id_store">Mã cửa hàng</Label>
+          <Input type="text" name="id_store" id="id_store" onChange={this.onChange} value={this.state.id_store} readOnly="readonly"/>
         </FormGroup>
         <FormGroup>
           <Button color="success">Tích điểm</Button>

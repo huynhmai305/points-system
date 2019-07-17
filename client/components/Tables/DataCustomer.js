@@ -42,7 +42,9 @@ class DataTable extends Component {
     actions = (item)=>{
       return (
         <div>
-          <Link href={"/store/billofcustomer?id_user="+item.id}><Button color="success" id="bill"><i className="fas fa-money-bill-alt"></i></Button></Link>
+          <Link href={"/store/billofcustomer?id_user="+item.id}>
+            <Button color="success" id="bill"><i className="fas fa-money-bill-alt"></i></Button>
+          </Link>
           <Tooltip placement="top" isOpen={this.state.tooltipOpen} autohide={false} target="bill" toggle={this.toggle}>
             Thêm hóa đơn tích điểm
           </Tooltip>

@@ -113,7 +113,7 @@ class FormAddEditGift extends Component {
           <Label for="exampleSelect">Chọn cửa hàng</Label>
           <Input type="select" name="id_store" id="id_store" onChange={this.onChange}>
             {this.state.items.map(item => {
-                <option value={item.id}>{item.username}</option>
+              <option value={item.id}>{item.username}</option>
             })}
           </Input>
         </FormGroup>

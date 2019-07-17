@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
-import ModalForm from '../Modals/Modal';
-import DataTable from '../Tables/DataTable';
+import DataTable from '../Tables/DataCustomer';
 import { CSVLink } from 'react-csv';
 import Search from '../Search';
 
