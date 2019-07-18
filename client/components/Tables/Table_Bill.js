@@ -6,7 +6,7 @@ import { TablePagination } from 'react-pagination-table'
 
 class DataTable extends Component {
   render() {
-    const Header = ["#", "Tổng tiền", "Mã khách hàng","Tên khách hàng", "Ngày tạo"];
+    const Header = ["#", "Tổng tiền", "Mã khách hàng","Tên khách hàng","Mã cửa hàng", "Ngày tạo"];
     let { items } = this.props;
     items = items.map(item => {
       return {
@@ -21,7 +21,7 @@ class DataTable extends Component {
         className="table-responsive table-hover thead-light"
         headers={Header}
         data={items}
-        columns="id.total.id_user.name_user.createdAt"
+        columns="id.total.id_user.name_user.id_store.createdAt"
         perPageItemCount={5}
         totalCount={50}
       />

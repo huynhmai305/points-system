@@ -21,12 +21,18 @@ class Search extends Component {
     render() {
         return (
             <Container>
-                <Form inline>
+                <Form inline>                   
                     <FormGroup>
                         <Label for="keyword" />
-                        <Input type="text" id="keyword" name="keyword" placeholder="Nhập thông tin tìm kiếm..." onChange={this.onChange} />
+                        <div className="input-group search">
+                        <Input type="text" className=" py-2 border-right-0 border" id="keyword" name="keyword" placeholder="Nhập thông tin tìm kiếm..." onChange={this.onChange} />                          
+                            <span className="input-group-append">
+                                <Button className="btn border-left-0 border" onClick={this.search} color="primary">
+                                    <i className="fas fa-search" />
+                                </Button>
+                            </span>
+                        </div>                      
                     </FormGroup>
-                    <Button onClick={this.search} color="primary">Tìm kiếm</Button>
                 </Form>
             </Container>
         );

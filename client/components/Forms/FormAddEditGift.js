@@ -1,25 +1,37 @@
 import React, { Component } from 'react';
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-var randomString = require('random-string');
+import { Button, Form, FormGroup, Label, Input} from 'reactstrap';
+const randomString = require('random-string');
+import Select from 'react-select';
 
 class FormAddEditGift extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items:[],
+      items:[],//luu gia tri tra ve tu api
+      options:[],//luu option cua select
+      value:'',
+      label:'',
       id: 0,
       id_gift: randomString(7),
       title: '',
       content: '',
       point: '',
       quantity: 0,
-      id_store: ''
+      id_store: '',
+      store_obj:''
     }
   }
 
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value })
   }
+  handleChange = id_store => {
+    this.setState({
+      store_obj:id_store, 
+      id_store: id_store.value
+    });
+    console.log(`Option selected:`, id_store.value);
+  };
 
   submitFormAdd = e => {
     console.log(this.state.id_gift)
@@ -72,14 +84,27 @@ class FormAddEditGift extends Component {
       })
   }
   getStore() {
-    let url = 'http://localhost:3000/admin/store';
+    let url = 'http://localhost:3000/users/optionstore';
     fetch(url)
       .then(response => response.json())
       .then(items => {
-        this.setState({ items });
-        console.log(this.state.items)
+        this.setState({items})
+        this.addItem(this.state.items)
       })
       .catch(err => console.log(err))
+  }
+  addItem(items){
+    items.map((val,key) => {
+      key={key}
+      this.setState({
+        value:val.id,
+        label: val.username
+      })
+      let item = {'value':this.state.value,'label': this.state.label};
+      this.state.options.push(item)
+      console.log(this.state.options)
+    })
+
   }
 
   componentDidMount() {
@@ -91,6 +116,7 @@ class FormAddEditGift extends Component {
     this.getStore()
   }
   render() {
+    const { store_obj} = this.state;
     return (
       <Form onSubmit={this.props.item ? this.submitFormEdit : this.submitFormAdd}>
         <FormGroup>
@@ -111,11 +137,11 @@ class FormAddEditGift extends Component {
         </FormGroup>
         <FormGroup>
           <Label for="exampleSelect">Chọn cửa hàng</Label>
-          <Input type="select" name="id_store" id="id_store" onChange={this.onChange}>
-            {this.state.items.map(item => {
-              <option value={item.id}>{item.username}</option>
-            })}
-          </Input>
+          <Select
+            value={store_obj}
+            onChange={this.handleChange}
+            options={this.state.options}
+          />
         </FormGroup>
         <FormGroup>
           <Button color="success">Submit</Button>

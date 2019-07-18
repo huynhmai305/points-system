@@ -30,11 +30,13 @@
     "react-chartjs-2": "^2.7.6",
     "react-csv": "^1.1.1",
     "react-dom": "^16.8.6",
+    "react-images-upload": "^1.2.7",
     "react-number-format": "^4.0.8",
     "react-pagination-table": "^2.0.2",
     "react-qr-reader": "^2.2.1",
     "react-qr-scanner": "0.0.8",
     "react-router-dom": "^5.0.1",
+    "react-select": "^3.0.4",
     "react-sidebar": "^3.0.2",
     "reactstrap": "^8.0.0"
   },

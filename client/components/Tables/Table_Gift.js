@@ -53,7 +53,7 @@ class DataTable extends Component {
         headers={ Header }
         data={ items }
         columns="id_gift.title.content.quantity.point.id_store.createdAt.actions"
-        perPageItemCount={4}
+        perPageItemCount={3}
         totalCount={50}
       />
     )

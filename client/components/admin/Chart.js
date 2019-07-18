@@ -18,17 +18,35 @@ class Chart extends Component {
                 datasets: [
                   {
                     label: 'Doanh số',
-                    backgroundColor: "rgba(255, 0, 255, 0.75)",
-                    data: [4, 5, 1, 10, 32, 2, 12, 23, 15, 31, 10, 32, 7, 30, 46, 30, 50],
+                    backgroundColor: "#489620",
+                    data: [ 32, 42, 49, 33, 47, 36, 20, 37, 30, 25, 30, 50],
                   
                   },
                   {
                     label: 'Quà đổi thưởng',
-                    backgroundColor: "rgba(0, 255, 0, 0.75)",
-                    data: [14, 15, 21, 0, 12, 17, 2, 10, 40, 23, 1, 12, 5, 40, 25],
-                  
+                    backgroundColor: "#FCF54C",
+                    data: [14, 32, 60, 50, 35, 32, 33, 40, 42, 15, 40, 25],                 
                   }
                 ]
+            },
+            options:{
+                title:{
+                    display: true,
+                    text: 'Biểu đồ thống kê tài chính năm 2018',
+                    position: 'bottom',
+                    padding: 10
+                },
+                responsive: true,
+                scales: {
+                    yAxes: [{
+                      scaleLabel: {
+                        display: true,
+                        labelString: "Doanh thu (triệu đồng)",
+                        fontFamily: "Montserrat",
+                        fontColor: "black",
+                      }
+                    }]
+                }
             }
         }
     }
@@ -36,7 +54,7 @@ class Chart extends Component {
         const ctx = canvas.getContext('2d');
         const gradient = ctx.createLinearGradient(0,0,700,1000);
         gradient.addColorStop(0, color);
-        gradient.addColorStop(0.95, "rgba(133, 122, 144, 0.5"); 
+        gradient.addColorStop(0.95, "#cc65fe"); 
         return gradient;                          
     }
     getChartData = canvas => {
@@ -54,9 +72,9 @@ class Chart extends Component {
     
     render() {
         return (
-            <div>
-                <article className="container canvas-container" style={{height:'40vh'}}>
-                    <Line data={this.getChartData} />
+            <div >
+                <article className="container canvas-container" style={{position: 'relative', height:'40vh', width:'80vw'}}>
+                    <Line data={this.getChartData} options={this.state.options}/>
                 </article>
             </div>
         );

@@ -89,7 +89,8 @@ class Login extends Component {
             Thông báo
           </ToastHeader>
           <ToastBody>
-          {this.state.msg}
+          {this.state.msg} {'  '}
+          <Spinner color={this.state.colortoast} />
           </ToastBody>
         </Toast>
         <Form className="form" onSubmit={(e) => this.submitForm(e)} method="POST">

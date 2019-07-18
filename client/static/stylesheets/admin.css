@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  /* overflow-x: hidden; */
 }
 
 html, body { min-height: 100%; }
@@ -276,4 +277,10 @@ ul ul a {
   text-decoration: none;
   background-color: #fff;
   border: 1px solid #ddd;
+}
+.chartjs-render-monitor{
+  overflow-x: hidden;
+}
+.search{
+  border-radius: 25px
 }

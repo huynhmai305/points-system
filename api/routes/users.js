@@ -140,11 +140,11 @@ router.get('/gift', (req, res) => {
   if (req.query.keyword && req.query.keyword.length > 0) {
     Gift.findAll({
       where: {
-        id_user: {
+        id_store: {
           [Op.like]: `%${req.query.keyword}%`
         }
       },
-      order:[['id_gift','ASC']]
+      order:[['createdAt','DESC']]
     })
       .then(result => {
         res.send(result);
@@ -152,7 +152,7 @@ router.get('/gift', (req, res) => {
       .catch(err => console.log(err))
   } else {
     Gift.findAll({
-      order:[['id_gift','ASC']]
+      order:[['createdAt','DESC']]
     })
       .then(result => {
         res.send(result);
@@ -305,6 +305,17 @@ router.put('/point_change',(req,res) => {
   })
   .then(result => res.sendStatus(200).send(result))
   .catch(err => res.send('error'))
+})
+
+//get store select option
+router.get('/optionstore',(req,res) => {
+  User.findAll({
+    attributes:['id','username'],
+    where:{
+      role: 1
+    }
+  })
+  .then(result => res.send(result))
 })
 
 module.exports = router;

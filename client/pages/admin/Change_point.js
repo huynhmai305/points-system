@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Container, Col } from 'reactstrap';
+import Admin from '../../components/admin/Admin'
+
 export default class Change_point extends Component {
     state={
         point_change_old: 0,
@@ -38,17 +40,43 @@ export default class Change_point extends Component {
     }
     render(){
         return (
-            <div className ="container"> 
-            <h3>Quy đổi điểm tích lũy</h3>
-            <div class="form-group">
-              <label for="">Công thức tính điểm tích lũy:</label>
-              <strong>Điểm tích lũy = Tổng tiền thanh toán / giá trị quy đổi</strong><br/>
-              <label for="">Giá trị quy đổi hiện tại:{this.state.point_change_old}</label><br/>
-              <input type="text" name="point_change" onChange={this.onChange} value={this.state.point_change} class="form-control"/>
-              <Button color="success" onClick ={this.submitFormEdit}>Submit</Button>
-              <small id="helpId" class="text-muted">Help text</small>
-            </div>
-            </div>
+            <Admin title="Giá trị quy đổi điểm">
+            <Container className="mt-5">
+              <ol className="breadcrumb">
+                <li className="breadcrumb-item">
+                    <a href="/admin">Trang chủ</a>
+                </li>
+                <li className="breadcrumb-item active">Giá trị quy đổi điểm tích lũy</li>
+            </ol>
+              <Form >
+                <FormGroup>
+                  <Label>Công thức tính điểm tích lũy:</Label>
+                  <h5>Điểm tích lũy = Tổng tiền thanh toán / giá trị quy đổi</h5>
+                </FormGroup>
+                <FormGroup>
+                  <Label>Giá trị quy đổi hiện tại: {this.state.point_change_old}</Label>
+                </FormGroup>
+                <FormGroup row>
+                  <Col md={5}>
+                    <Label for="point_change">Giá trị quy đổi mới (nếu có)</Label>
+                    <div className="input-group mb-3">
+                      <div className="input-group-prepend">
+                        <span className="input-group-text" id="basic-addon1"><i className="fas fa-exchange-alt"></i></span>
+                      </div>
+                      <Input type="text" name="point_change" onChange={this.onChange} value={this.state.point_change} placeholder="Giá trị quy đổi mới.." />
+                    </div>   
+                  </Col>
+                  <Col md={3}>
+                    <Label for="dvt">Đơn vị quy đổi</Label>
+                    <Input type="text" id ="dvt" defaultValue="đồng" readOnly="readonly"/>
+                  </Col>
+                </FormGroup>
+                <FormGroup>
+                  <Button color="success" onClick ={this.submitFormEdit}>Submit</Button>
+                </FormGroup>
+              </Form>
+            </Container>           
+          </Admin>
         )
     }
 }

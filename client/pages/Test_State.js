@@ -1,43 +1,32 @@
 import React, { Component } from 'react';
+import Layout from '../components/layouts/Layout';
+import ImageUploader from 'react-images-upload';
 
 class Test_State extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            items: []
-        }
+         this.state = { pictures: [] };
+         this.onDrop = this.onDrop.bind(this);
     }
-
-    componentDidMount() {
-        fetch('http://localhost:3000/users/tichdiem')
-            .then(response => response.json())
-            .then(item => {
-                this.setState({ items: item });
-                console.log(this.state.items)
-            })
+ 
+    onDrop(picture) {
+        this.setState({
+            pictures: this.state.pictures.concat(picture),
+        });
     }
     render() {
         return (
-            <div>
-                <div class="container" >
-                    <form>
-                        <fieldset class="form-group row">
-                            {this.state.items.map((item, key) => (
-                                <div>
-                                    <legend class="col-form-legend col-sm-1-12" key={key}>Ma hoa don</legend>
-                                    <div class="col-sm-1-12">
-                                        {item.id}
-                                    </div>
-                                </div>
-                            ))}
-                        </fieldset>
-                        
-                    </form>
-                </div>
-            </div>
-
+            <Layout>
+                <ImageUploader
+                    withIcon={true}
+                    buttonText='Choose images'
+                    onChange={this.onDrop}
+                    imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                    maxFileSize={5242880}
+                />
+            </Layout>
         );
     }
-}                  
+}
 
-export default Test_State                            
+export default Test_State;
