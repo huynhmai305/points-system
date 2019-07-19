@@ -1,16 +1,39 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
+const Bill = require('../models/bill')
 const cors = require('cors');
 // const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 // const fs = require('fs-extra');
 // const multer = require('multer');
+const imagesUpload = require('images-upload-middleware');
 const sequelize = require('sequelize');
 const Op = sequelize.Op;
-router.use(cors())
+router.use(cors());
 process.env.SECRET_KEY = 'secret';
+const multer = require('multer')
 
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'public/images/uploads')
+    },
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + '-' + file.originalname)
+    }
+});
+const upload = multer({ storage })
+
+//upload images
+router.post('/upload', upload.single('image'), (req, res) => {
+  if (req.file)
+    res.json({
+    imageUrl: `images/uploads/${req.file.filename}`
+    });
+  else 
+    res.status("409").json("No Files to Upload.");
+});
+  
 //======register ======
 router.post('/admin/user',(req, res) => {
   const data = {
@@ -57,7 +80,6 @@ router.post('/admin/user',(req, res) => {
 //end register=======
 
 //===== login page
-
 router.post('/login', (req, res) => {
   // var sess = req.session;
   var email = req.body.email;
@@ -113,6 +135,7 @@ router.get('/admin/user', (req, res) => {
       .catch(err => console.log(err))
   }
 })
+//get info with id
 router.get('/getinfo/:id',(req,res) => {
   User.findAll({
     where: {
@@ -191,7 +214,54 @@ router.put('/admin/user', (req, res) => {
       .catch(err => console.log(err))
   })
 })
-
 //===end edit user
+
+//sum total money of store
+router.get('/totalmoney/:id_store', (req, res) => {
+  Bill.findAll({
+    where:{
+      id_store: req.params.id_store
+    },
+    attributes:['id_store',[sequelize.fn('SUM',sequelize.col('total')),'total_money']],
+    group: ['id_store']
+  })
+    .then(result => {
+      res.end(JSON.stringify(result));
+    })
+    .catch(err => console.log(err))
+})//===end get total money of store
+
+//sum all total money of store
+router.get('/alltotalmoney', (req, res) => {
+  Bill.findAll({
+    attributes:[[sequelize.fn('SUM',sequelize.col('total')),'total_money']],
+  })
+    .then(result => {
+      res.end(JSON.stringify(result));
+    })
+    .catch(err => console.log(err))
+})//===end get all total money of store
+
+//count members
+ router.get('/countmembers',(req,res) => {
+   User.findAll({
+     where:{
+        role:2
+     },
+    attributes:['role',[sequelize.fn('COUNT',sequelize.col('role')),'total_members']],
+    group: ['role']
+   })
+   .then(result => res.send(result))
+   .catch(err => console.log(err))
+ })
+
+ //count bill
+ router.get('/countbills',(req,res) => {
+  Bill.findAll({
+   attributes:[[sequelize.fn('COUNT',sequelize.col('id')),'total_bills']],
+  })
+  .then(result => res.send(result))
+  .catch(err => console.log(err))
+})
 
 module.exports = router;

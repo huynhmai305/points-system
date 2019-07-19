@@ -54,15 +54,19 @@ class showGift extends Component {
                         console.log(this.state.id_user+this.props.id_gift)
                         fetch('http://localhost:3000/users/exchange_gift',{
                             method:'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
                             body: JSON.stringify({
                                 id_user: this.state.id_user,
                                 id_gift: this.props.id_gift  
                             })
                         })
-                        this.setState({
-                            visible: true,
-                        });
-                        console.log(item);
+                        .then(() => this.setState({
+                            visible: true
+                        }))
+                        // .catch(err => console.log(err))
+                        // console.log(item);
                     })  
                 // location.reload()
                 })   

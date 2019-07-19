@@ -101,21 +101,6 @@ router.get('/bill/:id_user', (req, res) => {
       .catch(err => console.log(err))
 })//end--get all bill with id customer
 
-//total point//fail logic
-router.get('/totalpoint/:id_user', (req, res) => {
-  Bill.findAll({
-    where:{
-      id_user: req.params.id_user
-    },
-    attributes:['id_user',[sequelize.fn('SUM',sequelize.col('total')),'total_point']],
-    group: ['Bill.id_user']
-  })
-    .then(result => {
-      res.send(result);
-    })
-    .catch(err => console.log(err))
-})//end get total point
-
 //add bill
 router.post('/bill',(req, res) => {
   const data = {
@@ -258,28 +243,28 @@ router.put('/gift', (req, res) => {
 
 //create exchange_gift history after exchange gift
 router.post('/exchange_gift',(req,res) => {
-  var data = {
+ let data = {
     id_user: req.body.id_user,
     id_gift: req.body.id_gift
   }
-  let { id_gift, id_user } = data;
-  
-  Exchange_Gift.create({id_gift, id_user })
-  .then(result => {
-    console.log(result)
-    res.json(result);
-    res.sendStatus(200);
-  })
-  .catch(err => {
-    res.send('error:' + err)
-  })
+  let { id_user, id_gift} = data;
+  console.log({ id_user, id_gift})
+  // Exchange_Gift.create({id_user, id_gift })
+  // .then(result => {
+  //   console.log(result)
+  //   res.json(result);
+  //   res.sendStatus(200);
+  // })
+  // .catch(err => {
+  //   res.send('error:' + err)
+  // })
 })
 
 //get history exchange gift
-router.get('/exchange_gift/',(req,res) => {
+router.get('/exchange_gift',(req,res) => {
   Exchange_Gift.findAll({
     include: [Gift]
-  }).findAll
+  })
   .then(result => res.send(result))
 })
 

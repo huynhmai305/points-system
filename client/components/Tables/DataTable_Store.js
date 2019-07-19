@@ -37,7 +37,7 @@ class DataTable extends Component {
     )
   }
   render() {
-    const Header = ["#","Họ tên", "Ngày sinh","Địa chỉ","Email","Điện thoại","Điểm", "Ngày đăng ký" ," "];
+    const Header = ["#","Cửa hàng", "Địa chỉ", "Điện thoại", "Ngày đăng ký" ," "];
     let {items} = this.props;
     items = items.map(item=>{
       return {
@@ -52,7 +52,7 @@ class DataTable extends Component {
         className="table-responsive table-hover thead-light"
         headers={ Header }
         data={ items }
-        columns="id.username.birthday.address.email.phone.point.createdAt.actions"
+        columns="id.username.address.phone.createdAt.actions"
         perPageItemCount={4}
         totalCount={50}
       />
