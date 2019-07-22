@@ -103,51 +103,55 @@ class Profile extends Component {
     render() {
         return (
             <Layout username={this.state.username} image={this.state.image}>
-                <ol className="breadcrumb">
-                    <li className="breadcrumb-item">
-                        <a href="/user">Trang chủ</a>
-                    </li>
-                    <li className="breadcrumb-item active">
-                        Chỉnh sửa thông tin
-                    </li>
-                </ol>
+                <Container>
+                    <ol className="breadcrumb">
+                        <li className="breadcrumb-item">
+                            <a href="/user">Trang chủ</a>
+                        </li>
+                        <li className="breadcrumb-item active">
+                            Chỉnh sửa thông tin
+                        </li>
+                    </ol>
                     <div className="row">
                         <div className="offset-md-1 col-md-3 text-center">
                             <img src={(this.state.image !== null)? this.state.image : "http://ssl.gstatic.com/accounts/ui/avatar_2x.png"} className=" img-thumbnail .d-block .mx-auto image_inner_container" alt="avatar" style={{ width: 300, height: 200 }} />
                             <div className="mt-3">
-                                <h6 className="text">Thay đổi ảnh đại diện</h6>
+                                <h6>Thay đổi ảnh đại diện</h6>
                                 <input type="file" className="form-control-file " name="image" onChange={e => this.onChange(e)}/>
                             </div>
                             <div className="mt-4 ">
                                 <ModalChangePass/>
                             </div>
                         </div>
-                        <div className="col-md-8">
+                        <div className="col-md-8 text-center">
                             <form onSubmit={this.submitFormEdit}>
+                                <div class="w3-container w3-green">
+                                    <h3>Thông tin</h3>
+                                </div>                          
                                 <div className="form-inline">
                                     <label htmlFor="username" className="col-md-5">Họ tên:</label>
-                                    <input type="text" className="form-control col-md-6 " id="username" name="username" value={this.state.username} onChange={this.handleChange} required/>
+                                    <input type="text" className="col-md-6 w3-input" id="username" name="username" value={this.state.username} onChange={this.handleChange} required/>
                                 </div>
                                 <div className="form-inline">
                                     <label htmlFor="birthday" className="col-md-5">Ngày sinh:</label>
-                                    <input type="date" className="form-control col-md-6 " id="birthday" name="birthday" value={this.state.birthday} onChange={this.handleChange}  min="1960-01-01" 
+                                    <input type="date" className="col-md-6 w3-input" id="birthday" name="birthday" value={this.state.birthday} onChange={this.handleChange}  min="1960-01-01" 
                                     max="2004-12-31" required/>
                                 </div>
                                 <div className="form-inline">
                                     <label htmlFor="address" className="col-md-5">Địa chỉ:</label>
-                                    <input type="text" className="form-control col-md-6" id="address" name="address" value={this.state.address} onChange={this.handleChange} required/>
+                                    <input type="text" className="col-md-6 w3-input" id="address" name="address" value={this.state.address} onChange={this.handleChange} required/>
                                 </div>
                                 <div className="form-inline">
                                     <label htmlFor="phone" className="col-md-5">Số điện thoại:</label>
-                                    <input type="tel" className="form-control col-md-6" id="phone" name="phone" aria-describedby="emailHelp" value={this.state.phone} onChange={this.handleChange}  pattern="[0]{1}[0-9]{9}" required/>
+                                    <input type="tel" className="col-md-6 w3-input" id="phone" name="phone" aria-describedby="emailHelp" value={this.state.phone} onChange={this.handleChange}  pattern="[0]{1}[0-9]{9}" required/>
                                 </div>
                                 <div className="form-inline">
                                     <label htmlFor="email" className="col-md-5">Email:</label>
-                                    <input type="email" className="form-control col-md-6" id="email" name="email" value={this.state.email} onChange={this.handleChange} required/>
+                                    <input type="email" className="col-md-6 w3-input" id="email" name="email" value={this.state.email} onChange={this.handleChange} required/>
                                 </div>
                                 <div className="form-inline">
                                     <label htmlFor="point" className="col-md-5">Điểm tích lũy:</label>
-                                    <label htmlFor="point" className="col-md-6">{this.state.point}</label>
+                                    <input type="text" className="col-md-6 w3-input" value={this.state.point} disabled/>
                                 </div>
                                 <div className="form-inline mt-4">
                                     <label className="col-md-5"></label>
@@ -156,11 +160,11 @@ class Profile extends Component {
                             </form>
                         </div>
                     </div>
-                    <h5 className="mt-5 text-center">Lịch sử đổi quà</h5>
+                    <h3 className="mt-5 text-center">Lịch sử đổi quà</h3>
                     <Container >
                        <History_Change_Gift items = {this.state.items}/>
                     </Container>
-                    
+                </Container>                    
             </Layout>
         );
     }
