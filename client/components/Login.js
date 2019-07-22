@@ -146,7 +146,7 @@ class Login extends Component {
             </Label>
           </FormGroup>
           <FormGroup>
-            <Button color="success" type="submit">
+            <Button color="success" type="submit"
               Đăng nhập
             </Button>
            {/*<div className="text-danger mt-3">{this.state.msg}</div>*/}
