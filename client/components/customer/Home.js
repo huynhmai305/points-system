@@ -6,16 +6,20 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username:''
+      username:'',
+      image:''
     }
   } 
   componentDidMount() {
     var info = JSON.parse(localStorage.getItem('user'));
-    this.setState({username:info[0].username})
+    this.setState({
+      username:info[0].username,
+      image:info[0].picture
+    })
   }
   render() {
     return (
-      <Layout username={this.state.username}>
+      <Layout username={this.state.username} image={this.state.image}>
         <Card/>
       </Layout>
     );

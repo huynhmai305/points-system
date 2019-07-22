@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Layout from '../Customer';
 import ShowGift from './Show_Gift';
-import ModalChangePass from '../Modals/ModalChangePass'
+import ModalChangePass from '../Modals/ModalChangePass';
+// import FileBase64 from 'react-file-base64';
 
 class Profile extends Component {
     constructor(props) {
@@ -15,8 +16,36 @@ class Profile extends Component {
             phone: '',
             email: '',
             point:0,
-            changepass:false
+            changepass:false,
+            image:'',
+            image_change:''
         }
+    }
+    onChange(e){
+        let files = e.target.files;
+        let reader = new FileReader();
+        reader.readAsDataURL(files[0]);
+        reader.onload = e => {
+            console.warn('img data', e.target.result)
+            this.setState({image:e.target.result})
+            console.log(this.state.image)
+        }
+    }
+    getInfo(){
+        fetch('http://localhost:3000/getinfo/'+this.state.id)
+        .then(response => response.json())
+        .then(info => this.setState({
+            username:info[0].username,
+            birthday: info[0].birthday,
+            address: info[0].address,
+            phone: info[0].phone,
+            email: info[0].email,
+            password: info[0].password,
+            point: info[0].point,
+            image: info[0].picture
+
+        })
+        )
     }
     updateStorage = () => {
         var info = JSON.parse(localStorage.getItem('user'));
@@ -40,21 +69,23 @@ class Profile extends Component {
             address: this.state.address,
             phone: this.state.phone,
             email: this.state.email,
+            picture: this.state.image
           })
         })
           .then(response => response.json())
           .then(item => {
             alert(`Chỉnh sửa thành công `);
+            this.getInfo();
             this.updateStorage;
-            // location.reload()
+            location.reload()
           })
         // alert(this.state.phone)
-      }
-      show_gift () {
+    }
+    show_gift () {
           fetch('http://localhost:3000/users/giftuser/'+ this.state.id)
           .then(response => response.json())
           .then(items => this.setState({items}))
-      }
+    }
     handleChange = e => {
         var name = e.target.name;
         var value = e.target.value;
@@ -73,13 +104,14 @@ class Profile extends Component {
             email: info[0].email,
             password: info[0].password,
             point: info[0].point,
+            image: info[0].picture
         },
         () => this.show_gift()
         );
     }
     render() {
         return (
-            <Layout username={this.state.username}>
+            <Layout username={this.state.username} image={this.state.image}>
                 <ol className="breadcrumb">
                     <li className="breadcrumb-item">
                         <a href="/user">Trang chủ</a>
@@ -90,10 +122,17 @@ class Profile extends Component {
                 </ol>
                     <div className="row">
                         <div className="offset-md-1 col-md-3">
-                            <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" className="rounded-circle img-thumbnail .d-block .mx-auto image_inner_container" alt="avatar" style={{ width: 100, height: 100 }} />
-                            {/*<div className="mt-5">
+                            <img src={(this.state.image===null)?"http://ssl.gstatic.com/accounts/ui/avatar_2x.png": this.state.image} className="rounded-circle img-thumbnail .d-block .mx-auto image_inner_container" alt="avatar" style={{ width: 100, height: 100 }} />
+                            <div className="mt-5">
                                 <p>Thay đổi ảnh đại diện</p>
-                                <input type="file" className="form-control-file " />
+                                <input type="file" className="form-control-file " name="image" onChange={e => this.onChange(e)}/>
+                            </div>
+                            {/*<div className="mt-5">
+                                <FileBase64
+                                    multiple={ true }
+                                    onDone={ this.getFiles.bind(this) } 
+                                />
+                                {this.state.files.map(home => <div>{home.name}</div>)}
                             </div>*/}
                             <div className="mt-4">
                                 <ModalChangePass/>

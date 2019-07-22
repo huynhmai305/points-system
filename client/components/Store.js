@@ -14,7 +14,7 @@ class Store extends Component {
                         <div className="sidebar-header">
                             <div className="image_outer_container">
                             <div className="green_icon" />
-                                <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" className="rounded-circle img-thumbnail .d-block .mx-auto image_inner_container" alt="avatar" style={{width:100, height:100}}/>
+                                <img src={(this.state.image===null)?"http://ssl.gstatic.com/accounts/ui/avatar_2x.png": this.props.image} className="rounded-circle img-thumbnail .d-block .mx-auto image_inner_container" alt="avatar" style={{width:100, height:100}}/>
                             </div>
                         </div>
                         <p className="text-center" style={{color:'white'}}>{this.props.username}</p>
