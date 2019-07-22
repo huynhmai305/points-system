@@ -17,7 +17,7 @@ class Table_Bill_Of_Customer extends Component {
     items = items.map(item => {
       return {
         ...item,
-        createdAt: dateFormat(item.createdAt, "dddd, mmmm dS, yyyy, h:MM:ss TT"),
+        createdAt: dateFormat(item.createdAt, "isoDate"),
         total: <NumberFormat value={item.total} displayType={'text'} thousandSeparator={true} suffix={'đ'} />,
         point: item.total / 1000
       }

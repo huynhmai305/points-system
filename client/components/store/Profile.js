@@ -12,16 +12,32 @@ class Profile extends Component {
             address: '',
             phone: '',
             email: '',
-            password: ''
+            changepass:false,
+            image:''
 
         }
     }
-    updateStorage = () => {
-        var info = JSON.parse(localStorage.getItem('user'));
-        if(this.state.id===info[0].id){
-            info[0].username=this.state.username;
-            localStorage.setItem("user", JSON.stringify(info[i].username));
+    onChange(e){
+        let files = e.target.files;
+        let reader = new FileReader();
+        reader.readAsDataURL(files[0]);
+        reader.onload = e => {
+            console.warn('img data', e.target.result)
+            this.setState({image:e.target.result})
+            console.log(this.state.image)
         }
+    }
+
+    updateStorage() {
+        var info = JSON.parse(localStorage.getItem('user'));
+        info[0].username= this.state.username;
+        info[0].birthday = this.state.birthday;
+        info[0].address= this.state.address;
+        info[0].phone = this.state.phone;
+        info[0].email = this.state.email;
+        info[0].point = this.state.point;
+        info[0].picture = this.state.image;
+        localStorage.setItem("user", JSON.stringify(info));
     }
 
     submitFormEdit = e => {
@@ -37,14 +53,15 @@ class Profile extends Component {
             birthday: this.state.birthday,
             address: this.state.address,
             phone: this.state.phone,
-            email: this.state.email
+            email: this.state.email,
+            picture: this.state.image
           })
         })
           .then(response => response.json())
           .then(item => {
             alert(`Chỉnh sửa thành công `);
-            this.updateStorage;
-            // location.reload()
+            this.updateStorage();
+            location.reload()
           })
       }
    
@@ -63,7 +80,7 @@ class Profile extends Component {
             address: info[0].address,
             phone: info[0].phone,
             email: info[0].email,
-            password: info[0].password
+            image: info[0].picture
         });
     }
     render() {
@@ -79,11 +96,11 @@ class Profile extends Component {
                 </ol>
                     <div className="row">
                         <div className="offset-md-1 col-md-3">
-                            <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" className="rounded-circle img-thumbnail .d-block .mx-auto image_inner_container" alt="avatar" style={{ width: 100, height: 100 }} />
-                            {/*<div className="mt-5">
+                            <img src={(this.state.image !== null)? this.state.image : "http://ssl.gstatic.com/accounts/ui/avatar_2x.png"} className="rounded-circle img-thumbnail .d-block .mx-auto image_inner_container" alt="avatar" style={{ width: 100, height: 100 }} />
+                            <div className="mt-5">
                                 <p>Thay đổi ảnh đại diện</p>
-                                <input type="file" className="form-control-file " />
-                            </div>*/}
+                                <input type="file" className="form-control-file " name="image" onChange={e => this.onChange(e)}/>
+                            </div>
                             <div className="mt-4">
                                 <ModalChangePass/>
                             </div>

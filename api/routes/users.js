@@ -17,7 +17,7 @@ Gift.belongsTo(User,{foreignKey:'id_store'});
 User.hasMany(Exchange_Gift,{foreignKey:'id_user',sourceKey:'id'});
 Exchange_Gift.belongsTo(User,{foreignKey:'id_user'});
 Gift.hasMany(Exchange_Gift,{foreignKey:'id_gift',sourceKey:'id_gift'});
-Exchange_Gift.belongsTo(Gift,{foreignKey:'id_gift'});
+Exchange_Gift.belongsTo(Gift,{foreignKey:'id_gift',targetKey:'id_gift'});
 
 //tim kiem ma hoa don
 router.get('/tichdiem',(req,res) => {
