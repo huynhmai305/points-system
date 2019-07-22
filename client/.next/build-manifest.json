@@ -17,13 +17,13 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/admin": [
+    "/index": [
       "static/runtime/webpack.js",
       "static/css/styles.chunk.css",
       "static/chunks/styles.js",
       "static/runtime/main.js"
     ],
-    "/index": [
+    "/user/profile": [
       "static/runtime/webpack.js",
       "static/css/styles.chunk.css",
       "static/chunks/styles.js",

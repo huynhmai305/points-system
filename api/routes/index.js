@@ -201,8 +201,8 @@ router.put('/admin/user', (req, res) => {
     email: req.body.email,
     password: req.body.password,
     updatedAt: update,
-    point: req.body.point
-
+    point: req.body.point,
+    picture: req.body.picture
   }
   bcrypt.hash(dt.password, 10, (err, hash) => {
     dt.password = hash;
@@ -263,5 +263,6 @@ router.get('/alltotalmoney', (req, res) => {
   .then(result => res.send(result))
   .catch(err => console.log(err))
 })
+
 
 module.exports = router;

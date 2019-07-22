@@ -148,17 +148,17 @@ router.get('/gift', (req, res) => {
 
 //get gift with id_user
 router.get('/giftuser/:id', (req, res) => {
-  Exchange_Gift.findAll({
-    where: {
-      id_user:req.params.id
-    },
-    include:[Gift],
-    order:[['createdAt','DESC']]
-  })
-  .then(result => {
-    res.send(result);
-  })
-  .catch(err => console.log(err))
+    Exchange_Gift.findAll({
+      where: {
+        id_user:req.params.id
+      },
+      include:[Gift],
+      order:[['createdAt','DESC']]
+    })
+    .then(result => {
+      res.send(result);
+    })
+    .catch(err => console.log(err))
 })
 
 //get gift with id_store
@@ -249,15 +249,15 @@ router.post('/exchange_gift',(req,res) => {
   }
   let { id_user, id_gift} = data;
   console.log({ id_user, id_gift})
-  // Exchange_Gift.create({id_user, id_gift })
-  // .then(result => {
-  //   console.log(result)
-  //   res.json(result);
-  //   res.sendStatus(200);
-  // })
-  // .catch(err => {
-  //   res.send('error:' + err)
-  // })
+  Exchange_Gift.create({id_user, id_gift })
+  .then(result => {
+    console.log(result)
+    res.json(result);
+    res.sendStatus(200);
+  })
+  .catch(err => {
+    res.send('error:' + err)
+  })
 })
 
 //get history exchange gift
