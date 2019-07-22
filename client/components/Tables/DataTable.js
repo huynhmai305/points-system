@@ -42,7 +42,7 @@ class DataTable extends Component {
     items = items.map(item=>{
       return {
         ...item,
-        createdAt: dateFormat(item.createdAt, "dddd, mmmm dS, yyyy, h:MM:ss TT"),
+        createdAt: dateFormat(item.createdAt, "isoDate"),
         actions : this.actions(item)
       }
     })
