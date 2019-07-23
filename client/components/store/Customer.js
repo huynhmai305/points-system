@@ -11,7 +11,8 @@ class Manager_Store extends Component {
         this.state = {
             items: [],
             id: '',
-            name:''
+            name:'',
+            image:''
         }
     }
     getItems(keyword) {
@@ -30,13 +31,16 @@ class Manager_Store extends Component {
       }
     componentDidMount() {
         var info = JSON.parse(localStorage.getItem('user'));
-        this.setState({id: info[0].id, name:info[0].username})
+        this.setState({
+            id: info[0].id, 
+            name:info[0].username
+        })
         this.getItems('')
     }
 
     render() {
         return (
-            <Layout username={this.state.name}>
+            <Layout username={this.state.name} image={this.state.image}>
                 <Container className="App">
                     <ol className="breadcrumb">
                         <li className="breadcrumb-item">

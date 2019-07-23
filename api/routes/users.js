@@ -17,7 +17,7 @@ Gift.belongsTo(User,{foreignKey:'id_store'});
 User.hasMany(Exchange_Gift,{foreignKey:'id_user',sourceKey:'id'});
 Exchange_Gift.belongsTo(User,{foreignKey:'id_user'});
 Gift.hasMany(Exchange_Gift,{foreignKey:'id_gift',sourceKey:'id_gift'});
-Exchange_Gift.belongsTo(Gift,{foreignKey:'id_gift'});
+Exchange_Gift.belongsTo(Gift,{foreignKey:'id_gift',targetKey:'id_gift'});
 
 //tim kiem ma hoa don
 router.get('/tichdiem',(req,res) => {
@@ -148,17 +148,17 @@ router.get('/gift', (req, res) => {
 
 //get gift with id_user
 router.get('/giftuser/:id', (req, res) => {
-  Exchange_Gift.findAll({
-    where: {
-      id_user:req.params.id
-    },
-    include:[Gift],
-    order:[['createdAt','DESC']]
-  })
-  .then(result => {
-    res.send(result);
-  })
-  .catch(err => console.log(err))
+    Exchange_Gift.findAll({
+      where: {
+        id_user:req.params.id
+      },
+      include:[Gift],
+      order:[['createdAt','DESC']]
+    })
+    .then(result => {
+      res.send(result);
+    })
+    .catch(err => console.log(err))
 })
 
 //get gift with id_store
@@ -249,15 +249,15 @@ router.post('/exchange_gift',(req,res) => {
   }
   let { id_user, id_gift} = data;
   console.log({ id_user, id_gift})
-  // Exchange_Gift.create({id_user, id_gift })
-  // .then(result => {
-  //   console.log(result)
-  //   res.json(result);
-  //   res.sendStatus(200);
-  // })
-  // .catch(err => {
-  //   res.send('error:' + err)
-  // })
+  Exchange_Gift.create({id_user, id_gift })
+  .then(result => {
+    console.log(result)
+    res.json(result);
+    res.sendStatus(200);
+  })
+  .catch(err => {
+    res.send('error:' + err)
+  })
 })
 
 //get history exchange gift
