@@ -25,7 +25,7 @@ class Table_Bill_Of_Customer extends Component {
 
     return (
       <TablePagination
-        className="table-responsive table-hover thead-light"
+        className="table-responsive table-hover"
         headers={Header}
         data={items}
         columns="id.total.point.createdAt"

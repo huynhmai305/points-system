@@ -114,7 +114,7 @@ class Profile extends Component {
                     </ol>
                     <div className="row">
                         <div className="offset-md-1 col-md-3 text-center">
-                            <img src={(this.state.image !== null)? this.state.image : "http://ssl.gstatic.com/accounts/ui/avatar_2x.png"} className=" img-thumbnail .d-block .mx-auto image_inner_container" alt="avatar" style={{ width: 300, height: 200 }} />
+                            <img src={(this.state.image !== null)? this.state.image : "http://ssl.gstatic.com/accounts/ui/avatar_2x.png"} className=" img-thumbnail .d-block .mx-auto " alt="avatar" style={{ width: 300, height: 200 }} />
                             <div className="mt-3">
                                 <h6>Thay đổi ảnh đại diện</h6>
                                 <input type="file" className="form-control-file " name="image" onChange={e => this.onChange(e)}/>
@@ -139,7 +139,7 @@ class Profile extends Component {
                                 </div>
                                 <div className="form-inline">
                                     <label htmlFor="address" className="col-md-5">Địa chỉ:</label>
-                                    <input type="text" className="col-md-6 w3-input" id="address" name="address" value={this.state.address} onChange={this.handleChange} required/>
+                                    <textarea type="text" className="col-md-6 w3-input" id="address" name="address" value={this.state.address} onChange={this.handleChange} required/>
                                 </div>
                                 <div className="form-inline">
                                     <label htmlFor="phone" className="col-md-5">Số điện thoại:</label>

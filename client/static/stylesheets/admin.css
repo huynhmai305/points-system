@@ -267,12 +267,12 @@ ul ul a {
 .pagination-status{
   display: flex;
   list-style: none;
+  justify-content: center;
 }
 .pagination-status .pagination-status__btn {
   position: relative;
-  float: left;
   padding: 6px 12px;
-  margin-left: -1px;
+  margin:auto;
   color: #337ab7;
   text-decoration: none;
   background-color: #fff;

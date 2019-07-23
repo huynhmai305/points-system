@@ -41,7 +41,7 @@ class DataTable extends Component {
     }
     actions = (item)=>{
       return (
-        <div>
+        <div style={{width:'auto'}}>
           <Link href={"/store/billofcustomer?id_user="+item.id}>
             <Button color="success" id="bill"><i className="fas fa-money-bill-alt"></i></Button>
           </Link>
@@ -66,7 +66,7 @@ class DataTable extends Component {
 
     return (
       <TablePagination
-        className="table-responsive table-hover thead-light"
+        className="table-responsive table-hover"
         headers={ Header }
         data={ items }
         columns="id.username.birthday.address.phone.email.point.createdAt.actions"

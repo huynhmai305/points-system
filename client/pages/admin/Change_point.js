@@ -72,7 +72,7 @@ export default class Change_point extends Component {
                   </Col>
                 </FormGroup>
                 <FormGroup>
-                  <Button color="success" onClick ={this.submitFormEdit}>Submit</Button>
+                  <Button color="success" onClick ={this.submitFormEdit}>Thay đổi</Button>
                 </FormGroup>
               </Form>
             </Container>           

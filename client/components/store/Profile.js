@@ -98,7 +98,7 @@ class Profile extends Component {
                 </ol>
                     <div className="row">
                         <div className="offset-md-1 col-md-3 text-center">
-                            <img src={(this.state.image !== null)? this.state.image : "http://ssl.gstatic.com/accounts/ui/avatar_2x.png"} className="rounded-circle img-thumbnail .d-block .mx-auto image_inner_container" alt="avatar" style={{ width: 100, height: 100 }} />
+                            <img src={(this.state.image !== null)? this.state.image : "http://ssl.gstatic.com/accounts/ui/avatar_2x.png"} className="img-thumbnail .d-block .mx-auto" alt="avatar" style={{  width: 300, height: 150  }} />
                             <div className="mt-3">
                                 <h6>Thay đổi ảnh đại diện</h6>
                                 <input type="file" className="form-control-file " name="image" onChange={e => this.onChange(e)}/>
@@ -130,7 +130,7 @@ class Profile extends Component {
                                 </div>
                                 <div className="form-inline mt-4">
                                     <label className="col-md-5"></label>
-                                    <input type="submit" className="col-md-2 btn btn-success" value="Submit" />
+                                    <input type="submit" className="col-md-2 btn btn-success" value="Chỉnh sửa" />
                                 </div>
                             </form>
                         </div>
