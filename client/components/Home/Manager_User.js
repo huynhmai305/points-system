@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import DataTable from '../Tables/DataTable';
+import ModalForm from '../Modals/Modal';
 import { CSVLink } from 'react-csv';
 import Search from '../Search';
 
@@ -62,7 +63,7 @@ class Home extends Component{
           <Col md={6}>
             <Search handlekeyword={this.onSearch}/>
           </Col>
-          <Col md={{offset:4,size:2}}>
+          <Col md={{offset:3,size:3}}>
             <CSVLink
               filename={"dbUser.csv"}
               color="primary"
@@ -72,7 +73,7 @@ class Home extends Component{
             >
               <i className="fas fa-file-csv"> Download CSV</i>
             </CSVLink>
-            
+            <ModalForm buttonLabel='Add' addItemToState={this.addItemToState} />
           </Col>
         </Row>
         <Row>

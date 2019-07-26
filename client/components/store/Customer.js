@@ -33,7 +33,8 @@ class Manager_Store extends Component {
         var info = JSON.parse(localStorage.getItem('user'));
         this.setState({
             id: info[0].id, 
-            name:info[0].username
+            name:info[0].username,
+            image:info[0].picture
         })
         this.getItems('')
     }

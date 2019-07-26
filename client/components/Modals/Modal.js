@@ -35,9 +35,10 @@ class ModalForm extends Component {
       } else {
         button = <Button
                   color="success"
+                  className="w3-circle"
                   onClick={this.toggle}
                   style={{float: "left", marginRight:"10px"}}>
-                  <i className="fas fa-user-plus"></i>
+                  <i className="fa fa-plus" aria-hidden="true"></i>
                 </Button>
         title = 'Thêm mới'
       }

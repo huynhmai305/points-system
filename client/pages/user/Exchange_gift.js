@@ -10,7 +10,8 @@ class Exchange_gift extends Component {
             items:[],
             point:'',
             name:'',
-            id:''          
+            id:'',
+            image:''          
         }
     }
     
@@ -26,12 +27,13 @@ class Exchange_gift extends Component {
         var point = info[0].point;
         var name = info[0].username;
         var id = info[0].id;
-        this.setState({point, name, id}, () => this.getItems());
+        let image = info[0].picture;
+        this.setState({point, name, id,image}, () => this.getItems());
 
     }
     render() {
         return (
-            <Customer username = {this.state.name}>
+            <Customer username = {this.state.name} image = {this.state.image}>
                 <Container className="showgift">
                 {this.state.items.map((val, key) => (
                     <ShowGift key={key} 

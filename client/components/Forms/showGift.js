@@ -15,6 +15,11 @@ class showGift extends Component {
         }
         this.toggle = this.toggle.bind(this);
     }
+    updateStorage() {
+        var info = JSON.parse(localStorage.getItem('user'));
+        info[0].point = this.state.point_user;
+        localStorage.setItem("user", JSON.stringify(info));
+    }
     
     TichDiem = e => {
         var quantity = this.state.quantity - 1
@@ -62,9 +67,12 @@ class showGift extends Component {
                                 id_gift: this.props.id_gift  
                             })
                         })
-                        .then(() => this.setState({
+                        .then(() => {
+                            this.setState({
                             visible: true
-                        }))
+                            });
+                            this.updateStorage();
+                        })
                         // .catch(err => console.log(err))
                         // console.log(item);
                     })  

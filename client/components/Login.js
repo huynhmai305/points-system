@@ -12,6 +12,7 @@ class Login extends Component {
         emailState: '',
       },
       msg: '',
+      msg_err:'',
       item: [],
       show:false,
       colortoast:''
@@ -73,7 +74,7 @@ class Login extends Component {
         }
       })
       .catch(err => {this.setState({
-        msg:'Đăng nhập thất bại',
+        msg_err:'Vui lòng kiểm tra lại email, password',
         colortoast:'danger',
         show:false
       });
@@ -149,7 +150,7 @@ class Login extends Component {
             <Button color="success" type="submit">
               Đăng nhập
             </Button>
-           {/*<div className="text-danger mt-3">{this.state.msg}</div>*/}
+           <div className="text-danger mt-3">{this.state.msg_err}</div>
           </FormGroup>
           <div style={{display:'none'}}>
             <Spinner color="success" />

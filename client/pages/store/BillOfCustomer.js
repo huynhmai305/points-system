@@ -17,7 +17,8 @@ class BillOfCustomer extends Component {
             address: '',
             phone: '',
             email: '',
-            point: 0
+            point: 0,
+            image:''
         }
     }
 
@@ -48,13 +49,13 @@ class BillOfCustomer extends Component {
 
     componentDidMount() {
         var info = JSON.parse(localStorage.getItem('user'));
-        this.setState({ name: info[0].username })
+        this.setState({ name: info[0].username, image:info[0].picture })
         this.getItems()
     }
 
     render() {
         return (
-            <Store username={this.state.name}>
+            <Store username={this.state.name} image={this.state.image}>
                 <Container className="App">
                     <ol className="breadcrumb">
                         <li className="breadcrumb-item">

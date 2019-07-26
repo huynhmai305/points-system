@@ -12,7 +12,8 @@ class Manager_Gift_Store extends Component {
         this.state = {
             items: [],
             id_store:'',
-            name:''
+            name:'',
+            image:''
         }
     }
     getItems(keyword) {
@@ -31,12 +32,16 @@ class Manager_Gift_Store extends Component {
       }
     componentDidMount() {
         var info = JSON.parse(localStorage.getItem('user'))
-        this.setState({id_store: info[0].id, name: info[0].username},() => this.getItems(''))        
+        this.setState({
+            id_store: info[0].id,
+            name: info[0].username,
+            image:info[0].picture
+        },() => this.getItems(''))        
     }
 
     render() {
         return (
-            <Store username={this.state.name}>
+            <Store username={this.state.name} image={this.state.image}>
                 <Container className="App">
                     <ol className="breadcrumb">
                         <li className="breadcrumb-item">
