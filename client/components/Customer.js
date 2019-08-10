@@ -38,6 +38,9 @@ class Customer extends Component {
                                 </ul>
                             </li>*/}
                             <li>
+                                <Link href="/user/khampha"><a><i className="fas fa-comment-alt"></i> Comment</a></Link>
+                            </li>
+                            <li>
                                 <Link href="/user/exchange_gift"><a><i className="fas fa-gifts"></i> Đổi quà</a></Link>
                             </li>
                             <li>
