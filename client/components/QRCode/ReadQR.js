@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import dynamic from 'next/dynamic';
 const Reader = dynamic(() => import('react-qr-reader'))
 
-class Test_State extends Component {
+class ReadQR extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -24,7 +24,7 @@ class Test_State extends Component {
                     delay={300}
                     onError={this.handleError}
                     onScan={this.handleScan}
-                    style={{ width: '50%' }}
+                    style={{ width: '30%', height: '30%' }}
                 />
                 <p>{this.state.data}</p>
             </div>
@@ -32,4 +32,4 @@ class Test_State extends Component {
     }
 }
 
-export default Test_State;
+export default ReadQR;
