@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'reactstrap';
 import 'js-cookie';
+import "antd/dist/antd.css";
 
 class Layout extends Component {
     render() {

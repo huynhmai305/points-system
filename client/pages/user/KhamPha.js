@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Comment from '../../components/comment/home';
-import Post from '../../components/post/Post1'
 
 class KhamPha extends Component {
     constructor(props) {
@@ -20,7 +19,6 @@ class KhamPha extends Component {
     render() {
         return (
             <div>
-                <Post/>
                 <Comment />
             </div>
         );
