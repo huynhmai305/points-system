@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const db = require('../config/database');
-const Post = db.define('Post',{
+const Post = db.define('Post', {
     title: {
         type: Sequelize.TEXT,
         allowNull: false
@@ -11,8 +11,14 @@ const Post = db.define('Post',{
     },
     userId: {
         type: Sequelize.INTEGER
+    },
+    storeId: {
+        type: Sequelize.INTEGER
+    },
+    picture: {
+        type: Sequelize.TEXT
     }
 
- });
- 
- module.exports = Post;
+});
+
+module.exports = Post;

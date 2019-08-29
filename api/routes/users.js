@@ -6,6 +6,7 @@ const Bill =require ('../models/bill');
 const Gift = require ('../models/gift') ;
 const Exchange_Gift = require ('../models/exchange_gift');
 const Point = require ('../models/point');
+const Post = require ('../models/post');
 const sequelize = require('sequelize');
 const Op = sequelize.Op;
 User.hasMany(Bill,{foreignKey:'id_user',sourceKey:'id'});
@@ -19,6 +20,8 @@ Exchange_Gift.belongsTo(User,{foreignKey:'id_user'});
 Gift.hasMany(Exchange_Gift,{foreignKey:'id_gift',sourceKey:'id_gift'});
 Exchange_Gift.belongsTo(Gift,{foreignKey:'id_gift',targetKey:'id_gift'});
 
+User.hasMany(Post,{foreignKey:'userId',sourceKey:'id'});
+Post.belongsTo(User,{foreignKey:'userId'})
 //tim kiem ma hoa don
 router.get('/tichdiem',(req,res) => {
   Bill.findOne({
@@ -301,6 +304,39 @@ router.get('/optionstore',(req,res) => {
     }
   })
   .then(result => res.send(result))
+})
+
+//get review with id_store
+router.get('/review/:id_store', (req,res) => {
+  Post.findAll({
+    where:{
+      userId: req.params.id_store
+    }
+  })
+  .then(result => res.send(JSON.stringify(result)))
+  .catch(err => console.log(err))
+})
+
+//add review
+router.post('/review',(req, res) => {
+  const data = {
+    title: req.body.title,
+    content: req.body.content,
+    userId: req.body.id_user,
+    storeId: req.body.id_store,
+    picture: req.body.picture
+  };
+  let { title, content, userId, storeId, picture } = data;
+  
+  Post.create({ title, content, userId, storeId, picture })
+  .then(result => {
+    console.log(result)
+    res.json(result);
+    res.sendStatus(200);
+  })
+  .catch(err => {
+    res.send('error:' + err)
+  })
 })
 
 module.exports = router;
