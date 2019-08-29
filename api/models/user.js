@@ -42,7 +42,7 @@ const User = db.define('User', {
     allowNull: false,
   },
   picture: {
-    type: Sequelize.STRING.TEXT,
+    type: Sequelize.TEXT,
     allowNull: true
   },
   point: {
