@@ -6,7 +6,7 @@ class Footer extends Component {
             <div>
                 <footer>
                     <div className="container">
-                        <div className="row">
+                        {/* <div className="row">
                             <div className="col-md-4">
                                 <span className="copyright">Copyright &copy; Your Website 2019</span>
                             </div>
@@ -30,8 +30,8 @@ class Footer extends Component {
                                 </ul>
                             </div>
                             
-                        </div>
-                    </div>
+                        </div>*/}
+                    </div> 
                 </footer>
             </div>
         );

@@ -1,59 +1,56 @@
 import React, { Component } from 'react';
-import { Button, Modal, ModalHeader, ModalBody} from 'reactstrap';
+import { Modal, Button } from 'antd';
 import Login from '../Login';
 import Register from '../Register';
 
 class ModalLogin extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            modal: false,
-            nestedModal: false,
-            closeAll: false
-        };
+    state = {
+        ModalText: 'Content of the modal',
+        visible: false,
+        confirmLoading: false,
+    };
 
-        this.toggle = this.toggle.bind(this);
-        this.toggleNested = this.toggleNested.bind(this);
-        this.toggleAll = this.toggleAll.bind(this);
-    }
-
-    toggle() {
-        this.setState(prevState => ({
-            modal: !prevState.modal
-        }));
-    }
-
-    toggleNested() {
+    showModal = () => {
         this.setState({
-            nestedModal: !this.state.nestedModal,
-            closeAll: false
+            visible: true,
         });
-    }
+    };
 
-    toggleAll() {
+    handleOk = () => {
         this.setState({
-            nestedModal: !this.state.nestedModal,
-            closeAll: true
+            ModalText: this.props.btnLabel,
+            confirmLoading: true,
         });
-    }
+        setTimeout(() => {
+            this.setState({
+                visible: false,
+                confirmLoading: false,
+            });
+        }, 2000);
+    };
+
+    handleCancel = () => {
+        console.log('Clicked cancel button');
+        this.setState({
+            visible: false,
+        });
+    };
 
     render() {
+        const { visible, confirmLoading, ModalText } = this.state;
         return (
             <div>
-                <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel} <i className="fas fa-sign-in-alt"></i></Button>
-                <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                    <ModalHeader toggle={this.toggle}>Đăng nhập</ModalHeader>
-                    <ModalBody>
-                        <Login/>
-                        <br />
-                        <Button color="info" className="float-right" onClick={this.toggleNested}>Đăng ký</Button>
-                        <Modal isOpen={this.state.nestedModal} toggle={this.toggleNested} onClosed={this.state.closeAll ? this.toggle : undefined} >
-                            <ModalHeader toggle={this.toggle}>Đăng ký</ModalHeader>
-                            <ModalBody>
-                                <Register/>
-                            </ModalBody>
-                        </Modal>
-                    </ModalBody>
+                <Button type="primary" onClick={this.showModal}>
+                    {this.props.btnLabel}
+                </Button>
+                <Modal
+                    title="Title"
+                    visible={visible}
+                    onOk={this.handleOk}
+                    confirmLoading={confirmLoading}
+                    onCancel={this.handleCancel}
+                >
+                    <p>{ModalText}</p>
                 </Modal>
             </div>
         );

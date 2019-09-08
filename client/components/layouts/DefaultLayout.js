@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import Footer from './Footer';
 import Head from 'next/head';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/css/bootstrap.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.css';
 import 'reactstrap';
+import '../../assets/antd-custom.less'
 
 class DefaultLayout extends Component {
     render() {
@@ -22,6 +23,7 @@ class DefaultLayout extends Component {
                     <link href="/static/googleapis/Roboto-Slab.css" rel="stylesheet" />
                     <link rel="stylesheet" href="/static/stylesheets/agency.min.css" />
                     <link rel="stylesheet" href="/static/stylesheets/style.css" />
+                    {/* <link rel="stylesheet" href="/static/stylesheets/antd-custom.less" /> */}
                     <script src="/static/javascripts/jquery/jquery.min.js"></script>
                     <script src="/static/javascripts/babel/babel.min.js"></script>
                     <link rel="stylesheet" href="/static/stylesheets/font-awesome.min.css" />

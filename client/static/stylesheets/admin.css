@@ -18,6 +18,7 @@ a:hover{text-decoration: none; }
   transition: all 0.3s ease;
   
 }
+
 .main-header a {
   position: absolute;
   left: 20px;
@@ -302,4 +303,11 @@ ul ul a {
 }
 .avatar {
   background-color: red;
+}
+#components-layout-demo-top .logo {
+  width: 120px;
+  height: 31px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px 24px 16px 0;
+  float: left;
 }
