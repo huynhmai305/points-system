@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TichDiemUser from '../../components/customer/Tichdiem';
+import TichDiemUser from '../../components/customer/TichDiem';
 
 class TichDiem extends Component {
     render() {

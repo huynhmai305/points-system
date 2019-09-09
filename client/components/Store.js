@@ -8,16 +8,16 @@ class Store extends Component {
     }
     render() {
         return (
-           <DefaultLayout title="Store">
+            <DefaultLayout title="Store">
                 <div>
                     <nav className="main-nav" id="main-nav">
                         <div className="sidebar-header">
                             <div className="image_outer_container">
-                            <div className="green_icon" />
-                                <img src={(this.props.image!==null) ? this.props.image : "http://ssl.gstatic.com/accounts/ui/avatar_2x.png"} className="rounded-circle img-thumbnail .d-block .mx-auto image_inner_container" alt="avatar" style={{width:100, height:100}}/>
+                                <div className="green_icon" />
+                                <img src={(this.props.image !== null) ? this.props.image : "http://ssl.gstatic.com/accounts/ui/avatar_2x.png"} className="rounded-circle img-thumbnail .d-block .mx-auto image_inner_container" alt="avatar" style={{ width: 100, height: 100 }} />
                             </div>
                         </div>
-                        <p className="text-center" style={{color:'white'}}>{this.props.username}</p>
+                        <p className="text-center" style={{ color: 'white' }}>{this.props.username}</p>
                         <ul className="list-unstyled">
                             <li>
                                 <Link href="/store"><a><i className="fas fa-home fa-2x"></i></a></Link>

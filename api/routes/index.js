@@ -13,7 +13,7 @@ const Op = sequelize.Op;
 router.use(cors());
 process.env.SECRET_KEY = 'secret';
 const multer = require('multer')
-
+const localvn = require('../localVN.json')
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, 'public/images/uploads')
@@ -24,6 +24,10 @@ var storage = multer.diskStorage({
 });
 const upload = multer({ storage })
 
+//get tp, quan, huyen, phuong, xa
+router.get('/local', (req,res) => {
+  res.send(localvn)
+})
 //upload images
 router.post('/upload', upload.single('image'), (req, res) => {
   if (req.file)

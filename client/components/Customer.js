@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import DefaultLayout from './layouts/Layout';
 import Link from 'next/link';
-import { Menu, Icon, Button } from 'antd';
-const { SubMenu } = Menu;
+import { Icon } from 'antd';
 
 class Customer extends Component {
     logout = () => {
