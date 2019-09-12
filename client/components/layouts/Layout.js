@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'reactstrap';
 import 'js-cookie';
+import 'react-web-tabs/dist/react-web-tabs.css';
 
 class Layout extends Component {
     state = {

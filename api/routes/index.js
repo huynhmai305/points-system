@@ -15,31 +15,31 @@ process.env.SECRET_KEY = 'secret';
 const multer = require('multer')
 const localvn = require('../localVN.json')
 var storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'public/images/uploads')
-    },
-    filename: (req, file, cb) => {
-        cb(null, Date.now() + '-' + file.originalname)
-    }
+  destination: (req, file, cb) => {
+    cb(null, 'public/images/uploads')
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + '-' + file.originalname)
+  }
 });
 const upload = multer({ storage })
 
 //get tp, quan, huyen, phuong, xa
-router.get('/local', (req,res) => {
+router.get('/local', (req, res) => {
   res.send(localvn)
 })
 //upload images
 router.post('/upload', upload.single('image'), (req, res) => {
   if (req.file)
     res.json({
-    imageUrl: `images/uploads/${req.file.filename}`
+      imageUrl: `images/uploads/${req.file.filename}`
     });
-  else 
+  else
     res.status("409").json("No Files to Upload.");
 });
-  
+
 //======register ======
-router.post('/admin/user',(req, res) => {
+router.post('/admin/user', (req, res) => {
   const data = {
     username: req.body.username,
     birthday: req.body.birthday,
@@ -94,19 +94,19 @@ router.post('/login', (req, res) => {
     },
     // attributes: ['role', 'username', 'password']
   })
-  .then(result => {
-    // console.log(result[0].password)
-    bcrypt.compare(pw, result[0].password, (err, hash) => {
-      // console.log(hash)
-      if (hash === true) {
-        res.send(JSON.stringify(result));
-      }
-      else {
-        res.json({msg: "Khong tim thay tai khoan"})
-      }
+    .then(result => {
+      // console.log(result[0].password)
+      bcrypt.compare(pw, result[0].password, (err, hash) => {
+        // console.log(hash)
+        if (hash === true) {
+          res.send(JSON.stringify(result));
+        }
+        else {
+          res.json({ msg: "Khong tim thay tai khoan" })
+        }
+      })
     })
-  }) 
-  .catch(err => console.log(err)) 
+    .catch(err => console.log(err))
 })
 //end login======== 
 
@@ -140,13 +140,13 @@ router.get('/admin/user', (req, res) => {
   }
 })
 //get info with id
-router.get('/getinfo/:id',(req,res) => {
+router.get('/getinfo/:id', (req, res) => {
   User.findAll({
     where: {
       id: req.params.id
     }
   })
-  .then(result => res.send(result))
+    .then(result => res.send(result))
 })
 
 //get store
@@ -223,10 +223,10 @@ router.put('/admin/user', (req, res) => {
 //sum total money of store
 router.get('/totalmoney/:id_store', (req, res) => {
   Bill.findAll({
-    where:{
+    where: {
       id_store: req.params.id_store
     },
-    attributes:['id_store',[sequelize.fn('SUM',sequelize.col('total')),'total_money']],
+    attributes: ['id_store', [sequelize.fn('SUM', sequelize.col('total')), 'total_money']],
     group: ['id_store']
   })
     .then(result => {
@@ -238,7 +238,7 @@ router.get('/totalmoney/:id_store', (req, res) => {
 //sum all total money of store
 router.get('/alltotalmoney', (req, res) => {
   Bill.findAll({
-    attributes:[[sequelize.fn('SUM',sequelize.col('total')),'total_money']],
+    attributes: [[sequelize.fn('SUM', sequelize.col('total')), 'total_money']],
   })
     .then(result => {
       res.end(JSON.stringify(result));
@@ -247,25 +247,25 @@ router.get('/alltotalmoney', (req, res) => {
 })//===end get all total money of store
 
 //count members
- router.get('/countmembers',(req,res) => {
-   User.findAll({
-     where:{
-        role:2
-     },
-    attributes:['role',[sequelize.fn('COUNT',sequelize.col('role')),'total_members']],
+router.get('/countmembers', (req, res) => {
+  User.findAll({
+    where: {
+      role: 2
+    },
+    attributes: ['role', [sequelize.fn('COUNT', sequelize.col('role')), 'total_members']],
     group: ['role']
-   })
-   .then(result => res.send(result))
-   .catch(err => console.log(err))
- })
-
- //count bill
- router.get('/countbills',(req,res) => {
-  Bill.findAll({
-   attributes:[[sequelize.fn('COUNT',sequelize.col('id')),'total_bills']],
   })
-  .then(result => res.send(result))
-  .catch(err => console.log(err))
+    .then(result => res.send(result))
+    .catch(err => console.log(err))
+})
+
+//count bill
+router.get('/countbills', (req, res) => {
+  Bill.findAll({
+    attributes: [[sequelize.fn('COUNT', sequelize.col('id')), 'total_bills']],
+  })
+    .then(result => res.send(result))
+    .catch(err => console.log(err))
 })
 
 

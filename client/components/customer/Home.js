@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Layout from '../Customer'
-import Card from './Card';
+import Category from './Tab_Categories'
 
 class Home extends Component {
   constructor(props) {
@@ -20,7 +20,7 @@ class Home extends Component {
   render() {
     return (
       <Layout username={this.state.username} image={this.state.image}>
-        <Card/>
+        <Category/>
       </Layout>
     );
   }
