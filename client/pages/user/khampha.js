@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Comment from '../../components/comment/home';
+import Khampha from '../../components/customer/Khampha';
 
 class KhamPha extends Component {
     constructor(props) {
@@ -19,7 +19,7 @@ class KhamPha extends Component {
     render() {
         return (
             <div>
-                <Comment />
+                <Khampha/>
             </div>
         );
     }

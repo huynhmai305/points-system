@@ -1,32 +1,27 @@
 import React, { Component } from 'react';
-import dynamic from 'next/dynamic';
-const Reader = dynamic(() => import('react-qr-reader'))
+import { Input } from 'reactstrap'
 
 class Test_State extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: 'no result'
+            data: []
         }
     }
-    handleScan = data => {
-        if (data) {
-            this.setState({ data })
-        }
-    }
-    handleError = err => {
-        console.error(err)
+    componentDidMount() {
+        fetch('http://localhost:3000/local')
+            .then(res => res.json())
+            .then(data => this.setState({ data }))
     }
     render() {
         return (
             <div>
-                <Reader
-                    delay={300}
-                    onError={this.handleError}
-                    onScan={this.handleScan}
-                    style={{ width: '50%' }}
-                />
-                <p>{this.state.data}</p>
+                <Input type="select" name="select1">
+                    {this.state.data.map((item, key) => (
+                        <option key={key}>{item.name}</option>                
+                    ))}
+                </Input>
+                
             </div>
         );
     }

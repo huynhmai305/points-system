@@ -26,7 +26,7 @@ app.use(session({
 }));
 
 // app.use(corsPrefetch);
-const whitelist = ['http://localhost:3002']
+const whitelist = ['http://localhost:3001']
 const corsOptions = {
     origin: (origin, callback) => {
         if (whitelist.indexOf(origin) !== -1 || !origin) {

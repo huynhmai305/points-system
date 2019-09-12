@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Label, FormData, FormGroup, Form, Button, Alert, FormText } from 'reactstrap';
 import Search from '../Search';
-import Layout from '../Customer.js'
+import Layout from '../Customer.js';
+import ReadQR from '../QRCode/ReadQR';
 
 export default class TichDiem extends Component {
     constructor(props) {
@@ -116,6 +117,7 @@ export default class TichDiem extends Component {
                             </Alert>
                         </Form>
                     </Alert>
+                    <ReadQR/>
                 </Container>
             </Layout>
         )

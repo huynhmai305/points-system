@@ -1,34 +1,17 @@
-import React, { Component } from 'react';
-import { Card, Icon, Avatar } from 'antd';
+import React from 'react';
+import {Card, CardImg, CardFooter, CardBody, CardTitle, Col} from 'reactstrap';
 
-class CardStore extends Component {
-    render() {
-        const { Meta } = Card;
-        return (
-            <div>
-                <Card
-                    style={{ width: 300 }}
-                    cover={
-                        <img
-                            alt="example"
-                            src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                        />
-                    }
-                    actions={[
-                        <Icon type="setting" key="setting" />,
-                        <Icon type="edit" key="edit" />,
-                        <Icon type="ellipsis" key="ellipsis" />,
-                    ]}
-                >
-                    <Meta
-                        avatar={<Avatar style={{ backgroundColor: '#87d068' }} icon="user" />}
-                        title="Card title"
-                        description="This is the description"
-                    />
-                </Card>
-            </div>
-        );
-    }
-}
+const CardComponent = (props) => {
+    return (
+        <Col xs="6" sm="3" md="3" lg="3">
+            <Card>
+                <CardImg top width="100%" src={props.img} alt="Card image store" /> 
+                <CardBody>
+                    <CardTitle>{props.content}</CardTitle>
+                </CardBody>
+            </Card>
+        </Col>
+    );
+};
 
-export default CardStore;
+export default CardComponent;

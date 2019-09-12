@@ -70,10 +70,10 @@ a:hover{text-decoration: none; }
   margin:10vh 0vh 10vh 0vh;
 }
 .open-menu{
-  margin-top: -10px;
+  margin-top: -20px;
 }
 .close-menu {
-  margin-top: -10px;
+  margin-top: -20px;
   display: none;
 }
 .sidebar-header{
@@ -116,9 +116,8 @@ ul ul a {
   left: 20%;
 }
 .background{
- margin-top: 15vh;
- padding:10px;
- 
+  margin-top: 15vh;
+  padding:10px;
 }
 .example i{
   color: white; 
@@ -150,9 +149,9 @@ ul ul a {
 .image_inner_container{
   border-radius: 50%;
   padding: 5px;
- background: #833ab4; 
- background: -webkit-linear-gradient(to bottom, #fcb045, #fd1d1d, #833ab4); 
- background: linear-gradient(to bottom, #fcb045, #fd1d1d, #833ab4);
+  background: #833ab4; 
+  background: -webkit-linear-gradient(to bottom, #fcb045, #fd1d1d, #833ab4); 
+  background: linear-gradient(to bottom, #fcb045, #fd1d1d, #833ab4);
 }
 .image_inner_container img{
   height: 200px;
@@ -366,4 +365,23 @@ ul ul a {
 }
 .portlet .tabbable-line > .tab-content {
   padding-bottom: 0;
+}
+/* Danh muc */
+h4.title{
+  color: #333;
+  display: flex;
+  flex-flow: row wrap;
+  text-align: left;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 2px solid #28A745;
+  position: relative;
+  align-items: center;
+}
+h4.title span{
+  background: #28A745;
+  border: none;
+  color: #fff;
+  display: inline-block;
+  padding: .3em .8em;
 }
