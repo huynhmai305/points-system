@@ -32,6 +32,7 @@ class Layout extends Component {
                     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossOrigin="anonymous"></script>
                     <link rel="stylesheet" href="/static/stylesheets/font-awesome.min.css" />
                     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossOrigin="anonymous" />
+                    {/* <script src="https://cdn.tiny.cloud/1/2icj3szs411s8nqf8kqljxz7cvd2478keun6zro00pdptu17/tinymce/5/tinymce.min.js"></script> */}
                 </Head>
                 {this.props.children}
             </div>

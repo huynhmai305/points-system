@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {Container, Form, FormGroup, Label, Input, Button} from 'reactstrap';
+import { Container, Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import { Editor } from '@tinymce/tinymce-react'
 
 class PostForm extends Component {
     constructor(props) {
@@ -16,7 +17,7 @@ class PostForm extends Component {
         this.onSubmit = this.onSubmit.bind(this);
     }
     handleFieldChange = event => {
-        const {value, name} = event.target;
+        const { value, name } = event.target;
         this.setState({
             ...this.state,
             post: {
@@ -27,13 +28,13 @@ class PostForm extends Component {
     }
     onSubmit(e) {
         e.preventDefault();
-        if(!this.isFormValid()){
-            this.setState({error: "Vui long nhap day du thong tin"});
+        if (!this.isFormValid()) {
+            this.setState({ error: "Vui long nhap day du thong tin" });
             return;
         }
         // loading status and clear error
-        this.setState({error: "",loading: true})
-        let  {post} = this.state
+        this.setState({ error: "", loading: true })
+        let { post } = this.state
         fetch("http://localhost:3000/post", {
             method: "POST",
             headers: {
@@ -41,27 +42,27 @@ class PostForm extends Component {
             },
             body: JSON.stringify(post)
         })
-        .then(response => response.json())
-        .then(res => {
-            if(res.error) {
-                this.setState({loading: false, error: res.error})
-            } else {
-                // lay time api tra ve gan vao time cua post
-                post.time = res.time;
-                this.props.addPost(post)
-                // clear the message box
+            .then(response => response.json())
+            .then(res => {
+                if (res.error) {
+                    this.setState({ loading: false, error: res.error })
+                } else {
+                    // lay time api tra ve gan vao time cua post
+                    post.time = res.time;
+                    this.props.addPost(post)
+                    // clear the message box
+                    this.setState({
+                        loading: false,
+                        post: { ...post, content: "" }
+                    });
+                }
+            })
+            .catch(err => {
                 this.setState({
-                    loading: false,
-                    post: { ...post, content: "" }
+                    error: "Loi xay ra khi post",
+                    loading: false
                 });
-            }
-        })
-        .catch(err => {
-            this.setState({
-                error: "Loi xay ra khi post",
-                loading: false
             });
-        });
     }
     isFormValid() {
         return this.state.post.title !== "" && this.state.post.content !== "";
@@ -79,28 +80,46 @@ class PostForm extends Component {
                 <Form onSubmit={this.onSubmit}>
                     <FormGroup>
                         <Label for="title" />
-                        <Input 
-                            type="text" 
-                            id="title" 
-                            name="title" 
+                        <Input
+                            type="text"
+                            id="title"
+                            name="title"
                             placeholder="Tiêu đề"
                             onChange={this.handleFieldChange}
                             value={this.state.post.title}
-                            className="form-control" 
+                            className="form-control"
                         />
                     </FormGroup>
                     <FormGroup>
                         <Label for="content" />
-                        <Input 
-                            type="textarea" 
-                            id="content" 
-                            name="content" 
-                            placeholder="Nội dung" 
+                        <Input
+                            type="textarea"
+                            id="content"
+                            name="content"
+                            placeholder="Nội dung"
                             onChange={this.handleFieldChange}
                             value={this.state.post.content}
                             className="form-control"
                         />
                     </FormGroup>
+                    <FormGroup>
+                        <Label for="star">Đánh giá (*)</Label>
+                        <Input type="star" name="star" id="star" placeholder="star placeholder" />
+                    </FormGroup>
+                    <Editor
+                        name="content"
+                        apiKey='2icj3szs411s8nqf8kqljxz7cvd2478keun6zro00pdptu17'
+                        initialValue={this.state.post.content}
+                        init={{
+                            selector: 'textarea',
+                            plugins: ' lists checklist link image media code paste casechange emoticons preview searchreplace',
+                            toolbar: 'undo redo | bold italic casechange| alignleft aligncenter alignright alignjustify| checklist numlist bullist insertfile emoticons searchreplace preview code',
+                            toolbar_drawer: 'floating',
+                            tinycomments_mode: 'embedded',
+                            tinycomments_author: 'Author name'
+                        }}
+                        onEditorChange={this.handleFieldChange}
+                    />
                     {this.renderError()}
                     <FormGroup>
                         <Button color="primary" className="float-left">
