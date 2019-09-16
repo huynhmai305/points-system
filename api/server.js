@@ -3,7 +3,7 @@ const path = require('path')
 const express = require('express');
 // const http = require('http').Server(app)
 //sd process.env 
-require('dotenv').config;
+require('dotenv').config();
 const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -12,7 +12,6 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const indexRouter = require('./routes/index');
 const userRouter = require('./routes/users');
-// const corsPrefetch =require('cors-prefetch-middleware') ;
 
 //app
 const app = express();
@@ -25,7 +24,6 @@ app.use(session({
     cookie: { maxAge: 60000 }
 }));
 
-// app.use(corsPrefetch);
 const whitelist = ['http://localhost:3001']
 const corsOptions = {
     origin: (origin, callback) => {

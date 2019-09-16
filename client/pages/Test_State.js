@@ -1,30 +1,21 @@
-import React, { Component } from 'react';
-import { Input } from 'reactstrap'
+import React from 'react';
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
-class Test_State extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            data: []
-        }
-    }
-    componentDidMount() {
-        fetch('http://localhost:3000/local')
-            .then(res => res.json())
-            .then(data => this.setState({ data }))
-    }
+export default class Example extends React.Component {
     render() {
         return (
-            <div>
-                <Input type="select" name="select1">
-                    {this.state.data.map((item, key) => (
-                        <option key={key}>{item.name}</option>                
-                    ))}
-                </Input>
+            <Form>
+                <FormGroup>
+                    <Label for="title">Tiêu đề (*)</Label>
+                    <Input type="title" name="title" id="title" placeholder="with a placeholder" />
+                </FormGroup>
+                <FormGroup>
+                    <Label for="examplestar">Đánh giá (*)</Label>
+                    <Input type="star" name="star" id="examplestar" placeholder="star placeholder" />
+                </FormGroup>
                 
-            </div>
+                <Button>Submit</Button>
+            </Form>
         );
     }
 }
-
-export default Test_State;

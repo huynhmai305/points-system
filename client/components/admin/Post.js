@@ -45,7 +45,7 @@ class Post extends Component {
                             </div>
                         </div>
                     </div>
-                   
+
                 </section>
             </DefaultLayout>
         );

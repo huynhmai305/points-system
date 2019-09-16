@@ -1,7 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
-const Bill = require('../models/bill')
+const Bill = require('../models/bill');
+const Province = require('../models/province');
+const District = require('../models/district');
+const Ward = require('../models/ward');
+const Village = require('../models/village')
 const cors = require('cors');
 // const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
@@ -25,8 +29,63 @@ var storage = multer.diskStorage({
 const upload = multer({ storage })
 
 //get tp, quan, huyen, phuong, xa
-router.get('/local', (req, res) => {
-  res.send(localvn)
+// router.get('/local', (req, res) => {
+//   if(req.query.city){
+//     if(req.query.district){
+//       const local = localvn[req.query.city].districts[req.query.district].wards;
+//       res.send(local)
+//     }
+//     else{
+//       const local = localvn[req.query.city].districts;
+//       res.send(local)
+//     }
+//   }
+//   else{
+//     res.send(localvn)
+//   }
+  
+// })
+Province.hasMany(District, { foreignKey: 'provinceid', sourceKey: 'provinceid' });
+District.belongsTo(Province, { foreignKey: 'provinceid', targetKey: 'provinceid' });
+
+District.hasMany(Ward, { foreignKey: 'districtid', sourceKey: 'districtid' });
+Ward.belongsTo(District, { foreignKey: 'districtid', targetKey: 'districtid' });
+
+Ward.hasMany(Village, { foreignKey: 'wardid', sourceKey: 'wardid' });
+Village.belongsTo(Ward, { foreignKey: 'wardid', targetKey: 'wardid' });
+
+router.get('/province', (req,res) => {
+  Province.findAll({
+    attributes: ['provinceid','name']
+  })
+  .then(data => res.send(data))
+})
+router.get('/district/:province', (req,res) => {
+  Province.findAll({
+    where:{
+      provinceid: req.params.province
+    },
+    include:[District]
+  })
+  .then(data => res.send(data))
+})
+router.get('/ward/:district', (req,res) => {
+  District.findAll({
+    where:{
+      districtid: req.params.district
+    },
+    include:[Ward]
+  })
+  .then(data => res.send(data))
+})
+router.get('/village/:ward', (req,res) => {
+  Ward.findAll({
+    where:{
+      wardid: req.params.ward
+    },
+    include:[Village]
+  })
+  .then(data => res.send(data))
 })
 //upload images
 router.post('/upload', upload.single('image'), (req, res) => {

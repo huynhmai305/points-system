@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container } from 'reactstrap'
 import { TabProvider, Tab, TabPanel, TabList } from 'react-web-tabs';
+import Post from '../post/PostList'
 
 export default class TabCategory extends Component {
     render() {
@@ -25,6 +26,7 @@ export default class TabCategory extends Component {
                             </TabPanel>
                             <TabPanel tabId="cafe">
                                 <p>Cafe content</p>
+                                <Post/>
                             </TabPanel>
                             <TabPanel tabId="trasua">
                                 <p>Trà sữa content</p>
