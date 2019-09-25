@@ -22,7 +22,7 @@ export default class TabCategory extends Component {
                         </TabList>
                         <div className="wrapper">
                             <TabPanel tabId="location">
-                                <p>Quanh đây content</p>
+                                <p>Quanh đây content</p>    
                             </TabPanel>
                             <TabPanel tabId="cafe">
                                 <p>Cafe content</p>
@@ -30,9 +30,11 @@ export default class TabCategory extends Component {
                             </TabPanel>
                             <TabPanel tabId="trasua">
                                 <p>Trà sữa content</p>
+                                <Post/>
                             </TabPanel>
                             <TabPanel tabId="anvat">
                                 <p>Ăn vặt content</p>
+                                <Post/>
                             </TabPanel>
                             <TabPanel tabId="thoitrang">
                                 <p>Thời trang content</p>

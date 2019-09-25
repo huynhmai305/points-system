@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Card from './Card.js';
+import Card from './card.js';
 import Admin from './Admin.js';
 import Chart from './Chart.js';
 

@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import Layout from '../layouts/Layout';
 import Link from 'next/link';
+import { Icon } from 'antd';
 
 export default class Admin extends Component {
   logout = () => {
@@ -34,6 +35,9 @@ export default class Admin extends Component {
                 <li>
                   <Link href="/admin/store"><a><i className="fas fa-list-ul "></i> Danh sách cửa hàng</a></Link>
                 </li>
+                <li>
+                  <Link href="/admin/post"><a><i className="fas fa-pen-alt"></i> Bài viết</a></Link>
+                </li>
               </ul>
             </li>
             <li>
@@ -53,10 +57,10 @@ export default class Admin extends Component {
         <div className="page-wrap">
           <header className="main-header fixed-top">
             <a href="#main-nav" className="open-menu">
-              <i className="fa fa-align-justify" aria-hidden="true"></i>
+              <Icon type="right" />
             </a>
             <a href="#" className="close-menu">
-              <i className="fa fa-align-left" aria-hidden="true"></i>
+              <Icon type="left" />
             </a>
             <h2>{this.props.title}</h2>
           </header>

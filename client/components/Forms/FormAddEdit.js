@@ -3,7 +3,7 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 class AddEditForm extends React.Component {
   state = {
-    id:0,
+    id: 0,
     username: '',
     birthday: '',
     address: '',
@@ -14,7 +14,7 @@ class AddEditForm extends React.Component {
   }
 
   onChange = e => {
-    this.setState({[e.target.name]: e.target.value})
+    this.setState({ [e.target.name]: e.target.value })
   }
 
   submitFormAdd = e => {
@@ -24,7 +24,7 @@ class AddEditForm extends React.Component {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
-        
+
       },
       body: JSON.stringify({
         username: this.state.username,
@@ -36,12 +36,12 @@ class AddEditForm extends React.Component {
         role: this.state.role
       })
     })
-    .then(response => response.json())
-    .then(item => {
-      alert(`Thêm thành công`);
-      location.reload()
-    })
-   
+      .then(response => response.json())
+      .then(item => {
+        alert(`Thêm thành công`);
+        location.reload()
+      })
+
   }
 
   submitFormEdit = e => {
@@ -69,11 +69,11 @@ class AddEditForm extends React.Component {
       })
   }
 
-  componentDidMount(){
+  componentDidMount() {
     // if item exists, populate the state with proper data
-    if(this.props.item){
-      const { id, username, birthday, address, phone, email, password, role} = this.props.item
-      this.setState({ id, username, birthday, address, phone, email, password, role})
+    if (this.props.item) {
+      const { id, username, birthday, address, phone, email, password, role } = this.props.item
+      this.setState({ id, username, birthday, address, phone, email, password, role })
     }
   }
 
@@ -86,38 +86,38 @@ class AddEditForm extends React.Component {
         </FormGroup>
         <FormGroup>
           <Label for="birthday">Ngày sinh</Label>
-          <Input type="date" name="birthday" id="birthday" onChange={this.onChange} value={this.state.birthday === null ? '' : this.state.birthday}  />
+          <Input type="date" name="birthday" id="birthday" onChange={this.onChange} value={this.state.birthday === null ? '' : this.state.birthday} />
         </FormGroup>
         <FormGroup>
           <Label for="address">Địa chỉ</Label>
-          <Input type="text" name="address" id="address" onChange={this.onChange} value={this.state.address === null ? '' : this.state.address}  />
+          <Input type="text" name="address" id="address" onChange={this.onChange} value={this.state.address === null ? '' : this.state.address} />
         </FormGroup>
         <FormGroup>
           <Label for="phone">Số điện thoại</Label>
-          <Input type="tel" name="phone" id="phone" onChange={this.onChange} value={this.state.phone === null ? '' : this.state.phone}  placeholder="ex.0123456789" />
+          <Input type="tel" name="phone" id="phone" onChange={this.onChange} value={this.state.phone === null ? '' : this.state.phone} placeholder="ex.0123456789" />
         </FormGroup>
         <FormGroup>
           <Label for="email">Email</Label>
-          <Input type="email" name="email" id="email" onChange={this.onChange} value={this.state.email === null ? '' : this.state.email}  placeholder="ex.mail@gmail.com" required/>
+          <Input type="email" name="email" id="email" onChange={this.onChange} value={this.state.email === null ? '' : this.state.email} placeholder="ex.mail@gmail.com" required />
         </FormGroup>
         <FormGroup>
           <Label for="password">Password</Label>
-          <Input type="text" name="password" id="password" onChange={this.onChange} value={this.state.password === null ? '' : this.state.password}  />
+          <Input type="text" name="password" id="password" onChange={this.onChange} value={this.state.password === null ? '' : this.state.password} />
         </FormGroup>
         <FormGroup check inline>
           <Label check>
-            <Input type="radio" name="role" onChange={this.onChange} value={1} checked={(this.state.role===1) ? true : false } />Cửa hàng
+            <Input type="radio" name="role" onChange={this.onChange} value={1} checked={(this.state.role === 1) ? true : false} />Cửa hàng
           </Label>
         </FormGroup>
         <FormGroup check inline>
           <Label check>
-          <Input type="radio" name="role" id="role2" onChange={this.onChange} value={2} checked={(this.state.role===2) ? true : false } />Khách hàng
+            <Input type="radio" name="role" id="role2" onChange={this.onChange} value={2} checked={(this.state.role === 2) ? true : false} />Khách hàng
           </Label>
         </FormGroup>
         <FormGroup>
           <Button color="success">Submit</Button>
         </FormGroup>
-        
+
       </Form>
     );
   }

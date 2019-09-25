@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TabCategory from './Tab_Categories';
 import Comment from '../comment/home';
 import Layout from '../Customer'
+import Review from '../post/PostList'
 
 class Khampha extends Component {
     constructor(props) {
@@ -25,7 +26,8 @@ class Khampha extends Component {
             <Layout username={this.state.username} image={this.state.image}>
                 <div className="mt-5">
                     <TabCategory />
-                    <Comment />
+                    {/* <Review/> */}
+                    {/* <Comment /> */}
                 </div>
             </Layout>
         );

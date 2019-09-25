@@ -43,11 +43,9 @@ class Customer extends Component {
                     <div className="page-wrap">
                         <header className="main-header fixed-top">
                             <a href="#main-nav" className="open-menu">
-                                {/* <i className="fa fa-align-justify" aria-hidden="true"></i> */}
                                 <Icon type="right" />
                             </a>
                             <a href="#" className="close-menu">
-                                {/* <i className="fa fa-align-left" aria-hidden="true"></i> */}
                                 <Icon type="left" />
                             </a>
                             <h2 className="text-light">Hệ thống tích điểm H&M</h2>

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Container, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { Editor } from '@tinymce/tinymce-react'
+import Rate from './Rating';
+import {Icon} from 'antd';
 
 class PostForm extends Component {
     constructor(props) {
@@ -35,7 +37,7 @@ class PostForm extends Component {
         // loading status and clear error
         this.setState({ error: "", loading: true })
         let { post } = this.state
-        fetch("http://localhost:3000/post", {
+        fetch("http://localhost:3000/review", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -79,41 +81,30 @@ class PostForm extends Component {
             <Container>
                 <Form onSubmit={this.onSubmit}>
                     <FormGroup>
-                        <Label for="title" />
+                        <Label for="title">Tiêu đề<span style={{color: 'red'}}> *</span></Label>
                         <Input
                             type="text"
                             id="title"
                             name="title"
-                            placeholder="Tiêu đề"
+                            placeholder="Nhập tiêu đề"
                             onChange={this.handleFieldChange}
                             value={this.state.post.title}
                             className="form-control"
                         />
                     </FormGroup>
                     <FormGroup>
-                        <Label for="content" />
-                        <Input
-                            type="textarea"
-                            id="content"
-                            name="content"
-                            placeholder="Nội dung"
-                            onChange={this.handleFieldChange}
-                            value={this.state.post.content}
-                            className="form-control"
-                        />
+                        <Label for="star">Đánh giá<span style={{color: 'red'}}> *</span></Label>
+                        <Rate/>
                     </FormGroup>
-                    <FormGroup>
-                        <Label for="star">Đánh giá (*)</Label>
-                        <Input type="star" name="star" id="star" placeholder="star placeholder" />
-                    </FormGroup>
+                    <Label for="content">Nội dung<span style={{color: 'red'}}> *</span></Label>
                     <Editor
                         name="content"
                         apiKey='2icj3szs411s8nqf8kqljxz7cvd2478keun6zro00pdptu17'
                         initialValue={this.state.post.content}
                         init={{
                             selector: 'textarea',
-                            plugins: ' lists checklist link image media code paste casechange emoticons preview searchreplace',
-                            toolbar: 'undo redo | bold italic casechange| alignleft aligncenter alignright alignjustify| checklist numlist bullist insertfile emoticons searchreplace preview code',
+                            plugins: ' lists checklist autolink link image media code paste casechange emoticons preview searchreplace',
+                            toolbar: 'undo redo | bold italic underline | casechange| alignleft aligncenter alignright alignjustify | checklist numlist bullist | forecolor | backcolor | link image | emoticons | searchreplace | preview | code',
                             toolbar_drawer: 'floating',
                             tinycomments_mode: 'embedded',
                             tinycomments_author: 'Author name'
@@ -122,11 +113,11 @@ class PostForm extends Component {
                     />
                     {this.renderError()}
                     <FormGroup>
-                        <Button color="primary" className="float-left">
-                            <i className="fa fa-hand-o-up" aria-hidden="true"></i>
-                        </Button>
-                        <Button color="primary" className="float-right">
-                            <i className="fa fa-post" aria-hidden="true"> Bình luận</i>
+                        {/* <Button color="primary" className="float-left">
+                            <Icon type="like" /> 
+                        </Button> */}
+                        <Button color="primary" className="float-right mt-3">
+                            <Icon type="plus" /> Thêm bài viết
                         </Button>
                     </FormGroup>
                 </Form>

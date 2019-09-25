@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import Admin from '../components/admin/index';
+import PostForm from './PostForm';
 
-class admin extends Component {
+class ManagerPost extends Component {
     render() {
         return (
             <div>
-                <Admin/>
+                <PostForm/>
             </div>
         );
     }
 }
 
-export default admin;
+export default ManagerPost;

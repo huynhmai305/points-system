@@ -172,7 +172,7 @@ ul ul a {
 .list-unstyled li a:hover{
   text-decoration: none;
   /* font-size: large; */
-  color: yellow;
+  ommit
   
 }
 .showgift{
@@ -384,4 +384,86 @@ h4.title span{
   color: #fff;
   display: inline-block;
   padding: .3em .8em;
+}
+/* card index */
+._list_store {
+  width: 24%;
+  position: relative;
+  float: left;
+  margin-right: 1.33%;
+}
+.thumbnail {
+  display: block;
+  padding: 4px;
+  margin-bottom: 20px;
+  line-height: 1.42857143;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  -webkit-transition: border .2s ease-in-out;
+  -o-transition: border .2s ease-in-out;
+  transition: border .2s ease-in-out;
+  width: 250px;
+}
+.time_store {
+  position: absolute;
+  background-color: #6d7fcc;
+  border-radius: 15px;
+  font-size: 12px;
+  top: 10px;
+  font-family: font-menu;
+  left: 10px;
+  color: #fff;
+}
+.time_store div {
+  padding: 2px 12px;
+  margin-top: 2px;
+  width: 130px;
+}
+.time_store label {
+  /* background-image: url(/static/web/img/xopened_door.png.pagespeed.ic.nKB4ZcFefz.webp); */
+  width: 20px;
+  height: 9.56px;
+  position: relative;
+  margin: 0 1px;
+}
+label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: 700;
+}
+._info_res {
+  background-color: #fff;
+  padding: 10px 16px;
+  border-top: 1px solid #dcdcdc;
+}
+.logo_store {
+  width: 30%;
+  float: left;
+  margin-right: 10px;
+}
+.thumbnail a>img {
+  margin-right: auto;
+  margin-left: auto;
+}
+.name_store_list a, .name_store_list a:hover, .name_store a, .name_store a:hover {
+  font-size: 13px;
+  font-weight: bold;
+  font-display: auto;
+  text-decoration: none;
+  color: #2e2e2e;
+}
+._location {
+  color: #1081e0;
+  padding-right: 5px;
+}
+.font_defaul {
+  font-size: 12px;
+}
+.u-logo img{
+  width:60px;
+}
+.block-img img{
+  width: 240px;
 }

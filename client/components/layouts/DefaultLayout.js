@@ -24,6 +24,7 @@ class DefaultLayout extends Component {
                     <link rel="stylesheet" href="/static/stylesheets/style.css" />
                     <script src="/static/javascripts/jquery/jquery.min.js"></script>
                     <script src="/static/javascripts/babel/babel.min.js"></script>
+                    <script src="/static/javascripts/js/bootstrap.min.js"></script>
                     <link rel="stylesheet" href="/static/stylesheets/font-awesome.min.css" />
                     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
                     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossOrigin="anonymous" />
