@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Post from './Post'
+import Post from './Post_Store'
 import {Row} from 'reactstrap'
 const img = ['/static/images/1.jpg','/static/images/4.jpg']
 

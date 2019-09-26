@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Container, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { Editor } from '@tinymce/tinymce-react'
-import Rate from './Rating';
+import StarRatings from 'react-star-ratings';
 import {Icon} from 'antd';
+const API_KEY = '2icj3szs411s8nqf8kqljxz7cvd2478keun6zro00pdptu17';
 
 class PostForm extends Component {
     constructor(props) {
@@ -12,9 +13,13 @@ class PostForm extends Component {
             error: "",
             post: {
                 title: "",
-                content: ""
+                content: "",
+                rating: 0,
+                userId: '',
+                storeId: ''
             }
         }
+        this.changeRating = this.changeRating.bind(this);
         this.handleFieldChange = this.handleFieldChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
@@ -26,7 +31,25 @@ class PostForm extends Component {
                 ...this.state.post,
                 [name]: value
             }
-        });
+        }, () => console.log(this.state.post.title));
+    }
+    changeRating(newRating) {
+        this.setState({
+            ...this.state,
+            post: {
+                ...this.state.post,
+                rating: newRating
+            }
+        },() => console.log('Rating:', this.state.post.rating));
+    }
+    handleEditorChange = (content, editor) => {
+        this.setState({
+            ...this.state,
+            post: {
+                ...this.state.post,
+                content
+            }
+        },() => console.log('Content:', content));
     }
     onSubmit(e) {
         e.preventDefault();
@@ -37,12 +60,16 @@ class PostForm extends Component {
         // loading status and clear error
         this.setState({ error: "", loading: true })
         let { post } = this.state
+        console.log(post,'post')
         fetch("http://localhost:3000/review", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(post)
+            body: JSON.stringify({
+                title: this.state.post.title,
+                content: this.state.post.content
+            })
         })
             .then(response => response.json())
             .then(res => {
@@ -93,14 +120,21 @@ class PostForm extends Component {
                         />
                     </FormGroup>
                     <FormGroup>
-                        <Label for="star">Đánh giá<span style={{color: 'red'}}> *</span></Label>
-                        <Rate/>
+                        <Label for="rating">Đánh giá<span style={{color: 'red'}}> *</span></Label>
+                        <StarRatings
+                            rating={this.state.post.rating}
+                            starRatedColor="blue"
+                            changeRating={this.changeRating}
+                            numberOfStars={5}
+                            name='rating'
+                        />
                     </FormGroup>
                     <Label for="content">Nội dung<span style={{color: 'red'}}> *</span></Label>
                     <Editor
                         name="content"
-                        apiKey='2icj3szs411s8nqf8kqljxz7cvd2478keun6zro00pdptu17'
-                        initialValue={this.state.post.content}
+                        apiKey={API_KEY}
+                        // initialValue={this.state.post.content}
+                        value={this.state.post.content}
                         init={{
                             selector: 'textarea',
                             plugins: ' lists checklist autolink link image media code paste casechange emoticons preview searchreplace',
@@ -109,7 +143,7 @@ class PostForm extends Component {
                             tinycomments_mode: 'embedded',
                             tinycomments_author: 'Author name'
                         }}
-                        onEditorChange={this.handleFieldChange}
+                        onEditorChange={this.handleEditorChange}
                     />
                     {this.renderError()}
                     <FormGroup>

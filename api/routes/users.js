@@ -305,7 +305,31 @@ router.get('/optionstore', (req, res) => {
   })
     .then(result => res.send(result))
 })
-
+//get review
+router.get('/review', (req, res) => {
+  if (req.query.keyword && req.query.keyword.length > 0) {
+    Post.findAll({
+      where: {
+        storeId: {
+          [Op.like]: `%${req.query.keyword}%`
+        }
+      },
+      order: [['createdAt', 'DESC']]
+    })
+      .then(result => {
+        res.send(result);
+      })
+      .catch(err => console.log(err))
+  } else {
+    Post.findAll({
+      order: [['createdAt', 'DESC']]
+    })
+      .then(result => {
+        res.send(result);
+      })
+      .catch(err => console.log(err))
+  }
+})
 //get review with id_store
 router.get('/review/:id_store', (req, res) => {
   Post.findAll({
@@ -324,11 +348,11 @@ router.post('/review', (req, res) => {
     content: req.body.content,
     userId: req.body.id_user,
     storeId: req.body.id_store,
-    picture: req.body.picture
+    rating: req.body.rating
   };
-  let { title, content, userId, storeId, picture } = data;
+  let { title, content, userId, storeId, rating } = data;
 
-  Post.create({ title, content, userId, storeId, picture })
+  Post.create({ title, content, userId, storeId, rating })
     .then(result => {
       console.log(result)
       res.json(result);

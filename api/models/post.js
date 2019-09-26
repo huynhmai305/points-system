@@ -15,8 +15,8 @@ const Post = db.define('Post', {
     storeId: {
         type: Sequelize.INTEGER
     },
-    pictures: {
-        type: Sequelize.JSON
+    rating: {
+        type: Sequelize.INTEGER
     }
 
 });

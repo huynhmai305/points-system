@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import { Input } from 'reactstrap'
 
-class Test_State extends Component {
+class Local extends Component {
     constructor(props) {
         super(props);
         this.state = {
             data: [],
             dataDis: [],
             dataWar: [],
+            dataVil:[],
             province: null,
             district:null,
-            ward:null
+            ward:null,
+            village:null
         }
     }
     handle_province = (e) => {
@@ -25,14 +27,17 @@ class Test_State extends Component {
     }
     handle_ward = (e) => {
         this.setState({ward:e.target.value}, ()=>{
-            // this.getVillage(this.state.ward)
+            this.getVillage(this.state.ward)
         })
+    }
+    handle_village = (e) => {
+        this.setState({village:e.target.value})
     }
     getDistrict = (city) => {
             fetch('http://localhost:3000/district/'+city)
             .then(res => res.json())
             .then(dataDis => {
-                this.setState({dataDis});
+                this.setState({dataDis:dataDis[0].Districts});
             })
         
     }
@@ -40,7 +45,14 @@ class Test_State extends Component {
         // this.setState({dataWar: this.state.dataDis[district].wards})
             fetch('http://localhost:3000/ward/'+district)
             .then(res => res.json())
-            .then(dataWar => this.setState({ dataWar}))
+            .then(dataWar => this.setState({dataWar:dataWar[0].Wards}))
+        
+    }
+    getVillage = (ward) => {
+        // this.setState({dataWar: this.state.dataDis[district].wards})
+            fetch('http://localhost:3000/village/'+ward)
+            .then(res => res.json())
+            .then(dataVil => this.setState({dataVil:dataVil[0].Villages}))
         
     }
 
@@ -50,7 +62,7 @@ class Test_State extends Component {
             .then(data => this.setState({ data}));
     }
     render() {
-        const {data,dataDis,dataWar} = this.state
+        const {data,dataDis,dataWar,dataVil} = this.state
         return (
             <div>
                 <Input type="select" name="province" onChange={this.handle_province}>
@@ -71,9 +83,15 @@ class Test_State extends Component {
                         <option key={key} value={item.wardid}>{item.name}</option>                
                     ))}
                 </Input>
+                <Input type="select" name="village" onChange={this.handle_village}>
+                    <option>--Choose village--</option>
+                    {dataVil.map((item, key) => (
+                        <option key={key} value={item.villageid}>{item.name}</option>                
+                    ))}
+                </Input>
             </div>
         );
     }
 }
 
-export default Test_State;
+export default Local;

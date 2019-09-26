@@ -1,117 +1,97 @@
-import React from 'react';
-import { StreamApp, SinglePost,StatusUpdateForm, FlatFeed, LikeButton } from 'react-activity-feed';
-import 'react-activity-feed/dist/index.css';
+import React, { Component } from 'react';
+import { Input } from 'reactstrap'
 
-class App extends React.Component {
+class Test_State extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: [],
+            dataDis: [],
+            dataWar: [],
+            dataVil:[],
+            province: null,
+            district:null,
+            ward:null,
+            village:null
+        }
+    }
+    handle_province = (e) => {
+        this.setState({province:e.target.value}, ()=>{
+                this.getDistrict(this.state.province);
+        })
+    }
+    handle_district = (e) => {
+        this.setState({district:e.target.value}, ()=>{
+            this.getWard(this.state.district)
+        })
+    }
+    handle_ward = (e) => {
+        this.setState({ward:e.target.value}, ()=>{
+            this.getVillage(this.state.ward)
+        })
+    }
+    handle_village = (e) => {
+        this.setState({village:e.target.value})
+    }
+    getDistrict = (city) => {
+            fetch('http://localhost:3000/district/'+city)
+            .then(res => res.json())
+            .then(dataDis => {
+                this.setState({dataDis:dataDis[0].Districts});
+            })
+        
+    }
+    getWard = (district) => {
+        // this.setState({dataWar: this.state.dataDis[district].wards})
+            fetch('http://localhost:3000/ward/'+district)
+            .then(res => res.json())
+            .then(dataWar => this.setState({dataWar:dataWar[0].Wards}))
+        
+    }
+    getVillage = (ward) => {
+        // this.setState({dataWar: this.state.dataDis[district].wards})
+            fetch('http://localhost:3000/village/'+ward)
+            .then(res => res.json())
+            .then(dataVil => this.setState({dataVil:dataVil[0].Villages}))
+        
+    }
+
+    componentDidMount() {
+        fetch('http://localhost:3000/province')
+            .then(res => res.json())
+            .then(data => this.setState({ data}));
+    }
     render() {
-        const activityId = 'aba1d300-dc4a-11e8-8080-80010edf5810';
+        const {data,dataDis,dataWar,dataVil} = this.state
         return (
-            <StreamApp
-                apiKey="c26vp2v6qzqv"
-                appId="59675"
-                token="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoidXNlci1vbmUifQ.pBCNP9Or38bTsM0tGsW0ZFY0wKaOEePdGvYbUrDPmoM"
-            >
-                <StatusUpdateForm />
-                <FlatFeed />
-            </StreamApp>
-            // <StreamApp
-            //     apiKey="c26vp2v6qzqv"
-            //     appId="59675"
-            //     token="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoidXNlci1vbmUifQ.pBCNP9Or38bTsM0tGsW0ZFY0wKaOEePdGvYbUrDPmoM"
-            // >
-            //     <SinglePost
-            //         activityId={activityId}
-            //         feedGroup="timeline"
-            //         Activity={(props) => (
-            //             <React.Fragment>
-            //                 <Activity
-            //                     {...props}
-            //                     Footer={
-            //                         <div style={{ padding: '0 16px 16px' }}>
-            //                             <CommentField
-            //                                 activity={props.activity}
-            //                                 onAddReaction={props.onAddReaction}
-            //                             />
-            //                             <CommentList activityId={props.activity.id} />
-            //                         </div>
-            //                     }
-            //                 />
-            //             </React.Fragment>
-            //         )}
-            //     />
-            // </StreamApp>
+            <div>
+                <Input type="select" name="province" onChange={this.handle_province}>
+                    <option>--Choose city--</option>
+                    {data.map((item, key) => (
+                        <option key={key} value={item.provinceid}>{item.name}</option>                
+                    ))}
+                </Input>
+                <Input type="select" name="district" onChange={this.handle_district}>
+                    <option>--Choose district--</option>
+                    {dataDis.map((item, key) => (
+                        <option key={key} value={item.districtid}>{item.name}</option>                
+                    ))}
+                </Input>
+                <Input type="select" name="ward" onChange={this.handle_ward}>
+                    <option>--Choose ward--</option>
+                    {dataWar.map((item, key) => (
+                        <option key={key} value={item.wardid}>{item.name}</option>                
+                    ))}
+                </Input>
+                <Input type="select" name="village" onChange={this.handle_village}>
+                    <option>--Choose village--</option>
+                    {dataVil.map((item, key) => (
+                        <option key={key} value={item.villageid}>{item.name}</option>                
+                    ))}
+                </Input>
+            </div>
         );
     }
 }
 
-export default App;
-
-// import React, { Component } from 'react';
-
-// import {
-//     StreamApp,
-//     StatusUpdateForm,
-//     FlatFeed,
-//     NotificationDropdown,
-//     Activity,
-//     LikeButton,
-//     StreamContext,
-// } from 'react-activity-feed';
-// import 'react-activity-feed/dist/index.es.css';
-
-// export default class App extends Component {
-//     render() {
-//         return (
-//             <div style={{ maxWidth: '600px', margin: '0 auto' }}>
-//                 <StreamApp
-//                     apiKey="3fjzn67nznwt"
-//                     appId="41814"
-//                     token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZXhhbXBsZS11c2VyIn0.XEKjtzD2AIQMLXH6kfJlL8P_JV4CBYvcMsmQCFjyY2U"
-//                 >
-                    
-//                     <div
-//                         style={{
-//                             background: '#fff', //#1A1A14
-//                             height: 60,
-//                             borderRadius: 4,
-//                             margin: '10px 0',
-//                             padding: '0 20px',
-//                             boxShadow: '0px 0px 4px rgba(0,0,0,0.15)',
-//                             display: 'flex',
-//                             alignItems: 'center',
-//                             justifyContent: 'space-between',
-//                             flexDirection: 'row',
-//                         }}
-//                     >
-//                         <h3>Review</h3>
-//                         <NotificationDropdown arrow right />
-//                     </div>
-//                     <StatusUpdateForm
-//                         submitHandler={(e) => {
-//                             alert(e);
-//                         }}
-//                     />
-//                     <FlatFeed
-//                         feedGroup="user"
-//                         notify
-//                         Activity={(props) => (
-//                             <Activity
-//                                 {...props}
-//                                 Footer={
-//                                     <div style={{ padding: '8px 16px 0px' }}>
-//                                         <LikeButton {...props} />
-//                                         <React.Fragment>
-//                                             <button onClick={() => props.onRemoveActivity(props.activity.id)}>
-//                                                 Delete
-//                                             </button>
-//                                         </React.Fragment>
-//                                     </div>
-//                                 }
-//                             />
-//                         )}
-//                     />
-//                 </StreamApp>
-//             </div>
-//         );
-//     }
-// }
+export default Test_State;

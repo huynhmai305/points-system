@@ -24,9 +24,9 @@ export default class Admin extends Component {
                 <li>
                   <Link href="/admin/user"><a><i className="fas fa-list-ul "></i> Danh sách khách hàng</a></Link>
                 </li>
-                {/*<li>
+                <li>
                   <Link href="/admin/post"><a><i className="fas fa-pen-alt"></i> Bài review</a></Link>
-                </li>*/}
+                </li>
               </ul>
             </li>
             <li>
