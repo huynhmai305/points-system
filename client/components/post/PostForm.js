@@ -15,7 +15,7 @@ class PostForm extends Component {
                 title: "",
                 content: "",
                 rating: 0,
-                userId: '',
+                userId: this.props.userId,
                 storeId: ''
             }
         }
@@ -103,6 +103,7 @@ class PostForm extends Component {
             </Alert>
         ) : null;
     }
+
     render() {
         return (
             <Container>

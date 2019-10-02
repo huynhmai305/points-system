@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Layout from '../Customer';
-import Card from './Card';
+import Card from '../post/Post_Store';
 import { Container } from 'reactstrap';
-const list = ['Danh sách ưu đãi', 'Danh sách cửa hàng', 'Khách hàng nói gì về H&M', 'Tin tức']
 
 class Home extends Component {
   constructor(props) {
@@ -24,14 +23,30 @@ class Home extends Component {
       <Layout username={this.state.username} image={this.state.image}>
         <Container className="mt-5">
           <div className="row">
-            {list.map((item,key) => (
-            <div className="col-xs-12 col-md-12 col-lg-12 mb-3" key={key}>
+            <div className="col-xs-12 col-md-12 col-lg-12 mb-3">
               <div className="mb-3">
-                <h4 className="title"><span>{item}</span></h4>
+                <h4 className="title"><span>Danh sách ưu đãi</span></h4>
+              </div>
+              {/* <Card content="Content card"/> */}
+            </div>
+            <div className="col-xs-12 col-md-12 col-lg-12 mb-3">
+              <div className="mb-3">
+                <h4 className="title"><span>Danh sách cửa hàng</span></h4>
               </div>
               <Card content="Content card"/>
             </div>
-            ))}
+            <div className="col-xs-12 col-md-12 col-lg-12 mb-3">
+              <div className="mb-3">
+                <h4 className="title"><span>Khách hàng nói gì về H&M</span></h4>
+              </div>
+              {/* <Card content="Content card"/> */}
+            </div>
+            <div className="col-xs-12 col-md-12 col-lg-12 mb-3">
+              <div className="mb-3">
+                <h4 className="title"><span>Tin tức</span></h4>
+              </div>
+              {/* <Card content="Content card"/> */}
+            </div>
           </div>
         </Container>
       </Layout>

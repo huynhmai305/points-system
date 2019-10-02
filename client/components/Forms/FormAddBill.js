@@ -57,7 +57,7 @@ class AddEditForm extends React.Component {
         alert(`Tích điểm thành công cho khách hàng ${this.props.username}`);
         location.reload()
       })      
-     })   
+    })
     }
     componentDidMount() {
       let info = JSON.parse(localStorage.getItem('user'))

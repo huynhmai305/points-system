@@ -6,7 +6,9 @@ class ModalForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            modal: false
+            modal: false,
+            userId: '',
+            loading: false
         }
     }
 
@@ -14,6 +16,13 @@ class ModalForm extends Component {
         this.setState(prevState => ({
             modal: !prevState.modal
         }))
+    }
+    componentDidMount() {
+        var info = JSON.parse(localStorage.getItem('user'));
+        this.setState({
+            userId: info[0].id,
+            loading: true
+        })
     }
 
     render() {
@@ -53,7 +62,8 @@ class ModalForm extends Component {
                             addItemToState={this.props.addItemToState}
                             updateState={this.props.updateState}
                             toggle={this.toggle}
-                            item={this.props.item} 
+                            item={this.props.item}
+                            userId={this.state.userId}
                         />
                     </ModalBody>
                 </Modal>
