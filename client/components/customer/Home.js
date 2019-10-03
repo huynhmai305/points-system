@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Layout from '../Customer';
 import Card from '../post/Post_Store';
+import Preferential from '../post/Preferential';
 import { Container } from 'reactstrap';
 
 class Home extends Component {
@@ -27,7 +28,7 @@ class Home extends Component {
               <div className="mb-3">
                 <h4 className="title"><span>Danh sách ưu đãi</span></h4>
               </div>
-              {/* <Card content="Content card"/> */}
+              <Preferential/>
             </div>
             <div className="col-xs-12 col-md-12 col-lg-12 mb-3">
               <div className="mb-3">

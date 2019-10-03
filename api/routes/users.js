@@ -7,6 +7,7 @@ const Gift = require('../models/gift');
 const Exchange_Gift = require('../models/exchange_gift');
 const Point = require('../models/point');
 const Post = require('../models/post');
+const Review = require('../models/review')
 const sequelize = require('sequelize');
 const Op = sequelize.Op;
 User.hasMany(Bill, { foreignKey: 'id_user', sourceKey: 'id' });
@@ -20,8 +21,13 @@ Exchange_Gift.belongsTo(User, { foreignKey: 'id_user' });
 Gift.hasMany(Exchange_Gift, { foreignKey: 'id_gift', sourceKey: 'id_gift' });
 Exchange_Gift.belongsTo(Gift, { foreignKey: 'id_gift', targetKey: 'id_gift' });
 
-User.hasMany(Post, { foreignKey: 'userId', sourceKey: 'id' });
-Post.belongsTo(User, { foreignKey: 'userId' })
+User.hasMany(Post, { foreignKey: 'storeId', sourceKey: 'id' });
+Post.belongsTo(User, { foreignKey: 'storeId' })
+
+User.hasMany(Review, { foreignKey: 'storeId', sourceKey: 'id' });
+Review.belongsTo(User, { foreignKey: 'storeId' })
+User.hasMany(Review, { foreignKey: 'userId', sourceKey: 'id' });
+Review.belongsTo(User, { foreignKey: 'userId' })
 //tim kiem ma hoa don
 router.get('/tichdiem', (req, res) => {
   Bill.findOne({
@@ -305,8 +311,9 @@ router.get('/optionstore', (req, res) => {
   })
     .then(result => res.send(result))
 })
-//get review
-router.get('/review', (req, res) => {
+
+//get post
+router.get('/post', (req, res) => {
   if (req.query.keyword && req.query.keyword.length > 0) {
     Post.findAll({
       where: {
@@ -330,9 +337,85 @@ router.get('/review', (req, res) => {
       .catch(err => console.log(err))
   }
 })
+
+//add post
+router.post('/post', (req, res) => {
+  const data = {
+    title: req.body.title,
+    content: req.body.content,
+    storeId: req.body.id_store
+  };
+  let { title, content, storeId } = data;
+
+  Post.create({ title, content, storeId })
+    .then(result => {
+      console.log(result)
+      res.sendStatus(200).json(result);
+    })
+    .catch(err => {
+      res.send('error:' + err)
+    })
+})
+//delete post
+router.delete('/post', (req, res) => {
+  const { id } = req.body
+  Post.destroy({
+    where: {
+      id: id
+    }
+  })
+    .then(result => {
+      res.json({ delete: 'true' });
+      res.sendStatus(200)
+    })
+    .catch(err => console.log(err))
+})
+
+//====update post
+router.put('/post', (req, res) => {
+  const update = new Date();
+  var dt = {
+    title: req.body.title,
+    content: req.body.content,
+    storeId: req.body.id_store,
+    updatedAt: update
+  }
+  Post.update(dt, { where: { id: req.body.id } })
+    .then(result => {
+      res.json(result);
+      res.sendStatus(200);
+    })
+    .catch(err => console.log(err))
+})
+
+//get review
+router.get('/review', (req, res) => {
+  if (req.query.keyword && req.query.keyword.length > 0) {
+    Review.findAll({
+      where: {
+        storeId: {
+          [Op.like]: `%${req.query.keyword}%`
+        }
+      },
+      order: [['createdAt', 'DESC']]
+    })
+      .then(result => {
+        res.send(result);
+      })
+      .catch(err => console.log(err))
+  } else {
+    Review.findAll({
+      order: [['createdAt', 'DESC']]
+    })
+      .then(result => {
+        res.send(result);
+      })
+      .catch(err => console.log(err))
+  }
+})
 //get review with id_store
 router.get('/review/:id_store', (req, res) => {
-  Post.findAll({
+  Review.findAll({
     where: {
       userId: req.params.id_store
     }

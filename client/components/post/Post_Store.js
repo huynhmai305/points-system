@@ -17,12 +17,6 @@ const CardComponent = (props) => {
                             <label /> 07:00 - 22:00
                         </div>
                     </div>
-                    {/* <div className="put_by_point">
-                        <span className="font_defaul number_top">Tích</span>
-                        <div className="font_bold number_pt">
-                            <span>15%</span>
-                        </div>
-                    </div> */}
                     <a className="block-img" href="#">
                         <img className=" with100 cou-pic lazy" style={{ height: '170px', display: 'block' }} src="/static/images/logo_FeelingTea.png" />
                     </a>

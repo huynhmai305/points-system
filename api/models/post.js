@@ -9,13 +9,7 @@ const Post = db.define('Post', {
         type: Sequelize.TEXT,
         allowNull: false
     },
-    userId: {
-        type: Sequelize.INTEGER
-    },
     storeId: {
-        type: Sequelize.INTEGER
-    },
-    rating: {
         type: Sequelize.INTEGER
     }
 
