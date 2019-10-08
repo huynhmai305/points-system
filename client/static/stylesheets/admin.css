@@ -403,17 +403,7 @@ h4.title span{
   -o-transition: border .2s ease-in-out;
   transition: border .2s ease-in-out;
   width: 250px;
-}
-.time_store {
-  position: absolute;
-  background-color: #6d7fcc;
-  border-radius: 15px;
-  font-size: 12px;
-  top: 10px;
-  font-family: font-menu;
-  left: 10px;
-  color: #fff;
-}
+}   
 .time_store div {
   padding: 2px 12px;
   margin-top: 2px;
@@ -485,7 +475,7 @@ label {
 }
 .gift {
   position: absolute;
-  background-color: #ffb300;
+  background-color: #2148f5;
   padding: 3px 8px;
   border-radius: 15px;
   color: #fff;
@@ -498,7 +488,7 @@ label {
   border-radius: 15px;
   padding: 0 5px;
   font-size: 12px;
-  top: 39px;
+  top: 45px;
   font-family: font-menu;
   left: 10px;
 }
@@ -509,6 +499,38 @@ label {
   color: #2e2e2e;
   padding: 1px 4px;
   font-size: 12px;
+}
+.hidden {
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #008CBA;
+}
+
+.hidden:hover .overlay {
+  opacity: 1;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 .item-hover-show-text-info {
   display: none;
@@ -609,4 +631,5 @@ label {
   padding-left: 6px;
 }
 a:hover {
-  text-decoration: none}
+  text-decoration: none
+}
