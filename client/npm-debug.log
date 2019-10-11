@@ -13,20 +13,20 @@
 12 silly mapToRegistry uri https://registry.npmjs.org/now
 13 verbose request uri https://registry.npmjs.org/now
 14 verbose request no auth needed
-15 info attempt registry request try #1 at 9:59:18 AM
-16 verbose request id 8a1f7e2a174a15d6
+15 info attempt registry request try #1 at 10:36:10 AM
+16 verbose request id b62a7f0e9f1cda82
 17 verbose etag W/"3dfedad5998eafb0bc377c272a3aebed"
 18 verbose lastModified Thu, 10 Oct 2019 15:50:18 GMT
 19 http request GET https://registry.npmjs.org/now
 20 http 304 https://registry.npmjs.org/now
-21 verbose headers { date: 'Fri, 11 Oct 2019 02:59:18 GMT',
+21 verbose headers { date: 'Fri, 11 Oct 2019 03:36:10 GMT',
 21 verbose headers   connection: 'keep-alive',
 21 verbose headers   'set-cookie':
-21 verbose headers    [ '__cfduid=d499bb80aa2416631944f9fc414cce0251570762758; expires=Sat, 10-Oct-20 02:59:18 GMT; path=/; domain=.npmjs.org; HttpOnly' ],
+21 verbose headers    [ '__cfduid=dd8987f77c929921ac5acc7626ee674421570764970; expires=Sat, 10-Oct-20 03:36:10 GMT; path=/; domain=.npmjs.org; HttpOnly' ],
 21 verbose headers   'cf-cache-status': 'HIT',
 21 verbose headers   'cache-control': 'max-age=300',
-21 verbose headers   'cf-ray': '523d93c9a9fec704-SGN',
-21 verbose headers   age: '1315',
+21 verbose headers   'cf-ray': '523dc9c95d86c6ec-SGN',
+21 verbose headers   age: '3527',
 21 verbose headers   etag: '"3dfedad5998eafb0bc377c272a3aebed"',
 21 verbose headers   'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
 21 verbose headers   'last-modified': 'Thu, 10 Oct 2019 15:50:18 GMT',
@@ -34,14 +34,14 @@
 21 verbose headers   'x-amz-meta-rev': '1037-45bbbb565087314cb4bc40c9f8808dd7',
 21 verbose headers   server: 'cloudflare' }
 22 silly get cb [ 304,
-22 silly get   { date: 'Fri, 11 Oct 2019 02:59:18 GMT',
+22 silly get   { date: 'Fri, 11 Oct 2019 03:36:10 GMT',
 22 silly get     connection: 'keep-alive',
 22 silly get     'set-cookie':
-22 silly get      [ '__cfduid=d499bb80aa2416631944f9fc414cce0251570762758; expires=Sat, 10-Oct-20 02:59:18 GMT; path=/; domain=.npmjs.org; HttpOnly' ],
+22 silly get      [ '__cfduid=dd8987f77c929921ac5acc7626ee674421570764970; expires=Sat, 10-Oct-20 03:36:10 GMT; path=/; domain=.npmjs.org; HttpOnly' ],
 22 silly get     'cf-cache-status': 'HIT',
 22 silly get     'cache-control': 'max-age=300',
-22 silly get     'cf-ray': '523d93c9a9fec704-SGN',
-22 silly get     age: '1315',
+22 silly get     'cf-ray': '523dc9c95d86c6ec-SGN',
+22 silly get     age: '3527',
 22 silly get     etag: '"3dfedad5998eafb0bc377c272a3aebed"',
 22 silly get     'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
 22 silly get     'last-modified': 'Thu, 10 Oct 2019 15:50:18 GMT',
@@ -103,7 +103,7 @@
 67 silly runTopLevelLifecycles Finishing
 68 silly install printInstalled
 69 verbose stack Error: EACCES: permission denied, access '/usr/local/lib/node_modules'
-70 verbose cwd /home/mai/Point/points-system
+70 verbose cwd /home/mai/Point/points-system/client
 71 error Linux 5.0.0-29-generic
 72 error argv "/usr/bin/node" "/usr/bin/npm" "i" "-g" "now"
 73 error node v8.10.0
