@@ -28,23 +28,6 @@ var storage = multer.diskStorage({
 });
 const upload = multer({ storage })
 
-//get tp, quan, huyen, phuong, xa
-// router.get('/local', (req, res) => {
-//   if(req.query.city){
-//     if(req.query.district){
-//       const local = localvn[req.query.city].districts[req.query.district].wards;
-//       res.send(local)
-//     }
-//     else{
-//       const local = localvn[req.query.city].districts;
-//       res.send(local)
-//     }
-//   }
-//   else{
-//     res.send(localvn)
-//   }
-  
-// })
 Province.hasMany(District, { foreignKey: 'provinceid', sourceKey: 'provinceid' });
 District.belongsTo(Province, { foreignKey: 'provinceid', targetKey: 'provinceid' });
 

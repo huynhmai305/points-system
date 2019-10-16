@@ -7,8 +7,8 @@ class PostList extends Component {
     render() {
         return (
             <Row>
-                {img.map(img => (
-                    <Post image={img}/>
+                {img.map((img,key) => (
+                    <Post image={img} key={key}/>
                 ))}
                 
             </Row>

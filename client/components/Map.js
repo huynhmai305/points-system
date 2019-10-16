@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import ReactMapGL, { NavigationControl, Marker } from "react-map-gl";
 import DeckGL, { GeoJsonLayer } from "deck.gl";
 import Geocoder from "react-map-gl-geocoder";
-import { Button } from 'reactstrap'
 
 // Please be a decent human and don't abuse my Mapbox API token.
 // If you fork this sandbox, replace my API token with your own.
@@ -22,6 +21,7 @@ export default class Map extends Component {
                 zoom: 16
             },
             searchResultLayer: null,
+            storeLocation: [],
             userLocation: {}
         };
     }
@@ -47,7 +47,37 @@ export default class Map extends Component {
         })
     }
 
+    fetchStationAPI = () => {
+        // fetch(`https://localhost:3000/admin/store`)
+        fetch(`https://data.cityofnewyork.us/resource/yjub-udmw.json`)
+        .then(res => res.json())
+        .then(storeLocation => {
+            let freeWifi = this.filterFreeWifi(storeLocation);
+            this.setState({ storeLocation: freeWifi });
+        });
+    };
+    filterFreeWifi = hotspots => {
+        return hotspots.filter(spot => {
+            return spot.type === "Free";
+        });
+    };
+    loadWifiMarkers = () => {
+        return this.state.storeLocation.map(spot => {
+            return (
+                <Marker
+                    key={spot.objectid}
+                    latitude={parseFloat(spot.latitude)}
+                    longitude={parseFloat(spot.longitude)}
+                >
+                    <div className="location-icon">
+                        here
+                    </div>
+                </Marker>
+            );
+        });
+    };
     componentDidMount() {
+        this.fetchStationAPI();
         window.addEventListener("resize", this.resize);
         this.resize();
     }
@@ -103,7 +133,7 @@ export default class Map extends Component {
                         mapboxApiAccessToken={MAPBOX_TOKEN}
                         mapStyle="mapbox://styles/mapbox/streets-v11"
                     >
-                        <img src="/static/images/search_location.png" onClick={this.setUserLocation} className="location-btn"/>
+                        <img src="/static/images/search_location.png" onClick={this.setUserLocation} className="location-btn" alt="my_location"/>
                         <Geocoder
                             mapRef={this.mapRef}
                             onResult={this.handleOnResult}
@@ -117,12 +147,13 @@ export default class Map extends Component {
                                 longitude={this.state.userLocation.long}
                             >
                                 <div className="location-icon">
-                                    <img src="/static/images/location.png"/>
+                                    <img src="/static/images/location.png" alt="location"/>
                                 </div>
                             </Marker>
                         ) : (
-                                <div>Empty</div>
-                            )}
+                            <div>Không tìm thấy</div>
+                        )}
+                        {this.loadWifiMarkers()}
                         {/* <DeckGL {...viewport} layers={[searchResultLayer]} /> */}
                     </ReactMapGL>
                 </div>
