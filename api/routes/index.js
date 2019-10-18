@@ -9,9 +9,7 @@ const Village = require('../models/village')
 const cors = require('cors');
 // const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-// const fs = require('fs-extra');
-// const multer = require('multer');
-const imagesUpload = require('images-upload-middleware');
+const nodemailer = require('nodemailer');
 const sequelize = require('sequelize');
 const Op = sequelize.Op;
 router.use(cors());
@@ -37,38 +35,38 @@ Ward.belongsTo(District, { foreignKey: 'districtid', targetKey: 'districtid' });
 Ward.hasMany(Village, { foreignKey: 'wardid', sourceKey: 'wardid' });
 Village.belongsTo(Ward, { foreignKey: 'wardid', targetKey: 'wardid' });
 
-router.get('/province', (req,res) => {
+router.get('/province', (req, res) => {
   Province.findAll({
-    attributes: ['provinceid','name']
+    attributes: ['provinceid', 'name']
   })
-  .then(data => res.send(data))
+    .then(data => res.send(data))
 })
-router.get('/district/:province', (req,res) => {
+router.get('/district/:province', (req, res) => {
   Province.findAll({
-    where:{
+    where: {
       provinceid: req.params.province
     },
-    include:[District]
+    include: [District]
   })
-  .then(data => res.send(data))
+    .then(data => res.send(data))
 })
-router.get('/ward/:district', (req,res) => {
+router.get('/ward/:district', (req, res) => {
   District.findAll({
-    where:{
+    where: {
       districtid: req.params.district
     },
-    include:[Ward]
+    include: [Ward]
   })
-  .then(data => res.send(data))
+    .then(data => res.send(data))
 })
-router.get('/village/:ward', (req,res) => {
+router.get('/village/:ward', (req, res) => {
   Ward.findAll({
-    where:{
+    where: {
       wardid: req.params.ward
     },
-    include:[Village]
+    include: [Village]
   })
-  .then(data => res.send(data))
+    .then(data => res.send(data))
 })
 //upload images
 router.post('/upload', upload.single('image'), (req, res) => {
@@ -124,6 +122,56 @@ router.post('/admin/user', (req, res) => {
 
 })
 //end register=======
+
+//send mail qr
+router.post('/sendmail', (req, res) => {
+  const option = {
+    service: 'gmail',
+    auth: {
+      user: process.env.MAIL_USER,
+      pass: process.env.MAIL_PASS
+    }
+  };
+  var transporter = nodemailer.createTransport(option);
+
+  transporter.verify(function (error, success) {
+    // Nếu có lỗi.
+    if (error) {
+      console.log(error);
+    } else { //Nếu thành công.
+      console.log('Kết nối thành công!');
+      var mail = {
+        from: process.env.MAIL_USER,
+        to: 'huynhmai305@gmail.com', //req.body.email
+        subject: 'Thư được gửi bằng Node.js', // Tiêu đề mail
+        text: 'Thanh cong, chuc mung !!', // Nội dung mail dạng text
+        // HTML body
+        html:
+          '<p><b>Hello</b> to myself <img src="cid:note@example.com"/></p>' +
+          '<p>Here\'s a nyan cat for you as an embedded attachment:<br/><img src="cid:nyan@example.com"/></p>',
+
+        // Ds tệp đính kèm
+        attachments: [
+          // String attachment
+          {
+            filename: 'notes.txt',//file qr here
+            content: 'Some notes about this e-mail',
+            contentType: 'text/plain' // optional, would be detected from the filename
+          }
+        ]
+      };
+      //Tiến hành gửi email
+      transporter.sendMail(mail, function (error, info) {
+        if (error) { // nếu có lỗi
+          console.log(error);
+        } else { //nếu thành công
+          console.log('Email sent: ' + info.response);
+        }
+      });
+    }
+  });
+})
+//== end send mail
 
 //===== login page
 router.post('/login', (req, res) => {

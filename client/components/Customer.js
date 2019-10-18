@@ -21,7 +21,7 @@ class Customer extends Component {
                         <p className="text-center" style={{ color: 'white' }}>{this.props.username}</p>
                         <ul className="list-unstyled">
                             <li>
-                                <Link href="/user"><a><i className="fas fa-home fa-2x"></i></a></Link>
+                                <Link href="/user"><a><Icon type="home" style={{ fontSize: '16px'}}/></a></Link>
                             </li>
                             <li>
                                 <Link href="/user/khampha"><a><Icon type="dropbox" /> Khám phá</a></Link>
