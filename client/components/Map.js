@@ -16,9 +16,9 @@ export default class Map extends Component {
             viewport: {
                 width: "100vw",
                 height: "100vh",
-                latitude: 42.430472,
-                longitude: -123.334102,
-                zoom: 16
+                latitude: 10.797,
+                longitude: 106.667,
+                zoom: 18.00
             },
             searchResultLayer: null,
             storeLocation: [],
@@ -153,7 +153,7 @@ export default class Map extends Component {
                         ) : (
                             <div>Không tìm thấy</div>
                         )}
-                        {this.loadWifiMarkers()}
+                        {this.loadWifiMarkers}
                         {/* <DeckGL {...viewport} layers={[searchResultLayer]} /> */}
                     </ReactMapGL>
                 </div>
