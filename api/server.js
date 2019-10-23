@@ -12,7 +12,7 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const indexRouter = require('./routes/index');
 const userRouter = require('./routes/users');
-
+const chatRouter = require('./routes/chat')
 //app
 const app = express();
 //session
@@ -41,6 +41,7 @@ app.use(bodyParser.urlencoded({ extended: false }));//support endcode body
 app.use(morgan('combined'))
 app.use('/', indexRouter)
 app.use('/users', userRouter)
+app.use('/chat', chatRouter)
 
 // App Server Connection
 app.listen(process.env.PORT || 3000, () => {

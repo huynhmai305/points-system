@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Button } from 'reactstrap';
-import ModalForm from './PostForm';
+import ModalForm from './Modal_Post';
 import dateFormat from 'dateformat';
 import { TablePagination } from 'react-pagination-table'
 
@@ -10,7 +10,7 @@ class PostTable extends Component {
         let confirmDelete = window.confirm('Bạn có chắc muốn xóa không?')
         if (confirmDelete) {
             // console.log(id)
-            fetch('http://localhost:3000/users/review', {
+            fetch('http://localhost:3000/users/post', {
                 method: 'delete',
                 headers: {
                     'Content-Type': 'application/json'
@@ -37,11 +37,12 @@ class PostTable extends Component {
         )
     }
     render() {
-        const Header = ["#", "Tiêu đề", "Nội dung", "Tác giả", "Cửa hàng Review", "Ngày đăng ký", " "];
+        const Header = ["#", "Tiêu đề", "Nội dung", "Cửa hàng", "Ngày đăng ký", " "];
         let { items } = this.props;
         items = items.map(item => {
             return {
                 ...item,
+                content: item.content.slice(0,500),
                 createdAt: dateFormat(item.createdAt, "isoDate"),
                 actions: this.actions(item)
             }
@@ -52,7 +53,7 @@ class PostTable extends Component {
                 className="table-responsive table-hover"
                 headers={Header}
                 data={items}
-                columns="id.title.content.userId.storeId.createdAt.actions"
+                columns="id.title.content.storeId.createdAt.actions"
                 perPageItemCount={4}
                 totalCount={50}
             />

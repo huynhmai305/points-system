@@ -1,21 +1,16 @@
-// import dynamic from 'next/dynamic';
-
-// const DynamicComponentWithNoSSR = dynamic(() => import('../components/chat/ChatWiget'), {
-//     ssr: false
-// });
-
-// export default () => <DynamicComponentWithNoSSR />;
+import { CometChat } from '@cometchat-pro/chat';
 import dynamic from 'next/dynamic';
 import React, { Component } from 'react';
+import config from '../components/chat/config';
 const ChatWiget = dynamic(() => import('../components/chat/ChatWiget')) ;
-const Agent = dynamic(() => import('../components/chat/ManagerChat')) ;
+
+CometChat.init(config.appID)
 
 class Test_State extends Component {
     render() {
         return (
             <div>
                 <ChatWiget/>
-                <Agent/>
             </div>
         );
     }

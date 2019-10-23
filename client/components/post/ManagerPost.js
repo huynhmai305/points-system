@@ -11,7 +11,7 @@ class ManagerPost extends Component {
         items: [],
     }
     getItems(keyword) {
-        let url = 'http://localhost:3000/users/review';
+        let url = 'http://localhost:3000/users/post';
         if (keyword.length > 0) {
             url = `${url}?keyword=${keyword}`
         }
@@ -21,7 +21,7 @@ class ManagerPost extends Component {
             .catch(err => console.log(err))
     }
     addItemToState = (item) => {
-        fetch('http://localhost:3000/users/review')
+        fetch('http://localhost:3000/users/post')
         this.setState(prevState => ({
             items: [...prevState.items, item]
         }))
@@ -57,7 +57,7 @@ class ManagerPost extends Component {
                     <li className="breadcrumb-item">
                         <a href="/admin/store">Quản lý khách hàng</a>
                     </li>
-                    <li className="breadcrumb-item active">Quản lý bài review</li>
+                    <li className="breadcrumb-item active">Quản lý bài viết</li>
                 </ol>
                 <Row className="mb-5">
                     <Col md={6}>

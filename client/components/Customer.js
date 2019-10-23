@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import DefaultLayout from './layouts/Layout';
 import Link from 'next/link';
 import { Icon } from 'antd';
+import ChatClient from './chat/Chat_Client';
 
 class Customer extends Component {
     logout = () => {
@@ -52,6 +53,7 @@ class Customer extends Component {
                         </header>
                         <div className="main-content">
                             {this.props.children}
+                            <ChatClient/>
                         </div>
                     </div>
                 </div>

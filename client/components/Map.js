@@ -28,6 +28,7 @@ export default class Map extends Component {
     mapRef = React.createRef();
 
     setUserLocation = () => {
+        console.log('da nhan dc tin hieu')
         navigator.geolocation.getCurrentPosition(position => {
             let setUserLocation = {
                 lat: position.coords.latitude,
@@ -62,19 +63,17 @@ export default class Map extends Component {
         });
     };
     loadWifiMarkers = () => {
-        return this.state.storeLocation.map(spot => {
-            return (
-                <Marker
-                    key={spot.objectid}
-                    latitude={parseFloat(spot.latitude)}
-                    longitude={parseFloat(spot.longitude)}
-                >
-                    <div className="location-icon">
-                        here
-                    </div>
-                </Marker>
-            );
-        });
+        this.state.storeLocation.map((spot,key) => (
+            <Marker
+                key={key}
+                latitude={parseFloat(spot.latitude)}
+                longitude={parseFloat(spot.longitude)}
+            >
+                <div className="location-icon">
+                    here
+                </div>
+            </Marker>
+        ));
     };
     componentDidMount() {
         this.fetchStationAPI();

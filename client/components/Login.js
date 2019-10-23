@@ -150,7 +150,7 @@ class Login extends Component {
             <Button color="success" type="submit">
               Đăng nhập
             </Button>
-           <div className="text-danger mt-3">{this.state.msg_err}</div>
+            <div className="text-danger mt-3">{this.state.msg_err}</div>
           </FormGroup>
           <div style={{display:'none'}}>
             <Spinner color="success" />

@@ -33,6 +33,7 @@ class Layout extends Component {
                     <link rel="stylesheet" href="/static/stylesheets/font-awesome.min.css" />
                     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossOrigin="anonymous" />
                     {/* <script src="https://cdn.tiny.cloud/1/2icj3szs411s8nqf8kqljxz7cvd2478keun6zro00pdptu17/tinymce/5/tinymce.min.js"></script> */}
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.9.2/tinymce.min.js"></script>
                     <link href="https://api.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css" rel="stylesheet" />
                 </Head>
                 {this.props.children}

@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import Layout from '../layouts/Layout';
 import Link from 'next/link';
+import ChatServer from '../chat/Chat_Server';
 import { Icon } from 'antd';
 
 export default class Admin extends Component {
@@ -66,6 +67,7 @@ export default class Admin extends Component {
           </header>
           <div className="main-content">
             {this.props.children}
+            <ChatServer/>
           </div>
         </div>
       </Layout>

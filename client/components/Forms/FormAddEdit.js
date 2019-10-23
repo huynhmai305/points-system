@@ -115,7 +115,9 @@ class AddEditForm extends React.Component {
           </Label>
         </FormGroup>
         <FormGroup>
-          <Button color="success">Submit</Button>
+          <Button color="light" className="float-right">
+            <img src="/static/images/btn_send.png" style={{width:'50px',height:'50px'}}/>
+          </Button>
         </FormGroup>
 
       </Form>

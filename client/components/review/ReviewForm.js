@@ -4,7 +4,7 @@ import { Editor } from '@tinymce/tinymce-react'
 import StarRatings from 'react-star-ratings';
 const API_KEY = '2icj3szs411s8nqf8kqljxz7cvd2478keun6zro00pdptu17';
 
-class PostForm extends Component {
+class ReviewForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -133,7 +133,6 @@ class PostForm extends Component {
                     <Editor
                         name="content"
                         apiKey={API_KEY}
-                        // initialValue={this.state.post.content}
                         value={this.state.post.content}
                         init={{
                             selector: 'textarea',
@@ -157,4 +156,4 @@ class PostForm extends Component {
     }
 }
 
-export default PostForm;
+export default ReviewForm;
