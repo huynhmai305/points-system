@@ -11,12 +11,14 @@ class ModalScan extends Component {
         }
     }
     copyText = (result) => {
-        alert(result)
+        console.log(result)
+        this.props.handleData(result)
+        this.setState({ modal:!this.state.modal })
     }
     
     render() {
         const { modal } = this.state;
-        const toggle = () => this.setState({modal:!modal})
+        const toggle = () => this.setState({ modal:!modal })
     
         return (
             <div>
@@ -27,7 +29,7 @@ class ModalScan extends Component {
                         <ReadQR handleData={this.copyText}/>
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="primary" onClick={toggle} onClick={() => {navigator.clipboard.writeText(this.state.textToCopy)}}>Copy</Button>{' '}
+                        <Button color="primary" onClick={toggle}>Tìm kiếm</Button>{' '}
                         <Button color="secondary" onClick={toggle}>Hủy</Button>
                     </ModalFooter>
                 </Modal>

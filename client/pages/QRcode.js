@@ -9,7 +9,7 @@ class QR extends Component{
     show(){
         if (typeof window !== 'undefined'){           
             var canvas = document.getElementById('canvas')
-            QRCode.toCanvas(canvas, 'admin123', function (error) {
+            QRCode.toCanvas(canvas, 'Mai', function (error) {
             if (error) console.error(error)
             console.log('success!');
             })

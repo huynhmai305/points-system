@@ -66,7 +66,7 @@ class Manager_Store extends Component {
                             >
                                 <i className="fas fa-file-csv"> Download CSV</i>
                             </CSVLink>
-                            <QuetMa/>
+                            <QuetMa handleData={this.onSearch}/>
                         </Col>
                     </Row>
                     <Row>
