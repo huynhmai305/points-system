@@ -117,7 +117,7 @@ export default class TichDiem extends Component {
                             </Alert>
                         </Form>
                     </Alert>
-                    <ReadQR/>
+                    <ReadQR handleData={this.onSearch}/>
                 </Container>
             </Layout>
         )
