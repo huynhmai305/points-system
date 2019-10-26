@@ -25,7 +25,7 @@ class Manager_Bill extends Component {
     onSearch = (keyword) => {
         console.log(keyword);
         this.getItems(keyword)
-      }
+    }
     componentDidMount() {
         this.getItems('')
     }
@@ -43,7 +43,6 @@ class Manager_Bill extends Component {
                     <Row className="mb-5">
                         <Col md={6}>
                             <Search handlekeyword={this.onSearch}/>
-                           
                             <FormText>Nhập mã hóa đơn tìm kiếm</FormText>
                         </Col>
                         <Col md={{offset:2,size:4}}>

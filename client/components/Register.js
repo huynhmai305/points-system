@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Col, Row, Button, Form, FormGroup, Label, Input, FormText, FormFeedback } from 'reactstrap';
+import { renderEmail } from 'react-html-email'
+import MailTemplate from '../components/mail/MailTemplate'
 
 class Register extends Component {
     state = {
@@ -12,7 +14,7 @@ class Register extends Component {
         password: '',
         password2: '',
         role: 2,
-        picture:''
+        picture: ''
     }
 
     onChange = e => {
@@ -25,7 +27,6 @@ class Register extends Component {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-
             },
             body: JSON.stringify({
                 username: this.state.username,
@@ -40,6 +41,28 @@ class Register extends Component {
             .then(response => response.json())
             .then(item => {
                 alert(`Đăng ký thành công `);
+                const messageHtml = renderEmail(
+                    <MailTemplate
+                        name={this.state.username}
+                        email={this.state.email}
+                    />
+                )
+                fetch('http://localhost:3000/sendmail', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: this.state.email,
+                        messageHtml: messageHtml
+                    })
+                })
+                    .then(response => response.json())
+                    .then(item => {
+                        alert('Đã gửi mã QR về mail bạn thành công!')
+                        location.reload();
+                    })
+                    .catch(err => console.log(err))
                 location.reload();
             })
             .catch(err => alert('Tài khoản đã tồn tại'))
@@ -70,7 +93,7 @@ class Register extends Component {
                                 placeholder="Nhập ngày sinh"
                                 onChange={this.onChange}
                                 value={this.state.birthday}
-                                min="1960-01-01" 
+                                min="1960-01-01"
                                 max="2004-12-31"
                                 required
                             />
@@ -96,7 +119,7 @@ class Register extends Component {
                 </Row>
                 <FormGroup>
                     <Label for="address">Địa chỉ</Label>
-                    <Input type="text" name="address" id="address" placeholder="Nhập địa chỉ" onChange={this.onChange} value={this.state.address}  required/>
+                    <Input type="text" name="address" id="address" placeholder="Nhập địa chỉ" onChange={this.onChange} value={this.state.address} required />
                 </FormGroup>
                 <FormGroup>
                     <Label for="email">Email</Label>
@@ -136,7 +159,7 @@ class Register extends Component {
                                 onChange={this.onChange}
                                 value={this.state.password2}
                                 valid={this.state.password === this.state.password2 && this.state.password2 !== ''}
-                                invalid={this.state.password !== this.state.password2 }
+                                invalid={this.state.password !== this.state.password2}
                                 required
                             />
                             <FormFeedback valid>

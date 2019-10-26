@@ -75,10 +75,10 @@ export default class TichDiem extends Component {
             <Layout username={this.state.username} image={this.state.image}>
                 <ol className="breadcrumb">
                     <li className="breadcrumb-item">
-                        <a href="/store">Trang chủ</a>
+                        <a href="/user">Trang chủ</a>
                     </li>
                     <li className="breadcrumb-item active">
-                        Lấy mã
+                        Tích điểm
                     </li>
                 </ol>
                 <Container >

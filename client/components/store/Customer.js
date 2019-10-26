@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col, Button } from 'reactstrap';
 import DataTable from '../Tables/DataCustomer';
 import { CSVLink } from 'react-csv';
+import {Icon} from 'antd'
 import Search from '../Search';
-import Layout from '../Store'
+import Layout from '../Store';
+import QuetMa from './TichDiem'
 
 class Manager_Store extends Component {
     constructor(props) {
@@ -15,6 +17,7 @@ class Manager_Store extends Component {
             image:''
         }
     }
+
     getItems(keyword) {
         let url = 'http://localhost:3000/admin/user';
         if (keyword.length > 0) {
@@ -28,7 +31,7 @@ class Manager_Store extends Component {
     onSearch = (keyword) => {
         console.log(keyword);
         this.getItems(keyword)
-      }
+    }
     componentDidMount() {
         var info = JSON.parse(localStorage.getItem('user'));
         this.setState({
@@ -53,7 +56,7 @@ class Manager_Store extends Component {
                         <Col md={6}>
                             <Search handlekeyword={this.onSearch}/>
                         </Col>
-                        <Col md={{offset:3,size:3}}>
+                        <Col md={{offset:2,size:4}}>
                             <CSVLink
                                 filename={"dbStore.csv"}
                                 color="primary"
@@ -63,6 +66,7 @@ class Manager_Store extends Component {
                             >
                                 <i className="fas fa-file-csv"> Download CSV</i>
                             </CSVLink>
+                            <QuetMa/>
                         </Col>
                     </Row>
                     <Row>

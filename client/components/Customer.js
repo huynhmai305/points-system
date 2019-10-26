@@ -34,7 +34,7 @@ class Customer extends Component {
                                 <Link href="/user/tichdiem"><a><Icon type="qrcode" /> Quét mã</a></Link>
                             </li>
                             <li>
-                                <Link href="/user/profile"><a><Icon type="user" /> Thông tin & Ví tiền</a></Link>
+                                <Link href="/user/profile"><a><Icon type="user" /> Thông tin & Giao dịch</a></Link>
                             </li>
                             <li>
                                 <Link href="/"><a onClick={this.logout}><i className="fas fa-power-off"></i> Đăng xuất</a></Link>

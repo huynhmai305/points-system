@@ -11,7 +11,7 @@ class ReadQR extends Component {
     }
     handleScan = data => {
         if (data) {
-            this.setState({ data })
+            this.setState({ data },() => this.props.handleData(this.state.data))
         }
     }
     handleError = err => {

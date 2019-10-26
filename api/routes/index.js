@@ -132,9 +132,10 @@ router.post('/sendmail', (req, res) => {
       pass: process.env.MAIL_PASS
     }
   };
+  const email = req.body.email
+  const content = req.body.messageHtml
   var transporter = nodemailer.createTransport(option);
-  var content = '<p><b>Hello</b> to myself <img src="cid:note@example.com"/></p>' +
-  '<p>Here\'s a nyan cat for you as an embedded attachment:<br/><img src="cid:nyan@example.com"/></p>'
+
   transporter.verify(function (error, success) {
     // Nếu có lỗi.
     if (error) {
@@ -143,20 +144,20 @@ router.post('/sendmail', (req, res) => {
       console.log('Kết nối thành công!');
       var mail = {
         from: process.env.MAIL_USER,
-        to: 'huynhmai305@gmail.com', //req.body.email
+        to: email, //req.body.email
         subject: 'Thông báo từ hệ thống tích điểm H&M!', // Tiêu đề mail
         text: 'Thành công, chúc mừng !!', // Nội dung mail dạng text
         // HTML body
         html: content,
         // Ds tệp đính kèm
-        attachments: [
-          // String attachment
-          {
-            filename: 'notes.txt',//file qr here
-            content: 'Some notes about this e-mail',
-            contentType: 'text/plain' // optional, would be detected from the filename
-          }
-        ]
+        // attachments: [
+        //   // String attachment
+        //   {
+        //     filename: 'notes.txt',//file qr here
+        //     content: 'Some notes about this e-mail',
+        //     contentType: 'text/plain' // optional, would be detected from the filename
+        //   }
+        // ]
       };
       //Tiến hành gửi email
       transporter.sendMail(mail, function (error, info) {
