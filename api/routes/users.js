@@ -321,7 +321,8 @@ router.get('/post', (req, res) => {
           [Op.like]: `%${req.query.keyword}%`
         }
       },
-      order: [['createdAt', 'DESC']]
+      order: [['createdAt', 'DESC']],
+      include: [User]
     })
       .then(result => {
         res.send(result);
@@ -329,7 +330,8 @@ router.get('/post', (req, res) => {
       .catch(err => console.log(err))
   } else {
     Post.findAll({
-      order: [['createdAt', 'DESC']]
+      order: [['createdAt', 'DESC']],
+      include: [User]
     })
       .then(result => {
         res.send(result);

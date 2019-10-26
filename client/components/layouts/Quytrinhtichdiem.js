@@ -21,10 +21,10 @@ class Quytrinhtichdiem extends Component {
                                     <div className="timeline-panel">
                                         <div className="timeline-heading">
                                             <h4>Bước 1</h4>
-                                            <h4 className="subheading">Chọn cửa hàng</h4>
+                                            <h4 className="subheading">Đăng ký tài khoản</h4>
                                         </div>
                                         <div className="timeline-body">
-                                            <p className="text-muted">Chọn bất kỳ cửa hàng ưa thích nào của bạn có tích điểm dựa trên hóa đơn thuộc hệ thống</p>
+                                            <p className="text-muted">Đăng ký tài khoản trên hệ thống bằng email của mình</p>
                                         </div>
                                     </div>
                                 </li>
@@ -35,10 +35,10 @@ class Quytrinhtichdiem extends Component {
                                     <div className="timeline-panel">
                                         <div className="timeline-heading">
                                             <h4>Bước 2</h4>
-                                            <h4 className="subheading">Để lại thông tin</h4>
+                                            <h4 className="subheading">Tích điểm cực nhanh bằng mã QR</h4>
                                         </div>
                                         <div className="timeline-body">
-                                            <p className="text-muted">Sau khi thanh toán, để lại thông tin cho thu ngân</p>
+                                            <p className="text-muted">Nhân viên sẽ quét mã đã gửi về email của bạn và tích điểm trong 2s</p>
                                         </div>
                                     </div>
                                 </li>

@@ -48,6 +48,9 @@ export default class Admin extends Component {
               <Link href="/admin/gift"><a><i className="fas fa-gifts"></i> Quản lý quà đổi thưởng</a></Link>
             </li>
             <li>
+              <Link href="/admin/chat"><a><i className="fas fa-gifts"></i> Chat</a></Link>
+            </li>
+            <li>
               <Link href="/admin/change_point"><a><i className="fas fa-exchange-alt"></i> Giá trị quy đổi điểm</a></Link>
             </li>
             <li>
@@ -67,7 +70,6 @@ export default class Admin extends Component {
           </header>
           <div className="main-content">
             {this.props.children}
-            <ChatServer/>
           </div>
         </div>
       </Layout>

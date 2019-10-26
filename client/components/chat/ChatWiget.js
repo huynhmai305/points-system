@@ -10,8 +10,8 @@ const limit = 30;
 
 class ChatWiget extends Component {
     componentDidMount() {
-        addResponseMessage('Welcome to our store!');
-        addResponseMessage('Are you looking for anything in particular?');
+        addResponseMessage('Chaò mừng đến với hệ thống tích điểm H&M!');
+        addResponseMessage('Bạn đang tìm kiếm điều gì?');
         let uid = localStorage.getItem("cc-uid");
         // check for uid, if exist then get auth token
           if ( uid !== null) {
@@ -82,8 +82,8 @@ class ChatWiget extends Component {
       <div className='App'>
         <Widget
           handleNewUserMessage={this.handleNewUserMessage}
-          title='My E-commerce Live Chat'
-          subtitle='Ready to help you'
+          title='H&M Live Chat'
+          subtitle='Luôn sẵn sàng giải đáp mọi thắc mắc của khách hàng'
         />
       </div>
     );

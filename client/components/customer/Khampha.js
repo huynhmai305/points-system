@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import TabCategory from './Tab_Categories';
 import Comment from '../comment/home';
 import Layout from '../Customer'
-import Review from '../post/PostList'
+import Review from '../post/ReviewList'
 
 class Khampha extends Component {
     constructor(props) {

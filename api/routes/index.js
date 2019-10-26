@@ -133,7 +133,8 @@ router.post('/sendmail', (req, res) => {
     }
   };
   var transporter = nodemailer.createTransport(option);
-
+  var content = '<p><b>Hello</b> to myself <img src="cid:note@example.com"/></p>' +
+  '<p>Here\'s a nyan cat for you as an embedded attachment:<br/><img src="cid:nyan@example.com"/></p>'
   transporter.verify(function (error, success) {
     // Nếu có lỗi.
     if (error) {
@@ -143,13 +144,10 @@ router.post('/sendmail', (req, res) => {
       var mail = {
         from: process.env.MAIL_USER,
         to: 'huynhmai305@gmail.com', //req.body.email
-        subject: 'Thư được gửi bằng Node.js', // Tiêu đề mail
-        text: 'Thanh cong, chuc mung !!', // Nội dung mail dạng text
+        subject: 'Thông báo từ hệ thống tích điểm H&M!', // Tiêu đề mail
+        text: 'Thành công, chúc mừng !!', // Nội dung mail dạng text
         // HTML body
-        html:
-          '<p><b>Hello</b> to myself <img src="cid:note@example.com"/></p>' +
-          '<p>Here\'s a nyan cat for you as an embedded attachment:<br/><img src="cid:nyan@example.com"/></p>',
-
+        html: content,
         // Ds tệp đính kèm
         attachments: [
           // String attachment

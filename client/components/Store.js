@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import DefaultLayout from './layouts/Layout';
 import Link from 'next/link';
+import {Icon} from 'antd'
 
 class Store extends Component {
     logout = () => {
@@ -23,14 +24,14 @@ class Store extends Component {
                                 <Link href="/store"><a><i className="fas fa-home fa-2x"></i></a></Link>
                             </li>
                             <li className="active">
-                                <Link href="/store/customer"><a><i className="fas fa-edit"></i> Khách hàng</a></Link>
+                                <Link href="/store/customer"><a><i className="fas fa-edit"></i> Tich điểm khách hàng</a></Link>
                             </li>
-                            {/*<li className="active">
+                            <li className="active">
                                 <Link href="#"><a><i className="fas fa-edit"></i> Bài viết</a></Link>
                             </li>
                             <li>
-                                <Link href="#"><a><i className="fas fa-thumbs-up"></i> Bài review</a></Link>
-                            </li>*/}
+                                <Link href="/user/tichdiem"><a><Icon type="qrcode" /> Quét mã</a></Link>
+                            </li>
                             <li className="active">
                                 <Link href="/store/gift"><a><i className="fas fa-gifts"></i> Quà đổi thưởng</a></Link>
                             </li>

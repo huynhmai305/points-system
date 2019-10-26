@@ -9,6 +9,9 @@ const Post = db.define('Post', {
         type: Sequelize.TEXT,
         allowNull: false
     },
+    type: {
+        type: Sequelize.STRING
+    },
     storeId: {
         type: Sequelize.INTEGER
     }
