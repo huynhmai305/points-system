@@ -55,7 +55,7 @@ class DataTable extends Component {
   render() {
     const Header = ["#","Họ tên", "Ngày sinh", "Địa chỉ", "Điện thoại", "Email","Điểm", "Ngày đăng ký" ," "];
     let {items} = this.props;
-    let totalCount = items.length;
+    // let totalCount = items.length;
     items = items.map(item=>{
       return {
         ...item,

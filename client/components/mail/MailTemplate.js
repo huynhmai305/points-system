@@ -1,5 +1,5 @@
-import { Email, Item, Span, A } from 'react-html-email'
-import QRCode from '../QRCode/GenerateQR'
+import { Email, Item, Span, Box, Image } from 'react-html-email'
+import QRCode from '../QRCode/GenerateQR_Image'
 
 const emailHTML = (props) => (
     <Email title="Hello">
@@ -14,9 +14,12 @@ const emailHTML = (props) => (
             </Span>
         </Item>
         <Item>
-            Đây là mã QR code của bạn, hãy sử dụng khi tích điểm ở cửa hàng
-            <QRCode data={props.email}/>
+            <Box cellSpacing={20} width="100%" style={{ borderTop: '3px solid black' }}>
+                <Span>Đây là mã QR code của bạn, hãy sử dụng khi tích điểm ở cửa hàng</Span>
+                <Image src= "cid:myqr" alt="QR code"/>
+            </Box>
         </Item>
+        <Item>Thanks!</Item>
     </Email>
 )
 export default emailHTML;

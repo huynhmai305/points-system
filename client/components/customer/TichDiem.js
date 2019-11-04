@@ -3,6 +3,7 @@ import { Container, Row, Col, Label, FormData, FormGroup, Form, Button, Alert, F
 import Search from '../Search';
 import Layout from '../Customer.js';
 import ReadQR from '../QRCode/ReadQR';
+import FormAddBill from '../Forms/FormAddBill'
 
 export default class TichDiem extends Component {
     constructor(props) {
@@ -82,7 +83,7 @@ export default class TichDiem extends Component {
                     </li>
                 </ol>
                 <Container >
-                    <Row className="mt-5">
+                    {/* <Row className="mt-5">
                         <Col>
                             <Search handlekeyword={this.onSearch} />
                         </Col>
@@ -94,30 +95,23 @@ export default class TichDiem extends Component {
                     </Row>
                     <FormText color="muted">
                         Nhập mã hóa đơn ở đây
-                    </FormText>
-                    <Alert color="light" className="mt-5" isOpen={this.state.info}>
-                        <h4 className="alert-heading">Thông tin hóa đơn</h4>
-                        <Form>
-                            <FormGroup row>
-                                <Label md={2}>Mã hóa đơn:</Label>
-                                <Label md={10}>{this.state.items.id}</Label>
-                            </FormGroup>
-                            <FormGroup row>
-                                <Label md={2}>Tên cửa hàng:</Label>
-                                <Label md={10}>{this.state.items.id_store}</Label>
-                            </FormGroup>
-                            <FormGroup row>
-                                <Label md={2}>Tiền thanh toán:</Label>
-                                <Label md={10}>{this.state.items.total}</Label>
-                            </FormGroup>
-                            <hr />
-                            <Button onClick={this.TichDiem} color="success">Tích điểm</Button>
-                            <Alert color="success" isOpen={this.state.visible} className="mt-5">
-                                Số điểm được tích lũy là: <Label>{this.state.point}</Label>
-                            </Alert>
-                        </Form>
-                    </Alert>
-                    <ReadQR handleData={this.onSearch}/>
+                    </FormText> */}
+                    <Row className="mt-5">
+                        <Col xs="12" sm="12" md="12">
+                            <Col xs="12" sm="6" md="6">
+                                <ReadQR handleData={this.onSearch}/><br/>
+                                <div className="text-danger">
+                                    {this.state.msg}
+                                </div>
+                            </Col>
+                            <Col xs="12" sm="6" md="6">
+                                <Alert color="light" className="mt-5" isOpen={this.state.info}>
+                                    <h4 className="alert-heading">Thông tin hóa đơn</h4>
+                                    <FormAddBill id='0' total='0' id_store='0'/>
+                                </Alert>
+                            </Col>
+                        </Col>                       
+                    </Row>
                 </Container>
             </Layout>
         )

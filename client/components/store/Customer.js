@@ -14,7 +14,8 @@ class Manager_Store extends Component {
             items: [],
             id: '',
             name:'',
-            image:''
+            image:'',
+            show: false
         }
     }
 
@@ -25,8 +26,11 @@ class Manager_Store extends Component {
         }
         fetch(url)
             .then(response => response.json())
-            .then(items => this.setState({ items }))
-            .catch(err => console.log(err))
+            .then(items => this.setState({ items, show: true }))
+            .catch(err => {
+                console.log(err);
+                this.setState({msgErr:'Không tìm thấy kết quả phù hợp'})
+            })
     }
     onSearch = (keyword) => {
         console.log(keyword);
@@ -71,7 +75,7 @@ class Manager_Store extends Component {
                     </Row>
                     <Row>
                         <Col>
-                            <DataTable items={this.state.items}/>
+                            { this.state.show==true ? <DataTable items={this.state.items}/> : this.state.msgErr }
                         </Col>
                     </Row>
                 </Container>

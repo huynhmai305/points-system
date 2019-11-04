@@ -133,9 +133,10 @@ router.post('/sendmail', (req, res) => {
     }
   };
   const email = req.body.email
-  const content = req.body.messageHtml
-  var transporter = nodemailer.createTransport(option);
-
+  const html = req.body.messageHtml
+  const content = req.body.content
+  console.log(content)
+  const transporter = nodemailer.createTransport(option);
   transporter.verify(function (error, success) {
     // Nếu có lỗi.
     if (error) {
@@ -144,20 +145,23 @@ router.post('/sendmail', (req, res) => {
       console.log('Kết nối thành công!');
       var mail = {
         from: process.env.MAIL_USER,
-        to: email, //req.body.email
+        to: email,
         subject: 'Thông báo từ hệ thống tích điểm H&M!', // Tiêu đề mail
         text: 'Thành công, chúc mừng !!', // Nội dung mail dạng text
         // HTML body
-        html: content,
+        html: html,
         // Ds tệp đính kèm
-        // attachments: [
-        //   // String attachment
-        //   {
-        //     filename: 'notes.txt',//file qr here
-        //     content: 'Some notes about this e-mail',
-        //     contentType: 'text/plain' // optional, would be detected from the filename
-        //   }
-        // ]
+        attachments: [
+          // String attachment
+          {
+            filename: 'qr.png',//file qr here
+            contentType:  'image/png',
+            content: content,
+            // path: content,
+            cid: 'myqr',
+            // contentType: 'text/plain' // optional, would be detected from the filename
+          }
+        ]
       };
       //Tiến hành gửi email
       transporter.sendMail(mail, function (error, info) {
@@ -165,6 +169,7 @@ router.post('/sendmail', (req, res) => {
           console.log(error);
         } else { //nếu thành công
           console.log('Email sent: ' + info.response);
+          res.sendStatus(200)
         }
       });
     }

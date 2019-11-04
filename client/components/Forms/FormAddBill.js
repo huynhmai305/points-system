@@ -4,10 +4,10 @@ import NumberFormat from 'react-number-format';
 
 class AddEditForm extends React.Component {
   state = {
-    id:'',
-    total: 0,
+    id:'' || this.props.id,
+    total: 0 || this.props.total,
     point_change:0 ,//giá trị quy đổi điểm hiện tại
-    id_store:''
+    id_store:'' || props.id_store
   }
 
   onChange = e => {

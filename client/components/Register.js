@@ -60,7 +60,6 @@ class Register extends Component {
                     .then(response => response.json())
                     .then(item => {
                         alert('Đã gửi mã QR về mail bạn thành công!')
-                        location.reload();
                     })
                     .catch(err => console.log(err))
                 location.reload();
