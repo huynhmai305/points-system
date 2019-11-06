@@ -156,10 +156,7 @@ router.post('/sendmail', (req, res) => {
           {
             filename: 'qr.png',//file qr here
             contentType:  'image/png',
-            content: content,
-            // path: content,
-            cid: 'myqr',
-            // contentType: 'text/plain' // optional, would be detected from the filename
+            path: content
           }
         ]
       };
@@ -210,9 +207,19 @@ router.get('/admin/user', (req, res) => {
     User.findAll({
       where: {
         role: 2,
-        username: {
-          [Op.like]: `%${req.query.keyword}%`
-        }
+        [Op.or]: [
+          {
+            username: {
+              [Op.like]: `%${req.query.keyword}%`
+            }
+          },
+          {
+            email: {
+              [Op.like]: `%${req.query.keyword}%`
+            }
+          }
+        ]
+        
       },
       order: ['id']
     })

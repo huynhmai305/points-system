@@ -32,7 +32,7 @@ class DataTable extends Component {
       <div style={{ width: "100px" }}>
         <ModalForm buttonLabel='Edit' item={item} updateState={this.props.updateState} />
         {' '}
-         <Button color="danger" onClick={() => this.deleteItem(item.id)}><i className="fas fa-trash-alt"></i></Button>
+        <Button color="danger" onClick={() => this.deleteItem(item.id)}><i className="fas fa-trash-alt"></i></Button>
       </div>
     )
   }
@@ -42,6 +42,7 @@ class DataTable extends Component {
     items = items.map(item=>{
       return {
         ...item,
+        id_gift: item.id_gift.toUpperCase(),
         createdAt: dateFormat(item.createdAt, "isoDate"),
         actions : this.actions(item)
       }

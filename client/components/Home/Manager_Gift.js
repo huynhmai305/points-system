@@ -56,7 +56,7 @@ class Manager_Gift extends Component {
                             >
                                 <i className="fas fa-file-csv"> Download CSV</i>
                             </CSVLink>
-                            <ModalForm buttonLabel='Add' addItemToState={this.addItemToState} />
+                            {/* <ModalForm buttonLabel='Add' addItemToState={this.addItemToState} /> */}
                         </Col>
                     </Row>
                     <Row>

@@ -25,10 +25,9 @@ class Test_State extends Component {
         const messageHtml = renderEmail(
             <MailTemplate
                 name='Mai Mai'
-                email='maitamduyen@gmail.com'
+                // email='maitamduyen@gmail.com'
             />
         )
-        const content = <QRCode data='maitamduyen@gmail.com'/>
         fetch('http://localhost:3000/sendmail', {
             method: 'POST',
             headers: {
@@ -37,7 +36,7 @@ class Test_State extends Component {
             body: JSON.stringify({
                 email: 'maitamduyen@gmail.com',
                 messageHtml: messageHtml,
-                content: content
+                content: pngUrl
             })
         })
             .then(response => response.json())
@@ -49,6 +48,7 @@ class Test_State extends Component {
     render() {
         return (
             <div>
+                <QRCode data='maitamduyen@gmail.com'/>
                 <button onClick={this.send}>Send</button>
             </div>
         );

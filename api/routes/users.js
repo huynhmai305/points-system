@@ -138,7 +138,11 @@ router.get('/gift', (req, res) => {
           [Op.like]: `%${req.query.keyword}%`
         }
       },
-      order: [['createdAt', 'DESC']]
+      order: [['createdAt', 'DESC']],
+      include: [{
+        model: User,
+        attributes: ['username']
+      }]
     })
       .then(result => {
         res.send(result);
@@ -146,6 +150,10 @@ router.get('/gift', (req, res) => {
       .catch(err => console.log(err))
   } else {
     Gift.findAll({
+      include: [{
+        model: User,
+        attributes: ['username']
+      }],
       order: [['createdAt', 'DESC']]
     })
       .then(result => {

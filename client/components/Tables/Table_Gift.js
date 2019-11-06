@@ -38,13 +38,15 @@ class DataTable extends Component {
     )
   }
   render() {
-    const Header = ["#","Tiêu đề", "Nội dung", "Số lượng", "Điểm đổi","Mã cửa hàng" ,"Ngày đăng ký" ," "];
+    const Header = ["#","Tiêu đề", "Nội dung", "Số lượng", "Điểm đổi","Cửa hàng" ,"Ngày đăng ký" ," "];
     let {items} = this.props;
     items = items.map(item=>{
       return {
         ...item,
+        id_gift: item.id_gift.toUpperCase(),
+        store: item.User.username,
         createdAt: dateFormat(item.createdAt, "isoDate"),
-        actions : this.actions(item)
+        // actions : this.actions(item)
       }
     })
     return (
@@ -52,7 +54,8 @@ class DataTable extends Component {
         className="table-responsive table-hover thead-light"
         headers={ Header }
         data={ items }
-        columns="id_gift.title.content.quantity.point.id_store.createdAt.actions"
+        // columns="id_gift.title.content.quantity.point.store.createdAt.actions"
+        columns="id_gift.title.content.quantity.point.store.createdAt"
         perPageItemCount={3}
         totalCount={50}
       />

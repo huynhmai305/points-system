@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import { Button } from 'reactstrap';
-import ModalForm from '../Modals/Modal';
 import dateFormat from 'dateformat';
 import {TablePagination} from 'react-pagination-table'
 
