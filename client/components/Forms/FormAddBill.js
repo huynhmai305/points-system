@@ -4,24 +4,32 @@ import NumberFormat from 'react-number-format';
 
 class AddEditForm extends React.Component {
   state = {
-    id:'' || this.props.id,
-    total: 0 || this.props.total,
+    id:'',
+    total: 0,
     point_change:0 ,//giá trị quy đổi điểm hiện tại
-    id_store:'' || props.id_store
+    id_store:''
   }
 
   onChange = e => {
     this.setState({[e.target.name]: e.target.value})
   }
-  getItems =() => {
+  getItems = () => {
     fetch('http://localhost:3000/users/point_change')
     .then (response => response.json())
     .then(result =>{
         this.setState({point_change:result.point_change})
         console.log(this.state.point_change)  
     })
-}
-  
+  }
+
+  updateStorage = () => {
+    var info = JSON.parse(localStorage.getItem('user'));
+    if (this.props.id_user === info[0].id) {
+        info[0].point = this.state.point;
+        localStorage.setItem("user", JSON.stringify(info[0].point));
+    }
+  }
+
   submitFormAdd = e => {
     // console.log(this.state.total)
     e.preventDefault()
@@ -55,11 +63,16 @@ class AddEditForm extends React.Component {
       .then(response => response.json())
       .then(item => {
         alert(`Tích điểm thành công cho khách hàng ${this.props.username}`);
+        this.updateStorage;
         location.reload()
       })      
     })
     }
     componentDidMount() {
+      if (this.props.item){
+        const {id, total, id_store} = this.props.item;
+        this.setState({id, total, id_store})
+      }
       let info = JSON.parse(localStorage.getItem('user'))
       this.setState({id_store: info[0].id})
       this.getItems()
