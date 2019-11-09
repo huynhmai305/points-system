@@ -3,7 +3,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import QR from '../QRCode/GenerateQR_Image'
 
 const NotificationQR = (props) => {
-    const { username, data } = props;
+    const { username, data, getPngUrl } = props;
 
     const [modal, setModal] = useState(true);
 
@@ -13,7 +13,7 @@ const NotificationQR = (props) => {
         const canvas = document.getElementById("123456");
         const pngUrl = canvas.toDataURL("image/png");
         console.log(pngUrl)
-        this.props.getPngUrl(pngUrl)
+        getPngUrl(pngUrl)
     }
 
     return (

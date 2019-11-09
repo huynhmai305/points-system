@@ -66,6 +66,7 @@ class Register extends Component {
             .then(response => response.json())
             .then(item => {
                 alert('Đã gửi mã QR về mail bạn thành công!')
+                location.reload();
             })
             .catch(err => console.log(err))
     }
@@ -183,7 +184,7 @@ class Register extends Component {
                         <NotificationQR 
                             username = { this.state.username }
                             data = { this.state.email }
-                            getPngUrl = { this.submitFormAdd }
+                            getPngUrl = { this.submitNotification }
                         />
                     )}
             </div>

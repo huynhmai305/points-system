@@ -166,7 +166,8 @@ router.post('/sendmail', (req, res) => {
           console.log(error);
         } else { //nếu thành công
           console.log('Email sent: ' + info.response);
-          res.sendStatus(200)
+          res.sendStatus(200);
+          res.json('success');
         }
       });
     }
