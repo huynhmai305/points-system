@@ -1,16 +1,9 @@
-// import dynamic from 'next/dynamic';
-// import React, { Component } from 'react';
-// const ChatWiget = dynamic(() => import('../components/chat/ChatWiget')) ;
-// const Agent = dynamic(() => import('../components/chat/ManagerChat')) ;
-
-// class Test_State extends Component {
-//     render() {
-//         return (
-//             <div>
-//                 <ChatWiget/>
-//                 <Agent/>
-//             </div>
-//         );
-//     }
-// }
-
+import React from "react";
+import Excel from '../components/exportTable/XLSX'
+export default class Download extends React.Component {
+    render() {
+        return (
+            <Excel/>
+        );
+    }
+}

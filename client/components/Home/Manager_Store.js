@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import ModalForm from '../Modals/Modal';
 import DataTable from '../Tables/DataTable_Store';
-import { CSVLink } from 'react-csv';
+import Excel from '../exportTable/XLSX'
 import Search from '../Search';
 
 class Manager_Store extends Component {
@@ -25,12 +25,13 @@ class Manager_Store extends Component {
     onSearch = (keyword) => {
         console.log(keyword);
         this.getItems(keyword)
-      }
+    }
     componentDidMount() {
         this.getItems('')
     }
 
     render() {
+        const header = ["id","username","address","phone","createdAt"]
         return (
             <div>
                 <Container className="App">
@@ -48,15 +49,11 @@ class Manager_Store extends Component {
                             <Search handlekeyword={this.onSearch}/>
                         </Col>
                         <Col md={{offset:3,size:3}}>
-                            <CSVLink
-                                filename={"dbStore.csv"}
-                                color="primary"
-                                style={{ float: "left", marginRight: "10px" }}
-                                className="btn btn-info"
+                            <Excel 
                                 data={this.state.items}
-                            >
-                                <i className="fas fa-file-csv"> Download CSV</i>
-                            </CSVLink>
+                                name="Store.xlsx"
+                                header={header}
+                            />
                             <ModalForm buttonLabel='Add' addItemToState={this.addItemToState} />
                         </Col>
                     </Row>

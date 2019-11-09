@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Container, Row, Col,FormText } from 'reactstrap';
 import ModalForm from '../Modals/ModalGift';
 import DataTable from '../Tables/Table_Gift';
-import { CSVLink } from 'react-csv';
+import Excel from '../exportTable/XLSX'
 import Search from '../Search';
 import Admin from '../admin/Admin'
 
@@ -26,13 +26,14 @@ class Manager_Gift extends Component {
     onSearch = (keyword) => {
         console.log(keyword);
         this.getItems(keyword)
-      }
+    }
     componentDidMount() {
         var info = JSON.parse(localStorage.getItem('user'))
         this.getItems('')
     }
 
     render() {
+        const header = ["id_gift","title","content","quantity","point","User.username","createdAt"]
         return (
             <Admin title="Quản lý quà đổi thưởng">
                 <Container className="App">
@@ -47,15 +48,11 @@ class Manager_Gift extends Component {
                             <Search handlekeyword={this.onSearch}/>
                         </Col>
                         <Col md={{offset:2,size:4}}>
-                            <CSVLink
-                                filename={"dbGift.csv"}
-                                color="primary"
-                                style={{ float: "left", marginRight: "10px" }}
-                                className="btn btn-info"
+                            <Excel 
                                 data={this.state.items}
-                            >
-                                <i className="fas fa-file-csv"> Download CSV</i>
-                            </CSVLink>
+                                name="Gift.xlsx"
+                                header={header}
+                            />
                             {/* <ModalForm buttonLabel='Add' addItemToState={this.addItemToState} /> */}
                         </Col>
                     </Row>

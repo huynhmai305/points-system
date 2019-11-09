@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Table} from 'reactstrap';
 import dateFormat from 'dateformat';
 import NumberFormat from 'react-number-format';
 import { TablePagination } from 'react-pagination-table'
@@ -18,6 +17,7 @@ class DataTable extends Component {
     })
     return (
       <TablePagination
+        id="table_bill"
         className="table-responsive table-hover thead-light"
         headers={Header}
         data={items}

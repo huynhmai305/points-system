@@ -9,7 +9,7 @@ a:hover {
   text-decoration: none !important;
 }
 .main-header {
-  background: linear-gradient(#6d7fcc, #6660c2);
+  background: linear-gradient(#6d7fcc, #211e44);
   padding: 5px;
   text-align: center;
   color: white;
@@ -41,22 +41,27 @@ a:hover {
   width: 0;
   height: 100%;
   /* background: #3B3B3B; */
-  background: #6d7fcc;
+  background: #343a40;
   overflow-y: auto;
   transition: width 0.3s ease;
 }
 .main-nav a {
   display: block;
-  background: linear-gradient(#6d7fcc, #6660c2);
+  /* background: linear-gradient(#6d7fcc, #6660c2); */
+  /* background: linear-gradient(#656d75, #343a40); */
+  background-color: #343a40;
   border-top: 1px solid #484848;
   border-bottom: 1px solid #2E2E2E;
-  color: white;
+  color: #999;
   padding: 15px;
   
 }
 
-.main-nav a :hover {
-  background: linear-gradient(#484848, #383838);
+.main-nav a:hover {
+  color: #fff;
+  background: linear-gradient(#656d75, #14171a);
+  border-top: 1px solid #484848;
+  border-bottom: 1px solid #2E2E2E;
 }
 .main-nav:after {
   content: "";
@@ -79,11 +84,11 @@ a:hover {
   display: none;
 }
 .sidebar-header{
-    color: white;
+    color: #999;
     display: flex;
     justify-content: center;
     padding: 10px;
-    background-color:#6d7fcc;
+    background-color: #343a40;
 }
 a[data-toggle="collapse"] {
   position: relative;
@@ -91,7 +96,7 @@ a[data-toggle="collapse"] {
 ul ul a {
   font-size: 0.9em !important;
   padding-left: 30px !important;
-  background: #465391 !important;
+  background:#656d75 !important;
 }
 .dropdown-toggle::after {
   display: block;

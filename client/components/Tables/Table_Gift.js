@@ -33,7 +33,7 @@ class DataTable extends Component {
       <div style={{ width: "100px" }}>
         <ModalForm buttonLabel='Edit' item={item} updateState={this.props.updateState} />
         {' '}
-         <Button color="danger" onClick={() => this.deleteItem(item.id)}><i className="fas fa-trash-alt"></i></Button>
+        <Button color="danger" onClick={() => this.deleteItem(item.id)}><i className="fas fa-trash-alt"></i></Button>
       </div>
     )
   }
@@ -51,6 +51,7 @@ class DataTable extends Component {
     })
     return (
       <TablePagination
+        id="table_gift"
         className="table-responsive table-hover thead-light"
         headers={ Header }
         data={ items }

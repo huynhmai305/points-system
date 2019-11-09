@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import DataTable from './Table_Post';
 import ModalForm from './Modal_Post';
-import { CSVLink } from 'react-csv';
+import Excel from '../exportTable/XLSX'
 import Search from '../Search';
 
 

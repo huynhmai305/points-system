@@ -45,7 +45,7 @@ class Login extends Component {
   }
   submitForm(e) {
     e.preventDefault();
-    console.log(`Email: ${this.state.email} va password: ${this.state.password}`)
+    // console.log(`Email: ${this.state.email} va password: ${this.state.password}`)
     fetch('http://localhost:3000/login', {
       method: 'POST',
       headers: {

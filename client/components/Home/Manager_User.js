@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import DataTable from '../Tables/DataTable';
 import ModalForm from '../Modals/Modal';
-import { CSVLink } from 'react-csv';
+import Excel from '../exportTable/XLSX'
 import Search from '../Search';
 
 
@@ -48,6 +48,7 @@ class Home extends Component {
     this.getItems('')
   }
   render() {
+    const header = ["id","username","birthday","address","email","phone","point","createdAt"];
     return (
       <Container className="App">
         <ol className="breadcrumb">
@@ -64,15 +65,11 @@ class Home extends Component {
             <Search handlekeyword={this.onSearch} />
           </Col>
           <Col md={{ offset: 3, size: 3 }}>
-            <CSVLink
-              filename={"dbUser.csv"}
-              color="primary"
-              style={{ float: "left", marginRight: "10px" }}
-              className="btn btn-info"
+            <Excel 
               data={this.state.items}
-            >
-              <i className="fas fa-file-csv"> Download CSV</i>
-            </CSVLink>
+              name="User.xlsx"
+              header={header}
+            />
             <ModalForm buttonLabel='Add' addItemToState={this.addItemToState} />
           </Col>
         </Row>

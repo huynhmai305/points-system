@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Container, Row, Col,FormText } from 'reactstrap';
 import ModalForm from '../Modals/ModalAddBill';
 import DataTable from '../Tables/Table_Bill';
-import { CSVLink } from 'react-csv';
+import Excel from '../exportTable/XLSX';
 import Search from '../Search';
 
 class Manager_Bill extends Component {
@@ -31,6 +31,7 @@ class Manager_Bill extends Component {
     }
 
     render() {
+        const header = ["id","total","id_user","User.username","id_store","createdAt"]
         return (
             <div>
                 <Container className="App">
@@ -46,15 +47,11 @@ class Manager_Bill extends Component {
                             <FormText>Nhập mã hóa đơn tìm kiếm</FormText>
                         </Col>
                         <Col md={{offset:2,size:4}}>
-                            <CSVLink
-                                filename={"Bill.csv"}
-                                color="primary"
-                                style={{ float: "left", marginRight: "10px" }}
-                                className="btn btn-info"
+                            <Excel 
                                 data={this.state.items}
-                            >
-                                <i className="fas fa-file-csv"> Download CSV</i>
-                            </CSVLink>
+                                name="Bill.xlsx"
+                                header={header}
+                            />
                             <ModalForm buttonLabel='Add' addItemToState={this.addItemToState} />
                         </Col>
                     </Row>                    

@@ -20,13 +20,14 @@ class Manager_Store extends Component {
     }
 
     getItems(keyword) {
-        let url = 'http://localhost:3000/admin/user';
-        if (keyword.length > 0) {
-            url = `${url}?keyword=${keyword}`
-        }
+        let url = `http://localhost:3000/getinfo/${keyword}`;
+        console.log(url)
         fetch(url)
             .then(response => response.json())
-            .then(items => this.setState({ items, show: true }))
+            .then(items => {
+                items.length == 0 ? this.setState({msgErr:'Không tìm thấy kết quả phù hợp'}) : this.setState({ items, show: true })
+                console.log(items)
+            })
             .catch(err => {
                 console.log(err);
                 this.setState({msgErr:'Không tìm thấy kết quả phù hợp'})
@@ -43,7 +44,6 @@ class Manager_Store extends Component {
             name:info[0].username,
             image:info[0].picture
         })
-        this.getItems('')
     }
 
     render() {

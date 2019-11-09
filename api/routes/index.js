@@ -244,10 +244,11 @@ router.get('/admin/user', (req, res) => {
 router.get('/getinfo/:id', (req, res) => {
   User.findAll({
     where: {
-      id: req.params.id
+      email: req.params.id
     }
   })
     .then(result => res.send(result))
+    .catch(err => res.sendStatus(400))
 })
 
 //get store

@@ -49,6 +49,7 @@ class DataTable extends Component {
 
     return (
       <TablePagination
+        id="table_store"
         className="table-responsive table-hover"
         headers={ Header }
         data={ items }
