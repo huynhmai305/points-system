@@ -4,7 +4,7 @@ import { Editor } from '@tinymce/tinymce-react'
 import StarRatings from 'react-star-ratings';
 const API_KEY = '2icj3szs411s8nqf8kqljxz7cvd2478keun6zro00pdptu17';
 
-class PostForm extends Component {
+class ReviewForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -66,8 +66,12 @@ class PostForm extends Component {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                title: this.state.post.title,
-                content: this.state.post.content
+                title: post.title,
+                content: post.content,
+                rating: post.rating,
+                userId: post.userId,
+                storeId: post.storeId
+                
             })
         })
             .then(response => response.json())
@@ -157,4 +161,4 @@ class PostForm extends Component {
     }
 }
 
-export default PostForm;
+export default ReviewForm;

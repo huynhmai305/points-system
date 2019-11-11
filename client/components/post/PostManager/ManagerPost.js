@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import DataTable from './Table_Post';
 import ModalForm from './Modal_Post';
-import Excel from '../exportTable/XLSX'
-import Search from '../Search';
+import Excel from '../../exportTable/XLSX'
+import Search from '../../Search';
 
 
 class ManagerPost extends Component {
@@ -48,6 +48,7 @@ class ManagerPost extends Component {
         this.getItems('')
     }
     render() {
+        const header = ["id","title","content","storeId","createdAt"]
         return (
             <Container className="App">
                 <ol className="breadcrumb">
@@ -64,15 +65,11 @@ class ManagerPost extends Component {
                         <Search handlekeyword={this.onSearch} />
                     </Col>
                     <Col md={{ offset: 3, size: 3 }}>
-                        <CSVLink
-                            filename={"dbUser.csv"}
-                            color="primary"
-                            style={{ float: "left", marginRight: "10px" }}
-                            className="btn btn-info"
+                        <Excel 
                             data={this.state.items}
-                        >
-                            <i className="fas fa-file-csv"> Download CSV</i>
-                        </CSVLink>
+                            name="Post.xlsx"
+                            header={header}
+                        />
                         <ModalForm buttonLabel='Add' addItemToState={this.addItemToState}/>
                     </Col>
                 </Row>

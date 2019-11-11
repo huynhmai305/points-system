@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Review from './Post_Review'
+import Review from './Review'
 
 class ReviewList extends Component {
     render() {
