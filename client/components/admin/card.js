@@ -14,17 +14,17 @@ class Card extends Component {
     countBill(){
         fetch('http://localhost:3000/countbills')
         .then(response => response.json())
-        .then(item => this.setState({bill:item[0].total_bills*6}))
+        .then(item => this.setState({bill:item[0].total_bills}))
     }
     countMembers(){
         fetch('http://localhost:3000/countmembers')
         .then(response => response.json())
-        .then(item => this.setState({members:item[0].total_members*6}))
+        .then(item => this.setState({members:item[0].total_members}))
     }
     getTotal(){
         fetch('http://localhost:3000/alltotalmoney')
         .then(response => response.json())
-        .then(item => {this.setState({money:item[0].total_money*5})})
+        .then(item => {this.setState({money:item[0].total_money})})
     }
     componentDidMount() {
         this.getTotal();

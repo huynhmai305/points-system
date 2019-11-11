@@ -1,9 +1,13 @@
 import React from "react";
-import Excel from '../components/exportTable/XLSX'
+import Box from '../components/layouts/Box'
+import Layout from '../components/layouts/AdminLayout'
 export default class Download extends React.Component {
     render() {
         return (
-            <Excel/>
+            <Layout contentTitle={'Add User'} contentTitleButton={<i className="fa fa-2x fa-user-plus"/>} url={this.props.url}>
+                <Box/>
+            </Layout>
+            
         );
     }
 }
