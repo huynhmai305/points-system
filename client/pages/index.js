@@ -7,10 +7,11 @@ import Client from '../components/layouts/Client';
 import Contact from '../components/layouts/Contact';
 import Navigation from '../components/layouts/Navigation';
 
+
 class Index extends Component {
   render() {
     return (
-      <DefaultLayout title="Trang chủ">
+      <DefaultLayout >
         <Navigation/>
         <Header/>
         <About/>

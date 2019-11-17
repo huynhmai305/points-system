@@ -3,6 +3,7 @@ import { Button } from 'reactstrap';
 import ModalForm from './Modal_Post';
 import dateFormat from 'dateformat';
 import { TablePagination } from 'react-pagination-table'
+import HtmlParser from 'react-html-parser'
 
 class PostTable extends Component {
 
@@ -42,7 +43,7 @@ class PostTable extends Component {
         items = items.map(item => {
             return {
                 ...item,
-                content: item.content.slice(0,500),
+                content: HtmlParser(item.content.slice(0,500)+' <a href="#">Xem chi tiết >></a>'),
                 createdAt: dateFormat(item.createdAt, "isoDate"),
                 actions: this.actions(item)
             }

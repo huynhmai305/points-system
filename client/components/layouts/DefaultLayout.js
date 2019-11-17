@@ -10,7 +10,7 @@ class DefaultLayout extends Component {
         return (
             <div>
                 <Head>
-                    <title>{this.props.title}</title>
+                    <title>H&M</title>
                     <meta charSet="utf-8" />
                     <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
                     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -22,6 +22,7 @@ class DefaultLayout extends Component {
                     <link href="/static/googleapis/Roboto-Slab.css" rel="stylesheet" />
                     <link rel="stylesheet" href="/static/stylesheets/agency.min.css" />
                     <link rel="stylesheet" href="/static/stylesheets/style.css" />
+                    <link rel="stylesheet" href="/static/stylesheets/admin.css" />
                     <script src="/static/javascripts/jquery/jquery.min.js"></script>
                     <script src="/static/javascripts/babel/babel.min.js"></script>
                     <script src="/static/javascripts/js/bootstrap.min.js"></script>

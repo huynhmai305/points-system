@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Container } from 'reactstrap'
 import { TabProvider, Tab, TabPanel, TabList } from 'react-web-tabs';
-import Post from '../post/PostListStore'
+import Post from '../post/Store_Post/PostListStore'
+import News from '../post/News/ListNews'
 import Map from './Map'
+import Type from '../type.json'
 
 export default class TabCategory extends Component {
     render() {
@@ -12,39 +14,20 @@ export default class TabCategory extends Component {
                     <section className="my-tabs">
                         <TabList className="my-tablist">
                             <Tab tabFor="location">Quanh đây</Tab>
-                            <Tab tabFor="cafe" className="my-tab">Cafe</Tab>
-                            <Tab tabFor="trasua">Trà sữa</Tab>
-                            <Tab tabFor="anvat">Ăn vặt</Tab>
-                            <Tab tabFor="thoitrang">Thời trang</Tab>
-                            <Tab tabFor="spa">Spa</Tab>
-                            <Tab tabFor="giaitri">Giải trí</Tab>
-                            <Tab tabFor="dientu">Phụ kiện điện tử</Tab>
+                            {Type.map((item,key) => (
+                                <Tab key={key} tabFor={item.value} className="my-tab">{item.label}</Tab>
+                            ))}
                         </TabList>
                         <div className="wrapper">
                             <TabPanel tabId="location">
                                 <Map/>   
                             </TabPanel>
-                            <TabPanel tabId="cafe">
-                                <Post type='cafe'/>
-                            </TabPanel>
-                            <TabPanel tabId="trasua">
-                                <Post type='tra sua'/>
-                            </TabPanel>
-                            <TabPanel tabId="anvat">
-                                <Post type='an vat'/>
-                            </TabPanel>
-                            <TabPanel tabId="thoitrang">
-                                <Post type='thoi trang'/>
-                            </TabPanel>
-                            <TabPanel tabId="spa">
-                                <Post type='spa'/>
-                            </TabPanel>
-                            <TabPanel tabId="giaitri">
-                                <Post/>
-                            </TabPanel>
-                            <TabPanel tabId="dientu">
-                                <Post type='dien tu'/>
-                            </TabPanel>
+                            {Type.map((item,key) => (
+                                <TabPanel tabId={item.value} key={key}>
+                                    <Post type={item.value}/>
+                                    <News type={item.value}/>
+                                </TabPanel>
+                            ))}
                         </div>
                     </section>
                 </TabProvider>

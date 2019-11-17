@@ -32,8 +32,9 @@ class Exchange_gift extends Component {
 
     }
     render() {
+        const {name,image, point} = this.state
         return (
-            <Customer username = {this.state.name} image = {this.state.image}>
+            <Customer username = {name} image = {image} point = {point}>
                 <Container className="showgift">
                 {this.state.items.map((val, key) => (
                     <ShowGift key={key} 

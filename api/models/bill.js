@@ -5,6 +5,7 @@ const Bill = db.define('Bill', {
         type: Sequelize.STRING(256),
         allowNull: false,
         primaryKey: true,
+        unique: true,
     },
     total: {
         type: Sequelize.INTEGER,

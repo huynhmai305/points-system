@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ManagerPost from '../post/ManagerPost';
+import ManagerPost from '../post/PostManager/ManagerPost';
 import Admin from './Admin';
 
 class Post extends Component {

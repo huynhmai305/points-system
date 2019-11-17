@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout';
 import Link from 'next/link';
 import ChatServer from '../chat/Chat_Server';
 import { Icon } from 'antd';
+import { FaHome } from "react-icons/fa";
 
 export default class Admin extends Component {
   logout = () => {

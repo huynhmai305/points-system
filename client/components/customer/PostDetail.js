@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import TabCategory from './Tab_Categories';
-import Comment from '../comment/home';
+import Detail from '../post/Store_Post/Post_Detail_Store'
+import Back from '../Button_GoBack/GoBack'
 import Layout from '../Customer'
-import Review from '../post/Review/ReviewList'
 
-class Khampha extends Component {
+class PostDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -22,16 +21,16 @@ class Khampha extends Component {
         })
     }
     render() {
+        const {title, content, createdAt} = this.props
         return (
             <Layout username={this.state.username} image={this.state.image}>
-                <div className="mt-5">
-                    <TabCategory />
-                    {/* <Review/> */}
-                    {/* <Comment /> */}
+                <div className="mt-3">
+                    <Back path='/user'/>
+                    <Detail title={title} content={content} createdAt={createdAt}/>
                 </div>
             </Layout>
         );
     }
 }
 
-export default Khampha;
+export default PostDetail;

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody } from 'reactstrap';
 import Login from '../Login';
 import Register from '../Register';
+import { FaSignInAlt } from "react-icons/fa";
 
 class ModalLogin extends Component {
     constructor(props) {
@@ -45,7 +46,7 @@ class ModalLogin extends Component {
     render() {
         return (
             <div>
-                <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel} <i className="fas fa-sign-in-alt"></i></Button>
+                <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel} <FaSignInAlt/></Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                     <ModalHeader toggle={this.toggle}>Đăng nhập</ModalHeader>
                     <ModalBody>

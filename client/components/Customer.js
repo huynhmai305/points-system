@@ -49,7 +49,17 @@ class Customer extends Component {
                             <a href="#" className="close-menu">
                                 <Icon type="left" />
                             </a>
-                            <h2 className="text-light">Hệ thống tích điểm H&M</h2>
+                            <h2 className="text-light">
+                                Hệ thống tích điểm H&M
+                                {
+                                    this.props.point !== null ? (
+                                        <p className="text-light float-right" style={{fontSize:'15px'}}>
+                                            {this.props.username}: {this.props.point}
+                                        </p>
+                                        ) : null
+                                }
+                            </h2>
+                            
                         </header>
                         <div className="main-content">
                             {this.props.children}

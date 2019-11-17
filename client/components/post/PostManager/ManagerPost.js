@@ -41,7 +41,6 @@ class ManagerPost extends Component {
     }
     onSearch = (keyword) => {
         console.log(keyword);
-        keyword.toLowerCase();
         this.getItems(keyword)
     }
     componentDidMount() {

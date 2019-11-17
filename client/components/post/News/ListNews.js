@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import Post from './Post_Store'
+import News from './News'
 import {Row, CardDeck} from 'reactstrap'
-import Router from 'next/router'
 
-class PostList extends Component {
+class ListNews extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -14,11 +13,11 @@ class PostList extends Component {
     filterData = data => {
         if(this.props.type == 'all') {
             return data.filter(post => {
-                return post.User != null
+                return post.User == null
             })
         } else {
             return data.filter(post => {
-                return post.User != null && post.type == this.props.type
+                return post.User == null && post.type == this.props.type
             })
         }
     }
@@ -37,26 +36,25 @@ class PostList extends Component {
     render() {
         const {data} = this.state
         return (
-            <div>
+            <Row>
                 <div className="mt-3">
                     <h5 className="col-12">Có {data.length} kết quả phù hợp</h5>
                     <CardDeck>
-                    {data.map((post,key) => (
-                        <Post 
-                            key={key} 
-                            picture={post.User.picture}
-                            name={post.User.username}
-                            address={post.User.address.slice(0,50)}
-                            type={post.type}
-                            id_post={post.id}
-                            href="/user/post/detail"
+                    {data.map((news,key) => (
+                        <News 
+                            key={key}
+                            title={news.title}
+                            createdAt={news.createdAt}
+                            type={news.type}
+                            id_post={news.id}
+                            href="/user/post/news"
                         />
                     ))}
                     </CardDeck>
                 </div>
-            </div>
+            </Row>
         );
     }
 }
 
-export default PostList;
+export default ListNews;

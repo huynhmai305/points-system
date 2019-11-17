@@ -320,12 +320,24 @@ router.get('/optionstore', (req, res) => {
     .then(result => res.send(result))
 })
 
+//get store select option with id
+router.get('/optionstore/:id', (req, res) => {
+  User.findAll({
+    attributes: ['id', 'username'],
+    where: {
+      role: 1,
+      id: req.params.id
+    }
+  })
+    .then(result => res.send(result))
+})
+
 //get post
 router.get('/post', (req, res) => {
   if (req.query.keyword && req.query.keyword.length > 0) {
     Post.findAll({
       where: {
-        storeId: {
+        title: {
           [Op.like]: `%${req.query.keyword}%`
         }
       },
@@ -353,18 +365,17 @@ router.post('/post', (req, res) => {
   const data = {
     title: req.body.title,
     content: req.body.content,
-    storeId: req.body.id_store
+    storeId: req.body.storeId,
+    type: req.body.type
   };
-  let { title, content, storeId } = data;
+  let { title, content, storeId, type } = data;
 
-  Post.create({ title, content, storeId })
+  Post.create({ title, content, storeId, type })
     .then(result => {
       console.log(result)
       res.sendStatus(200).json(result);
     })
-    .catch(err => {
-      res.send('error:' + err)
-    })
+    .catch(err => console.log(err))
 })
 //delete post
 router.delete('/post', (req, res) => {
@@ -387,7 +398,8 @@ router.put('/post', (req, res) => {
   var dt = {
     title: req.body.title,
     content: req.body.content,
-    storeId: req.body.id_store,
+    storeId: req.body.storeId,
+    type: req.body.type,
     updatedAt: update
   }
   Post.update(dt, { where: { id: req.body.id } })

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Layout from '../Customer';
-import Card from '../post/PostListStore';
-import Preferential from '../post/Preferential';
+import Card from '../post/Store_Post/PostListStore';
+import Preferential from '../post/Preferential/Preferential_List';
 import { Container } from 'reactstrap';
+import News from '../post/News/ListNews';
 
 class Home extends Component {
   constructor(props) {
@@ -46,7 +47,7 @@ class Home extends Component {
               <div className="mb-3">
                 <h4 className="title"><span>Tin tức</span></h4>
               </div>
-              {/* <Card content="Content card"/> */}
+              <News type="all"/>
             </div>
           </div>
         </Container>
