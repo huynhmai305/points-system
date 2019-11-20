@@ -3,6 +3,7 @@ import HtmlParser from 'react-html-parser'
 import Type from '../../type.json'
 import { FaSearch } from "react-icons/fa";
 import DateFormat from 'dateformat'
+import Router from 'next/router'
 
 class News extends Component {
     constructor(props) {
@@ -10,6 +11,10 @@ class News extends Component {
         this.state = {
             items: []
         }
+    }
+    redirectNews = (id) => {
+        // Router.push(`/detail?id=${id}`,`/detail/${id}`)
+        return "/detail?id=" + id
     }
 
     getTinTuc() {
@@ -42,19 +47,6 @@ class News extends Component {
                         <p className="text-muted">Thời gian: {DateFormat(createdAt, "dddd, mmmm dS, yyyy, h:MM:ss TT")}</p>
                         <hr />
                         {HtmlParser(content)}
-                        {/* <img className="img-fluid rounded" src="http://placehold.it/900x300" alt="" />
-                        <hr />
-                        <div className="card my-4">
-                            <h5 className="card-header">Leave a Comment:</h5>
-                            <div className="card-body">
-                                <form>
-                                    <div className="form-group">
-                                        <textarea className="form-control" rows={3} defaultValue={""} />
-                                    </div>
-                                    <button type="submit" className="btn btn-primary">Submit</button>
-                                </form>
-                            </div>
-                        </div> */}
                     </div>
                     {/* Sidebar Widgets Column */}
                     <div className="col-md-4">
@@ -91,7 +83,7 @@ class News extends Component {
                             <h5 className="card-header">Tin tức</h5>
                             <div className="card-body">
                                 {this.state.items.map((i,key) => (
-                                    <p key={key}><a href="#">{i.title}</a></p>
+                                    <p key={key}><a href={this.redirectNews(i.id)}>{i.title}</a></p>
                                 ))}
                             </div>
                         </div>

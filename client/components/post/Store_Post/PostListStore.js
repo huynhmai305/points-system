@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Post from './Post_Store'
 import {Row, CardDeck} from 'reactstrap'
-import Router from 'next/router'
 
 class PostList extends Component {
     constructor(props) {

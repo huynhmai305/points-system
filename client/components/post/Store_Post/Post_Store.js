@@ -5,7 +5,7 @@ const CardComponent = (props) => {
     const href = props.href + '?id=' + props.id_post
     return (
         // <Col xs={12} sm={6} md={3} lg={3}>
-                <Card>
+                <Card className="mb-3" style={{minWidth: '10rem'}}>
                     <CardLink href={href}>
                         <CardImg top width="100%" height="150px" src={props.picture ? props.picture : "http://placehold.it/900x450"} alt="Card image cap" />
                         <CardText className="gift">

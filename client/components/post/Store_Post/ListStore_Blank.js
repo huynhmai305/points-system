@@ -42,7 +42,7 @@ class PostListBlank extends Component {
                             address={post.User.address.slice(0,50)} 
                             type={post.type}
                             id_post={post.id}
-                            href="/detail/"
+                            href="/detail"
                         />
                     ))}
                     </CardDeck>
