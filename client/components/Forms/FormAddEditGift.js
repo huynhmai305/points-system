@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input} from 'reactstrap';
 const randomString = require('random-string');
 import Select from 'react-select';
+import {FaPaperPlane} from 'react-icons/fa'
 
 class FormAddEditGift extends Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class FormAddEditGift extends Component {
   }
   handleChange = id_store => {
     this.setState({
-      store_obj:id_store, 
+      store_obj: id_store, 
       id_store: id_store.value
     });
     console.log(`Option selected:`, id_store.value);
@@ -89,7 +90,7 @@ class FormAddEditGift extends Component {
       .then(response => response.json())
       .then(items => {
         this.setState({items})
-        this.addItem(this.state.items)
+        this.addItem(items)
       })
       .catch(err => console.log(err))
   }
@@ -97,7 +98,7 @@ class FormAddEditGift extends Component {
     items.map((val,key) => {
       key={key}
       this.setState({
-        value:val.id,
+        value: val.id,
         label: val.username
       })
       let item = {'value':this.state.value,'label': this.state.label};
@@ -144,8 +145,8 @@ class FormAddEditGift extends Component {
           />
         </FormGroup>
         <FormGroup>
-        <Button color="light" className="float-right">
-          <img src="/static/images/btn_send.png" style={{width:'50px',height:'50px'}}/>
+        <Button color="success" className="float-right">
+          <FaPaperPlane/> Gửi
         </Button>
         </FormGroup>
       </Form>

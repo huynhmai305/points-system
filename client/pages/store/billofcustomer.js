@@ -2,123 +2,121 @@ import React, { Component } from 'react';
 import { Container, Row, Col, Form, FormGroup, Label, Button } from 'reactstrap';
 import ModalForm from '../../components/Modals/ModalAddBill';
 import DataTable from '../../components/Tables/Table_Bill_Of_Customer';
-import { CSVLink } from 'react-csv';
+import Excel from '../../components/exportTable/XLSX';
 import Store from '../../components/Store';
+import { useRouter } from 'next/router'
 
 class BillOfCustomer extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            items: [],
-            name: '',
-            id_user: '',
-            username: '',
-            birthday: '',
-            address: '',
-            phone: '',
-            email: '',
-            point: 0,
-            image:''
-        }
+  constructor(props) {
+    super(props);
+    this.state = {
+      items: [],
+      info:[],
+      name: '',
+      id_user: this.props.id_user,
+      username: '',
+      birthday: '',
+      address: '',
+      phone: '',
+      email: '',
+      point: 0,
+      image: ''
     }
+  }
 
-    getItems() {
-        var query = location.search;
-        var id_user = query.substring(9, 11)
-        this.setState({ id_user })
-        console.log(this.state.id_user)
-        // console.log(this.props.id_user)
-        // e.preventDefault();
-        let url = 'http://localhost:3000/users/bill/' + id_user;
-        fetch(url)
-            .then(response => response.json())
-            .then(items => {
-                this.setState({
-                    items,
-                    username: items[0].User.username,
-                    birthday: items[0].User.birthday,
-                    address: items[0].User.address,
-                    phone: items[0].User.phone,
-                    email: items[0].User.email,
-                    point: items[0].User.point
-                });
-                console.log(this.state.username);
-            })
-            .catch(err => console.log(err))
-    }
+  getItems() {
+    fetch('http://localhost:3000/getInfoById/' + this.props.id_user)
+    .then(res => res.json())
+    .then( info => this.setState({info}))
+    let url = 'http://localhost:3000/users/bill/' + this.props.id_user;
+    fetch(url)
+      .then(response => response.json())
+      .then(items => {
+        this.setState({
+          items
+        });
+        console.log(this.state.username);
+      })
+      .catch(err => console.log(err))
+  }
 
-    componentDidMount() {
-        var info = JSON.parse(localStorage.getItem('user'));
-        this.setState({ name: info[0].username, image:info[0].picture })
-        this.getItems()
-    }
+  componentDidMount() {
+    var info = JSON.parse(localStorage.getItem('user'));
+    this.setState({ name: info[0].username, image: info[0].picture })
+    this.getItems()
+  }
 
-    render() {
-        return (
-            <Store username={this.state.name} image={this.state.image}>
-                <Container className="App">
-                    <ol className="breadcrumb">
-                        <li className="breadcrumb-item">
-                            <a href="/admin">Trang chủ</a>
-                        </li>
-                        <li className="breadcrumb-item active">Quản lý hóa đơn</li>
-                    </ol>
-                    <Row className="mb-5">
-                        <Col md={{ offset: 8, size: 4 }}>
-                            <CSVLink
-                                filename={"Bill.csv"}
-                                color="primary"
-                                style={{ float: "left", marginRight: "10px" }}
-                                className="btn btn-info"
-                                data={this.state.items}
-                            >
-                                <i className="fas fa-file-csv"> Download CSV</i>
-                            </CSVLink>
-                            <ModalForm buttonLabel='Add' addItemToState={this.addItemToState} id_user={this.state.id_user} point={this.state.point} username={this.state.username} />
-                        </Col>
-                    </Row>
-                    <Form className="align-content-center">
-                        <h4 className="text-center">Thông tin tích điểm của khách hàng</h4>
-                        <FormGroup row>
-                            <Col sm={{ offset: 2, size: 4 }}>
-                                <Label for="exampleEmail" sm={3}>Họ tên:</Label>
-                                <Label sm={9}>{this.state.username}</Label>
-                            </Col>
-                            <Col sm={6}>
-                                <Label for="exampleEmail" sm={3}>Ngày sinh:</Label>
-                                <Label sm={9}>{this.state.birthday}</Label>
-                            </Col>
-                        </FormGroup>
-                        <FormGroup row>
-                            <Col sm={{ offset: 2, size: 4 }}>
-                                <Label for="exampleEmail" sm={3}>Địa chỉ:</Label>
-                                <Label sm={9}>{this.state.address}</Label>
-                            </Col>
-                            <Col sm={6}>
-                                <Label for="exampleEmail" sm={3}>Số điện thoại:</Label>
-                                <Label sm={9}>{this.state.phone}</Label>
-                            </Col>
-                        </FormGroup>
-                        <FormGroup row>
-                            <Col sm={{ offset: 2, size: 4 }}>
-                                <Label for="exampleEmail" sm={3}>Email</Label>
-                                <Label sm={9}>{this.state.email}</Label>
-                            </Col>
-                            <Col sm={6}>
-                                <Label for="exampleEmail" sm={3}>Điểm tích lũy:</Label>
-                                <Label sm={9}>{this.state.point}</Label>
-                            </Col>
-                        </FormGroup>
-                    </Form>
-                    <Row>
-                        <Col>
-                            <DataTable items={this.state.items} />
-                        </Col>
-                    </Row>
-                </Container>
-            </Store>
-        );
-    }
+  render() {
+    const header = ["id", "total", "createdAt"]
+    return (
+      <Store username={this.state.name} image={this.state.image}>
+        <Container className="App">
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
+              <a href="/store">Trang chủ</a>
+            </li>
+            <li className="breadcrumb-item active">Quản lý hóa đơn</li>
+          </ol>
+          <Row className="mb-5">
+            <Col md={{ offset: 8, size: 4 }}>
+              <Excel
+                data={this.state.items}
+                name="Bill.xlsx"
+                header={header}
+              />
+              <ModalForm buttonLabel='Add' addItemToState={this.addItemToState} id_user={this.state.id_user} point={this.state.point} username={this.state.username} />
+            </Col>
+          </Row>
+          {this.state.info.map((item,key) => (
+          <Form className="align-content-center" key={key}>
+            <h4 className="text-center">Thông tin tích điểm của khách hàng</h4>
+            <FormGroup row>
+              <Col sm={{ offset: 2, size: 4 }}>
+                <Label for="exampleEmail" sm={3}>Họ tên:</Label>
+                <Label sm={9}>{item.username}</Label>
+              </Col>
+              <Col sm={6}>
+                <Label for="exampleEmail" sm={3}>Ngày sinh:</Label>
+                <Label sm={9}>{item.birthday}</Label>
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Col sm={{ offset: 2, size: 4 }}>
+                <Label for="exampleEmail" sm={3}>Địa chỉ:</Label>
+                <Label sm={9}>{item.address}</Label>
+              </Col>
+              <Col sm={6}>
+                <Label for="exampleEmail" sm={3}>Số điện thoại:</Label>
+                <Label sm={9}>{item.phone}</Label>
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Col sm={{ offset: 2, size: 4 }}>
+                <Label for="exampleEmail" sm={3}>Email</Label>
+                <Label sm={9}>{item.email}</Label>
+              </Col>
+              <Col sm={6}>
+                <Label for="exampleEmail" sm={3}>Điểm tích lũy:</Label>
+                <Label sm={9}>{item.point}</Label>
+              </Col>
+            </FormGroup>
+          </Form>
+          ))}
+          <Row>
+            <Col>
+              <DataTable items={this.state.items} />
+            </Col>
+          </Row>
+        </Container>
+      </Store>
+    );
+  }
 }
-
-export default BillOfCustomer;
+const getInfo = () => {
+  const router = useRouter();
+  const id_user = parseInt(router.query.id_user);
+  return (
+    <BillOfCustomer id_user={id_user} />
+  )
+}
+export default getInfo;

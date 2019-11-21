@@ -7,7 +7,7 @@ import 'react-table/react-table.css'
 import HtmlParser from 'react-html-parser'
 import {FaTrashAlt} from 'react-icons/fa'
 
-class PostTable extends Component {
+class PostTableStore extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,7 +22,7 @@ class PostTable extends Component {
           Header: 'Tiêu đề',
           accessor: 'title',
           style: { 'whiteSpace': 'unset' },
-          maxwidth: 250
+          maxwidth: 150
         },
         {
           Header: 'Nội dung',
@@ -32,20 +32,20 @@ class PostTable extends Component {
             </span>
           ),
           style: { 'whiteSpace': 'unset' },
-          maxwidth: 300
+          width: 500
         },
         {
           id: 'User',
           Header: 'Cửa hàng',
           accessor: d => d.User.username,
-          style: { 'whiteSpace': 'unset' },
-          width: 100
+          style: { 'text-align': 'center' },
+          width: 150
         },
         {
           Header: 'Ngày đăng ký',
           Cell: row => (<span>{moment(row.original.createdAt).format('DD/MM/YYYY, h:mm:ss a')}</span>),
           style: { 'whiteSpace': 'unset' },
-          maxwidth: 200,
+          maxwidth: 100,
           filterable: false
         },
         {
@@ -86,6 +86,9 @@ class PostTable extends Component {
   }
   render() {
     let { items } = this.props;
+    const data = items.filter(dt => {
+      return dt.User !== null
+    })
     return (
       <ReactTable
         filterable={true}
@@ -94,11 +97,11 @@ class PostTable extends Component {
         noDataText='Không tìm thấy'
         pageText='Trang'
         rowsText=''
-        data={items}
+        data={data}
         columns={this.state.Headers}
       />
     )
   }
 }
 
-export default PostTable
+export default PostTableStore

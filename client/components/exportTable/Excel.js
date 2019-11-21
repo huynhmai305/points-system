@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
+import {FaFileExcel} from 'react-icons/fa'
 
 class Test extends Component {
 
@@ -11,7 +12,7 @@ class Test extends Component {
     }
 
     render() {
-        const btnText = <i class="fas fa-file-excel" aria-hidden="true"> Tải file Excel</i>
+        const btnText = <FaFileExcel> Tải file Excel</FaFileExcel>
         return (
             <div>
                 <ReactHTMLTableToExcel

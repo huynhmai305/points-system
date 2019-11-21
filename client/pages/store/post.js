@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import PostManager from '../../components/admin/Post';
+import MannagerPost from '../../components/store/Post'
 
 class Post extends Component {
   render() {
     return (
       <div>
-        <PostManager />
+        <MannagerPost/>
       </div>
     );
   }

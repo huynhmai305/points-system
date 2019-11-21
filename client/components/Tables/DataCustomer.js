@@ -1,14 +1,79 @@
 import React, { Component } from 'react'
 import { Button, Tooltip } from 'reactstrap';
-import dateFormat from 'dateformat';
 import Link from 'next/link';
-import {TablePagination} from 'react-pagination-table'
+import moment from 'moment'
+import ReactTable from 'react-table'
+import 'react-table/react-table.css'
+import {FaHandHoldingUsd} from 'react-icons/fa'
 
 class DataTable extends Component {
     constructor(props) {
         super(props);
-        this.state={
-            tooltipOpen: false
+        this.state = {
+            tooltipOpen: false,
+            Headers : [
+              {
+                Header: '#',
+                accessor: 'id',
+                style: {'text-align': 'center'},
+                width: 50
+              }, 
+              {
+                Header: 'Họ tên',
+                accessor: 'username',
+                style: {'whiteSpace': 'unset'},
+                maxwidth: 150
+              }, 
+              {
+                Header: 'Ngày sinh',
+                Cell: row => (<span>{moment(row.original.birthday).format('DD/MM/YYYY')}</span>),
+                maxwidth: 100,
+                filterable: false
+              }, 
+              {
+                Header: 'Địa chỉ',
+                accessor: 'address',
+                style: {'whiteSpace': 'unset'},
+                width: 200
+              },
+              {
+                Header: 'Điện thoại',
+                accessor: 'phone',
+                maxwidth: 100
+              },
+              {
+                Header: 'Email',
+                accessor: 'email',
+                width: 200
+              }, 
+              {
+                Header: 'Điểm',
+                accessor: 'point',
+                style: {'text-align': 'center'},
+                maxwidth: 50
+              }, 
+              {
+                Header: 'Ngày đăng ký',
+                Cell: row => (<span>{moment(row.original.createdAt).format('DD/MM/YYYY, h:mm:ss a')}</span>),
+                style: {'whiteSpace': 'unset'},
+                maxwidth: 200,
+                filterable: false
+              }, 
+              {
+                Header: '',
+                Cell: row => (
+                  <div>
+                    <Link href={"/store/billofcustomer?id_user="+row.original.id}>
+                      <Button color="success" id="bill"><FaHandHoldingUsd/></Button>
+                    </Link>
+                    {/* <Tooltip placement="top" isOpen={tooltipOpen} autohide={false} target="bill" toggle={this.toggle}>
+                      Thêm hóa đơn tích điểm
+                    </Tooltip> */}
+                  </div>
+                ),
+                filterable: false
+              }, 
+            ]
         }
         this.toggle = this.toggle.bind(this);
     }
@@ -39,39 +104,19 @@ class DataTable extends Component {
         .catch(err => console.log(err))
         }
     }
-    actions = (item)=>{
-      return (
-        <div style={{width:'auto'}}>
-          <Link href={"/store/billofcustomer?id_user="+item.id}>
-            <Button color="success" id="bill"><i className="fas fa-money-bill-alt"></i></Button>
-          </Link>
-          <Tooltip placement="top" isOpen={this.state.tooltipOpen} autohide={false} target="bill" toggle={this.toggle}>
-            Thêm hóa đơn tích điểm
-          </Tooltip>
-        </div>
-      )
-    }
 
   render() {
-    const Header = ["#","Họ tên", "Ngày sinh", "Địa chỉ", "Điện thoại", "Email","Điểm", "Ngày đăng ký" ," "];
-    let {items} = this.props;
-    // let totalCount = items.length;
-    items = items.map(item=>{
-      return {
-        ...item,
-        createdAt: dateFormat(item.createdAt, "isoDate"),
-        actions : this.actions(item)
-      }
-    })
-
+    const {items} = this.props
     return (
-      <TablePagination
-        className="table-responsive table-hover"
-        headers={ Header }
-        data={ items }
-        columns="id.username.birthday.address.phone.email.point.createdAt.actions"
-        perPageItemCount={4}
-        totalCount={50}
+      <ReactTable
+        filterable = {true}
+        previousText = 'Trang trước'
+        nextText = 'Trang sau'
+        noDataText = 'Không tìm thấy'
+        pageText = 'Trang'
+        rowsText = ''
+        data={items}  
+        columns={this.state.Headers}
       />
     )
   }

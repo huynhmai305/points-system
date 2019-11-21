@@ -4,6 +4,7 @@ import {
     ExcelExport,
     ExcelExportColumn
 } from '@progress/kendo-react-excel-export'
+import { FaFileExcel } from "react-icons/fa";
 
 class XLSX extends Component {
     _exporter;
@@ -16,7 +17,7 @@ class XLSX extends Component {
         return (
             <div>
                 <Button color="info" className="float-left mr-2" onClick={this.export}>
-                <i class="fas fa-file-excel" aria-hidden="true"> Tải file Excel</i>
+                <FaFileExcel/> Tải file Excel
                 </Button>
                 {console.log(data)}
                 <ExcelExport

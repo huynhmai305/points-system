@@ -1,5 +1,8 @@
 /* @import '~bootstrap/scss/bootstrap';
 @import "~admin-lte/build/scss/AdminLTE-raw.scss"; */
+.ReactTable .-pagination .-pageJump {
+  margin-bottom: -6px;
+}
 
 .btn3d {
 	position: relative;
@@ -135,6 +138,7 @@ a[data-toggle="collapse"] {
   position: relative;
 }
 ul ul a {
+  color: rgb(231, 224, 224) !important;
   font-size: 0.9em !important;
   padding-left: 30px !important;
   background:#656d75 !important;

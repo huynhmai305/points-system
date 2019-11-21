@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NumberFormat from 'react-number-format';
+import {FaUserFriends, FaExchangeAlt, FaMoneyBillAlt} from 'react-icons/fa'
 
 class Card extends Component {
     constructor(props) {
@@ -37,7 +38,7 @@ class Card extends Component {
                 <div className="col-xl-4 col-lg-4 col-md-4 col-sm-6 mb-4">
                     <div className="card border-success">
                         <div className="clearfix">
-                            <i className="fa fa-users float-right text-success" />
+                            <FaUserFriends className="float-right text-success fa-2x mr-1"/>
                         </div>
                         <div className="card-body">
                             <h4 className="card-title text-success">{this.state.members}</h4>
@@ -51,7 +52,7 @@ class Card extends Component {
                 <div className="col-xl-4 col-lg-4 col-md-4 col-sm-6 mb-4">
                     <div className="card border-info">
                         <div className="clearfix">
-                            <i className="fa fa-edit float-right text-info" />
+                            <FaExchangeAlt className="float-right text-info fa-2x mr-1"/>
                         </div>
                         <div className="card-body">
                             <h4 className="card-title text-info">{this.state.bill}</h4>
@@ -65,7 +66,7 @@ class Card extends Component {
                 <div className="col-xl-4 col-lg-4 col-md-4 col-sm-6 mb-4">
                     <div className="card border-danger">
                         <div className="clearfix">
-                            <i className="fa fa-bar-chart float-right text-danger" />
+                            <FaMoneyBillAlt className="float-right text-danger fa-2x mr-1"/>
                         </div>
                         <div className="card-body">
                             <h4 className="card-title text-danger">

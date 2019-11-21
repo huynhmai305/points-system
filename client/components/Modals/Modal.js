@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Modal, ModalHeader, ModalBody } from 'reactstrap'
 import AddEditForm from '../Forms/FormAddEdit'
+import {FaEdit, FaPlus} from 'react-icons/fa'
 
 class ModalForm extends Component {
   constructor(props) {
@@ -28,8 +29,8 @@ class ModalForm extends Component {
         button = <Button
                   color="warning"
                   onClick={this.toggle}
-                  style={{float: "left", marginRight:"10px",color:'white'}}>
-                  <i className="fas fa-edit"></i>
+                  style={{color:'white'}}>
+                  <FaEdit/>
                 </Button>
         title = 'Chỉnh sửa'
       } else {
@@ -38,7 +39,7 @@ class ModalForm extends Component {
                   className="w3-circle"
                   onClick={this.toggle}
                   style={{float: "left", marginRight:"10px"}}>
-                  <i className="fa fa-plus" aria-hidden="true"></i>
+                  <FaPlus/>
                 </Button>
         title = 'Thêm mới'
       }

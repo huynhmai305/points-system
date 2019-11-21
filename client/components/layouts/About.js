@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 class About extends Component {
     render() {
         return (
-            <section id="about">
+            <section id="about" className="mt-5">
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-12 text-center">

@@ -13,7 +13,7 @@ class AddEditForm extends React.Component {
   onChange = e => {
     this.setState({[e.target.name]: e.target.value})
   }
-  getItems = () => {
+  getItems() {
     fetch('http://localhost:3000/users/point_change')
     .then (response => response.json())
     .then(result =>{
@@ -31,8 +31,8 @@ class AddEditForm extends React.Component {
   }
 
   submitFormAdd = e => {
-    // console.log(this.state.total)
     e.preventDefault()
+    console.log('da submit')
     fetch('http://localhost:3000/users/bill', {
       method: 'POST',
       headers: {
@@ -67,7 +67,7 @@ class AddEditForm extends React.Component {
         location.reload()
       })      
     })
-    }
+  }
     componentDidMount() {
       if (this.props.item){
         const {id, total, id_store} = this.props.item;

@@ -220,7 +220,6 @@ router.get('/admin/user', (req, res) => {
             }
           }
         ]
-        
       },
       order: ['id']
     })
@@ -241,7 +240,7 @@ router.get('/admin/user', (req, res) => {
       .catch(err => console.log(err))
   }
 })
-//get info with id
+//get info with email
 router.get('/getinfo/:id', (req, res) => {
   User.findAll({
     where: {
@@ -252,6 +251,16 @@ router.get('/getinfo/:id', (req, res) => {
     .catch(err => res.sendStatus(400))
 })
 
+//get info with id
+router.get('/getInfoById/:id', (req, res) => {
+  User.findAll({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(result => res.send(result))
+    .catch(err => res.sendStatus(400))
+})
 //get store
 router.get('/admin/store', (req, res) => {
   if (req.query.keyword && req.query.keyword.length > 0) {

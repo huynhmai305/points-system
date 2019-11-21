@@ -1,10 +1,67 @@
 import React, { Component } from 'react'
 import { Button } from 'reactstrap';
 import ModalForm from '../Modals/ModalGift.js';
-import dateFormat from 'dateformat';
-import {TablePagination} from 'react-pagination-table'
+import moment from 'moment'
+import ReactTable from 'react-table'
+import 'react-table/react-table.css'
+import {FaTrashAlt} from 'react-icons/fa'
 
 class DataTable extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      Headers : [
+        {
+          Header: '#',
+          Cell: row => (<span>{row.original.id_gift.toUpperCase()}</span>),
+          style: {'text-align': 'center'},
+          width: 100
+        }, 
+        {
+          Header: 'Tiêu đề',
+          accessor: 'title',
+          style: {'whiteSpace': 'unset'},
+          maxwidth: 250
+        }, 
+        {
+          Header: 'Nội dung',
+          accessor: 'content',
+          style: {'whiteSpace': 'unset'},
+          width: 300
+        }, 
+        {
+          Header: 'Số lượng',
+          accessor: 'quantity',
+          style: {'text-align': 'center'},
+          width: 100
+        }, 
+        {
+          Header: 'Điểm đổi',
+          accessor: 'point',
+          style: {'text-align': 'center'},
+          maxwidth: 100
+        },
+        {
+          Header: 'Ngày đăng ký',
+          Cell: row => (<span>{moment(row.original.createdAt).format('DD/MM/YYYY, h:mm:ss a')}</span>),
+          style: {'whiteSpace': 'unset'},
+          maxwidth: 250,
+          filterable: false
+        }, 
+        {
+          Header: '',
+          Cell: row => (
+            <div>
+              <Button color="danger" style={{float: "left", marginRight:"10px"}} onClick={() => this.deleteItem(row.original.id)}><FaTrashAlt/></Button>
+              <ModalForm buttonLabel='Edit' item={row.original}/>
+            </div>
+          ),
+          filterable: false
+        }, 
+      ]
+    }
+  }
+  
   deleteItem = id => {
     let confirmDelete = window.confirm('Bạn có chắc muốn xóa không?')
     if (confirmDelete) {
@@ -25,38 +82,19 @@ class DataTable extends Component {
         })
         .catch(err => console.log(err))
     }
-
-  }
-  actions = (item)=>{
-    return (
-      <div style={{ width: "100px" }}>
-        <ModalForm buttonLabel='Edit' item={item} updateState={this.props.updateState} />
-        {' '}
-        <Button color="danger" onClick={() => this.deleteItem(item.id)}><i className="fas fa-trash-alt"></i></Button>
-      </div>
-    )
   }
   render() {
-    const Header = ["#","Tiêu đề", "Nội dung", "Số lượng", "Điểm đổi", "Ngày đăng ký" ," "];
     let {items} = this.props;
-    items = items.map(item=>{
-      return {
-        ...item,
-        id_gift: item.id_gift.toUpperCase(),
-        createdAt: dateFormat(item.createdAt, "isoDate"),
-        actions : this.actions(item)
-      }
-    })
-
     return (
-      <TablePagination
-        id="table_gift_store"
-        className="table-responsive table-hover thead-light"
-        headers={ Header }
-        data={ items }
-        columns="id_gift.title.content.quantity.point.createdAt.actions"
-        perPageItemCount={3}
-        totalCount={50}
+      <ReactTable
+        filterable = {true}
+        previousText = 'Trang trước'
+        nextText = 'Trang sau'
+        noDataText = 'Không tìm thấy'
+        pageText = 'Trang'
+        rowsText = ''
+        data={items}  
+        columns={this.state.Headers}
       />
     )
   }

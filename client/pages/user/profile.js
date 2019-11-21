@@ -4,13 +4,13 @@ import ProfileUser from '../../components/customer/Profile';
 
 class Profile extends Component {
 
-    render() {
-        return (
-            <Layout title="Profile">
-                <ProfileUser/>
-            </Layout>
-        );
-    }
+  render() {
+    return (
+      <Layout title="Profile">
+        <ProfileUser />
+      </Layout>
+    );
+  }
 }
 
 export default Profile;

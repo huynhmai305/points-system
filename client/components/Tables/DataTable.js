@@ -1,10 +1,73 @@
 import React, { Component } from 'react'
 import { Button } from 'reactstrap';
 import ModalForm from '../Modals/Modal';
-import dateFormat from 'dateformat';
-import {TablePagination} from 'react-pagination-table'
+import moment from 'moment'
+import ReactTable from 'react-table'
+import 'react-table/react-table.css'
+import { FaTrashAlt } from 'react-icons/fa';
 
 class DataTable extends Component {
+    state = {
+      Headers : [
+        {
+          Header: '#',
+          accessor: 'id',
+          style: {'text-align': 'center'},
+          width: 50
+        }, 
+        {
+          Header: 'Họ tên',
+          accessor: 'username',
+          style: {'whiteSpace': 'unset'},
+          maxwidth: 150
+        }, 
+        {
+          Header: 'Ngày sinh',
+          Cell: row => (<span>{moment(row.original.birthday).format('DD/MM/YYYY')}</span>),
+          maxwidth: 100,
+          filterable: false
+        }, 
+        {
+          Header: 'Địa chỉ',
+          accessor: 'address',
+          style: {'whiteSpace': 'unset'},
+          width: 200
+        }, 
+        {
+          Header: 'Email',
+          accessor: 'email',
+          width: 200
+        }, 
+        {
+          Header: 'Điện thoại',
+          accessor: 'phone',
+          maxwidth: 100
+        },
+        {
+          Header: 'Điểm',
+          accessor: 'point',
+          style: {'text-align': 'center'},
+          maxwidth: 50
+        }, 
+        {
+          Header: 'Ngày đăng ký',
+          Cell: row => (<span>{moment(row.original.createdAt).format('DD/MM/YYYY, h:mm:ss a')}</span>),
+          style: {'whiteSpace': 'unset'},
+          maxwidth: 200,
+          filterable: false
+        }, 
+        {
+          Header: '',
+          Cell: row => (
+            <div>
+              <Button color="danger" style={{float: "left", marginRight:"10px"}} onClick={() => this.deleteItem(row.original.id)}><FaTrashAlt/></Button>
+              <ModalForm buttonLabel='Edit' item={row.original}/>
+            </div>
+          ),
+          filterable: false
+        }, 
+      ]
+    }
 
   deleteItem = id => {
     let confirmDelete = window.confirm('Bạn có chắc muốn xóa không?')
@@ -27,35 +90,18 @@ class DataTable extends Component {
       .catch(err => console.log(err))
     }
   }
-  actions = (item)=>{
-    return (
-      <div style={{width:"100px"}}>
-        <ModalForm buttonLabel='Edit' item={item} updateState={this.props.updateState}/>
-          {' '}
-        <Button color="danger" onClick={() => this.deleteItem(item.id)}><i className="fas fa-trash-alt"></i></Button>
-      </div>
-    )
-  }
   render() {
-    const Header = ["#","Họ tên", "Ngày sinh","Địa chỉ","Email","Điện thoại","Điểm", "Ngày đăng ký" ," "];
-    let {items} = this.props;
-    items = items.map(item=>{
-      return {
-        ...item,
-        createdAt: dateFormat(item.createdAt, "isoDate"),
-        actions : this.actions(item)
-      }
-    })
-
+    const {items} = this.props
     return (
-      <TablePagination
-        id="table_user"
-        className="table-responsive table-hover"
-        headers={ Header }
-        data={ items }
-        columns="id.username.birthday.address.email.phone.point.createdAt.actions"
-        perPageItemCount={4}
-        totalCount={50}
+      <ReactTable
+        filterable = {true}
+        previousText = 'Trang trước'
+        nextText = 'Trang sau'
+        noDataText = 'Không tìm thấy'
+        pageText = 'Trang'
+        rowsText = ''
+        data={items}  
+        columns={this.state.Headers}
       />
     )
   }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import {FaPaperPlane} from 'react-icons/fa'
 
 class AddEditForm extends React.Component {
   state = {
@@ -115,8 +116,8 @@ class AddEditForm extends React.Component {
           </Label>
         </FormGroup>
         <FormGroup>
-          <Button color="light" className="float-right">
-            <img src="/static/images/btn_send.png" style={{width:'50px',height:'50px'}}/>
+          <Button color="success" className="float-right">
+            <FaPaperPlane/> Gửi
           </Button>
         </FormGroup>
 

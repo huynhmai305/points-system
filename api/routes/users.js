@@ -115,10 +115,12 @@ router.post('/bill', (req, res) => {
   const data = {
     id: req.body.id,
     total: req.body.total,
-    id_user: req.body.id_user
+    id_user: req.body.id_user,
+    id_store: req.body.id_store
   };
-  let { id, total, id_user } = data;
-  Bill.create({ id, total, id_user })
+  console.log(data)
+  let { id, total, id_user, id_store } = data;
+  Bill.create({ id, total, id_user, id_store })
     .then(result => {
       res.json(result);
       res.sendStatus(200);

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {FaTwitter, FaFacebook, FaLinkedinIn} from 'react-icons/fa'
 
 class Footer extends Component {
     render() {
@@ -13,17 +14,17 @@ class Footer extends Component {
                             <ul className="list-inline social-buttons">
                                 <li className="list-inline-item">
                                     <a href="#">
-                                        <i className="fab fa-twitter"></i>
+                                        <FaTwitter/>
                                     </a>
                                 </li>
                                 <li className="list-inline-item">
                                     <a href="#">
-                                        <i className="fab fa-facebook-f"></i>
+                                        <FaFacebook/>
                                     </a>
                                 </li>
                                 <li className="list-inline-item">
                                     <a href="#">
-                                        <i className="fab fa-linkedin-in"></i>
+                                        <FaLinkedinIn/>
                                     </a>
                                 </li>
                             </ul>

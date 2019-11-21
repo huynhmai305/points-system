@@ -5,65 +5,65 @@ import Register from '../Register';
 import { FaSignInAlt } from "react-icons/fa";
 
 class ModalLogin extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            modal: false,
-            nestedModal: false,
-            closeAll: false
-        };
-        this.toggle = this.toggle.bind(this);
-        this.toggleNested = this.toggleNested.bind(this);
-        this.toggleAll = this.toggleAll.bind(this);
-    }
-
-    toggle() {
-        this.setState(prevState => ({
-            modal: !prevState.modal
-        }));
-    }
-
-    showModal = () => {
-        this.setState({
-            visible: true,
-        });
+  constructor(props) {
+    super(props);
+    this.state = {
+      modal: false,
+      nestedModal: false,
+      closeAll: false
     };
+    this.toggle = this.toggle.bind(this);
+    this.toggleNested = this.toggleNested.bind(this);
+    this.toggleAll = this.toggleAll.bind(this);
+  }
 
-    toggleNested() {
-        this.setState({
-            nestedModal: !this.state.nestedModal,
-            closeAll: false
-        });
-    };
+  toggle() {
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
+  }
 
-    toggleAll() {
-        this.setState({
-            nestedModal: !this.state.nestedModal,
-            closeAll: true
-        });
-    };
+  showModal = () => {
+    this.setState({
+      visible: true,
+    });
+  };
 
-    render() {
-        return (
-            <div>
-                <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel} <FaSignInAlt/></Button>
-                <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                    <ModalHeader toggle={this.toggle}>Đăng nhập</ModalHeader>
-                    <ModalBody>
-                        <Login />
-                        <br />
-                        <Button color="info" className="float-right" onClick={this.toggleNested}>Đăng ký</Button>
-                        <Modal isOpen={this.state.nestedModal} toggle={this.toggleNested} onClosed={this.state.closeAll ? this.toggle : undefined} >
-                            <ModalHeader toggle={this.toggle}>Đăng ký</ModalHeader>
-                            <ModalBody>
-                                <Register />
-                            </ModalBody>
-                        </Modal>
-                    </ModalBody>
-                </Modal>
-            </div>
-        );
-    }
+  toggleNested() {
+    this.setState({
+      nestedModal: !this.state.nestedModal,
+      closeAll: false
+    });
+  };
+
+  toggleAll() {
+    this.setState({
+      nestedModal: !this.state.nestedModal,
+      closeAll: true
+    });
+  };
+
+  render() {
+    return (
+      <div>
+        <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel} <FaSignInAlt /></Button>
+        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+          <ModalHeader toggle={this.toggle}>Đăng nhập</ModalHeader>
+          <ModalBody>
+            <Login />
+            <br />
+            <Button color="info" className="float-right" onClick={this.toggleNested}>Đăng ký</Button>
+            <Modal isOpen={this.state.nestedModal} toggle={this.toggleNested} onClosed={this.state.closeAll ? this.toggle : undefined} >
+              <ModalHeader toggle={this.toggle}>Đăng ký</ModalHeader>
+              <ModalBody>
+                <Register />
+              </ModalBody>
+            </Modal>
+          </ModalBody>
+        </Modal>
+      </div>
+    );
+  }
 }
 
 export default ModalLogin;

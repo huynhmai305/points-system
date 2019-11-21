@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Modal, ModalHeader, ModalBody } from 'reactstrap'
 import AddForm from '../Forms/FormAddBill';
+import { FaMoneyBillWave } from "react-icons/fa"; 
 
 class ModalForm extends Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class ModalForm extends Component {
                   color="success"
                   onClick={this.toggle}
                   style={{float: "left", marginRight:"10px"}}>
-                  <i className="fas fa-money-bill"> Thêm hóa đơn</i>
+                  <FaMoneyBillWave/> Thêm hóa đơn
                 </Button>
         title = 'Thêm hóa đơn'
 
