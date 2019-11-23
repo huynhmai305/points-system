@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { Container, Form, FormGroup, Label, Input, Button, Alert } from 'reactstrap';
-import { Editor } from '@tinymce/tinymce-react'
 import StarRatings from 'react-star-ratings';
-const API_KEY = '2icj3szs411s8nqf8kqljxz7cvd2478keun6zro00pdptu17';
 import {FaPaperPlane} from 'react-icons/fa'
+import dynamic from 'next/dynamic'
+const CKEditor = dynamic(() => import('../../editor/Editor'), {
+  ssr: false
+})
 
 
 class ReviewForm extends Component {
@@ -43,7 +45,9 @@ class ReviewForm extends Component {
       }
     }, () => console.log('Rating:', this.state.post.rating));
   }
-  handleEditorChange = (content, editor) => {
+  handleEditorChange = (event, editor) => {
+    const content = editor.getData();
+    console.log(content)
     this.setState({
       ...this.state,
       post: {
@@ -136,20 +140,10 @@ class ReviewForm extends Component {
             />
           </FormGroup>
           <Label for="content">Nội dung<span style={{ color: 'red' }}> *</span></Label>
-          <Editor
+          <CKEditor
             name="content"
-            apiKey={API_KEY}
-            // initialValue={this.state.post.content}
-            value={this.state.post.content}
-            init={{
-              selector: 'textarea',
-              plugins: ' lists checklist autolink link image media code paste casechange emoticons preview searchreplace',
-              toolbar: 'undo redo | bold italic underline | casechange| alignleft aligncenter alignright alignjustify | checklist numlist bullist | forecolor | backcolor | link image | emoticons | searchreplace | preview | code',
-              toolbar_drawer: 'floating',
-              tinycomments_mode: 'embedded',
-              tinycomments_author: 'Author name'
-            }}
-            onEditorChange={this.handleEditorChange}
+            data={this.state.post.content}
+            onChange={this.handleEditorChange}
           />
           {this.renderError()}
           <FormGroup>

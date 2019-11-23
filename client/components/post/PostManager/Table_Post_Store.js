@@ -15,7 +15,7 @@ class PostTableStore extends Component {
         {
           Header: '#',
           accessor: 'id',
-          style: { 'text-align': 'center' },
+          style: { 'textAlign': 'center' },
           width: 50
         },
         {
@@ -38,7 +38,7 @@ class PostTableStore extends Component {
           id: 'User',
           Header: 'Cửa hàng',
           accessor: d => d.User.username,
-          style: { 'text-align': 'center' },
+          style: { 'textAlign': 'center' },
           width: 150
         },
         {

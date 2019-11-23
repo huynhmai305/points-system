@@ -15,7 +15,7 @@ class DataTable extends Component {
               {
                 Header: '#',
                 accessor: 'id',
-                style: {'text-align': 'center'},
+                style: {'textAlign': 'center'},
                 width: 50
               }, 
               {
@@ -49,7 +49,7 @@ class DataTable extends Component {
               {
                 Header: 'Điểm',
                 accessor: 'point',
-                style: {'text-align': 'center'},
+                style: {'textAlign': 'center'},
                 maxwidth: 50
               }, 
               {

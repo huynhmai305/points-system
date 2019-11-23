@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
-import { Container, Form, FormGroup, Label, CustomInput, Input, Button, Alert } from 'reactstrap';
-import { Editor } from '@tinymce/tinymce-react'
+import { Container, Form, FormGroup, Label, Input, Button, Alert } from 'reactstrap';
+// import { Editor } from '@tinymce/tinymce-react'
+import dynamic from 'next/dynamic'
+const CKEditor = dynamic(() => import('../../editor/Editor'), {
+  ssr: false
+})
 import Select from 'react-select';
 import Type from '../../type.json'
-const API_KEY = '2icj3szs411s8nqf8kqljxz7cvd2478keun6zro00pdptu17';
+import {FaPaperPlane} from 'react-icons/fa'
+//const API_KEY = '2icj3szs411s8nqf8kqljxz7cvd2478keun6zro00pdptu17';
 
 class PostForm extends Component {
   constructor(props) {
@@ -44,7 +49,9 @@ class PostForm extends Component {
   }
 
   //content
-  handleEditorChange = (content, editor) => {
+  handleEditorChange = ( event, editor ) => {
+    const content = editor.getData();
+    console.log(content)
     this.setState({
       ...this.state,
       post: {
@@ -174,7 +181,6 @@ class PostForm extends Component {
     ) : null;
   }
   componentDidMount() {
-    console.log(Type)
     // if item exists, populate the state with proper data
     if (this.props.item) {
       const { id, title, content, storeId, type } = this.props.item
@@ -214,7 +220,7 @@ class PostForm extends Component {
                   id="type1"
                   value="type1"
                   name="type"
-                  checked={this.state.type === 'type1'}
+                  defaultChecked={this.state.type === 'type1'}
                   onClick={this.handleChangeRadio}
                 /> Viết bài cho chuyên mục
               </Label>
@@ -226,7 +232,7 @@ class PostForm extends Component {
                   id="type2"
                   value="type2"
                   name="type"
-                  checked={this.state.type === 'type2'}
+                  defaultChecked={this.state.type === 'type2'}
                   onClick={this.handleChangeRadio}
                 /> Viết bài cho cửa hàng
               </Label>
@@ -246,20 +252,10 @@ class PostForm extends Component {
             />
           </FormGroup>
           <Label for="content">Nội dung<span style={{ color: 'red' }}> *</span></Label>
-          <Editor
+          <CKEditor
             name="content"
-            apiKey={API_KEY}
-            // initialValue={this.state.post.content}
-            value={this.state.post.content}
-            init={{
-              selector: 'textarea',
-              plugins: ' lists checklist autolink link image media code paste casechange emoticons preview searchreplace',
-              toolbar: 'undo redo | bold italic underline | casechange| alignleft aligncenter alignright alignjustify | checklist numlist bullist | forecolor | backcolor | link image | emoticons | searchreplace | preview | code',
-              toolbar_drawer: 'floating',
-              tinycomments_mode: 'embedded',
-              tinycomments_author: 'Author name'
-            }}
-            onEditorChange={this.handleEditorChange}
+            data={this.state.post.content}
+            onChange={this.handleEditorChange}
           />
           {this.state.type === 'type2' ? (
             <FormGroup>
@@ -283,8 +279,8 @@ class PostForm extends Component {
             />
           </FormGroup>
           <FormGroup>
-            <Button color="light" className="float-right mt-3">
-              <img src="/static/images/btn_send.png" style={{ width: '50px', height: '50px' }} />
+            <Button color="success" className="float-right mt-3">
+              <FaPaperPlane/> Gửi
             </Button>
           </FormGroup>
         </Form>

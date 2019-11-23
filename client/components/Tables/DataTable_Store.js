@@ -14,7 +14,7 @@ class DataTable extends Component {
         {
           Header: '#',
           accessor: 'id',
-          style: {'text-align': 'center'},
+          style: {'textAlign': 'center'},
           width: 50
         }, 
         {

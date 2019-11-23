@@ -15,7 +15,7 @@ class PostTable extends Component {
         {
           Header: '#',
           accessor: 'id',
-          style: { 'text-align': 'center' },
+          style: { 'textAlign': 'center' },
           width: 50
         },
         {
@@ -28,7 +28,7 @@ class PostTable extends Component {
           Header: 'Nội dung',
           Cell: row => (
             <span>
-              {HtmlParser(row.original.content.slice(0, 500) + ' <a href="#">Xem chi tiết >></a>')}
+              {HtmlParser(row.original.content.slice(0, 500) + ' <a href="#" onClick={}>Xem chi tiết >></a>')}
             </span>
           ),
           style: { 'whiteSpace': 'unset' },
@@ -38,7 +38,7 @@ class PostTable extends Component {
           id: 'User',
           Header: 'Cửa hàng',
           accessor: d => (d.User == null ? '' : d.User.username),
-          style: { 'text-align': 'center' },
+          style: { 'textAlign': 'center' },
           width: 150
         },
         {
@@ -61,7 +61,6 @@ class PostTable extends Component {
       ]
     }
   }
-
 
   deleteItem = id => {
     let confirmDelete = window.confirm('Bạn có chắc muốn xóa không?')

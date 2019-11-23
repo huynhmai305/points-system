@@ -43,7 +43,7 @@
 }
 * {
   box-sizing: border-box;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 
 html, body { min-height: 100%; }

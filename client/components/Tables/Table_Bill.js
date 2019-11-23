@@ -15,13 +15,13 @@ class DataTable extends Component {
         {
           Header: '#',
           accessor: 'id',
-          style: {'text-align': 'center'},
+          style: {'textAlign': 'center'},
           width: 100
         }, 
         {
           Header: 'Mã khách hàng',
           accessor: 'id_user',
-          style: {'text-align': 'center'},
+          style: {'textAlign': 'center'},
           maxwidth: 150
         }, 
         {
@@ -34,7 +34,7 @@ class DataTable extends Component {
         {
           Header: 'Mã cửa hàng',
           accessor: 'id_store',
-          style: {'text-align': 'center'},
+          style: {'textAlign': 'center'},
           width: 100
         }, 
         {
@@ -44,7 +44,7 @@ class DataTable extends Component {
               <NumberFormat value={row.original.total} displayType={'text'} thousandSeparator={true} suffix={'đ'} />
             </span>
           ),
-          style: {'text-align': 'center'},
+          style: {'textAlign': 'center'},
           maxwidth: 100,
           filterable: false
         },

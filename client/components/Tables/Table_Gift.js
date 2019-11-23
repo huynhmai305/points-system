@@ -14,7 +14,7 @@ class DataTable extends Component {
         {
           Header: '#',
           Cell: row => (<span>{row.original.id_gift.toUpperCase()}</span>),
-          style: {'text-align': 'center'},
+          style: {'textAlign': 'center'},
           width: 100
         }, 
         {
@@ -32,13 +32,13 @@ class DataTable extends Component {
         {
           Header: 'Số lượng',
           accessor: 'quantity',
-          style: {'text-align': 'center'},
+          style: {'textAlign': 'center'},
           width: 100
         }, 
         {
           Header: 'Điểm đổi',
           accessor: 'point',
-          style: {'text-align': 'center'},
+          style: {'textAlign': 'center'},
           maxwidth: 100
         },
         {

@@ -13,13 +13,13 @@ class ReviewList extends Component {
       {
         Header: '#',
         accessor: 'id',
-        style: {'text-align': 'center'},
+        style: {'textAlign': 'center'},
         width: 50
       }, 
       {
         Header: 'Tiêu đề',
         accessor: 'title',
-        style: {'text-align': 'center'},
+        style: {'textAlign': 'center'},
         maxwidth: 100
       }, 
       {
@@ -31,14 +31,14 @@ class ReviewList extends Component {
       {
         Header: 'Đánh giá',
         Cell: row => (<span>{row.original.rating}/5</span>) ,
-        style: {'text-align': 'center'},
+        style: {'textAlign': 'center'},
         width: 150
       }, 
       {
         id: 'User',
         Header: 'Người review',
         accessor: d => d.User.username,
-        style: {'text-align': 'center'},
+        style: {'textAlign': 'center'},
         width: 300
       },
       {

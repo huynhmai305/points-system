@@ -13,7 +13,7 @@ class Table_Bill_Of_Customer extends Component {
         {
           Header: 'Mã hóa đơn',
           accessor: 'id',
-          style: {'text-align': 'center'},
+          style: {'textAlign': 'center'},
           width: 100
         }, 
         {
@@ -23,14 +23,14 @@ class Table_Bill_Of_Customer extends Component {
               <NumberFormat value={row.original.total} displayType={'text'} thousandSeparator={true} suffix={'đ'} />
             </span>
           ),
-          style: {'text-align': 'center'},
+          style: {'textAlign': 'center'},
           maxwidth: 200
         }, 
         {
           Header: 'Điểm được tích lũy',
           accessor: 'point',
           Cell: row => (<span>{row.original.total / 1000}</span>),
-          style: {'text-align': 'center'},
+          style: {'textAlign': 'center'},
           width: 200
         }, 
         {
