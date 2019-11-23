@@ -63,7 +63,7 @@ class Customer extends Component {
             </header>
             <div className="main-content">
               {this.props.children}
-              <ChatClient />
+              {/* <ChatClient /> */}
             </div>
           </div>
         </div>

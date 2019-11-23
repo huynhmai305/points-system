@@ -12,7 +12,7 @@ const Review = db.define('Review', {
     rating: {
       type: Sequelize.INTEGER
     },
-    storeId: {
+    postId: {
         type: Sequelize.INTEGER
     },
     userId: {

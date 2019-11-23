@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import HtmlParser from 'react-html-parser'
 import Type from '../../type.json'
-import { FaSearch } from "react-icons/fa";
 import DateFormat from 'dateformat'
-import Review from '../Review/ManagerReview'
+import Review from '../Review/ReviewList'
 
 class News extends Component {
   constructor(props) {
@@ -33,7 +32,7 @@ class News extends Component {
   }
 
   render() {
-    const { title, content, createdAt } = this.props
+    const { title, content, createdAt, image, store } = this.props
     return (
       <div className="container">
         <div className="row">
@@ -42,29 +41,22 @@ class News extends Component {
             <h1 className="mt-4">{title}</h1>
             <p className="lead text-muted">
               Người đăng:{' '}H&M
-                        </p>
+            </p>
             <hr />
             <p className="text-muted">Thời gian: {DateFormat(createdAt, "dddd, mmmm dS, yyyy, h:MM:ss TT")}</p>
             <hr />
-            {HtmlParser(content)}
-            <div className="mt-5">
-              <Review />
+            <div>
+              <img src={image !== null ? image : ""} alt="logo" style={{height:'400px'}}/>
             </div>
+            {HtmlParser(content)}
+            {/* {store === true ? ( */}
+              <div className="mt-5">
+                <Review />
+              </div>
+            {/* ) : ''} */}
           </div>
           {/* Sidebar Widgets Column */}
           <div className="col-4">
-            {/* Search Widget */}
-            {/* <div className="card my-4">
-              <h5 className="card-header">Tìm kiếm</h5>
-              <div className="card-body">
-                <div className="input-group">
-                  <input type="text" className="form-control" placeholder="Search for..." />
-                  <span className="input-group-btn">
-                    <button className="btn btn-primary" type="button"><FaSearch /></button>
-                  </span>
-                </div>
-              </div>
-            </div> */}
             {/* Categories Widget */}
             <div className="card my-4">
               <h5 className="card-header">Thể loại</h5>

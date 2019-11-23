@@ -21,12 +21,12 @@ class PostDetail extends Component {
         })
     }
     render() {
-        const {title, content, createdAt} = this.props
+        const {title, content, createdAt, image} = this.props
         return (
             <Layout username={this.state.username} image={this.state.image}>
                 <div className="mt-3">
                     <Back path='/user'/>
-                    <Detail title={title} content={content} createdAt={createdAt}/>
+                    <Detail title={title} content={content} createdAt={createdAt} image={image}/>
                 </div>
             </Layout>
         );

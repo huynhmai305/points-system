@@ -55,16 +55,16 @@ class DataTable extends Component {
           maxwidth: 300,
           filterable: false
         }, 
-        {
-          Header: '',
-          Cell: row => (
-            <div>
-              <Button color="danger" style={{float: "left", marginRight:"10px"}} onClick={() => this.deleteItem(row.original.id)}><FaTrash/></Button>
-              <ModalForm buttonLabel='Edit' item={row.original}/>
-            </div>
-          ),
-          filterable: false
-        }, 
+        // {
+        //   Header: '',
+        //   Cell: row => (
+        //     <div>
+        //       <Button color="danger" style={{float: "left", marginRight:"10px"}} onClick={() => this.deleteItem(row.original.id)}><FaTrash/></Button>
+        //       <ModalForm buttonLabel='Edit' item={row.original}/>
+        //     </div>
+        //   ),
+        //   filterable: false
+        // }, 
       ]
     }
   }

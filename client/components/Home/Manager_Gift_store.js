@@ -51,18 +51,17 @@ class Manager_Gift_Store extends Component {
             <li className="breadcrumb-item active">Quản lý quà đổi thưởng</li>
           </ol>
           <Row className="mb-5">
-            <Col md={6}>
+            {/* <Col md={6}>
               <Search handlekeyword={this.onSearch} />
-            </Col>
-            <Col md={{ offset: 2, size: 4 }}>
+            </Col> */}
+            <Col md={2}>
               <Excel
                 data={this.state.items}
                 name="Gift.xlsx"
                 header={header}
               />
-
             </Col>
-            <Col md={3} style={{ marginLeft: "-157px" }}>
+            <Col>
               <ModalForm buttonLabel='Add' addItemToState={this.addItemToState} />
             </Col>
           </Row>

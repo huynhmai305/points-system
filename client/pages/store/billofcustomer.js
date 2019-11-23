@@ -58,12 +58,14 @@ class BillOfCustomer extends Component {
             <li className="breadcrumb-item active">Quản lý hóa đơn</li>
           </ol>
           <Row className="mb-5">
-            <Col md={{ offset: 8, size: 4 }}>
+            <Col md={2}>
               <Excel
                 data={this.state.items}
                 name="Bill.xlsx"
                 header={header}
               />
+              </Col>
+              <Col>
               <ModalForm buttonLabel='Add' addItemToState={this.addItemToState} id_user={this.state.id_user} point={this.state.point} username={this.state.username} />
             </Col>
           </Row>

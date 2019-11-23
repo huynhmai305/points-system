@@ -42,18 +42,18 @@ class Manager_Bill extends Component {
             <li className="breadcrumb-item active">Quản lý hóa đơn</li>
           </ol>
           <Row className="mb-5">
-            <Col md={4}>
+            {/* <Col md={4}>
               <Search handlekeyword={this.onSearch} />
               <FormText>Nhập mã hóa đơn tìm kiếm</FormText>
-            </Col>
-            <Col md={{ offset: 2, size: 4 }}>
+            </Col> */}
+            <Col md={2} sm={3} xs={4}>
               <Excel
                 data={this.state.items}
                 name="Bill.xlsx"
                 header={header}
               />
             </Col>
-            <Col md={3} style={{ marginLeft: "-157px" }}>
+            <Col>
               <ModalForm buttonLabel='Add' addItemToState={this.addItemToState} />
             </Col>
           </Row>

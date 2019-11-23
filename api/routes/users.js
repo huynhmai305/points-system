@@ -24,8 +24,8 @@ Exchange_Gift.belongsTo(Gift, { foreignKey: 'id_gift', targetKey: 'id_gift' });
 User.hasMany(Post, { foreignKey: 'storeId', sourceKey: 'id' });
 Post.belongsTo(User, { foreignKey: 'storeId' })
 
-User.hasMany(Review, { foreignKey: 'storeId', sourceKey: 'id' });
-Review.belongsTo(User, { foreignKey: 'storeId' })
+Post.hasMany(Review, { foreignKey: 'postId', sourceKey: 'id' });
+Review.belongsTo(User, { foreignKey: 'postId' })
 User.hasMany(Review, { foreignKey: 'userId', sourceKey: 'id' });
 Review.belongsTo(User, { foreignKey: 'userId' })
 //tim kiem ma hoa don
@@ -37,7 +37,7 @@ router.get('/tichdiem', (req, res) => {
     // attributes: ['total'],
   })
     .then(result => {
-      res.send(result);
+      res.send(resers/reviewult);
       console.log(result)
     })
 })
@@ -414,35 +414,23 @@ router.put('/post', (req, res) => {
 
 //get review
 router.get('/review', (req, res) => {
-  if (req.query.keyword && req.query.keyword.length > 0) {
-    Review.findAll({
-      where: {
-        storeId: {
-          [Op.like]: `%${req.query.keyword}%`
-        }
-      },
-      order: [['createdAt', 'DESC']]
+  Review.findAll({
+    order: [['createdAt', 'DESC']],
+    include: [User]
+  })
+    .then(result => {
+      res.send(result);
     })
-      .then(result => {
-        res.send(result);
-      })
-      .catch(err => console.log(err))
-  } else {
-    Review.findAll({
-      order: [['createdAt', 'DESC']]
-    })
-      .then(result => {
-        res.send(result);
-      })
-      .catch(err => console.log(err))
-  }
+    .catch(err => console.log(err))
+  
 })
-//get review with id_store
-router.get('/review/:id_store', (req, res) => {
+//get review with id_post
+router.get('/review/:id_post', (req, res) => {
   Review.findAll({
     where: {
-      userId: req.params.id_store
-    }
+      postId: req.params.id_post
+    },
+    include: [User]
   })
     .then(result => res.send(JSON.stringify(result)))
     .catch(err => console.log(err))
@@ -453,13 +441,12 @@ router.post('/review', (req, res) => {
   const data = {
     title: req.body.title,
     content: req.body.content,
-    userId: req.body.id_user,
-    storeId: req.body.id_store,
+    userId: req.body.userId,
+    postId: req.body.postId,
     rating: req.body.rating
   };
-  let { title, content, userId, storeId, rating } = data;
-
-  Post.create({ title, content, userId, storeId, rating })
+  let { title, content, userId, postId, rating } = data;
+  Review.create({ title, content, userId, postId, rating })
     .then(result => {
       console.log(result)
       res.json(result);

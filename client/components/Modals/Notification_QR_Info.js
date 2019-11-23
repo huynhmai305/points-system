@@ -14,6 +14,7 @@ const NotificationQR = (props) => {
     const pngUrl = canvas.toDataURL("image/png");
     console.log(pngUrl)
     getPngUrl(pngUrl)
+    toggle;
   }
 
   return (

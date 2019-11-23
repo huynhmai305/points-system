@@ -120,7 +120,6 @@ class AddEditForm extends React.Component {
             <FaPaperPlane/> Gửi
           </Button>
         </FormGroup>
-
       </Form>
     );
   }

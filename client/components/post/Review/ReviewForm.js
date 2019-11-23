@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { Container, Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import { Container, Form, FormGroup, Label, Input, Button, Alert } from 'reactstrap';
 import { Editor } from '@tinymce/tinymce-react'
 import StarRatings from 'react-star-ratings';
 const API_KEY = '2icj3szs411s8nqf8kqljxz7cvd2478keun6zro00pdptu17';
+import {FaPaperPlane} from 'react-icons/fa'
+
 
 class ReviewForm extends Component {
   constructor(props) {
@@ -15,7 +17,7 @@ class ReviewForm extends Component {
         content: "",
         rating: 0,
         userId: this.props.userId,
-        storeId: this.props.storeId
+        postId: this.props.postId
       }
     }
     this.changeRating = this.changeRating.bind(this);
@@ -60,7 +62,7 @@ class ReviewForm extends Component {
     this.setState({ error: "", loading: true })
     let { post } = this.state
     console.log(post, 'post')
-    fetch("http://localhost:3000/review", {
+    fetch("http://localhost:3000/users/review", {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
@@ -70,8 +72,7 @@ class ReviewForm extends Component {
         content: post.content,
         rating: post.rating,
         userId: post.userId,
-        storeId: post.storeId
-
+        postId: post.postId
       })
     })
       .then(response => response.json())
@@ -131,6 +132,7 @@ class ReviewForm extends Component {
               changeRating={this.changeRating}
               numberOfStars={5}
               name='rating'
+              starDimension='30px'
             />
           </FormGroup>
           <Label for="content">Nội dung<span style={{ color: 'red' }}> *</span></Label>
@@ -151,8 +153,8 @@ class ReviewForm extends Component {
           />
           {this.renderError()}
           <FormGroup>
-            <Button color="light" className="float-right mt-3">
-              <img src="/static/images/btn_send.png" style={{ width: '50px', height: '50px' }} />
+            <Button color="success" className="float-right mt-3">
+              <FaPaperPlane/> Gửi
             </Button>
           </FormGroup>
         </Form>

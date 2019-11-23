@@ -42,7 +42,7 @@ export default class Change_point extends Component {
   render() {
     return (
       <Admin title="Giá trị quy đổi điểm">
-        <Container className="mt-5">
+        <Container>
           <ol className="breadcrumb">
             <li className="breadcrumb-item">
               <a href="/admin">Trang chủ</a>

@@ -208,24 +208,28 @@ class PostForm extends Component {
           <FormGroup tag="fieldset">
             <legend>Tùy chọn thể loại bài viết</legend>
             <FormGroup check>
-              <CustomInput
-                type="radio"
-                id="type1"
-                value="type1"
-                name="type"
-                label="Viết bài cho chuyên mục"
-                checked={this.state.type === 'type1'}
-                onClick={this.handleChangeRadio}
-              />
-              <CustomInput
-                type="radio"
-                id="type2"
-                value="type2"
-                name="type"
-                label="Viết bài cho cửa hàng"
-                checked={this.state.type === 'type2'}
-                onClick={this.handleChangeRadio}
-              />
+              <Label check>
+                <Input
+                  type="radio"
+                  id="type1"
+                  value="type1"
+                  name="type"
+                  checked={this.state.type === 'type1'}
+                  onClick={this.handleChangeRadio}
+                /> Viết bài cho chuyên mục
+              </Label>
+            </FormGroup>
+            <FormGroup check>
+              <Label check>
+                <Input
+                  type="radio"
+                  id="type2"
+                  value="type2"
+                  name="type"
+                  checked={this.state.type === 'type2'}
+                  onClick={this.handleChangeRadio}
+                /> Viết bài cho cửa hàng
+              </Label>
             </FormGroup>
           </FormGroup>
           <FormGroup>

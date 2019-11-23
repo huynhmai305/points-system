@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, Row, Col, Media } from 'reactstrap';
+import {FaPaperPlane} from 'react-icons/fa'
 
 class FormEditProfile extends Component {
     state = {
@@ -86,7 +87,9 @@ class FormEditProfile extends Component {
                             <Input type="text" className="form-control" md={{size:6}} name="password" id="password" onChange={this.onChange} defaultValue={this.state.password} />
                         </FormGroup>
                         <FormGroup className="mt-5" md={{offset:4,size:4}}>
-                            <Button color="success">Submit</Button>
+                            <Button color="success">
+                                <FaPaperPlane/> Gửi
+                            </Button>
                         </FormGroup>
                     </Form>
                 </Col>

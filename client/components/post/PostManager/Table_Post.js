@@ -22,7 +22,7 @@ class PostTable extends Component {
           Header: 'Tiêu đề',
           accessor: 'title',
           style: { 'whiteSpace': 'unset' },
-          maxwidth: 250
+          width: 150
         },
         {
           Header: 'Nội dung',
@@ -32,14 +32,14 @@ class PostTable extends Component {
             </span>
           ),
           style: { 'whiteSpace': 'unset' },
-          maxwidth: 300
+          width: 500
         },
         {
           id: 'User',
           Header: 'Cửa hàng',
-          accessor: d => d.User.username,
-          style: { 'whiteSpace': 'unset' },
-          width: 100
+          accessor: d => (d.User == null ? '' : d.User.username),
+          style: { 'text-align': 'center' },
+          width: 150
         },
         {
           Header: 'Ngày đăng ký',

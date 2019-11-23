@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, FormText } from 'reactstrap';
-import ModalForm from '../Modals/ModalAddBill';
+import { Container, Row, Col } from 'reactstrap';
 import DataTable from '../Tables/Table_Bill';
 import Excel from '../exportTable/XLSX'
-import Search from '../Search';
+import Layout from '../Store';
 
 class Manager_Bill extends Component {
   constructor(props) {
@@ -13,9 +12,7 @@ class Manager_Bill extends Component {
     }
   }
   getItems(keyword) {
-    console.log(this.props.id_user)
-    // console.log(this.props.id_user)
-    let url = 'http://localhost:3000/users/bill/' + this.props.id_user;
+    let url = 'http://localhost:3000/users/bill';
     if (keyword.length > 0) {
       url = `${url}?keyword=${keyword}`
     }
@@ -29,44 +26,34 @@ class Manager_Bill extends Component {
     this.getItems(keyword)
   }
   componentDidMount() {
+    var info = JSON.parse(localStorage.getItem('user'));
+    console.log(info)
+    this.setState({
+      id: info[0].id,
+      name: info[0].username,
+      image: info[0].picture
+    })
     this.getItems('')
   }
 
   render() {
     const header = ["id", "total", "id_user", "User.username", "id_store", "createdAt"]
     return (
-      <div>
+      <Layout username={this.state.name} image={this.state.image}>
         <Container className="App">
           <ol className="breadcrumb">
             <li className="breadcrumb-item">
-              <a href="/admin">Trang chủ</a>
+              <a href="/store">Trang chủ</a>
             </li>
             <li className="breadcrumb-item active">Quản lý hóa đơn</li>
           </ol>
-          <Row>
-            <label >Tên khách hàng:</label>
-            <label></label> <br />
-            <label >Địa chỉ:</label>
-            <label></label> <br />
-            <label >Số điện thoại:</label>
-            <label></label> <br />
-            <label >Số điểm tính lũy:</label>
-            <label></label> <br />
-          </Row>
           <Row className="mb-5">
-            {/* <Col md={}>
-              <Search handlekeyword={this.onSearch} />
-              <FormText>Nhập mã hóa đơn tìm kiếm</FormText>
-            </Col> */}
             <Col md={2} sm={3} xs={4}>
               <Excel
                 data={this.state.items}
-                name="Bill_Of_Customer.xlsx"
+                name="Bill.xlsx"
                 header={header}
               />
-            </Col>
-            <Col>
-              <ModalForm buttonLabel='Add' addItemToState={this.addItemToState} />
             </Col>
           </Row>
           <Row>
@@ -75,7 +62,7 @@ class Manager_Bill extends Component {
             </Col>
           </Row>
         </Container>
-      </div>
+      </Layout>
     );
   }
 }

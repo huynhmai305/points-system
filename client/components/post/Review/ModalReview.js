@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Button, Modal, ModalHeader, ModalBody, Alert } from 'reactstrap'
 import AddEditForm from './ReviewForm'
 import { useRouter } from 'next/router'
-import {FaEdit, FaPlus} from 'react-icons/fa'
+import {FaEdit, FaPencilAlt} from 'react-icons/fa'
 
 class ModalForm extends Component {
   constructor(props) {
@@ -46,14 +46,13 @@ class ModalForm extends Component {
     } else {
       button = <Button
         color="success"
-        className="w3-circle"
         onClick={this.toggle}
         style={{ float: "left", marginRight: "10px" }}>
-        <FaPlus/>
+        <FaPencilAlt/> Viết bài
       </Button>
       title = 'Thêm mới'
     }
-
+    console.log(this.props.postId)
     return (
       <div>
         {button}
@@ -61,12 +60,10 @@ class ModalForm extends Component {
           <ModalHeader toggle={this.toggle} close={closeBtn}>{title}</ModalHeader>
           <ModalBody>
             <AddEditForm
-              addItemToState={this.props.addItemToState}
-              updateState={this.props.updateState}
               toggle={this.toggle}
               item={this.props.item}
               userId={this.state.userId}
-              storeId={this.props.storeId}
+              postId={this.props.postId}
             />
           </ModalBody>
         </Modal>
@@ -79,7 +76,7 @@ const getInfo = () => {
   const router = useRouter();
   const id = parseInt(router.query.id);
   return (
-    <ModalForm storeId={id} />
+    <ModalForm postId={id} />
   )
 }
 export default getInfo

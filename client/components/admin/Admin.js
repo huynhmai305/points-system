@@ -21,14 +21,14 @@ export default class Admin extends Component {
             <li className="active">
               <Link href="/admin"><a><FaHome/> Trang chủ</a></Link>
             </li>
-            <li >
+            <li>
               <a href="#customerSubmenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle">< FaUserFriends/> Quản lý khách hàng</a>
               <ul className="collapse list-unstyled" id="customerSubmenu">
                 <li>
                   <Link href="/admin/user"><a><FaList/> Danh sách khách hàng</a></Link>
                 </li>
                 <li>
-                  <Link href="/admin/post"><a><FaStarHalfAlt/> Bài review</a></Link>
+                  <Link href="/admin/review"><a><FaStarHalfAlt/> Bài review</a></Link>
                 </li>
               </ul>
             </li>

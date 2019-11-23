@@ -36,7 +36,12 @@ class GetInfo extends Component {
     return (
       <div>
         {data.map((item, key) => (
-          <Post_Detail_Store key={key} title={item.title} content={item.content} createdAt={item.createdAt} />
+          <Post_Detail_Store key={key} 
+            title={item.title}
+            content={item.content}
+            createdAt={item.createdAt}
+            image={item.User.picture}
+          />
         ))}
       </div>
     );
