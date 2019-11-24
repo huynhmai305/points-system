@@ -36,6 +36,8 @@ class ReviewList extends Component {
         </h4>
         {items.map((dt, key) => (
           <Review key={key}
+            id={dt.userId}
+            point={dt.User.point}
             title={dt.title}
             content={dt.content}
             rating={dt.rating}

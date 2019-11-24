@@ -27,7 +27,7 @@ class Home extends Component {
           <div className="row">
             <div className="col-xs-12 col-md-12 col-lg-12 mb-3">
               <div className="mb-3">
-                <h4 className="title"><span>Danh sách ưu đãi</span></h4>
+                <h4 className="title"><span>Danh sách quà thưởng</span></h4>
               </div>
               <Preferential/>
             </div>
@@ -37,12 +37,12 @@ class Home extends Component {
               </div>
               <Card type='all'/>
             </div>
-            <div className="col-xs-12 col-md-12 col-lg-12 mb-3">
+            {/* <div className="col-xs-12 col-md-12 col-lg-12 mb-3">
               <div className="mb-3">
                 <h4 className="title"><span>Khách hàng nói gì về H&M</span></h4>
               </div>
-              {/* <Card content="Content card"/> */}
-            </div>
+                <Card content="Content card"/>
+            </div> */}
             <div className="col-xs-12 col-md-12 col-lg-12 mb-3">
               <div className="mb-3">
                 <h4 className="title"><span>Tin tức</span></h4>

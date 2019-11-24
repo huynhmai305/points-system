@@ -7,7 +7,8 @@ class AddEditForm extends React.Component {
     id:'',
     total: 0,
     point_change:0 ,//giá trị quy đổi điểm hiện tại
-    id_store:''
+    id_store:'',
+    point: 0
   }
 
   onChange = e => {
@@ -32,7 +33,7 @@ class AddEditForm extends React.Component {
 
   submitFormAdd = e => {
     e.preventDefault()
-    console.log('da submit')
+    console.log(typeof this.state.total)
     fetch('http://localhost:3000/users/bill', {
       method: 'POST',
       headers: {
@@ -48,31 +49,31 @@ class AddEditForm extends React.Component {
     .then(response => response.json())
     .then(item => {
       alert(`Thêm thành công`);
+      console.log(this.props.point)
       var point = this.props.point + this.state.total / this.state.point_change;
       console.log(this.state.point_change)
-      fetch('http://localhost:3000/users/point', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          id: this.props.id_user,
-          point: point
+      this.setState({point}, () => {
+        console.log(this.state.point)
+        fetch('http://localhost:3000/users/point', {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            id: this.props.id_user,
+            point: this.state.point
+          })
         })
-      })
-      .then(response => response.json())
-      .then(item => {
-        alert(`Tích điểm thành công cho khách hàng ${this.props.username}`);
-        this.updateStorage;
-        location.reload()
-      })      
+        .then(response => response.json())
+        .then(item => {
+          alert(`Tích điểm thành công cho khách hàng ${this.props.username}`);
+          this.updateStorage;
+          location.reload()
+        })     
+      }) 
     })
   }
     componentDidMount() {
-      if (this.props.item){
-        const {id, total, id_store} = this.props.item;
-        this.setState({id, total, id_store})
-      }
       let info = JSON.parse(localStorage.getItem('user'))
       this.setState({id_store: info[0].id})
       this.getItems()

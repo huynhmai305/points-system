@@ -14,7 +14,7 @@ class Table_Bill_Of_Customer extends Component {
           Header: 'Mã hóa đơn',
           accessor: 'id',
           style: {'textAlign': 'center'},
-          width: 100
+          width: 150
         }, 
         {
           Header: 'Tổng hóa đơn',
@@ -24,19 +24,21 @@ class Table_Bill_Of_Customer extends Component {
             </span>
           ),
           style: {'textAlign': 'center'},
-          maxwidth: 200
+          maxwidth: 200,
+          filterable: false
         }, 
         {
           Header: 'Điểm được tích lũy',
           accessor: 'point',
           Cell: row => (<span>{row.original.total / 1000}</span>),
           style: {'textAlign': 'center'},
-          width: 200
+          width: 200,
+          filterable: false
         }, 
         {
           Header: 'Ngày tạo',
           Cell: row => (<span>{moment(row.original.createdAt).format('DD/MM/YYYY, h:mm:ss a')}</span>),
-          style: {'whiteSpace': 'unset'},
+          style: {'textAlign': 'center'},
           maxwidth: 300,
           filterable: false
         }

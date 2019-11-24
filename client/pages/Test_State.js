@@ -1,22 +1,21 @@
-import { Component } from 'react'
+
+import React, { Component } from 'react';
 import dynamic from 'next/dynamic'
-const CKEditor = dynamic(() => import('../components/editor/Editor'), {
-  ssr: false
-})
-class ComponentAttempt extends Component {
-  static getInitialProps({ req, query }) {
-    return {}
-  }
+const SweetAlert = dynamic(()=> import('react-bootstrap-sweetalert'))
+class Test_State extends Component {
   render() {
-    return <div>
-      <CKEditor 
-        data="Some Default Data" 
-        onChange={ ( event, editor ) => {
-            const data = editor.getData();
-            console.log(data)
-        } }
-      />
-    </div>
+    return (
+      <div>
+        <SweetAlert 
+          success 
+          title="Đăng nhập thành công"
+          onConfirm={this.onConfirm}
+          onCancel={this.onCancel}
+          confirmBtnBsStyle="success"
+        />
+      </div>
+    );
   }
 }
-export default ComponentAttempt
+
+export default Test_State;

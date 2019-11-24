@@ -6,9 +6,9 @@ const CardComponent = (props) => {
   const href = props.href + '?id=' + props.id_post
   return (
     // <Col xs={12} sm={6} md={3} lg={3}>
-    <Card className="mb-3" style={{ minWidth: '10rem' }}>
+    <Card className="mb-3" style={{ minWidth: '17rem', maxWidth:'17rem' }}>
       <CardLink href={href}>
-        <CardImg top width="100%" height="150px" src={props.picture ? props.picture : "http://placehold.it/900x450"} alt="Card image cap" />
+        <CardImg top src={props.picture ? props.picture : "/static/images/H&M-Logo.svg"} alt="Card image cap" style={{width:'100%',height:'150px'}}/>
         <CardText className="gift">
           <FaClock/>{' '}
           <span>07:00 - 22:00</span>

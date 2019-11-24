@@ -51,13 +51,6 @@ class Customer extends Component {
               </a>
               <h2 className="text-light">
                 Hệ thống tích điểm H&M
-                {
-                  this.props.point !== null ? (
-                    <p className="text-light float-right" style={{ fontSize: '15px' }}>
-                      {this.props.username}: {this.props.point}
-                    </p>
-                  ) : null
-                }
               </h2>
 
             </header>

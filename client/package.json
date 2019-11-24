@@ -51,6 +51,7 @@
     "rc-tween-one": "^2.6.3",
     "react": "^16.8.6",
     "react-activity-feed": "^0.9.22",
+    "react-bootstrap-sweetalert": "^5.1.7",
     "react-burger-menu": "^2.6.10",
     "react-chartjs": "^1.2.0",
     "react-chartjs-2": "^2.7.6",

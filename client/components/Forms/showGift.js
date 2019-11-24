@@ -28,9 +28,9 @@ class showGift extends Component {
             console.log()
             fetch('http://localhost:3000/users/gift', {
                 method: 'PUT',
-                // headers: {
-                //     'Content-Type': 'application/json'
-                // },
+                headers: {
+                    'Content-Type': 'application/json'
+                },
                 body: JSON.stringify({
                     id: this.state.id,
                     quantity: this.state.quantity    
@@ -88,8 +88,9 @@ class showGift extends Component {
       }
     render() {
         return (
-            <div className="p-3">
-                <Card className="h-100 thumbnail">
+            <div>
+                {this.state.point_user >= this.state.point_gift ? console.log('đc'): console.log('ko')}
+                <Card className="thumbnail mb-3" style={{ minWidth: '17rem', maxWidth:'17rem' }}>
                     <CardHeader>
                         <div className="btn-coupon">
                             <div className="coupon-code float-right">{this.props.id_gift}</div>

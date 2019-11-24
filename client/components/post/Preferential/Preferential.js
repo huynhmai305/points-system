@@ -3,38 +3,30 @@ import { Media, Row, Col, Card, CardImg, CardText, CardBody, CardTitle, Button }
 import {FaClock} from 'react-icons/fa'
 class Preferential extends Component {
   render() {
+    const {point, title, content, quantity, name, address} = this.props
     return (
-      <Col md={3} sm={6} xs={12} >
-        <Card>
-          <div className="hidden">
-            <CardImg top width="100%" src="https://via.placeholder.com/300x150/?Text=WebsiteBuilders.com" alt="Card image cap" />
-            <CardText className="gift">Đi 4 tính tiền 3</CardText>
-            <CardText className="time_gift">
-              <FaClock/>
-              <span>7 ngày</span>
-            </CardText>
-            <div className="overlay">
-              <div className="text">Chỉ 20k/suất bún đậu</div>
-            </div>
+      <Card className="mb-3" style={{ minWidth: '17rem', maxWidth:'17rem' }}>
+        <div className="hidden">
+          <CardImg top src="/static/images/btn_gift.png" alt="Card image cap" style={{width:'100%',height:'150px'}}/>
+          <CardText className="gift">Điểm đổi: {point}</CardText>
+          <div className="overlay">
+          <div className="text">{content}</div>
           </div>
-          <CardBody>
-            <CardTitle>
-              <span className="title_caption ">Độc quyền</span>
-              <span className="_title_caption">ĐI 4 TRẢ TIỀN 3 - ĂN BÚN ĐẬU PHÊ PHA</span>
-            </CardTitle>
-            <hr />
-            <Row>
-              <Col href="#" md={2} sm={2} xs={2}>
-                <Media object src="https://via.placeholder.com/30x30" alt="logo" />
-              </Col>
-              <Col>
-                <h6 className="name_store no_margin text-uppercase">Bún đậu Cố Hương</h6>
-                <h6 className="text-muted font_defaul address">107 E4 Lê Thanh Nghị, Bách Khoa, Hai Bà Trưng,...</h6>
-              </Col>
-            </Row>
-          </CardBody>
-        </Card>
-      </Col>
+        </div>
+        <CardBody>
+          <CardTitle>
+            <span className="title_caption ">Số lượng: {quantity}</span>
+            <span className="_title_caption">{title}</span>
+          </CardTitle>
+          <hr />
+          <Row>
+            <Col>
+              <h6 className="name_store no_margin text-uppercase">{name}</h6>
+              <h6 className="text-muted font_defaul address">{address}</h6>
+            </Col>
+          </Row>
+        </CardBody>
+      </Card>
     );
   }
 }

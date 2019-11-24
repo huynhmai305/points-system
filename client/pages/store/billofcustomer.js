@@ -15,10 +15,6 @@ class BillOfCustomer extends Component {
       name: '',
       id_user: this.props.id_user,
       username: '',
-      birthday: '',
-      address: '',
-      phone: '',
-      email: '',
       point: 0,
       image: ''
     }
@@ -27,7 +23,10 @@ class BillOfCustomer extends Component {
   getItems() {
     fetch('http://localhost:3000/getInfoById/' + this.props.id_user)
     .then(res => res.json())
-    .then( info => this.setState({info}))
+    .then( info => {
+      this.setState({info, point: info[0].point, username: info[0].username})
+      console.log(info[0].username)
+    })
     let url = 'http://localhost:3000/users/bill/' + this.props.id_user;
     fetch(url)
       .then(response => response.json())
@@ -42,7 +41,7 @@ class BillOfCustomer extends Component {
 
   componentDidMount() {
     var info = JSON.parse(localStorage.getItem('user'));
-    this.setState({ name: info[0].username, image: info[0].picture })
+    this.setState({ name: info[0].username, image: info[0].picture})
     this.getItems()
   }
 
@@ -66,7 +65,7 @@ class BillOfCustomer extends Component {
               />
               </Col>
               <Col>
-              <ModalForm buttonLabel='Add' addItemToState={this.addItemToState} id_user={this.state.id_user} point={this.state.point} username={this.state.username} />
+              <ModalForm buttonLabel='Add' id_user={this.state.id_user} point={this.state.point} username={this.state.username} />
             </Col>
           </Row>
           {this.state.info.map((item,key) => (

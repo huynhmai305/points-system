@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ShowGift from '../../components/Forms/showGift';
 import Customer from '../../components/Customer';
-import { Container } from 'reactstrap';
+import { Container, CardDeck } from 'reactstrap';
 
 class Exchange_gift extends Component {
   constructor(props) {
@@ -17,9 +17,12 @@ class Exchange_gift extends Component {
 
   getItems() {
     let url = 'http://localhost:3000/users/giftpoint/' + this.state.point;
+    //let url = 'http://localhost:3000/users/gift'
     fetch(url)
       .then(response => response.json())
-      .then(items => this.setState({ items }))
+      .then(items => {
+        this.setState({ items })
+      })
       .catch(err => console.log(err))
   }
   componentDidMount() {
@@ -34,8 +37,12 @@ class Exchange_gift extends Component {
   render() {
     const { name, image, point } = this.state
     return (
-      <Customer username={name} image={image} point={point}>
-        <Container className="showgift">
+      <Customer username={name} image={image}>
+        <div className="mb-5 float-right mr-2" style={{border:'#01A9DB solid 4px',borderRadius:'5px', padding:'5px'}}>
+          <b>Điểm hiện tại: {point}</b>
+        </div>
+        <Container className="col-12">
+          <CardDeck>
           {this.state.items.map((val, key) => (
             <ShowGift key={key}
               id={val.id}
@@ -48,6 +55,7 @@ class Exchange_gift extends Component {
               quantity={val.quantity}
             />
           ))}
+          </CardDeck>
         </Container>
       </Customer>
 

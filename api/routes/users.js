@@ -143,7 +143,7 @@ router.get('/gift', (req, res) => {
       order: [['createdAt', 'DESC']],
       include: [{
         model: User,
-        attributes: ['username']
+        attributes: ['username','address']
       }]
     })
       .then(result => {
@@ -154,7 +154,7 @@ router.get('/gift', (req, res) => {
     Gift.findAll({
       include: [{
         model: User,
-        attributes: ['username']
+        attributes: ['username', 'address']
       }],
       order: [['createdAt', 'DESC']]
     })

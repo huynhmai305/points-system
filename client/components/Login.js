@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Container, Col, Form, FormGroup, Label, Input, Button, FormFeedback, Toast,ToastHeader,ToastBody, Spinner} from 'reactstrap';
 import Router from 'next/router';
+import dynamic from 'next/dynamic'
+const SweetAlert = dynamic(()=> import('react-bootstrap-sweetalert'))
 
 class Login extends Component {
   constructor(props) {
@@ -63,6 +65,13 @@ class Login extends Component {
           colortoast:'success',
           show:true
         })
+        // <SweetAlert 
+        //   success 
+        //   title="Đăng nhập thành công"
+        //   onConfirm={this.onConfirm}
+        //   onCancel={this.onCancel}
+        //   confirmBtnBsStyle="success"
+        // />
         localStorage.setItem('user', JSON.stringify(item))
         let role = item[0].role;
         if (role === 0) {
@@ -141,11 +150,11 @@ class Login extends Component {
               </FormFeedback>
             </FormGroup>
           </Col>
-          <FormGroup className="mb-3" check>
+          {/* <FormGroup className="mb-3" check>
             <Label check>
               <Input type="checkbox" name="save" defaultChecked />Lưu lại
             </Label>
-          </FormGroup>
+          </FormGroup> */}
           <FormGroup>
             <Button color="success" type="submit">
               Đăng nhập
