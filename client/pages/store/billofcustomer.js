@@ -5,6 +5,8 @@ import DataTable from '../../components/Tables/Table_Bill_Of_Customer';
 import Excel from '../../components/exportTable/XLSX';
 import Store from '../../components/Store';
 import { useRouter } from 'next/router'
+import QuetQRBill from '../../components/store/TichDiem'
+import FormAddBill from '../../components/Forms/FormAddBill'
 
 class BillOfCustomer extends Component {
   constructor(props) {
@@ -16,7 +18,8 @@ class BillOfCustomer extends Component {
       id_user: this.props.id_user,
       username: '',
       point: 0,
-      image: ''
+      image: '',
+      bill: []
     }
   }
 
@@ -39,6 +42,10 @@ class BillOfCustomer extends Component {
       .catch(err => console.log(err))
   }
 
+  addBillQR = (bill) => {
+    this.setState({bill})
+  }
+
   componentDidMount() {
     var info = JSON.parse(localStorage.getItem('user'));
     this.setState({ name: info[0].username, image: info[0].picture})
@@ -47,6 +54,7 @@ class BillOfCustomer extends Component {
 
   render() {
     const header = ["id", "total", "createdAt"]
+    const { bill } = this.state
     return (
       <Store username={this.state.name} image={this.state.image}>
         <Container className="App">
@@ -63,11 +71,17 @@ class BillOfCustomer extends Component {
                 name="Bill.xlsx"
                 header={header}
               />
-              </Col>
-              <Col>
+            </Col>
+            <Col>
               <ModalForm buttonLabel='Add' id_user={this.state.id_user} point={this.state.point} username={this.state.username} />
             </Col>
+            <Col>
+              <QuetQRBill handleData={this.addBillQR} />
+            </Col>
           </Row>
+          {this.state.bill != null ? (
+            <FormAddBill id_user={this.state.id_user} bill={bill}/>
+          ) : ''}
           {this.state.info.map((item,key) => (
           <Form className="align-content-center" key={key}>
             <h4 className="text-center">Thông tin tích điểm của khách hàng</h4>

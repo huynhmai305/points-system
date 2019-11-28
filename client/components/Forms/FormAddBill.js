@@ -76,6 +76,11 @@ class AddEditForm extends React.Component {
     componentDidMount() {
       let info = JSON.parse(localStorage.getItem('user'))
       this.setState({id_store: info[0].id})
+      if(this.props.bill) {
+        console.log(this.props.bill)
+        const {id, id_store, point} = this.props.bill
+        this.setState({id, id_store, point})
+      }
       this.getItems()
     }
   render() {
