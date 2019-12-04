@@ -5,6 +5,7 @@ import moment from 'moment'
 import ReactTable from 'react-table'
 import 'react-table/react-table.css'
 import {FaTrashAlt} from 'react-icons/fa'
+import Swal from 'sweetalert2'
 
 class DataTable extends Component {
   constructor(props) {
@@ -63,9 +64,16 @@ class DataTable extends Component {
   }
   
   deleteItem = id => {
-    let confirmDelete = window.confirm('Bạn có chắc muốn xóa không?')
-    if (confirmDelete) {
-      // console.log(id)
+    Swal.fire({
+      title: 'Bạn có chắc muốn xóa không?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Hủy',
+      confirmButtonText: 'Xóa'
+    })
+    .then((result) => {
       fetch('http://localhost:3000/users/gift', {
         method: 'delete',
         headers: {
@@ -77,11 +85,13 @@ class DataTable extends Component {
       })
         .then(response => response.json())
         .then(item => {
-          alert(`Xóa thành công id: ${id}`);
+          if (item) {
+            Swal.fire('Xóa thành công!','','success')
+          }
           location.reload();
         })
         .catch(err => console.log(err))
-    }
+    })
   }
   render() {
     let {items} = this.props;

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, Container, Col } from 'reactstrap';
 import Admin from '../../components/admin/Admin'
 import {FaExchangeAlt} from 'react-icons/fa'
+import Swal from 'sweetalert2'
 
 export default class Change_point extends Component {
   state = {
@@ -31,14 +32,15 @@ export default class Change_point extends Component {
       })
     })
       .then(() => {
-        alert(`Chỉnh sửa thành công `);
+        Swal.fire(`Thiết lập điểm thành công`,"", "success")
         location.reload()
       })
   }
-  componentDidMount() {
 
+  componentDidMount() {
     this.getItems('')
   }
+
   render() {
     return (
       <Admin title="Giá trị quy đổi điểm">

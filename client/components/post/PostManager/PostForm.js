@@ -8,6 +8,7 @@ const CKEditor = dynamic(() => import('../../editor/Editor'), {
 import Select from 'react-select';
 import Type from '../../type.json'
 import {FaPaperPlane} from 'react-icons/fa'
+import Swal from 'sweetalert2'
 //const API_KEY = '2icj3szs411s8nqf8kqljxz7cvd2478keun6zro00pdptu17';
 
 class PostForm extends Component {
@@ -128,7 +129,7 @@ class PostForm extends Component {
     })
       .then(response => response.json())
       .then(item => {
-        alert(`Thêm bài viết thành công`);
+        Swal.fire("Thêm bài viết thành công","", "success")
         location.reload()
       })
       .catch(err => {
@@ -160,7 +161,7 @@ class PostForm extends Component {
     })
       .then(response => response.json())
       .then(item => {
-        alert(`Chỉnh sửa thành công id: ${this.state.post.id}`);
+        Swal.fire(`Chỉnh sửa thành công id: ${this.state.id}`,"", "success")
         location.reload()
       })
       .catch(err => {

@@ -5,6 +5,7 @@ import moment from 'moment'
 import ReactTable from 'react-table'
 import 'react-table/react-table.css'
 import {FaHandHoldingUsd} from 'react-icons/fa'
+import Swal from 'sweetalert2'
 
 class DataTable extends Component {
     constructor(props) {
@@ -82,28 +83,6 @@ class DataTable extends Component {
           tooltipOpen: !this.state.tooltipOpen
         });
       }
-
-    deleteItem = id => {
-        let confirmDelete = window.confirm('Bạn có chắc muốn xóa không?')
-        if(confirmDelete){
-        // console.log(id)
-        fetch('http://localhost:3000/admin/user', {
-          method: 'delete',
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-              id
-          })
-        })
-        .then(response => response.json())
-        .then(item => {
-            alert(`Xóa thành công id: ${id}`);
-            location.reload();
-        })
-        .catch(err => console.log(err))
-        }
-    }
 
   render() {
     const {items} = this.props

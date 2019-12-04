@@ -5,6 +5,7 @@ import moment from 'moment'
 import ReactTable from 'react-table'
 import 'react-table/react-table.css'
 import { FaTrashAlt } from 'react-icons/fa';
+import Swal from 'sweetalert2'
 
 class DataTable extends Component {
     state = {
@@ -70,25 +71,34 @@ class DataTable extends Component {
     }
 
   deleteItem = id => {
-    let confirmDelete = window.confirm('Bạn có chắc muốn xóa không?')
-    if(confirmDelete){
-      // console.log(id)
-      fetch('http://localhost:3000/admin/user', {
-      method: 'delete',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        id
-      })
+    Swal.fire({
+      title: 'Bạn có chắc muốn xóa không?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Hủy',
+      confirmButtonText: 'Xóa'
     })
-      .then(response => response.json())
-      .then(item => {
-        alert(`Xóa thành công id: ${id}`);
-        location.reload();
+    .then((result) => {
+      fetch('http://localhost:3000/admin/user', {
+        method: 'delete',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          id
+        })
       })
-      .catch(err => console.log(err))
-    }
+        .then(response => response.json())
+        .then(item => {
+          if (item) {
+            Swal.fire('Xóa thành công!','','success')
+          }
+          location.reload();
+        })
+        .catch(err => console.log(err))
+    })
   }
   render() {
     const {items} = this.props

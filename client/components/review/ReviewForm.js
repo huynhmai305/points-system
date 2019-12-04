@@ -3,6 +3,7 @@ import { Container, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { Editor } from '@tinymce/tinymce-react'
 import StarRatings from 'react-star-ratings';
 const API_KEY = '2icj3szs411s8nqf8kqljxz7cvd2478keun6zro00pdptu17';
+import Swal from 'sweetalert2'
 
 class ReviewForm extends Component {
     constructor(props) {

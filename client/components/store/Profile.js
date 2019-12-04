@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Layout from '../Store';
 import ModalChangePass from '../Modals/ModalChangePass';
 import { Container } from 'reactstrap';
+import Swal from 'sweetalert2'
 
 class Profile extends Component {
   constructor(props) {
@@ -60,7 +61,7 @@ class Profile extends Component {
     })
       .then(response => response.json())
       .then(item => {
-        alert(`Chỉnh sửa thành công `);
+        Swal.fire(`Chỉnh sửa thành công`,"", "success")
         this.updateStorage();
         location.reload()
       })

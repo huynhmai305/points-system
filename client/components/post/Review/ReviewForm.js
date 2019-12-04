@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container, Form, FormGroup, Label, Input, Button, Alert } from 'reactstrap';
 import StarRatings from 'react-star-ratings';
 import {FaPaperPlane} from 'react-icons/fa'
+import Swal from 'sweetalert2'
 import dynamic from 'next/dynamic'
 const CKEditor = dynamic(() => import('../../editor/Editor'), {
   ssr: false

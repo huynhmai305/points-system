@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, FormFeedback } from 'reactstrap';
+import Swal from 'sweetalert2'
 
 class ModalExample extends React.Component {
   constructor(props) {
@@ -36,7 +37,7 @@ class ModalExample extends React.Component {
     })
       .then(response => response.json())
       .then(item => {
-        alert(`Chỉnh sửa thành công `);
+        Swal.fire(`Chỉnh sửa thành công`,"", "success")
         location.reload()
       })
 

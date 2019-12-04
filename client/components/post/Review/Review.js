@@ -4,6 +4,7 @@ import StarRatings from 'react-star-ratings';
 import moment from 'moment'
 import {FaHeart} from 'react-icons/fa'
 import HtmlParser from 'react-html-parser'
+import Swal from 'sweetalert2'
 
 class CardComponent extends Component {
   constructor (props) {
@@ -37,7 +38,7 @@ class CardComponent extends Component {
       })
       .then(response => response.json())
       .then(item => {
-        alert(`Bạn vừa tặng 1 điểm cho ${this.props.username}, cảm ơn bạn`);
+        Swal.fire(`Bạn vừa tặng 1 điểm cho ${this.props.username}, cảm ơn bạn`,"","info");
       })
   }
   render() {

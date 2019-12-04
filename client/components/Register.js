@@ -3,6 +3,7 @@ import { Col, Row, Button, Form, FormGroup, Label, Input, FormText, FormFeedback
 import { renderEmail } from 'react-html-email'
 import MailTemplate from '../components/mail/MailTemplate'
 import NotificationQR from './Modals/Notification_QR_Info'
+import Swal from 'sweetalert2'
 
 class Register extends Component {
   state = {
@@ -44,7 +45,7 @@ class Register extends Component {
       .then(item => {
         this.setState({ showQR: true })
       })
-      .catch(err => alert('Tài khoản đã tồn tại'))
+      .catch(err => Swal.fire('Tài khoản đã tồn tại',"","error"))
   }
 
   submitNotification = (pngUrl) => {
@@ -65,7 +66,7 @@ class Register extends Component {
     })
       .then(response => response.json())
       .then(item => {
-        alert('Đã gửi mã QR về mail bạn thành công!')
+        Swal.fire('Đăng ký thành công','Đã gửi mã QR về mail bạn thành công!',"success")
         location.reload();
       })
       .catch(err => console.log(err))

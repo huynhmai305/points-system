@@ -1,12 +1,13 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import NumberFormat from 'react-number-format';
+import Swal from 'sweetalert2'
 
 class AddEditForm extends React.Component {
   state = {
     id:'',
     total: 0,
-    point_change:0 ,//giá trị quy đổi điểm hiện tại
+    point_change: 0 ,//giá trị quy đổi điểm hiện tại
     id_store:'',
     point: 0
   }
@@ -48,7 +49,7 @@ class AddEditForm extends React.Component {
     })
     .then(response => response.json())
     .then(item => {
-      alert(`Thêm thành công`);
+      Swal.fire("Thêm thành công","", "success")
       console.log(this.props.point)
       var point = this.props.point + this.state.total / this.state.point_change;
       console.log(this.state.point_change)
@@ -66,7 +67,7 @@ class AddEditForm extends React.Component {
         })
         .then(response => response.json())
         .then(item => {
-          alert(`Tích điểm thành công cho khách hàng ${this.props.username}`);
+          Swal.fire("Tích điểm thành công",`cho khách hàng ${this.props.username}`, "success")
           this.updateStorage;
           location.reload()
         })     
@@ -78,8 +79,8 @@ class AddEditForm extends React.Component {
       this.setState({id_store: info[0].id})
       if(this.props.bill) {
         console.log(this.props.bill)
-        const {id, id_store, point} = this.props.bill
-        this.setState({id, id_store, point})
+        const {id, id_store, total} = this.props.bill[0]
+        this.setState({id, id_store, total})
       }
       this.getItems()
     }

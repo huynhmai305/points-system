@@ -3,6 +3,7 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 const randomString = require('random-string');
 import Select from 'react-select';
 import {FaPaperPlane} from 'react-icons/fa'
+import Swal from 'sweetalert2'
 
 class FormAddEditGift extends Component {
     constructor(props) {
@@ -56,7 +57,7 @@ class FormAddEditGift extends Component {
             .then(response => response.json())
             .then(item => {
                 console.log(item)
-                alert(`Thêm thành công`);
+                Swal.fire("Thêm thành công", "", "success")
                 location.reload()
             })
 
@@ -80,7 +81,7 @@ class FormAddEditGift extends Component {
         })
             .then(response => response.json())
             .then(item => {
-                alert(`Chỉnh sửa thành công id: ${this.state.id}`);
+                Swal.fire(`Chỉnh sửa thành công id: ${this.state.id}`,"", "success")
                 location.reload()
             })
     }

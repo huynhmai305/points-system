@@ -28,10 +28,10 @@ class ModalScan extends Component {
           <ModalBody>
             <ReadQR handleData={this.copyText} />
           </ModalBody>
-          <ModalFooter>
+          {/* <ModalFooter>
             <Button color="primary" onClick={toggle}>Tìm kiếm</Button>{' '}
             <Button color="secondary" onClick={toggle}>Hủy</Button>
-          </ModalFooter>
+          </ModalFooter> */}
         </Modal>
       </div>
     );

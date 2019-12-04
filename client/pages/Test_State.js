@@ -1,18 +1,14 @@
-
+import Swal from 'sweetalert2'
 import React, { Component } from 'react';
-import dynamic from 'next/dynamic'
-const SweetAlert = dynamic(()=> import('react-bootstrap-sweetalert'))
+
 class Test_State extends Component {
+  a(){
+    Swal.fire("abc","","success")
+  }
   render() {
     return (
       <div>
-        <SweetAlert 
-          success 
-          title="Đăng nhập thành công"
-          onConfirm={this.onConfirm}
-          onCancel={this.onCancel}
-          confirmBtnBsStyle="success"
-        />
+        <button onClick={()=>this.a()}>click</button>
       </div>
     );
   }

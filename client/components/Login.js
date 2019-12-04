@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { Container, Col, Form, FormGroup, Label, Input, Button, FormFeedback, Toast,ToastHeader,ToastBody, Spinner} from 'reactstrap';
 import Router from 'next/router';
-import dynamic from 'next/dynamic'
-const SweetAlert = dynamic(()=> import('react-bootstrap-sweetalert'))
+import Swal from 'sweetalert2'
 
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      'email': '',
-      'password': '',
+      email: '',
+      password: '',
       validate: {
         emailState: '',
       },
@@ -65,13 +64,7 @@ class Login extends Component {
           colortoast:'success',
           show:true
         })
-        // <SweetAlert 
-        //   success 
-        //   title="Đăng nhập thành công"
-        //   onConfirm={this.onConfirm}
-        //   onCancel={this.onCancel}
-        //   confirmBtnBsStyle="success"
-        // />
+        Swal.fire(`Đăng nhập thành công`,"", "success")
         localStorage.setItem('user', JSON.stringify(item))
         let role = item[0].role;
         if (role === 0) {

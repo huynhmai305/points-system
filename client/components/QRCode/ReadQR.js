@@ -24,7 +24,7 @@ class ReadQR extends Component {
                     delay={300}
                     onError={this.handleError}
                     onScan={this.handleScan}
-                    style={{ width: '30%', height: '30%' }}
+                    style={{ width: '300px', height: '300px' }}
                 />
                 <p>{this.state.data}</p>
             </div>
