@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col, Alert } from 'reactstrap';
 import Search from '../Search';
 import Layout from '../Customer.js';
 import ReadQR from '../QRCode/ReadQR';
@@ -49,7 +49,7 @@ export default class TichDiem extends Component {
           <Row className="mt-5">
             <Col xs="12" sm="12" md="12">
               <Col xs="12" sm="6" md="6">
-                <ReadQR handleData={this.onSearch} /><br />
+                <ReadQR handleData={this.addBillQR} /><br />
                 <div className="text-danger">
                   {msg}
                 </div>

@@ -63,12 +63,16 @@ class Profile extends Component {
     })
       .then(response => response.json())
       .then(item => {
-        Swal.fire("Chỉnh sửa thành công", "", "success")
+        Swal.fire("Chỉnh sửa thông tin thành công", "", "success")
         this.updateStorage();
         location.reload();
       })
-    // console.log(this.state.phone)
+      .catch(() => {
+        Swal.fire("Kích thước ảnh quá lớn","","error")
+        location.reload()
+      })
   }
+
   show_gift() {
     fetch('http://localhost:3000/users/giftuser/' + this.state.id)
       .then(response => response.json())
@@ -77,6 +81,7 @@ class Profile extends Component {
         this.setState({ items })
       })
   }
+
   handleChange = e => {
     var name = e.target.name;
     var value = e.target.value;

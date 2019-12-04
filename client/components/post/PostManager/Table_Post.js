@@ -17,24 +17,24 @@ class PostTable extends Component {
           Header: '#',
           accessor: 'id',
           style: { 'textAlign': 'center' },
-          width: 50
+          width: 100
         },
         {
           Header: 'Tiêu đề',
           accessor: 'title',
           style: { 'whiteSpace': 'unset' },
-          width: 150
+          width: 350
         },
-        {
-          Header: 'Nội dung',
-          Cell: row => (
-            <span>
-              {HtmlParser(row.original.content.slice(0, 500) + ' <a href="#" onClick={}>Xem chi tiết >></a>')}
-            </span>
-          ),
-          style: { 'whiteSpace': 'unset' },
-          width: 500
-        },
+        // {
+        //   Header: 'Nội dung',
+        //   Cell: row => (
+        //     <span>
+        //       {HtmlParser(row.original.content.slice(0, 500) + ' <a href="#" onClick={}>Xem chi tiết >></a>')}
+        //     </span>
+        //   ),
+        //   style: { 'whiteSpace': 'unset' },
+        //   width: 500
+        // },
         {
           id: 'User',
           Header: 'Cửa hàng',
@@ -55,6 +55,7 @@ class PostTable extends Component {
             <div>
               <Button color="danger" style={{ float: "left", marginRight: "10px" }} onClick={() => this.deleteItem(row.original.id)}><FaTrashAlt/></Button>
               <ModalForm buttonLabel='Edit' item={row.original} />
+              <Button color="info" onClick={() => this.viewContent(row.original.title,HtmlParser(row.original.content))}>Xem nội dung</Button>
             </div>
           ),
           filterable: false
@@ -92,6 +93,10 @@ class PostTable extends Component {
         })
         .catch(err => console.log(err))
     })
+  }
+
+  viewContent = (title,content) => {
+    Swal.fire({title},{content},"info")
   }
   render() {
     let { items } = this.props;

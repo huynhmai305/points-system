@@ -43,6 +43,7 @@ class BillOfCustomer extends Component {
   }
 
   addBillQR = (bill) => {
+    //bill:{id:'',total:0,id_store:0}
     const billArr = (new Function("return [" + bill+ "];")());
     console.log(billArr)
     this.setState({bill: billArr})

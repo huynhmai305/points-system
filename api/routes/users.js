@@ -375,9 +375,9 @@ router.post('/post', (req, res) => {
   Post.create({ title, content, storeId, type })
     .then(result => {
       console.log(result)
-      res.sendStatus(200).json(result);
+      return res.status(200).json(result);
     })
-    .catch(err => console.log(err))
+    // .catch(err => console.log(err))
 })
 //delete post
 router.delete('/post', (req, res) => {
@@ -406,8 +406,7 @@ router.put('/post', (req, res) => {
   }
   Post.update(dt, { where: { id: req.body.id } })
     .then(result => {
-      res.json(result);
-      res.sendStatus(200);
+      return res.status(200).json(result);
     })
     .catch(err => console.log(err))
 })

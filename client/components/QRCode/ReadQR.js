@@ -26,7 +26,7 @@ class ReadQR extends Component {
                     onScan={this.handleScan}
                     style={{ width: '300px', height: '300px' }}
                 />
-                <p>{this.state.data}</p>
+                {/* <p>{this.state.data}</p> */}
             </div>
         );
     }

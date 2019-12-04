@@ -67,7 +67,6 @@ class Register extends Component {
       .then(response => response.json())
       .then(item => {
         Swal.fire('Đăng ký thành công','Đã gửi mã QR về mail bạn thành công!',"success")
-        location.reload();
       })
       .catch(err => console.log(err))
   }
@@ -170,10 +169,10 @@ class Register extends Component {
                   />
                   <FormFeedback valid>
                     Nhập password trùng khớp
-                                </FormFeedback>
+                  </FormFeedback>
                   <FormFeedback>
                     Password không trùng khớp
-                                </FormFeedback>
+                  </FormFeedback>
                 </FormGroup>
               </Col>
             </Row>

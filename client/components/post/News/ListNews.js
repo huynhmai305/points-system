@@ -36,9 +36,9 @@ class ListNews extends Component {
   render() {
     const { data } = this.state
     return (
-      <Row>
+      <div>
         <div className="mt-3">
-          <h5 className="col-12">Có {data.length} kết quả phù hợp</h5>
+          <h5 className="col-12">Có {data.length} tin tức được tìm thấy</h5>
           <CardDeck>
             {data.map((news, key) => (
               <News
@@ -52,7 +52,7 @@ class ListNews extends Component {
             ))}
           </CardDeck>
         </div>
-      </Row>
+      </div>
     );
   }
 }

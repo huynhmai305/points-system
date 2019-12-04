@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import QR from '../QRCode/GenerateQR_Image'
+import Swal from 'sweetalert2'
 
 const NotificationQR = (props) => {
   const { username, data, getPngUrl } = props;
@@ -14,7 +15,9 @@ const NotificationQR = (props) => {
     const pngUrl = canvas.toDataURL("image/png");
     console.log(pngUrl)
     getPngUrl(pngUrl)
-    toggle;
+    toggle
+    Swal.fire('Đăng ký thành công','Đã gửi mã QR về mail bạn thành công!',"success")
+    location.reload()
   }
 
   return (

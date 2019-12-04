@@ -46,7 +46,7 @@ class Login extends Component {
   }
   submitForm(e) {
     e.preventDefault();
-    // console.log(`Email: ${this.state.email} va password: ${this.state.password}`)
+    console.log(`Email: ${this.state.email} va password: ${this.state.password}`)
     fetch('http://localhost:3000/login', {
       method: 'POST',
       headers: {
@@ -59,27 +59,25 @@ class Login extends Component {
     })
       .then(response => response.json())
       .then(item => {
-        this.setState({
-          msg:'Đăng nhập thành công',
-          colortoast:'success',
-          show:true
-        })
         Swal.fire(`Đăng nhập thành công`,"", "success")
-        localStorage.setItem('user', JSON.stringify(item))
-        let role = item[0].role;
-        if (role === 0) {
-          Router.push('/admin')
-        } else if (role === 1) {
-          Router.push('/store')
-        } else {
-          Router.push('/user')
-        }
+        .then (rs => {
+          localStorage.setItem('user', JSON.stringify(item))
+          let role = item[0].role;
+          if (role === 0) {
+            Router.push('/admin')
+          } else if (role === 1) {
+            Router.push('/store')
+          } else {
+            Router.push('/user')
+          }
+        })
       })
-      .catch(err => {this.setState({
-        msg_err:'Vui lòng kiểm tra lại email, password',
-        colortoast:'danger',
-        show:false
-      });
+      .catch(err => {
+        this.setState({
+          msg_err:'Vui lòng kiểm tra lại email, password',
+          colortoast:'danger',
+          show:false
+        });
     })
   }
 
@@ -143,20 +141,12 @@ class Login extends Component {
               </FormFeedback>
             </FormGroup>
           </Col>
-          {/* <FormGroup className="mb-3" check>
-            <Label check>
-              <Input type="checkbox" name="save" defaultChecked />Lưu lại
-            </Label>
-          </FormGroup> */}
           <FormGroup>
             <Button color="success" type="submit">
               Đăng nhập
             </Button>
             <div className="text-danger mt-3">{this.state.msg_err}</div>
           </FormGroup>
-          <div style={{display:'none'}}>
-            <Spinner color="success" />
-          </div>  
         </Form>
       </Container>
     )

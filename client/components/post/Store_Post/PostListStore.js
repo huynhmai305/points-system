@@ -38,7 +38,7 @@ class PostList extends Component {
     return (
       <div>
         <div className="mt-3">
-          <h5 className="col-12">Có {data.length} kết quả phù hợp</h5>
+          <h5 className="col-12">Có {data.length} cửa hàng phù hợp được tìm thấy</h5>
           <CardDeck>
             {data.map((post, key) => (
               <Post

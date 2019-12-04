@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Button } from 'reactstrap';
 import ModalForm from './Modal_Post';
+import ModalContent from '../../Modals/ModalViewContent'
 import moment from 'moment'
 import ReactTable from 'react-table'
 import 'react-table/react-table.css'
@@ -17,24 +18,23 @@ class PostTableStore extends Component {
           Header: '#',
           accessor: 'id',
           style: { 'textAlign': 'center' },
-          width: 50
+          width: 100
         },
         {
           Header: 'Tiêu đề',
           accessor: 'title',
-          style: { 'whiteSpace': 'unset' },
-          maxwidth: 150
+          width: 350
         },
-        {
-          Header: 'Nội dung',
-          Cell: row => (
-            <span>
-              {HtmlParser(row.original.content.slice(0, 500) + ' <a href="#">Xem chi tiết >></a>')}
-            </span>
-          ),
-          style: { 'whiteSpace': 'unset' },
-          width: 500
-        },
+        // {
+        //   Header: 'Nội dung',
+        //   Cell: row => (
+        //     <span>
+        //       {HtmlParser(row.original.content.slice(0, 500) + ' <a href="#">Xem chi tiết >></a>')}
+        //     </span>
+        //   ),
+        //   style: { 'whiteSpace': 'unset' },
+        //   width: 500
+        // },
         {
           id: 'User',
           Header: 'Cửa hàng',
@@ -45,7 +45,7 @@ class PostTableStore extends Component {
         {
           Header: 'Ngày đăng ký',
           Cell: row => (<span>{moment(row.original.createdAt).format('DD/MM/YYYY, h:mm:ss a')}</span>),
-          style: { 'whiteSpace': 'unset' },
+          style: { 'textAlign': 'center' },
           maxwidth: 100,
           filterable: false
         },
@@ -55,6 +55,7 @@ class PostTableStore extends Component {
             <div>
               <Button color="danger" style={{ float: "left", marginRight: "10px" }} onClick={() => this.deleteItem(row.original.id)}><FaTrashAlt/></Button>
               <ModalForm buttonLabel='Edit' item={row.original} />
+              <ModalContent title={row.original.title} content={HtmlParser(row.original.content)}/>
             </div>
           ),
           filterable: false
@@ -62,7 +63,6 @@ class PostTableStore extends Component {
       ]
     }
   }
-
 
   deleteItem = id => {
     Swal.fire({

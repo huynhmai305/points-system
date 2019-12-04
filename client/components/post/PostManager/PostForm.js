@@ -25,8 +25,8 @@ class PostForm extends Component {
       post: {
         title: "",
         content: "",
-        userId: this.props.userId,
-        storeId: '',
+        userId: null,
+        storeId: this.props.userId,
         type: ''
       }
     }
@@ -108,7 +108,7 @@ class PostForm extends Component {
   submitFormAdd(e) {
     e.preventDefault();
     if (!this.isFormValid()) {
-      this.setState({ error: "Vui long nhap day du thong tin" });
+      this.setState({ error: "Vui lòng nhập đầy đủ thông tin" });
       return;
     }
     // loading status and clear error
@@ -132,12 +132,13 @@ class PostForm extends Component {
         Swal.fire("Thêm bài viết thành công","", "success")
         location.reload()
       })
-      .catch(err => {
-        this.setState({
-          error: "Thêm thất bại",
-          loading: false
-        });
-      });
+      // .catch(err => {
+      //   // this.setState({
+      //   //   error: "Thêm thất bại",
+      //   //   loading: false
+      //   // });
+      //   Swal.fire("Thêm thất bại","","error")
+      // });
   }
   submitFormEdit = e => {
     e.preventDefault()
