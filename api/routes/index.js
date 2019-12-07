@@ -106,18 +106,17 @@ router.post('/admin/user', (req, res) => {
           User.create({ username, birthday, address, phone, email, password, role })
             .then(result => {
               res.json(result);
-              res.sendStatus(200);
             })
             .catch(err => {
-              res.send('error:' + err)
+              res.sendStatus(400)
             })
         })
       } else {
-        res.json({ error: 'User already exists' })
+        res.sendStatus(400)
       }
     })
     .catch(err => {
-      res.send('error:' + err)
+      res.sendStatus(409)
     })
 
 })
@@ -163,11 +162,10 @@ router.post('/sendmail', (req, res) => {
       //Tiến hành gửi email
       transporter.sendMail(mail, function (error, info) {
         if (error) { // nếu có lỗi
-          console.log(error);
+          res.sendStatus(400);
         } else { //nếu thành công
           console.log('Email sent: ' + info.response);
           res.sendStatus(200);
-          res.json('success');
         }
       });
     }
@@ -194,11 +192,11 @@ router.post('/login', (req, res) => {
           res.send(JSON.stringify(result));
         }
         else {
-          res.json({ msg: "Khong tim thay tai khoan" })
+          res.sendStatus(404)
         }
       })
     })
-    .catch(err => console.log(err))
+    .catch(err => res.sendStatus(404))
 })
 //end login======== 
 
@@ -301,7 +299,6 @@ router.delete('/admin/user', (req, res) => {
     }
   })
     .then(result => {
-      res.json({ delete: 'true' });
       res.sendStatus(200)
     })
     .catch(err => console.log(err))
@@ -325,7 +322,6 @@ router.put('/admin/user', (req, res) => {
     User.update(dt, { where: { id: req.body.id } })
       .then(result => {
         res.json(result);
-        res.sendStatus(200);
       })
       .catch(err => console.log(err))
   })

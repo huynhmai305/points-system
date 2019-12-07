@@ -1,52 +1,34 @@
 import React, { Component } from 'react'
 import { Button } from 'reactstrap';
-import ModalForm from './Modal_Post';
-import ModalContent from '../../Modals/ModalViewContent'
+import ModalForm from './Modal_Set_Point';
 import moment from 'moment'
 import ReactTable from 'react-table'
-import HtmlParser from 'react-html-parser'
 import {FaTrashAlt} from 'react-icons/fa'
 import Swal from 'sweetalert2'
 
-class PostTableStore extends Component {
+class TableListSetPoint extends Component {
   constructor(props) {
     super(props);
     this.state = {
       Headers: [
         {
-          Header: '#',
-          accessor: 'id',
-          style: { 'textAlign': 'center' },
-          width: 100
-        },
-        {
-          Header: 'Tiêu đề',
-          accessor: 'title',
-          style: { 'whiteSpace': 'unset' },
-          width: 350
-        },
-        // {
-        //   Header: 'Nội dung',
-        //   Cell: row => (
-        //     <span>
-        //       {HtmlParser(row.original.content.slice(0, 500) + ' <a href="#">Xem chi tiết >></a>')}
-        //     </span>
-        //   ),
-        //   style: { 'whiteSpace': 'unset' },
-        //   width: 500
-        // },
-        {
           id: 'User',
           Header: 'Cửa hàng',
           accessor: d => d.User.username,
           style: { 'textAlign': 'center' },
-          width: 150
+          width: 300
+        },
+        {
+          Header: 'Giá trị quy đổi điểm thưởng',
+          accessor: 'point_change',
+          style: { 'textAlign': 'center' },
+          width: 400
         },
         {
           Header: 'Ngày đăng ký',
           Cell: row => (<span>{moment(row.original.createdAt).format('DD/MM/YYYY, h:mm:ss a')}</span>),
-          style: { 'textAlign': 'center' },
-          maxwidth: 100,
+          style: { 'whiteSpace': 'unset' },
+          maxwidth: 200,
           filterable: false
         },
         {
@@ -55,7 +37,6 @@ class PostTableStore extends Component {
             <div>
               <Button color="danger" style={{ float: "left", marginRight: "10px" }} onClick={() => this.deleteItem(row.original.id)}><FaTrashAlt/></Button>
               <ModalForm buttonLabel='Edit' item={row.original} />
-              <ModalContent title={row.original.title} content={HtmlParser(row.original.content)}/>
             </div>
           ),
           filterable: false
@@ -75,7 +56,7 @@ class PostTableStore extends Component {
       confirmButtonText: 'Xóa'
     })
     .then((result) => {
-      fetch('http://localhost:3000/users/post', {
+      fetch('http://localhost:3000/users/point_change', {
         method: 'delete',
         headers: {
           'Content-Type': 'application/json'
@@ -94,11 +75,9 @@ class PostTableStore extends Component {
         .catch(err => console.log(err))
     })
   }
+
   render() {
     let { items } = this.props;
-    const data = items.filter(dt => {
-      return dt.User !== null
-    })
     return (
       <ReactTable
         filterable={true}
@@ -107,7 +86,7 @@ class PostTableStore extends Component {
         noDataText='Không tìm thấy'
         pageText='Trang'
         rowsText=''
-        data={data}
+        data={items}
         columns={this.state.Headers}
         defaultPageSize={10}
         className = '-striped'
@@ -116,4 +95,4 @@ class PostTableStore extends Component {
   }
 }
 
-export default PostTableStore
+export default TableListSetPoint

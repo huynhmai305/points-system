@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import NumberFormat from 'react-number-format';
 import moment from 'moment'
 import ReactTable from 'react-table'
-import 'react-table/react-table.css'
 
 class Table_Bill_Of_Customer extends Component {
   constructor(props) {
@@ -58,6 +57,8 @@ class Table_Bill_Of_Customer extends Component {
         rowsText = ''
         data={items}  
         columns={this.state.Headers}
+        defaultPageSize={10}
+        className = '-striped'
       />
     )
   }

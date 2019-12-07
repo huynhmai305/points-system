@@ -33,11 +33,11 @@ class Login extends Component {
     this.setState({ validate })
   }
 
-  handleChange = async (event) => {
+  handleChange = (event) => {
     const { target } = event;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const { name } = target;
-    await this.setState({
+    this.setState({
       [name]: value,
     });
   }
@@ -73,11 +73,13 @@ class Login extends Component {
         })
       })
       .catch(err => {
-        this.setState({
-          msg_err:'Vui lòng kiểm tra lại email, password',
-          colortoast:'danger',
-          show:false
-        });
+        console.log(err)
+        // this.setState({
+        //   msg_err:'Vui lòng kiểm tra lại email, password',
+        //   colortoast:'danger',
+        //   show:false
+        // });
+        Swal.fire("Thất bại","Vui lòng kiểm tra lại email, password","error")
     })
   }
 
@@ -105,7 +107,7 @@ class Login extends Component {
                 placeholder="myemail@email.com"
                 value={email}
                 valid={this.state.validate.emailState === 'has-success'}
-                invalid={this.state.validate.emailState === 'has-danger' || email === ''}
+                invalid={this.state.validate.emailState === 'has-danger'}
                 onChange={(e) => {
                   this.validateEmail(e)
                   this.handleChange(e)
@@ -129,9 +131,8 @@ class Login extends Component {
                 id="examplePassword"
                 placeholder="********"
                 value={password}
-                valid={password !== ''}
-                invalid={password === ''}
                 onChange={(e) => this.handleChange(e)}
+                required
               />
               <FormFeedback valid>
                 Nhập password thành công

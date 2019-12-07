@@ -14,7 +14,7 @@ const User = db.define('User', {
   },
   birthday: {
     type: Sequelize.DATE,
-    allowNull: false
+    allowNull: true
   },
   address: {
     type: Sequelize.STRING(256),

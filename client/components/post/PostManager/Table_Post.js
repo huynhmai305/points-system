@@ -3,7 +3,6 @@ import { Button } from 'reactstrap';
 import ModalForm from './Modal_Post';
 import moment from 'moment'
 import ReactTable from 'react-table'
-import 'react-table/react-table.css'
 import HtmlParser from 'react-html-parser'
 import {FaTrashAlt} from 'react-icons/fa'
 import Swal from 'sweetalert2'
@@ -110,6 +109,8 @@ class PostTable extends Component {
         rowsText=''
         data={items}
         columns={this.state.Headers}
+        defaultPageSize={10}
+        className = '-striped'
       />
     )
   }

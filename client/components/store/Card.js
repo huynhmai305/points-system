@@ -20,7 +20,9 @@ class Card extends Component {
     fetch('http://localhost:3000/totalmoney/' + this.state.id)
       .then(response => response.json())
       .then(item => {
-        this.setState({ total: item[0].total_money});
+        if (item.length != 0) {
+          this.setState({ total: item[0].total_money});
+        }
       })
   }
   componentDidMount() {

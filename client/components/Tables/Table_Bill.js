@@ -5,7 +5,6 @@ import { FaTrash } from "react-icons/fa";
 import {Button} from 'reactstrap'
 import moment from 'moment'
 import ReactTable from 'react-table'
-import 'react-table/react-table.css'
 import Swal from 'sweetalert2'
 
 class DataTable extends Component {
@@ -113,6 +112,8 @@ class DataTable extends Component {
         rowsText = ''
         data={items}  
         columns={this.state.Headers}
+        defaultPageSize={10}
+        className = '-striped'
       />
     )
   }

@@ -162,7 +162,7 @@ class PostForm extends Component {
     })
       .then(response => response.json())
       .then(item => {
-        Swal.fire(`Chỉnh sửa thành công id: ${this.state.id}`,"", "success")
+        Swal.fire(`Chỉnh sửa thành công `,"", "success")
         location.reload()
       })
       .catch(err => {

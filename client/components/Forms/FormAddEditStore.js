@@ -7,12 +7,11 @@ class AddEditForm extends React.Component {
   state = {
     id: 0,
     username: '',
-    birthday: '',
     address: '',
     phone: '',
     email: '',
     password: '',
-    role: 2
+    role: 1
   }
 
   onChange = e => {
@@ -30,7 +29,6 @@ class AddEditForm extends React.Component {
       },
       body: JSON.stringify({
         username: this.state.username,
-        birthday: this.state.birthday,
         address: this.state.address,
         phone: this.state.phone,
         email: this.state.email,
@@ -56,7 +54,6 @@ class AddEditForm extends React.Component {
       body: JSON.stringify({
         id: this.state.id,
         username: this.state.username,
-        birthday: this.state.birthday,
         address: this.state.address,
         phone: this.state.phone,
         email: this.state.email,
@@ -82,12 +79,8 @@ class AddEditForm extends React.Component {
     return (
       <Form onSubmit={this.props.item ? this.submitFormEdit : this.submitFormAdd}>
         <FormGroup>
-          <Label for="username">Họ tên</Label>
+          <Label for="username">Tên cửa hàng</Label>
           <Input type="text" name="username" id="username" onChange={this.onChange} value={this.state.username === null ? '' : this.state.username} required/>
-        </FormGroup>
-        <FormGroup>
-          <Label for="birthday">Ngày sinh</Label>
-          <Input type="date" min="1960-01-01" max="2004-12-31" name="birthday" id="birthday" onChange={this.onChange} value={this.state.birthday === null ? '' : this.state.birthday} required/>
         </FormGroup>
         <FormGroup>
           <Label for="address">Địa chỉ</Label>

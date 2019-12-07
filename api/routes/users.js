@@ -10,24 +10,28 @@ const Post = require('../models/post');
 const Review = require('../models/review')
 const sequelize = require('sequelize');
 const Op = sequelize.Op;
-User.hasMany(Bill, { foreignKey: 'id_user', sourceKey: 'id' });
+User.hasMany(Bill, { foreignKey: 'id_user', sourceKey: 'id' },{onDelete: 'cascade', hooks: true});
 Bill.belongsTo(User, { foreignKey: 'id_user' });
 
-User.hasMany(Gift, { foreignKey: 'id_store', sourceKey: 'id' });
+User.hasMany(Gift, { foreignKey: 'id_store', sourceKey: 'id' },{onDelete: 'cascade', hooks: true});
 Gift.belongsTo(User, { foreignKey: 'id_store' });
 
-User.hasMany(Exchange_Gift, { foreignKey: 'id_user', sourceKey: 'id' });
+User.hasMany(Exchange_Gift, { foreignKey: 'id_user', sourceKey: 'id' },{onDelete: 'cascade', hooks: true});
 Exchange_Gift.belongsTo(User, { foreignKey: 'id_user' });
-Gift.hasMany(Exchange_Gift, { foreignKey: 'id_gift', sourceKey: 'id_gift' });
+Gift.hasMany(Exchange_Gift, { foreignKey: 'id_gift', sourceKey: 'id_gift' },{onDelete: 'cascade', hooks: true});
 Exchange_Gift.belongsTo(Gift, { foreignKey: 'id_gift', targetKey: 'id_gift' });
 
-User.hasMany(Post, { foreignKey: 'storeId', sourceKey: 'id' });
+User.hasMany(Post, { foreignKey: 'storeId', sourceKey: 'id' },{onDelete: 'cascade', hooks: true});
 Post.belongsTo(User, { foreignKey: 'storeId' })
 
-Post.hasMany(Review, { foreignKey: 'postId', sourceKey: 'id' });
+Post.hasMany(Review, { foreignKey: 'postId', sourceKey: 'id' },{onDelete: 'cascade', hooks: true});
 Review.belongsTo(User, { foreignKey: 'postId' })
-User.hasMany(Review, { foreignKey: 'userId', sourceKey: 'id' });
+User.hasMany(Review, { foreignKey: 'userId', sourceKey: 'id' },{onDelete: 'cascade', hooks: true});
 Review.belongsTo(User, { foreignKey: 'userId' })
+
+User.hasMany(Review, { foreignKey: 'id_store', sourceKey: 'id' },{onDelete: 'cascade', hooks: true});
+Point.belongsTo(User, { foreignKey: 'id_store' })
+
 //tim kiem ma hoa don
 router.get('/tichdiem', (req, res) => {
   Bill.findOne({
@@ -54,7 +58,6 @@ router.put('/point', (req, res) => {
   User.update(dt, { where: { id: req.body.id } })
     .then(result => {
       res.json(result);
-      res.sendStatus(200);
     })
     .catch(err => console.log(err))
 })
@@ -123,7 +126,6 @@ router.post('/bill', (req, res) => {
   Bill.create({ id, total, id_user, id_store })
     .then(result => {
       res.json(result);
-      res.sendStatus(200);
     })
     .catch(err => {
       res.send('error:' + err)
@@ -219,7 +221,6 @@ router.post('/gift', (req, res) => {
     .then(result => {
       console.log(result)
       res.json(result);
-      res.sendStatus(200);
     })
     .catch(err => {
       res.send('error:' + err)
@@ -235,10 +236,9 @@ router.delete('/gift', (req, res) => {
     }
   })
     .then(result => {
-      res.json({ delete: 'true' });
       res.sendStatus(200)
     })
-    .catch(err => console.log(err))
+    .catch(err => res.sendStatus(400))
 })
 
 //====update gift
@@ -255,7 +255,6 @@ router.put('/gift', (req, res) => {
   Gift.update(dt, { where: { id: req.body.id } })
     .then(result => {
       res.json(result);
-      res.sendStatus(200);
     })
     .catch(err => console.log(err))
 })
@@ -272,7 +271,6 @@ router.post('/exchange_gift', (req, res) => {
     .then(result => {
       console.log(result)
       res.json(result);
-      res.sendStatus(200);
     })
     .catch(err => {
       res.send('error:' + err)
@@ -287,14 +285,41 @@ router.get('/exchange_gift', (req, res) => {
     .then(result => res.send(result))
 })
 
-//get point_change
+//get list point_change
 router.get('/point_change', (req, res) => {
+  Point.findAll({
+    include: [{
+      model: User,
+      attributes: ['username']
+    }]
+  })
+  .then(result => res.send(result))
+})
+
+//get point_change of store
+router.get('/point_change/:id_store', (req, res) => {
   Point.findOne({
-    attributes: ['point_change']
+    attributes: ['point_change'],
+    where: {
+      id_store: req.params.id_store
+    }
   })
     .then(result => res.send(result))
 })
-
+//add point_change
+router.post('/point_change', (req, res) => {
+  const data = {
+    id_store: req.body.id_store,
+    point_change: req.body.point_change
+  };
+  let { id_store, point_change } = data;
+  Point.create({ id_store, point_change })
+    .then(result => {
+      console.log(result)
+      return res.json(result);
+    })
+    .catch(err => res.sendStatus(400))
+})
 //update point_change
 router.put('/point_change', (req, res) => {
   const update = new Date();
@@ -302,15 +327,28 @@ router.put('/point_change', (req, res) => {
     point_change: req.body.point_change,
     updatedAt: update
   }
+  console.log(dt)
   Point.update(dt, {
     where: {
-      id: 1
+      id_store: req.body.id_store
     }
   })
-    .then(result => res.sendStatus(200).send(result))
-    .catch(err => res.send('error'))
+    .then(result => res.send(result))
+    .catch(err => res.sendStatus(400))
 })
-
+//delete point_change
+router.delete('/point_change', (req, res) => {
+  const { id } = req.body
+  Point.destroy({
+    where: {
+      id: id
+    }
+  })
+    .then(result => {
+      res.sendStatus(200)
+    })
+    .catch(err => res.sendStatus(400))
+})
 //get store select option
 router.get('/optionstore', (req, res) => {
   User.findAll({
@@ -344,7 +382,7 @@ router.get('/post', (req, res) => {
         }
       },
       order: [['createdAt', 'DESC']],
-      include: [User]
+      include: [{}]
     })
       .then(result => {
         res.send(result);
@@ -375,9 +413,9 @@ router.post('/post', (req, res) => {
   Post.create({ title, content, storeId, type })
     .then(result => {
       console.log(result)
-      return res.status(200).json(result);
+      return res.json(result);
     })
-    // .catch(err => console.log(err))
+    .catch(err => res.sendStatus(400))
 })
 //delete post
 router.delete('/post', (req, res) => {
@@ -388,10 +426,9 @@ router.delete('/post', (req, res) => {
     }
   })
     .then(result => {
-      res.json({ delete: 'true' });
       res.sendStatus(200)
     })
-    .catch(err => console.log(err))
+    .catch(err => res.sendStatus(400))
 })
 
 //====update post
@@ -449,7 +486,6 @@ router.post('/review', (req, res) => {
     .then(result => {
       console.log(result)
       res.json(result);
-      res.sendStatus(200);
     })
     .catch(err => {
       res.send('error:' + err)

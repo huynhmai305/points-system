@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import DefaultLayout from './layouts/Layout';
 import Link from 'next/link';
-import { FaHome, FaHandHoldingUsd, FaAccusoft, FaChevronRight, FaChevronLeft, FaGift, FaStore, FaPowerOff, FaMoneyBillWaveAlt } from "react-icons/fa";
+import { FaHome, FaExchangeAlt, FaHandHoldingUsd, FaAccusoft, FaChevronRight, FaChevronLeft, FaGift, FaStore, FaPowerOff, FaMoneyBillWaveAlt } from "react-icons/fa";
 
 class Store extends Component {
   logout = () => {
@@ -35,12 +35,15 @@ class Store extends Component {
               <li className="active">
                 <Link href="/store/gift"><a><FaGift /> Quà đổi thưởng</a></Link>
               </li>
-              <li>
+              <li className="active">
+                <Link href="/store/setpoint"><a><FaExchangeAlt/> Thiết lập điểm quy đổi</a></Link>
+              </li>
+              <li className="active">
                 <Link href="/store/profile"><a><FaStore /> Thông tin cửa hàng</a></Link>
               </li>
-              <li>
+              <li className="active">
                 <Link href="/"><a onClick={this.logout}><FaPowerOff /> Đăng xuất</a></Link>
-              </li>
+              </li> 
             </ul>
           </nav>
           <div className="page-wrap">

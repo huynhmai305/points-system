@@ -3,7 +3,6 @@ import { Button, Tooltip } from 'reactstrap';
 import Link from 'next/link';
 import moment from 'moment'
 import ReactTable from 'react-table'
-import 'react-table/react-table.css'
 import {FaHandHoldingUsd} from 'react-icons/fa'
 import Swal from 'sweetalert2'
 
@@ -96,6 +95,8 @@ class DataTable extends Component {
         rowsText = ''
         data={items}  
         columns={this.state.Headers}
+        defaultPageSize={10}
+        className = '-striped'
       />
     )
   }

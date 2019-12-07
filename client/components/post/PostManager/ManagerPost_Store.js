@@ -4,7 +4,6 @@ import DataTable from './Table_Post_Store';
 import ModalForm from './Modal_Post';
 import Excel from '../../exportTable/XLSX'
 
-
 class ManagerPostStore extends Component {
   state = {
     items: [],

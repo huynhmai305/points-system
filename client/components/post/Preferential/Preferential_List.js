@@ -25,7 +25,8 @@ class Preferential_List extends Component {
       <div>
         <CardDeck>
           {this.state.data.map((item,key) => (
-            <Preferential 
+            <Preferential
+              key={key}
               point={item.point}
               title={item.title}
               content={item.content}

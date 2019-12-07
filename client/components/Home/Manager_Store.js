@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
-import ModalForm from '../Modals/Modal';
+import ModalForm from '../Modals/ModalStore';
 import DataTable from '../Tables/DataTable_Store';
 import Excel from '../exportTable/XLSX'
 import Search from '../Search';

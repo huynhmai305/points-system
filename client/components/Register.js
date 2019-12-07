@@ -43,6 +43,7 @@ class Register extends Component {
     })
       .then(response => response.json())
       .then(item => {
+        console.log(item)
         this.setState({ showQR: true })
       })
       .catch(err => Swal.fire('Tài khoản đã tồn tại',"","error"))
@@ -132,7 +133,7 @@ class Register extends Component {
                 name="email"
                 id="email"
                 placeholder="Nhập email"
-                pattern=".+@gmail.com"
+                pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
                 onChange={this.onChange}
                 value={this.state.email}
                 required
