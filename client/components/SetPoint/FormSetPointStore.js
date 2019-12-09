@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card, CardBody,Button, Form, FormGroup, Label, Input, Container, Col } from 'reactstrap';
-import Admin from '../../components/admin/Admin'
+import Admin from '../../components/Store'
 import {FaExchangeAlt} from 'react-icons/fa'
 import Swal from 'sweetalert2'
 
@@ -41,14 +41,18 @@ export default class Change_point extends Component {
 
   componentDidMount() {
     let info = JSON.parse(localStorage.getItem('user'))
-    this.setState({id_store: info[0].id},() => {
+    this.setState({
+      id_store: info[0].id,
+      name: info[0].username,
+      image: info[0].picture
+    },() => {
       this.getItems(this.state.id_store)
     })
   }
 
   render() {
     return (
-      <Admin title="Giá trị quy đổi điểm">
+      <Admin username={this.state.name} image={this.state.image}>
         <Container>
           <ol className="breadcrumb">
             <li className="breadcrumb-item">

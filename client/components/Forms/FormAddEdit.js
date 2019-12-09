@@ -103,7 +103,7 @@ class AddEditForm extends React.Component {
         </FormGroup>
         <FormGroup>
           <Label for="password">Password</Label>
-          <Input type="text" name="password" id="password" onChange={this.onChange} value={this.state.password === null ? '' : this.state.password} required/>
+          <Input type="password" name="password" id="password" onChange={this.onChange} value={this.state.password === null ? '' : this.state.password} required/>
         </FormGroup>
         <FormGroup>
           <Button color="success" className="float-right">

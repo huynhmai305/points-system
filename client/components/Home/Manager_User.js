@@ -62,9 +62,6 @@ class Home extends Component {
           <li className="breadcrumb-item active">Quản lý khách hàng</li>
         </ol>
         <Row className="mb-5">
-          {/* <Col md={4}>
-            <Search handlekeyword={this.onSearch} />
-          </Col> */}
           <Col md={2} sm={3} xs={4}> 
             <Excel 
               data={this.state.items}

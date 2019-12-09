@@ -78,6 +78,39 @@ router.post('/upload', upload.single('image'), (req, res) => {
     res.status("409").json("No Files to Upload.");
 });
 
+router.post('/admin/import_batch_user', (req, res) => {
+  console.log('==============kandt================', req.body)
+  req.body.forEach(userData => {
+    User.findOne({
+      where: {
+        email: userData.email
+      }
+    })
+      .then(user => {
+        // console.log(user)
+        if (!user) {
+          bcrypt.hash('123456789', 10, (err, hash) => {
+            userData.password = hash;
+            userData.role = 2;
+            //console.log(data.password)
+            //insert into table
+            User.create(userData)
+              .then(result => {
+                console.log('Created user successfully!', result)
+              })
+              .catch(err => {
+                console.log('Created user failed!', err)
+              })
+          })
+        } else {
+          eorr.push()
+          console.log('Duplicated user!', userData)
+        }
+      })
+  })
+  res.sendStatus(200);
+})
+
 //======register ======
 router.post('/admin/user', (req, res) => {
   const data = {

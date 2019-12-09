@@ -3,6 +3,7 @@ import { Button } from 'reactstrap';
 import ModalForm from './Modal_Post';
 import moment from 'moment'
 import ReactTable from 'react-table'
+import ModalContent from '../../Modals/ModalViewContent'
 import HtmlParser from 'react-html-parser'
 import {FaTrashAlt} from 'react-icons/fa'
 import Swal from 'sweetalert2'
@@ -54,7 +55,7 @@ class PostTable extends Component {
             <div>
               <Button color="danger" style={{ float: "left", marginRight: "10px" }} onClick={() => this.deleteItem(row.original.id)}><FaTrashAlt/></Button>
               <ModalForm buttonLabel='Edit' item={row.original} />
-              <Button color="info" onClick={() => this.viewContent(row.original.title,HtmlParser(row.original.content))}>Xem nội dung</Button>
+              <ModalContent title={row.original.title} content={HtmlParser(row.original.content)}/>
             </div>
           ),
           filterable: false
@@ -94,9 +95,6 @@ class PostTable extends Component {
     })
   }
 
-  viewContent = (title,content) => {
-    Swal.fire({title},{content},"info")
-  }
   render() {
     let { items } = this.props;
     return (

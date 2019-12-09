@@ -29,7 +29,7 @@ Review.belongsTo(User, { foreignKey: 'postId' })
 User.hasMany(Review, { foreignKey: 'userId', sourceKey: 'id' },{onDelete: 'cascade', hooks: true});
 Review.belongsTo(User, { foreignKey: 'userId' })
 
-User.hasMany(Review, { foreignKey: 'id_store', sourceKey: 'id' },{onDelete: 'cascade', hooks: true});
+User.hasMany(Point, { foreignKey: 'id_store', sourceKey: 'id' },{onDelete: 'cascade', hooks: true});
 Point.belongsTo(User, { foreignKey: 'id_store' })
 
 //tim kiem ma hoa don
@@ -491,5 +491,36 @@ router.post('/review', (req, res) => {
       res.send('error:' + err)
     })
 })
+//====update review
+router.put('/review', (req, res) => {
+  const update = new Date();
+  var dt = {
+    title: req.body.title,
+    content: req.body.content,
+    userId: req.body.userId,
+    postId: req.body.postId,
+    rating: req.body.rating,
+    updatedAt: update
+  }
+  Review.update(dt, { where: { id: req.body.id } })
+    .then(result => {
+      return res.status(200).json(result);
+    })
+    .catch(err => console.log(err))
+})
+//delete review
+router.delete('/review', (req, res) => {
+  const { id } = req.body
+  Review.destroy({
+    where: {
+      id: id
+    }
+  })
+    .then(result => {
+      res.sendStatus(200)
+    })
+    .catch(err => res.sendStatus(400))
+})
+
 
 module.exports = router;
