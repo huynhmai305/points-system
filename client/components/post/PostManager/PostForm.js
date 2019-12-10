@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Container, Form, FormGroup, Label, Input, Button, Alert } from 'reactstrap';
-// import { Editor } from '@tinymce/tinymce-react'
+import { Container, FormGroup, Label, Button, Alert } from 'reactstrap';
 import dynamic from 'next/dynamic'
+import { AvForm, AvField, AvRadioGroup, AvRadio } from 'availity-reactstrap-validation';
 const CKEditor = dynamic(() => import('../../editor/Editor'), {
   ssr: false
 })
@@ -25,7 +25,7 @@ class PostForm extends Component {
       post: {
         title: "",
         content: "",
-        userId: null,
+        userId: '',
         storeId: this.props.userId,
         type: ''
       }
@@ -87,6 +87,7 @@ class PostForm extends Component {
   handleChangeType = type => {
     this.setState({
       ...this.state,
+      type_obj: type,
       post: {
         ...this.state.post,
         type: type.value
@@ -96,8 +97,10 @@ class PostForm extends Component {
   };
   //select store
   handleChange = id_store => {
+    console.log(id_store)
     this.setState({
       ...this.state,
+      store_obj: id_store,
       post: {
         ...this.state.post,
         storeId: id_store.value
@@ -108,7 +111,7 @@ class PostForm extends Component {
   submitFormAdd(e) {
     e.preventDefault();
     if (!this.isFormValid()) {
-      this.setState({ error: "Vui lòng nhập đầy đủ thông tin" });
+      this.setState({ errorMessage: "Vui lòng chọn thông tin" });
       return;
     }
     // loading status and clear error
@@ -132,18 +135,14 @@ class PostForm extends Component {
         Swal.fire("Thêm bài viết thành công","", "success")
         location.reload()
       })
-      // .catch(err => {
-      //   // this.setState({
-      //   //   error: "Thêm thất bại",
-      //   //   loading: false
-      //   // });
-      //   Swal.fire("Thêm thất bại","","error")
-      // });
+      .catch(err => {
+        Swal.fire("Thêm thất bại","","error")
+      });
   }
   submitFormEdit = e => {
     e.preventDefault()
     if (!this.isFormValid()) {
-      this.setState({ error: "Vui long nhap day du thong tin" });
+      this.setState({ error: "Vui lòng nhập đầy đủ thông tin" });
       return;
     }
     let { post } = this.state
@@ -166,15 +165,13 @@ class PostForm extends Component {
         location.reload()
       })
       .catch(err => {
-        this.setState({
-          error: "Chỉnh sửa thất bại",
-          loading: false
-        });
+        Swal.fire("Chỉnh sửa thất bại","","error")
       });
   }
   isFormValid() {
-    return this.state.post.title !== "" && this.state.post.content !== "" && this.state.post.type !== '';
+    return this.state.post.content !== "" || this.state.post.storeId !== "";
   }
+
   renderError() {
     return this.state.error ? (
       <Alert color="danger">
@@ -182,6 +179,7 @@ class PostForm extends Component {
       </Alert>
     ) : null;
   }
+
   componentDidMount() {
     // if item exists, populate the state with proper data
     if (this.props.item) {
@@ -211,38 +209,30 @@ class PostForm extends Component {
     const { store_obj, type_obj } = this.state;
     return (
       <Container>
-        <Form onSubmit={this.props.item ? this.submitFormEdit : this.submitFormAdd}>
-          {this.renderError()}
-          <FormGroup tag="fieldset">
-            <legend>Tùy chọn thể loại bài viết</legend>
-            <FormGroup check>
-              <Label check>
-                <Input
-                  type="radio"
-                  id="type1"
-                  value="type1"
-                  name="type"
-                  defaultChecked={this.state.type === 'type1'}
-                  onClick={this.handleChangeRadio}
-                /> Viết bài cho chuyên mục
-              </Label>
-            </FormGroup>
-            <FormGroup check>
-              <Label check>
-                <Input
-                  type="radio"
-                  id="type2"
-                  value="type2"
-                  name="type"
-                  defaultChecked={this.state.type === 'type2'}
-                  onClick={this.handleChangeRadio}
-                /> Viết bài cho cửa hàng
-              </Label>
-            </FormGroup>
-          </FormGroup>
+        <AvForm onValidSubmit={this.props.item ? this.submitFormEdit : this.submitFormAdd}>
+          {!this.props.item ? (
+            <AvRadioGroup name="type" label="Tùy chọn thể loại bài viết" value={this.state.type}>
+              <AvRadio
+                customInput
+                id="type1"
+                value="type1"
+                label="Viết bài cho chuyên mục"
+                defaultChecked={this.state.type == 'type1'}
+                onClick={this.handleChangeRadio}
+              /> 
+              <AvRadio
+                customInput
+                id="type2"
+                value="type2"
+                label="Viết bài cho cửa hàng"
+                defaultChecked={this.state.type == 'type2'}
+                onClick={this.handleChangeRadio}
+              />
+            </AvRadioGroup>
+          ) : ''}
           <FormGroup>
-            <Label for="title">Tiêu đề<span style={{ color: 'red' }}> *</span></Label>
-            <Input
+            <Label for="title">Tiêu đề</Label>
+            <AvField
               type="text"
               id="title"
               name="title"
@@ -250,10 +240,12 @@ class PostForm extends Component {
               onChange={this.handleFieldChange}
               value={this.state.post.title}
               className="form-control"
-              valid
+              validate={{
+                required: {value: true, errorMessage: 'Vui lòng nhập tiêu đề bài viết'}
+              }}
             />
           </FormGroup>
-          <Label for="content">Nội dung<span style={{ color: 'red' }}> *</span></Label>
+          <Label for="content">Nội dung</Label>
           <CKEditor
             name="content"
             data={this.state.post.content}
@@ -268,6 +260,7 @@ class PostForm extends Component {
                 onChange={this.handleChange}
                 options={this.state.options}
               />
+              {this.renderError()}
             </FormGroup>
           ) : null
           }
@@ -280,12 +273,13 @@ class PostForm extends Component {
               options={Type}
             />
           </FormGroup>
+          {this.renderError()}
           <FormGroup>
             <Button color="success" className="float-right mt-3">
               <FaPaperPlane/> Gửi
             </Button>
           </FormGroup>
-        </Form>
+        </AvForm>
       </Container>
     );
   }

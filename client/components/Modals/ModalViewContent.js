@@ -13,13 +13,15 @@ const ModalExample = (props) => {
       <Modal isOpen={modal} toggle={toggle} className="modal-lg">
         <ModalHeader toggle={toggle}>{props.title}</ModalHeader>
         <ModalBody>
-          <StarRatings
-            rating={props.rating}
-            starRatedColor="blue"
-            numberOfStars={5}
-            name='rating'
-            starDimension='30px'
-          />
+          {props.rating ? (
+            <StarRatings
+              rating={props.rating}
+              starRatedColor="blue"
+              numberOfStars={5}
+              name='rating'
+              starDimension='30px'
+            />
+          ) : ''}
           {props.content}
         </ModalBody>
         <ModalFooter>

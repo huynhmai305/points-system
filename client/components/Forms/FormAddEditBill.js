@@ -1,7 +1,8 @@
 import React from 'react';
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, FormGroup, Label } from 'reactstrap';
 import NumberFormat from 'react-number-format';
 import Swal from 'sweetalert2'
+import { AvForm, AvField } from 'availity-reactstrap-validation';
 
 class AddEditForm extends React.Component {
   state = {
@@ -100,24 +101,51 @@ class AddEditForm extends React.Component {
   }
   render() {
     return (
-      <Form onSubmit={this.submitFormAdd}>
+      <AvForm onValidSubmit={this.submitFormAdd}>
         <FormGroup>
           <Label for="id">Mã hóa đơn</Label>
-          <Input type="text" name="id" id="id" onChange={this.onChange} value={this.state.id} required />
+          <AvField
+            type="text"
+            name="id"
+            id="id"
+            onChange={this.onChange}
+            value={this.state.id}
+            validate={{
+              required: {value: true, errorMessage: 'Vui lòng nhập mã hóa đơn'}
+            }}
+          />
         </FormGroup>
         <FormGroup>
           <Label for="total">Tổng tiền thanh toán</Label>
           {/*<NumberFormat thousandSeparator={true} suffix={'đ'} name="total" id="total" onChange={this.onChange} value={this.state.total}  required/>*/}
-          <Input type="number" name="total" id="total" onChange={this.onChange} value={this.state.total} required />
+          <AvField
+            type="number"
+            name="total"
+            id="total"
+            onChange={this.onChange}
+            value={this.state.total}
+            validate={{
+              required: {value: true, errorMessage: 'Vui lòng nhập tổng tiền thanh toán'},
+              number: {value: true, errorMessage: 'Chỉ được nhập số'},
+              min: {value: 0, errorMessage: 'Tiền thanh toán không được nhỏ hơn 0'}
+            }}
+          />
         </FormGroup>
         <FormGroup>
           <Label for="id_store">Mã cửa hàng</Label>
-          <Input type="text" name="id_store" id="id_store" onChange={this.onChange} value={this.state.id_store} readOnly="readonly" />
+          <AvField
+            type="text"
+            name="id_store"
+            id="id_store"
+            onChange={this.onChange}
+            value={this.state.id_store}
+            readOnly="readonly"
+          />
         </FormGroup>
         <FormGroup>
           <Button color="success">Tích điểm</Button>
         </FormGroup>
-      </Form>
+      </AvForm>
     );
   }
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Form, FormGroup, Label, Input, Button, Alert } from 'reactstrap';
+import { Container, FormGroup, Label, Button, Alert } from 'reactstrap';
+import { AvForm, AvField } from 'availity-reactstrap-validation';
 import StarRatings from 'react-star-ratings';
 import {FaPaperPlane} from 'react-icons/fa'
 import Swal from 'sweetalert2'
@@ -60,7 +61,7 @@ class ReviewForm extends Component {
   onSubmit(e) {
     e.preventDefault();
     if (!this.isFormValid()) {
-      this.setState({ error: "Vui long nhap day du thong tin" });
+      this.setState({ error: "Vui lòng nhập đầy đủ thông tin" });
       return;
     }
     // loading status and clear error
@@ -96,14 +97,11 @@ class ReviewForm extends Component {
         }
       })
       .catch(err => {
-        this.setState({
-          error: "Loi xay ra khi post",
-          loading: false
-        });
+        Swal.fire("Thêm bài review thất bại","","error")
       });
   }
   isFormValid() {
-    return this.state.post.title !== "" && this.state.post.content !== "";
+    return this.state.post.content !== "" || this.state.post.rating !== 0;
   }
   renderError() {
     return this.state.error ? (
@@ -116,10 +114,10 @@ class ReviewForm extends Component {
   render() {
     return (
       <Container>
-        <Form onSubmit={this.onSubmit}>
+        <AvForm onValidSubmit={this.onSubmit}>
           <FormGroup>
             <Label for="title">Tiêu đề<span style={{ color: 'red' }}> *</span></Label>
-            <Input
+            <AvField
               type="text"
               id="title"
               name="title"
@@ -127,6 +125,9 @@ class ReviewForm extends Component {
               onChange={this.handleFieldChange}
               value={this.state.post.title}
               className="form-control"
+              validate={{
+                required: {value: true, errorMessage: 'Vui lòng nhập tiêu đề bài review'}
+              }}
             />
           </FormGroup>
           <FormGroup>
@@ -152,7 +153,7 @@ class ReviewForm extends Component {
               <FaPaperPlane/> Gửi
             </Button>
           </FormGroup>
-        </Form>
+        </AvForm>
       </Container>
     );
   }

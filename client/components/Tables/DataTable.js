@@ -97,6 +97,7 @@ class DataTable extends Component {
           location.reload();
         })
         .catch(err => console.log(err))
+      location.reload();
     })
   }
   render() {

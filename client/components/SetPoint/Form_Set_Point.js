@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Container, Form, FormGroup, Label, Input, Button, Alert } from 'reactstrap';
+import { Container, FormGroup, Label, Button, Alert } from 'reactstrap';
 import Select from 'react-select';
 import {FaPaperPlane} from 'react-icons/fa'
 import Swal from 'sweetalert2'
+import { AvForm, AvField } from 'availity-reactstrap-validation';
 
 class PostForm extends Component {
   constructor(props) {
@@ -51,6 +52,7 @@ class PostForm extends Component {
   //select store
   handleChange = obj_store => {
     this.setState({
+      store_obj: obj_store,
       id_store: obj_store.value
     });
     console.log(`Option selected:`, obj_store.value);
@@ -59,7 +61,7 @@ class PostForm extends Component {
   submitFormAdd(e) {
     e.preventDefault();
     if (!this.isFormValid()) {
-      Swal.fire("Vui lòng nhập đầy đủ thông tin","","error")
+      this.setState({ error: "Vui lòng nhập đầy đủ thông tin" });
       return;
     }
     // loading status and clear error
@@ -88,7 +90,7 @@ class PostForm extends Component {
   submitFormEdit = e => {
     e.preventDefault()
     if (!this.isFormValid()) {
-      Swal.fire("Vui lòng nhập đầy đủ thông tin","","error")
+      this.setState({ error: "Vui lòng nhập đầy đủ thông tin" });
       return;
     }
     let { point_change, id_store } = this.state
@@ -114,7 +116,7 @@ class PostForm extends Component {
   }
 
   isFormValid() {
-    return this.state.point_change !== "" && this.state.id !== "";
+    return this.state.id_store !== "";
   }
 
   componentDidMount() {
@@ -131,10 +133,10 @@ class PostForm extends Component {
     const { store_obj, point_change } = this.state;
     return (
       <Container>
-        <Form onSubmit={this.props.item ? this.submitFormEdit : this.submitFormAdd}>
+        <AvForm onSubmit={this.props.item ? this.submitFormEdit : this.submitFormAdd}>
           <FormGroup>
             <Label for="point_change">Giá trị quy đổi điểm<span style={{ color: 'red' }}> *</span></Label>
-            <Input
+            <AvField
               type="number"
               min={0.01}
               max={1}
@@ -145,7 +147,9 @@ class PostForm extends Component {
               onChange={this.handleFieldChange}
               value={point_change != null ? point_change : 0.05}
               className="form-control"
-              valid
+              validate={{
+                required: {value: true, errorMessage: 'Vui lòng nhập giá trị thiết lập quy đổi'}
+              }}
             />
           </FormGroup>
           <FormGroup>
@@ -157,12 +161,13 @@ class PostForm extends Component {
               options={this.state.options}
             />
           </FormGroup>
+          {this.renderError()}
           <FormGroup>
             <Button color="success" className="float-right mt-3">
               <FaPaperPlane/> Gửi
             </Button>
           </FormGroup>
-        </Form>
+        </AvForm>
       </Container>
     );
   }
