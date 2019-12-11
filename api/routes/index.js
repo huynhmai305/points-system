@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
 const Bill = require('../models/bill');
+const ExchangeGift = require('../models/exchange_gift')
 const Province = require('../models/province');
 const District = require('../models/district');
 const Ward = require('../models/ward');
@@ -339,7 +340,7 @@ router.delete('/admin/user', (req, res) => {
 //====edit user
 router.put('/admin/user', (req, res) => {
   const update = new Date();
-  var dt = {
+  var dt = { 
     username: req.body.username,
     birthday: req.body.birthday,
     address: req.body.address,
@@ -408,6 +409,34 @@ router.get('/countbills', (req, res) => {
     .then(result => res.send(result))
     .catch(err => console.log(err))
 })
+//count data bill follow month for chart
+router.get('/getbillchart', (req, res) => {
+  Bill.findAll({
+    attributes: [
+      [sequelize.fn('DATE', sequelize.col('createdAt')), 'date'],
+      [sequelize.fn('COUNT', sequelize.col('*')), 'bills']
+    ],
+    group: [sequelize.fn('DATE', sequelize.col('createdAt'))]
+  })
+  .then(result => res.send(result))
+  .catch(function(error) {
+    console.log(error);
+  });
+})
 
+//count data gift follow month for chart
+router.get('/getgiftchart', (req, res) => {
+  ExchangeGift.findAll({
+    attributes: [
+      [sequelize.fn('DATE', sequelize.col('createdAt')), 'date'],
+      [sequelize.fn('COUNT', sequelize.col('*')), 'gifts']
+    ],
+    group: [sequelize.fn('DATE', sequelize.col('createdAt'))]
+  })
+  .then(result => res.send(result))
+  .catch(function(error) {
+    console.log(error);
+  });
+})
 
 module.exports = router;
