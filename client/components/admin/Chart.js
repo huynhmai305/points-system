@@ -1,17 +1,33 @@
 import React, { Component } from 'react';
 import { Line, defaults } from 'react-chartjs-2';
-import moment from 'moment'
 defaults.global.maintainAspectRatio = false;
 
 class Chart extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      labels: '',
-      datasets: '',
       data: {
-        labels: [],
-        datasets: []
+        labels: [
+          'Tháng 1', 'Tháng 2',
+          'Tháng 3', 'Tháng 4',
+          'Tháng 5', 'Tháng 6',
+          'Tháng 7', 'Tháng 8',
+          'Tháng 9', 'Tháng 10',
+          'Tháng 11', 'Tháng 12',
+        ],
+        datasets: [
+          {
+            label: 'Hóa đơn tích điểm',
+            backgroundColor: "#OOACE9",
+            data: [32, 42, 49, 33, 47, 36, 20, 37, 30, 25, 30, 50],
+
+          },
+          {
+            label: 'Quà đổi thưởng',
+            backgroundColor: "#D43F3F",
+            data: [14, 32, 60, 50, 35, 32, 33, 40, 42, 15, 40, 25],
+          }
+        ]
       },
       options: {
         title: {
@@ -25,32 +41,15 @@ class Chart extends Component {
           yAxes: [{
             scaleLabel: {
               display: true,
-              // labelString: "Số lượng ",
+              labelString: "Số lượng",
               fontFamily: "Montserrat",
               fontColor: "black",
             }
-          }],
-          xAxes: [{
-            title: "time",
-            type: 'time',
-            gridLines: {
-              lineWidth: 2
-            },
-            // time: {
-            //   unit: "day",
-            //   unitStepSize: 10,
-            //   displayFormats: {
-            //     day: 'DD/MM/YYYY',
-            //   },
-            //   // max: moment(data.end_date).format('MM'),
-            //   // min: monent(data.start_date).format('MM')
-            // }
           }]
         }
       }
     }
   }
-
   setGradientColor = (canvas, color) => {
     const ctx = canvas.getContext('2d');
     const gradient = ctx.createLinearGradient(0, 0, 700, 1000);
@@ -71,35 +70,12 @@ class Chart extends Component {
     return data;
   }
 
-  getDataBill() {
-    fetch('http://localhost:3000/getbillchart')
-      .then(res => res.json())
-      .then(items => {
-        console.log('item received', items)
-        items.map((val,key) => {
-          key={key}
-          this.setState({
-            datasets: parseInt(val.bills),
-            labels: val.date
-          })
-          this.state.data.labels.push(this.state.labels)
-          this.state.data.datasets.push(this.state.datasets)
-          console.log(this.state.data)
-        })
-      })
-  }
-
-  componentDidMount() {
-    this.getDataBill()
-  }
   render() {
     return (
       <div >
-        {this.state.data.length &&
-          <article className="container canvas-container" style={{ position: 'relative', height: '40vh', width: '80vw' }}>
-            <Line data={this.getChartData} options={this.state.options} />
-          </article>
-        }
+        <article className="container canvas-container" style={{ position: 'relative', height: '40vh', width: '80vw' }}>
+          <Line data={this.getChartData} options={this.state.options} />
+        </article>
       </div>
     );
   }
