@@ -59,6 +59,12 @@ class Table_Bill_Of_Customer extends Component {
         columns={this.state.Headers}
         defaultPageSize={10}
         className = '-striped'
+        defaultSorted={[
+          {
+            id: "createdAt",
+            desc: true
+          }
+        ]}
       />
     )
   }

@@ -79,8 +79,9 @@ router.post('/upload', upload.single('image'), (req, res) => {
     res.status("409").json("No Files to Upload.");
 });
 
+//import excel to db
 router.post('/admin/import_batch_user', (req, res) => {
-  console.log('==============kandt================', req.body)
+  console.log('==============mail import================', req.body)
   req.body.forEach(userData => {
     User.findOne({
       where: {

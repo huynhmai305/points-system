@@ -6,6 +6,8 @@ import ModalForm from './ModalReview';
 class ManagerReview extends Component {
   state = {
     items: [],
+    storename: [],
+    store: {}
   }
   getItems() {
     let url = 'http://localhost:3000/users/review';
@@ -14,11 +16,32 @@ class ManagerReview extends Component {
       .then(items => this.setState({ items }))
       .catch(err => console.log(err))
   }
+
+  getStoreName() {
+    fetch('http://localhost:3000/users/optionstore')
+    .then(rs => rs.json())
+    .then(item => {
+      item.map(val => {
+        const it = {}
+        const key = val.id
+        it[key] = val.username
+        this.state.storename.push(it)
+      })
+      console.log('store name',this.state.storename)
+      const storename = this.state.storename.reduce(function(acc, x) {
+        for (var key in x) acc[key] = x[key];
+        return acc;
+      }, {});
+      console.log('acc',storename)
+      this.setState({store: storename}, () => console.log('store',this.state.store))
+    })
+  }
+
   componentDidMount() {
     this.getItems()
+    this.getStoreName()
   }
   render() {
-    console.log(this.state.items)
     return (
       <Container className="App">
         <ol className="breadcrumb">
@@ -37,7 +60,7 @@ class ManagerReview extends Component {
         </Row> */}
         <Row>
           <Col>
-            <List items={this.state.items} type="all"/>
+            <List items={this.state.items} type="all" storename={this.state.store}/>
           </Col>
         </Row>
       </Container>

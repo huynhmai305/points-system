@@ -7,42 +7,25 @@ import Excel from '../../exportTable/XLSX'
 class ManagerPostStore extends Component {
   state = {
     items: [],
+    storeId: ''
   }
-  getItems(keyword) {
-    let url = 'http://localhost:3000/users/post';
-    if (keyword.length > 0) {
-      url = `${url}?keyword=${keyword}`
-    }
+  getItems() {
+    console.log(this.state.storeId)
+    let url = 'http://localhost:3000/users/post/'+this.state.storeId;
     fetch(url)
       .then(response => response.json())
-      .then(items => this.setState({ items }))
+      .then(items => {
+        console.log('post about store',items)
+        this.setState({ items })
+      })
       .catch(err => console.log(err))
   }
-  addItemToState = (item) => {
-    fetch('http://localhost:3000/users/post')
-    this.setState(prevState => ({
-      items: [...prevState.items, item]
-    }))
-  }
-  updateState = (item) => {
-    const itemIndex = this.state.items.findIndex(data => data.id === item.id)
-    const newArray = [
-      ...this.state.items.slice(0, itemIndex),
-      item,
-      ...this.state.items.slice(itemIndex + 1)
-    ]
-    this.setState({ items: newArray })
-  }
-  deleteItemFromState = (id) => {
-    const updatedItems = this.state.items.filter(item => item.id !== id)
-    this.setState.items({ items: updatedItems })
-  }
-  onSearch = (keyword) => {
-    console.log(keyword);
-    this.getItems(keyword)
-  }
+
   componentDidMount() {
-    this.getItems('')
+    var info = JSON.parse(localStorage.getItem('user'));
+    this.setState({
+      storeId: info[0].id
+    }, () => this.getItems())
   }
   render() {
     const header = ["id", "title", "content", "storeId", "createdAt"]
@@ -57,12 +40,12 @@ class ManagerPostStore extends Component {
             />
           </Col>
           <Col>
-            <ModalForm buttonLabel='Add' addItemToState={this.addItemToState} />
+            <ModalForm buttonLabel='Add'/>
           </Col>
         </Row>
         <Row>
           <Col>
-            <DataTable items={this.state.items} updateState={this.updateState} deleteItemFromState={this.deleteItemFromState} />
+            <DataTable items={this.state.items}/>
           </Col>
         </Row>
       </Container>

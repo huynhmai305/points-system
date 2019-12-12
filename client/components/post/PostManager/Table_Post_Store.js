@@ -14,36 +14,13 @@ class PostTableStore extends Component {
     this.state = {
       Headers: [
         {
-          Header: '#',
-          accessor: 'id',
-          style: { 'textAlign': 'center' },
-          width: 100
-        },
-        {
           Header: 'Tiêu đề',
           accessor: 'title',
           style: { 'whiteSpace': 'unset' },
-          width: 350
-        },
-        // {
-        //   Header: 'Nội dung',
-        //   Cell: row => (
-        //     <span>
-        //       {HtmlParser(row.original.content.slice(0, 500) + ' <a href="#">Xem chi tiết >></a>')}
-        //     </span>
-        //   ),
-        //   style: { 'whiteSpace': 'unset' },
-        //   width: 500
-        // },
-        {
-          id: 'User',
-          Header: 'Cửa hàng',
-          accessor: d => d.User.username,
-          style: { 'textAlign': 'center' },
-          width: 150
+          width: 500
         },
         {
-          Header: 'Ngày đăng ký',
+          Header: 'Ngày viết bài',
           Cell: row => (<span>{moment(row.original.createdAt).format('DD/MM/YYYY, h:mm:ss a')}</span>),
           style: { 'textAlign': 'center' },
           maxwidth: 100,
@@ -111,6 +88,12 @@ class PostTableStore extends Component {
         columns={this.state.Headers}
         defaultPageSize={10}
         className = '-striped'
+        defaultSorted={[
+          {
+            id: "createdAt",
+            desc: true
+          }
+        ]}
       />
     )
   }

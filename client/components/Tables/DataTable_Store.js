@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Button } from 'reactstrap';
-import ModalForm from '../Modals/Modal';
+import ModalForm from '../Modals/ModalStore';
 import moment from 'moment'
 import ReactTable from 'react-table'
 import {FaTrashAlt} from 'react-icons/fa'
@@ -37,6 +37,7 @@ class DataTable extends Component {
         {
           Header: 'Điện thoại',
           accessor: 'phone',
+          style: { 'textAlign': 'center' },
           maxwidth: 100
         },
         {
@@ -106,6 +107,12 @@ class DataTable extends Component {
         columns={this.state.Headers}
         defaultPageSize={10}
         className = '-striped'
+        defaultSorted={[
+          {
+            id: "createdAt",
+            desc: true
+          }
+        ]}
       />
     )
   }

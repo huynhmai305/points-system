@@ -25,7 +25,7 @@ User.hasMany(Post, { foreignKey: 'storeId', sourceKey: 'id' },{onDelete: 'cascad
 Post.belongsTo(User, { foreignKey: 'storeId' })
 
 Post.hasMany(Review, { foreignKey: 'postId', sourceKey: 'id' },{onDelete: 'cascade', hooks: true});
-Review.belongsTo(User, { foreignKey: 'postId' })
+Review.belongsTo(Post, { foreignKey: 'postId' })
 User.hasMany(Review, { foreignKey: 'userId', sourceKey: 'id' },{onDelete: 'cascade', hooks: true});
 Review.belongsTo(User, { foreignKey: 'userId' })
 
@@ -128,7 +128,7 @@ router.post('/bill', (req, res) => {
       res.json(result);
     })
     .catch(err => {
-      res.send('error:' + err)
+      res.sendStatus(500)
     })
 })
 //==end add bill
@@ -382,7 +382,7 @@ router.get('/post', (req, res) => {
         }
       },
       order: [['createdAt', 'DESC']],
-      include: [{}]
+      include: [{User}]
     })
       .then(result => {
         res.send(result);
@@ -398,6 +398,22 @@ router.get('/post', (req, res) => {
       })
       .catch(err => console.log(err))
   }
+})
+
+//get post with storeId
+router.get('/post/:storeId', (req, res) => {
+  Post.findAll({
+    where: {
+      storeId: req.params.storeId
+    },
+    order: [['createdAt', 'DESC']],
+    include: [User]
+  })
+    .then(result => {
+      res.send(result);
+    })
+    .catch(err => console.log(err))
+  
 })
 
 //add post
@@ -452,7 +468,7 @@ router.put('/post', (req, res) => {
 router.get('/review', (req, res) => {
   Review.findAll({
     order: [['createdAt', 'DESC']],
-    include: [User]
+    include: [User,Post]
   })
     .then(result => {
       res.send(result);

@@ -28,7 +28,7 @@ class BillOfCustomer extends Component {
     .then(res => res.json())
     .then( info => {
       this.setState({info, point: info[0].point, username: info[0].username})
-      console.log(info[0].username)
+      console.log('point db',info[0].point)
     })
     let url = 'http://localhost:3000/users/bill/' + this.props.id_user;
     fetch(url)
@@ -58,6 +58,7 @@ class BillOfCustomer extends Component {
   render() {
     const header = ["id", "total", "createdAt"]
     const { bill, id_user, point, username} = this.state
+    console.log('point modal',point)
     return (
       <Store username={this.state.name} image={this.state.image}>
         <Container className="App">
@@ -65,7 +66,7 @@ class BillOfCustomer extends Component {
             <li className="breadcrumb-item">
               <a href="/store">Trang chủ</a>
             </li>
-            <li className="breadcrumb-item active">Quản lý hóa đơn</li>
+            <li className="breadcrumb-item active">Quản lý tích điểm khách hàng</li>
           </ol>
           <Row className="mb-5">
             <Col>

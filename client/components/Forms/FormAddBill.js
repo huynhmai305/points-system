@@ -10,26 +10,26 @@ class AddEditForm extends React.Component {
     total: 0,
     point_change: 0 ,//giá trị quy đổi điểm hiện tại
     id_store:'',
-    point: 0
+    point: this.props.point
   }
 
   onChange = e => {
     this.setState({[e.target.name]: e.target.value})
   }
   getItems() {
-    fetch('http://localhost:3000/users/point_change')
+    fetch('http://localhost:3000/users/point_change/'+ this.state.id_store)
     .then (response => response.json())
     .then(result =>{
-        this.setState({point_change:result.point_change})
-        console.log(this.state.point_change)  
+      console.log(result)
+      this.setState({point_change: result.point_change}, () => console.log('point change',this.state.point_change))
     })
   }
 
   updateStorage = () => {
     var info = JSON.parse(localStorage.getItem('user'));
     if (this.props.id_user === info[0].id) {
-        info[0].point = this.state.point;
-        localStorage.setItem("user", JSON.stringify(info[0].point));
+      info[0].point = this.state.point;
+      localStorage.setItem("user", JSON.stringify(info[0].point));
     }
   }
 
@@ -43,7 +43,7 @@ class AddEditForm extends React.Component {
       },
       body: JSON.stringify({
         id: this.state.id,
-        total: this.state.total,
+        total: parseInt(this.state.total),
         id_user: this.props.id_user,
         id_store: this.state.id_store
       })
@@ -51,11 +51,11 @@ class AddEditForm extends React.Component {
     .then(response => response.json())
     .then(item => {
       Swal.fire("Thêm thành công","", "success")
-      console.log(this.props.point)
-      var point = this.props.point + this.state.total / this.state.point_change;
-      console.log(this.state.point_change)
+      console.log('props point',this.state.point)
+      var point = this.state.point + parseInt(this.state.total) * this.state.point_change;
+      console.log(this.state.point_change,parseInt(this.state.total))
       this.setState({point}, () => {
-        console.log(this.state.point)
+        console.log('tong tien',this.state.point)
         fetch('http://localhost:3000/users/point', {
           method: 'PUT',
           headers: {
@@ -71,19 +71,19 @@ class AddEditForm extends React.Component {
           Swal.fire("Tích điểm thành công",`cho khách hàng ${this.props.username}`, "success")
           this.updateStorage;
           location.reload()
-        })     
+        })
       }) 
     })
+    .catch(err => Swal.fire("Ma hoa don da ton tai","","error"))
   }
     componentDidMount() {
       let info = JSON.parse(localStorage.getItem('user'))
-      this.setState({id_store: info[0].id})
+      this.setState({id_store: info[0].id}, () => this.getItems())
       if(this.props.bill) {
         console.log(this.props.bill)
         const {id, id_store, total} = this.props.bill[0]
         this.setState({id, id_store, total})
       }
-      this.getItems()
     }
   render() {
     return (

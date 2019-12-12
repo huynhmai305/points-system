@@ -14,36 +14,49 @@ class PostTable extends Component {
     this.state = {
       Headers: [
         {
-          Header: '#',
-          accessor: 'id',
-          style: { 'textAlign': 'center' },
-          width: 100
-        },
-        {
           Header: 'Tiêu đề',
           accessor: 'title',
           style: { 'whiteSpace': 'unset' },
           width: 350
         },
-        // {
-        //   Header: 'Nội dung',
-        //   Cell: row => (
-        //     <span>
-        //       {HtmlParser(row.original.content.slice(0, 500) + ' <a href="#" onClick={}>Xem chi tiết >></a>')}
-        //     </span>
-        //   ),
-        //   style: { 'whiteSpace': 'unset' },
-        //   width: 500
-        // },
         {
-          id: 'User',
-          Header: 'Cửa hàng',
-          accessor: d => (d.User == null ? '' : d.User.username),
+          Header: 'Lĩnh vực',
+          accessor: 'type',
+          filterMethod: (filter, row) => {
+            if (filter.value === "all") {
+              return true;
+            }
+            return filter.value === row._original.type
+          },
+          Filter: ({ filter, onChange }) =>
+            <select
+              className='form-control'
+              onChange={event => onChange(event.target.value)}
+              style={{ width: "100%" }}
+              value={filter ? filter.value : "all"}
+            >
+              <option value="all">Tất cả</option>
+              <option value="cafe">Cà phê</option>
+              <option value="tra sua">Trà sữa</option>
+              <option value="an vat">Ăn vặt</option>
+              <option value="thoi trang">Thời trang</option>
+              <option value="spa">Spa</option>
+              <option value="giai tri">Giải trí</option>
+              <option value="dien tu">Điện tử</option>
+            </select>
+          ,
           style: { 'textAlign': 'center' },
           width: 150
         },
         {
-          Header: 'Ngày đăng ký',
+          id: 'User',
+          Header: 'Người viết bài',
+          accessor: d => (d.User == null ? 'admin' : d.User.username),
+          style: { 'textAlign': 'center' },
+          width: 150
+        },
+        {
+          Header: 'Ngày viết bài',
           Cell: row => (<span>{moment(row.original.createdAt).format('DD/MM/YYYY, h:mm:ss a')}</span>),
           style: { 'whiteSpace': 'unset' },
           maxwidth: 200,
@@ -109,6 +122,12 @@ class PostTable extends Component {
         columns={this.state.Headers}
         defaultPageSize={10}
         className = '-striped'
+        defaultSorted={[
+          {
+            id: "createdAt",
+            desc: true
+          }
+        ]}
       />
     )
   }

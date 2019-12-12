@@ -9,67 +9,74 @@ import ModalContent from '../../Modals/ModalViewContent'
 import Swal from 'sweetalert2'
 
 class ReviewList extends Component {
-  state = {
-    items: [],
-    Headers : [
-      {
-        Header: '#',
-        accessor: 'id',
-        style: {'textAlign': 'center'},
-        width: 50
-      }, 
-      {
-        Header: 'Tiêu đề',
-        accessor: 'title',
-        style: {'textAlign': 'center'},
-        maxwidth: 100
-      }, 
-      // {
-      //   Header: 'Nội dung',
-      //   Cell: row => (<span>{HtmlParser(row.original.content)}</span>),
-      //   style: {'whiteSpace': 'unset'},
-      //   width: 250
-      // }, 
-      {
-        Header: 'Đánh giá',
-        Cell: row => (<span>{row.original.rating}/5</span>) ,
-        style: {'textAlign': 'center'},
-        width: 150,
-        filterable: false
-      }, 
-      {
-        id: 'User',
-        Header: 'Người review',
-        accessor: d => d.User.username,
-        style: {'textAlign': 'center'},
-        width: 300
-      },
-      {
-        Header: 'Thời gian tạo',
-        Cell: row => (<span>{moment(row.original.createdAt).format('DD/MM/YYYY, h:mm:ss a')}</span>),
-        style: {'whiteSpace': 'unset'},
-        maxwidth: 250,
-        filterable: false
-      },
-      {
-        Header: '',
-        Cell: row => (
-          <div>
-            <Button color="danger" style={{float: "left", marginRight:"10px"}} onClick={() => this.deleteItem(row.original.id)}><FaTrashAlt/></Button>
-            <ModalContent title={row.original.title} content={HtmlParser(row.original.content)} rating={row.original.rating}/>
-          </div>
-        ),
-        filterable: false
-      }, 
-    ]
+  constructor(props) {
+    super(props);
+    this.state = {
+      storename: [],
+      Headers : [
+        {
+          Header: '#',
+          accessor: 'id',
+          style: {'textAlign': 'center'},
+          width: 50
+        }, 
+        {
+          Header: 'Tiêu đề',
+          accessor: 'title',
+          style: {'textAlign': 'center'},
+          maxwidth: 100
+        }, 
+        {
+          id:'Post',
+          Header: 'Cửa hàng review',
+          Cell: row => (<span>{this.props.storename[row.original.Post.storeId]}</span>),
+          style: {'whiteSpace': 'unset','textAlign': 'center'},
+          width: 200
+        }, 
+        {
+          Header: 'Đánh giá',
+          Cell: row => (<span>{row.original.rating}/5</span>) ,
+          style: {'textAlign': 'center'},
+          width: 150,
+          filterable: false
+        }, 
+        {
+          id: 'User',
+          Header: 'Người review',
+          accessor: d => d.User.username,
+          style: {'textAlign': 'center'},
+          width: 200
+        },
+        {
+          Header: 'Thời gian tạo',
+          Cell: row => (<span>{moment(row.original.createdAt).format('DD/MM/YYYY, h:mm:ss a')}</span>),
+          style: {'whiteSpace': 'unset'},
+          maxwidth: 250,
+          filterable: false
+        },
+        {
+          Header: '',
+          Cell: row => (
+            <div>
+              <Button color="danger" style={{float: "left", marginRight:"10px"}} onClick={() => this.deleteItem(row.original.id)}><FaTrashAlt/></Button>
+              <ModalContent title={row.original.title} content={HtmlParser(row.original.content)} rating={row.original.rating}/>
+            </div>
+          ),
+          filterable: false
+        }, 
+      ]
+    }
   }
-  getItems() {
-    let url = 'http://localhost:3000/users/review';
-    fetch(url)
-      .then(response => response.json())
-      .then(items => this.setState({ items }))
-      .catch(err => console.log(err))
-  }
+
+  // getItems() {
+  //   let url = 'http://localhost:3000/users/review';
+  //   fetch(url)
+  //     .then(response => response.json())
+  //     .then(items => {
+  //       this.setState({ items });
+  //     })
+  //     .catch(err => console.log(err))
+  // }
 
   deleteItem = id => {
     Swal.fire({
@@ -102,12 +109,13 @@ class ReviewList extends Component {
     })
   }
 
-  componentDidMount() {
-    this.getItems()
-  }
+  // componentDidMount() {
+  //   this.getItems()
+  // }
   render() {
-    const {items} = this.props
-    console.log('props',items)
+    const {items, storename} = this.props
+    console.log('items',items)
+    console.log('storetable',storename)
     return (
       <div>
         <ReactTable
@@ -117,11 +125,18 @@ class ReviewList extends Component {
           noDataText = 'Không tìm thấy'
           pageText = 'Trang'
           rowsText = ''
-          data={items}  
+          data={items}
           columns={this.state.Headers}
+          defaultSorted={[
+            {
+              id: "createdAt",
+              desc: true
+            }
+          ]}
         />
       </div>
     );
   }
 }
+
 export default ReviewList;
