@@ -23,6 +23,11 @@ export default class Change_point extends Component {
   }
   submitFormEdit = e => {
     e.preventDefault()
+    if (!this.isFormValid()) {
+      this.setState({ error: "Vui lòng nhập giá trị thiết đặt lớn hơn 0" });
+      return;
+    }
+    else this.setState({ error: "" });
     fetch('http://localhost:3000/users/point_change', {
       method: 'PUT',
       headers: {
@@ -37,6 +42,10 @@ export default class Change_point extends Component {
         Swal.fire(`Thiết lập giá trị quy đổi thành công`,"", "success")
         location.reload()
       })
+  }
+
+  isFormValid() {
+    return this.state.point_change > 0 ;
   }
 
   componentDidMount() {
@@ -70,24 +79,25 @@ export default class Change_point extends Component {
                 <FormGroup>
                   <Label>Giá trị quy đổi hiện tại: {this.state.point_change_old}</Label>
                 </FormGroup>
-                <FormGroup row>
-                  <Col md={4}>
-                    <Label for="dvt">Giá trị quy đổi trên hóa đơn</Label>
-                    <Input type="text" id="dvt" defaultValue={this.state.point_change_old*100+'%'} readOnly="readonly" />
-                  </Col>
-                </FormGroup>
               </CardBody>
             </Card>
             <Card className="mt-3">
               <CardBody>
-                <FormGroup>
-                  <Label for="point_change">Giá trị quy đổi mới (nếu có)</Label>
-                  <div className="input-group mb-3">
-                    <div className="input-group-prepend">
-                      <span className="input-group-text" id="basic-addon1"><FaExchangeAlt/></span>
+                <FormGroup row>
+                  <Col md={4}>
+                    <Label for="point_change">Giá trị quy đổi mới (nếu có)</Label>
+                    <div className="input-group mb-3">
+                      <div className="input-group-prepend">
+                        <span className="input-group-text" id="basic-addon1"><FaExchangeAlt/></span>
+                      </div>
+                      <Input type="number" step="0.01" name="point_change" onChange={this.onChange} value={this.state.point_change} placeholder="Giá trị quy đổi mới.." />
                     </div>
-                    <Input type="number" step="0.01" name="point_change" onChange={this.onChange} value={this.state.point_change} placeholder="Giá trị quy đổi mới.." />
-                  </div>
+                    <span style={{color: 'red'}}>{this.state.error}</span>
+                  </Col>
+                  {/* <Col md={4}>
+                  <Label for="dvt">Giá trị quy đổi trên hóa đơn</Label>
+                  <Input type="text" id="dvt" defaultValue={this.state.point_change*100+'%'} readOnly="readonly" />
+                  </Col> */}
                 </FormGroup>
                 <FormGroup>
                   <Button color="success" onClick={this.submitFormEdit}>Thay đổi</Button>

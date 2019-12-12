@@ -133,7 +133,7 @@ class PostForm extends Component {
     const { store_obj, point_change } = this.state;
     return (
       <Container>
-        <AvForm onSubmit={this.props.item ? this.submitFormEdit : this.submitFormAdd}>
+        <AvForm onValidSubmit={this.props.item ? this.submitFormEdit : this.submitFormAdd}>
           <FormGroup>
             <Label for="point_change">Giá trị quy đổi điểm<span style={{ color: 'red' }}> *</span></Label>
             <AvField
@@ -148,6 +148,7 @@ class PostForm extends Component {
               value={point_change != null ? point_change : 0.05}
               className="form-control"
               validate={{
+                number: {value: true, errorMessage: 'Vui lòng nhập định dạng số'},
                 required: {value: true, errorMessage: 'Vui lòng nhập giá trị thiết lập quy đổi'}
               }}
             />
