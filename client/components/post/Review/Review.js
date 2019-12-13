@@ -18,7 +18,7 @@ class CardComponent extends Component {
     this.setState({
       like: 'danger',
       id: this.props.id,
-      point: this.props.point + 1
+      point: this.props.point + 10
     }, () => {
       console.log('already set point'+this.state.point)
       this.updatePoint(this.state.id, this.state.point);

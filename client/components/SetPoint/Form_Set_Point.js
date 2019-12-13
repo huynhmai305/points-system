@@ -162,7 +162,6 @@ class PostForm extends Component {
               options={this.state.options}
             />
           </FormGroup>
-          {this.renderError()}
           <FormGroup>
             <Button color="success" className="float-right mt-3">
               <FaPaperPlane/> Gửi

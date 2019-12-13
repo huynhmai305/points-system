@@ -26,7 +26,6 @@ class AddEditForm extends React.Component {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
-
       },
       body: JSON.stringify({
         username: this.state.username,

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import dynamic from 'next/dynamic';
-const Reader = dynamic(() => import('react-qr-reader'))
+const Reader = dynamic(() => import('react-qr-reader'),{
+    ssr: false
+})
 
 class ReadQR extends Component {
     constructor(props) {

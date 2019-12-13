@@ -94,7 +94,7 @@ export default class Change_point extends Component {
                     </div>
                     <span style={{color: 'red'}}>{this.state.error}</span>
                   </Col>
-                  {/* <Col md={4}>
+                  {/* <Col md={4}>0
                   <Label for="dvt">Giá trị quy đổi trên hóa đơn</Label>
                   <Input type="text" id="dvt" defaultValue={this.state.point_change*100+'%'} readOnly="readonly" />
                   </Col> */}

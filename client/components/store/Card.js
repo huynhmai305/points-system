@@ -12,7 +12,7 @@ class Card extends Component {
     }
   }
   countBill() {
-    fetch('http://localhost:3000/countbills')
+    fetch('http://localhost:3000/countbills/'+ this.state.id)
       .then(response => response.json())
       .then(item => this.setState({ bill: item[0].total_bills }))
   }

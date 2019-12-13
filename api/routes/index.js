@@ -410,6 +410,18 @@ router.get('/countbills', (req, res) => {
     .then(result => res.send(result))
     .catch(err => console.log(err))
 })
+
+//count bill
+router.get('/countbills/:id', (req, res) => {
+  Bill.findAll({
+    attributes: [[sequelize.fn('COUNT', sequelize.col('id')), 'total_bills']],
+    where: {
+      id_store: req.params.id
+    }
+  })
+    .then(result => res.send(result))
+    .catch(err => console.log(err))
+})
 //count data bill follow month for chart
 router.get('/getbillchart', (req, res) => {
   Bill.findAll({

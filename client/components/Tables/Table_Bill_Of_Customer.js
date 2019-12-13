@@ -26,14 +26,14 @@ class Table_Bill_Of_Customer extends Component {
           maxwidth: 200,
           filterable: false
         }, 
-        {
-          Header: 'Điểm được tích lũy',
-          accessor: 'point',
-          Cell: row => (<span>{row.original.total / 1000}</span>),
-          style: {'textAlign': 'center'},
-          width: 200,
-          filterable: false
-        }, 
+        // {
+        //   Header: 'Điểm được tích lũy',
+        //   accessor: 'point',
+        //   Cell: row => (<span>{row.original.total / 1000}</span>),
+        //   style: {'textAlign': 'center'},
+        //   width: 200,
+        //   filterable: false
+        // }, 
         {
           Header: 'Ngày tạo',
           Cell: row => (<span>{moment(row.original.createdAt).format('DD/MM/YYYY, h:mm:ss a')}</span>),

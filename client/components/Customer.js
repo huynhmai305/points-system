@@ -24,9 +24,9 @@ class Customer extends Component {
               <li>
                 <Link href="/user"><a><FaHome /> Trang chủ</a></Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/user/khampha"><a><FaPaperPlane /> Khám phá</a></Link>
-              </li>
+              </li> */}
               <li>
                 <Link href="/user/exchange_gift"><a><FaGift /> Đổi quà</a></Link>
               </li>
