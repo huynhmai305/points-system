@@ -88,7 +88,8 @@ class Register extends Component {
                 onChange={this.onChange}
                 value={this.state.username}
                 validate={{
-                  required: {value: true, errorMessage: 'Vui lòng nhập họ tên'}
+                  required: {value: true, errorMessage: 'Vui lòng nhập họ tên'},
+                  pattern: {value: /[a-zA-Z]/, errorMessage: 'Chỉ được nhập chữ'}
                 }} 
               />
             </FormGroup>
